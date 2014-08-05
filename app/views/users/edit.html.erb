@@ -1,0 +1,33 @@
+<%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+    Profile image:
+  <%= f.file_field :image %><br>
+
+  <%= f.text_area :bio, placeholder: "About me", class: "form-control devise" %><br>
+    Your Website
+  <%= f.text_field :website, placeholder: "start with http://...", class: "form-control devise" %><br>
+    Location
+  <%= f.text_field :public_location, placeholder: "e.g. San Francisco", class: "form-control devise" %><br>
+    Languages
+  <%= f.text_field :language, placeholder: "e.g. English, Spanish", class: "form-control devise" %><br>
+
+  <% if current_user.admin %>
+    <%= f.text_field :name %>
+    <%= f.text_field :email %>
+    <%= f.text_field :credit %>
+    <%= f.check_box :banned %>
+  <% end %>
+
+    <br>
+    <%= f.submit "Update", class: "btn btn-default" %>
+
+<% end %>

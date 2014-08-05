@@ -1,0 +1,63 @@
+<% if user_signed_in? %>
+
+<% else %>
+  <div class="row">
+
+    <div class="col-xs-6">
+
+      <div align="center">
+        <%= image_tag('signal_orange.png') %> Digital Products and Services - apps, tutorials, writing, marketing...
+      </div>
+      
+      <hr><br>
+
+      <div class="col-xs-6 left-home">
+        <%= image_tag('gift_bonus.png') %> <b>$10</b> CREDIT<hr>
+        <%= image_tag('verified.png') %> VERIFIED USERS<hr>
+        <%= image_tag('unlimited_list.png') %> FREE LISTINGS
+      </div>
+
+      <div class="col-xs-6 left-home">
+        <%= image_tag('no_fee.png') %>NO FEES<hr>
+        <%= image_tag('any_pay.png') %> ANY PAYMENT<hr>
+        <%= image_tag('low_price.png') %> LOWEST PRICES
+      </div>
+
+    </div>
+
+    <div class="col-xs-6" align="center">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <% if resource.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% resource.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %></div><br>
+        <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
+        <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
+        <div><%= f.submit "Create my account", class: "btn btn-primary", data: { disable_with: "Creating..." } %></div>
+
+      <% end %>
+
+      <br> or <b><%= link_to "Sign in", 'users/sign_in' %></b>
+
+    </div>
+
+  </div>
+
+  <br><br><br><hr>
+
+    <div align="center">
+      © 2014
+      <%= mail_to "support@inrevi.com", "Contact" %> |
+      <%= link_to "Terms & Privacy", "" %>
+    </div>
+
+<% end %>

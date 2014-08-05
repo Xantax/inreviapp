@@ -1,0 +1,35 @@
+@import "bootstrap";
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+margin:0px 0px; padding:0px;
+text-align:left;
+}
+
+.body-container {
+width: 960px;
+margin:0px auto;
+}
+
+/* HEADER */
+
+.row.header{
+  margin-bottom:60px;
+  border-bottom: 2px solid #E8E8E8;
+}
+
+.form-control.devise{
+  width:220px;
+}
+
+.col-xs-3.user-header{
+  padding-top:5px;
+  text-align:right;
+}
+
+.col-xs-5.header-search{
+  padding-top:5px;
+}

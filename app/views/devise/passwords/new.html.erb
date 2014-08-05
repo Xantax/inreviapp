@@ -1,0 +1,7 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+  <div><%= f.email_field :email, autofocus: true, class: "form-control devise", placeholder: "name" %></div><br>
+
+  <div><%= f.submit "Send me reset password instructions", class: "btn btn-primary", data: { disable_with: "Creating..." } %></div>
+<% end %>
+

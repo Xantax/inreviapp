@@ -1,0 +1,48 @@
+<div class="row header">
+
+  <% if user_signed_in? %>
+  
+    <div class="col-xs-2">
+      <%= link_to image_tag('logou8.PNG'), root_path %>
+    </div>
+  
+    <div class="col-xs-5 header-search">
+      <%= text_field_tag :search, params[:search], :placeholder => "" , class: "form-control", autofocus: true %>
+    </div>
+  
+    <div class="col-xs-2"></div>
+      
+    <div class="col-xs-3 user-header">
+      
+      <span class="label label-primary">$<%= current_user.credit %></span> | 
+      
+      <%= image_tag('email20.png') %> <span class="badge">0</span> | 
+      
+      <div class="btn-group" align="left">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+           <%= link_to image_tag('profile7.png'), user_path(current_user) %><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sell an item", edit_user_path(current_user) %></li>
+            <li><%= link_to "+ Add credit", edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+            <li><%= link_to "Sales", user_path(current_user) %></li>
+            <li><%= link_to "Shopping", edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+        </ul>
+      </div>
+      
+    </div>
+
+  <% else %>
+
+    <div class="header-main" align="center">
+      <%= link_to image_tag('logou8.PNG'), root_path %>
+    </div>
+
+  <% end %>
+  
+</div>

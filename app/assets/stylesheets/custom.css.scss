@@ -14,10 +14,16 @@ width: 960px;
 margin:0px auto;
 }
 
+#notice {
+  color: #E95656;
+  font-weight: bold;
+  text-align:center
+}
+
 /* HEADER */
 
 .row.header{
-  margin-bottom:60px;
+  margin-bottom:40px;
   border-bottom: 2px solid #E8E8E8;
 }
 

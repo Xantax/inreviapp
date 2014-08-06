@@ -70,21 +70,19 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
-    
-  config.action_mailer.raise_delivery_errors = true
+  config.active_support.deprecation = :notify    
   
-  config.action_mailer.default_url_options = { :host => 'inrevi.com' }
-  
+  # Mailer
+  config.action_mailer.raise_delivery_errors = true  
+  config.action_mailer.default_url_options = { :host => 'inrevi.com' }  
   config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "sandboxd079854dfa1b4f558805a1b6f580f47e.mailgun.org",
-  :user_name => "postmaster@sandboxd079854dfa1b4f558805a1b6f580f47e.mailgun.org",
-  :password => "1dhiceyykgt4"
+  :domain => "inrevi.com",
+  :user_name => "postmaster@inrevi.com",
+  :password => "8e0a03652080d9e6a15a7f976deaaf7a"
 }
 
   # Disable automatic flushing of the log to improve performance.

@@ -1,1 +1,11 @@
+<i>Check your phone. It might take a minute to get the 6 digit code.</i><br><br>
+
 <%= render 'form' %>
+
+<br>
+
+    <% current_user.phone_verifications.first(1).each do |phone_verification| %>
+      Didn't get the code? 
+      <%= link_to 'Click here', phone_verification, method: :delete, data: { confirm: 'Are you sure?' } %> 
+      to try again.
+    <% end %>

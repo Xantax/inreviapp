@@ -1,19 +1,12 @@
 class PhoneVerificationsController < ApplicationController
-  before_action :set_phone_verification, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
-  
-  def index
-    @phone_verifications = PhoneVerification.all
-  end
-
-  def show
-  end
+  before_action :set_phone_verification, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: :destroy
+  before_action :user_count, only: [:new, :create]
+  before_action :authenticate_user!
 
   def new
     @phone_verification = PhoneVerification.new
-  end
-
-  def edit
   end
 
   def create
@@ -27,10 +20,10 @@ class PhoneVerificationsController < ApplicationController
           client.account.sms.messages.create(
           from: "+14849860545",
           to: @phone_verification.number,
-            body: "Hello from Inrevi. This is your verification code: #{current_user.sms_code}"
+          body: "Hello from Inrevi. This is your verification code: #{current_user.sms_code}"
           )
         
-        format.html { redirect_to "/phone_codes/new", notice: 'Check you phone!' }
+        format.html { redirect_to "/phone_codes/new" }
         format.json { render :show, status: :created, location: @phone_verification } 
       else
         format.html { render :new }
@@ -39,22 +32,10 @@ class PhoneVerificationsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @phone_verification.update(phone_verification_params)
-        format.html { redirect_to @phone_verification, notice: 'Phone verification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phone_verification }
-      else
-        format.html { render :edit }
-        format.json { render json: @phone_verification.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @phone_verification.destroy
     respond_to do |format|
-      format.html { redirect_to phone_verifications_url, notice: 'Phone verification was successfully destroyed.' }
+      format.html { redirect_to '/phone_verifications/new' }
       format.json { head :no_content }
     end
   end
@@ -68,4 +49,17 @@ class PhoneVerificationsController < ApplicationController
     def phone_verification_params
       params.require(:phone_verification).permit(:number, :user_id)
     end
+  
+    def user_count
+      if current_user.phone_verifications.count == 1
+        redirect_to root_path
+      end
+    end
+  
+    def require_permission
+      if current_user != PhoneVerification.find(params[:id]).user
+        redirect_to root_path
+      end
+    end
+  
 end

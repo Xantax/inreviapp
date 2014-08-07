@@ -7,68 +7,7 @@
   </div>
 
   <div class="col-xs-2">
-
-  <% if current_user.confirmed_at.blank? %>  
-
-    <hr> 
-
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-          <span class="sr-only">25% Complete</span>
-        </div>
-      </div>
-
-      <%= image_tag('arroba2.png') %> Step <b>1</b> of 3
-
-      <br><br>Check your email<hr>
-    
-      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.hidden_field :email, autofocus: true, :value => current_user.email %>
-      <%= f.submit "Resend email", data: { disable_with: "email sent" }, class: "btn btn-success" %>
-      <% end %>
-    
-    <hr>
-
-    <% elsif current_user.confirmed_at.present? && current_user.website.blank? && current_user.phone_codes.empty? %> 
-
-    <hr>
-
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-          <span class="sr-only">50% Complete</span>
-        </div>
-      </div>
-
-      <%= image_tag('call10.png') %> Step <b>2</b> of 3
-
-      <br><br>
-
-    <%= link_to "Confirm phone", 'phone_verifications/new' , class: "btn btn-success" %>
-
-    <hr>
-    
-    <% end %>
-    
-    <% current_user.phone_codes.first(1).each do |code| %> 
-      <% if current_user.sms_code == code.code.to_i %>
-        <hr>
-
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
-              <span class="sr-only">75% Complete</span>
-            </div>
-          </div>
-
-          <%= image_tag('id1.png') %> Step <b>3</b> of 3
-
-          <br><br>
-
-          <%= link_to "Confirm my ID", root_path , class: "btn btn-success" %> 
-
-        <hr>
-      <% end %>
-    <% end %> 
-
+    <%= render 'user_verification' %>
   </div>
   
 </div>
@@ -81,21 +20,21 @@
     <div class="col-xs-6">
 
       <div align="center">
-        <%= image_tag('signal_orange.png') %> Digital Market - apps, tutorials, writing, marketing...
+        <%= image_tag('1/signal_orange.png') %> Digital Market - apps, tutorials, writing, marketing...
       </div>
       
       <hr><br>
 
       <div class="col-xs-6 left-home">
-        <%= image_tag('gift_bonus.png') %> <b>$10</b> CREDIT<hr>
-        <%= image_tag('verified.png') %> VERIFIED USERS<hr>
-        <%= image_tag('unlimited_list.png') %> FREE LISTINGS
+        <%= image_tag('1/gift_bonus.png') %> <b>$10</b> CREDIT<hr>
+        <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
+        <%= image_tag('1/unlimited_list.png') %> FREE LISTINGS
       </div>
 
       <div class="col-xs-6 left-home">
-        <%= image_tag('no_fee.png') %>NO FEES<hr>
-        <%= image_tag('any_pay.png') %> ANY PAYMENT<hr>
-        <%= image_tag('low_price.png') %> LOWEST PRICES
+        <%= image_tag('1/no_fee.png') %>NO FEES<hr>
+        <%= image_tag('1/any_pay.png') %> ANY PAYMENT<hr>
+        <%= image_tag('1/low_price.png') %> LOWEST PRICES
       </div>
 
     </div>
@@ -130,12 +69,13 @@
 
   </div>
 
-  <br><br><br><hr>
+<br><br><br>
 
+<% end %>
+
+<hr>
     <div align="center">
       © 2014
       <%= mail_to "support@inrevi.com", "Contact" %> |
       <%= link_to "Terms & Privacy", "" %>
     </div>
-
-<% end %>

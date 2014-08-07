@@ -1,34 +1,22 @@
 class PhoneCodesController < ApplicationController
   before_action :set_phone_code, only: [:show, :edit, :update, :destroy]
+  before_action :only_admin, only: [:edit, :update, :destroy]
+  before_action :user_count, only: [:new, :create]
+  before_action :authenticate_user!
 
-  # GET /phone_codes
-  # GET /phone_codes.json
-  def index
-    @phone_codes = PhoneCode.all
-  end
-
-  # GET /phone_codes/1
-  # GET /phone_codes/1.json
-  def show
-  end
-
-  # GET /phone_codes/new
   def new
     @phone_code = PhoneCode.new
   end
 
-  # GET /phone_codes/1/edit
   def edit
   end
 
-  # POST /phone_codes
-  # POST /phone_codes.json
   def create
     @phone_code = PhoneCode.new(phone_code_params)
 
     respond_to do |format|
       if @phone_code.save
-        format.html { redirect_to @phone_code, notice: 'Phone code was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @phone_code }
       else
         format.html { render :new }
@@ -37,8 +25,6 @@ class PhoneCodesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /phone_codes/1
-  # PATCH/PUT /phone_codes/1.json
   def update
     respond_to do |format|
       if @phone_code.update(phone_code_params)
@@ -51,8 +37,6 @@ class PhoneCodesController < ApplicationController
     end
   end
 
-  # DELETE /phone_codes/1
-  # DELETE /phone_codes/1.json
   def destroy
     @phone_code.destroy
     respond_to do |format|
@@ -62,13 +46,25 @@ class PhoneCodesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_phone_code
       @phone_code = PhoneCode.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def phone_code_params
       params.require(:phone_code).permit(:code, :user_id)
     end
+  
+    def user_count
+      if current_user.phone_codes.count == 1
+        redirect_to root_path
+      end
+    end
+  
+    def only_admin
+      unless current_user.admin
+        redirect_to root_path
+      end
+    end
+  
 end

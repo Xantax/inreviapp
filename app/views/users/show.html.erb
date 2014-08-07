@@ -1,20 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<%= @user.phone_codes.each do |phone_code| %>
-  
+<% if current_user.image.blank? %>
+  <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+<% else %>
+  <%= image_tag(current_user.image_url(:thumb), class: 'img-thumbnail') %>
 <% end %>
 
-<p>
-  <strong>Name:</strong>
+<div class="user-profile-name">
   <%= @user.name %>
-</p>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
+Active: <b><%= time_ago_in_words(@user.last_sign_in_at) %></b> ago
+<hr>
 
-<%= link_to "confirm", "/users/confirmation/new" %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if current_user.admin %>
+  <% @user.phone_codes.each do |phone_code| %>
+    <%= link_to 'Edit', edit_phone_code_path(phone_code) %>
+  <% end %>
+<% end %>
+

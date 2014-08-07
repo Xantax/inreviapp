@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :number %><br>
-    <%= f.text_field :number, :required => true %>
+    <%= f.text_field :number, class: "form-control devise", :required => true %>
   </div>
 
   <%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
   resources :phone_codes
-
   resources :phone_verifications
 
-  devise_for :users
+  devise_for :users  
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

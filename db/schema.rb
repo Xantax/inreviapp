@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805015424) do
+ActiveRecord::Schema.define(version: 20140806222746) do
+
+  create_table "phone_codes", force: true do |t|
+    t.string   "code"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phone_codes", ["user_id"], name: "index_phone_codes_on_user_id"
+
+  create_table "phone_verifications", force: true do |t|
+    t.string   "number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phone_verifications", ["user_id"], name: "index_phone_verifications_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -23,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140805015424) do
     t.boolean  "admin"
     t.boolean  "banned"
     t.string   "image"
+    t.integer  "sms_code"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

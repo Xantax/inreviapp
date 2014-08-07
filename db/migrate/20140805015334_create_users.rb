@@ -9,7 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :public_location
       t.boolean :admin
       t.boolean :banned
-      t.string :image      
+      t.string :image  
+      t.integer :sms_code
 
       t.timestamps
     end

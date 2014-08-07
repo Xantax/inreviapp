@@ -22,6 +22,7 @@ gem 'nokogiri', '~> 1.6.1'
 gem 'sprockets', '~> 2.11.0'
 gem "paperclip", "~> 4.1"
 gem 'mailgun-ruby', "~>1.0.2"
+gem 'twilio-ruby', '~> 3.11'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

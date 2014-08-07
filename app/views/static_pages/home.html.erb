@@ -26,10 +26,10 @@
         <%= f.hidden_field :email, autofocus: true, :value => current_user.email %>
       <%= f.submit "Resend email", data: { disable_with: "email sent" }, class: "btn btn-success" %>
       <% end %>
-
+    
     <hr>
 
-    <% elsif current_user.confirmed_at.present? %>  
+    <% elsif current_user.confirmed_at.present? && current_user.website.blank? && current_user.phone_codes.empty? %> 
 
     <hr>
 
@@ -43,23 +43,31 @@
 
       <br><br>
 
-      <%= link_to "Confirm phone", root_path , class: "btn btn-success" %>
+    <%= link_to "Confirm phone", 'phone_verifications/new' , class: "btn btn-success" %>
 
     <hr>
+    
+    <% end %>
+    
+    <% current_user.phone_codes.first(1).each do |code| %> 
+      <% if current_user.sms_code == code.code.to_i %>
+        <hr>
 
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
-          <span class="sr-only">75% Complete</span>
-        </div>
-      </div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+              <span class="sr-only">75% Complete</span>
+            </div>
+          </div>
 
-      <%= image_tag('id1.png') %> Step <b>3</b> of 3
+          <%= image_tag('id1.png') %> Step <b>3</b> of 3
 
-      <br><br>
+          <br><br>
 
-      <%= link_to "Confirm my ID", root_path , class: "btn btn-success" %>  
+          <%= link_to "Confirm my ID", root_path , class: "btn btn-success" %> 
 
-  <% end %>
+        <hr>
+      <% end %>
+    <% end %> 
 
   </div>
   
@@ -111,9 +119,10 @@
         <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %></div><br>
         <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
         <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
+        <div><%= f.hidden_field :sms_code, value: Random.rand(100000..999999) %></div><br>
         <div><%= f.submit "Create my account", class: "btn btn-primary", data: { disable_with: "Creating..." } %></div>
 
-      <% end %>
+     <% end %>
 
       <br> or <b><%= link_to "Sign in", 'users/sign_in' %></b>
 

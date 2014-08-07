@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
      
   mount_uploader :image, ImageUploader
   
+  has_many :phone_verifications
+  has_many :phone_codes
+  
 end

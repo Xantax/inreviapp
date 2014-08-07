@@ -3,6 +3,7 @@ class PhoneVerificationsController < ApplicationController
   before_action :set_phone_verification, only: [:show, :edit, :update, :destroy]
   before_action :require_permission, only: :destroy
   before_action :user_count, only: [:new, :create]
+  before_action :before_email, only: [:new, :create]
   before_action :authenticate_user!
 
   def new
@@ -58,6 +59,12 @@ class PhoneVerificationsController < ApplicationController
   
     def require_permission
       if current_user != PhoneVerification.find(params[:id]).user
+        redirect_to root_path
+      end
+    end
+  
+    def before_email
+      if current_user.confirmed_at.blank?
         redirect_to root_path
       end
     end

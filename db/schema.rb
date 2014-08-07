@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140806222746) do
     t.boolean  "banned"
     t.string   "image"
     t.integer  "sms_code"
+    t.datetime "last_seen_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

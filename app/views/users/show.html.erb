@@ -1,19 +1,41 @@
-<% if current_user.image.blank? %>
-  <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
-<% else %>
-  <%= image_tag(current_user.image_url(:thumb), class: 'img-thumbnail') %>
-<% end %>
-
-<div class="user-profile-name">
-  <%= @user.name %>
+<div class="row">
+  
+<div class="col-xs-3">
+  <% if @user.image_url.blank? %>
+    <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+  <% else %>
+    <%= image_tag(@user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+  <% end %>
 </div>
 
-Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
-Active: <b><%= time_ago_in_words(@user.last_sign_in_at) %></b> ago
-<hr>
+<div class="col-xs-4">
+  <div class="user-profile-name">
+    <%= image_tag('1/user_not_verified.png') %>
+    <%= @user.name %>
+  </div>
 
+  Active: <b><%= time_ago_in_words(@user.last_seen_at) %></b> ago
+</div>
+  
+<div class="col-xs-5" align="left">
+  Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br><br>
+  <% if @user.public_location.present? %>
+    <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
+  <% end %>
+  <% if @user.language.present? %>
+    <%= image_tag('1/user_language.png') %><%= @user.language %><br>
+  <% end %>
+  <% if @user.website.present? %>
+    <%= image_tag('1/user_website.png') %><%= @user.website %><br><br>
+  <% end %>
+  <% if @user.bio.present? %>
+    <div class="img-thumbnail"><%= @user.bio %></div>
+  <% end %>
+</div>
 
-<% if current_user.admin %>
+</div>
+<hr>  
+<% if user_signed_in? && current_user.admin %>
   <% @user.phone_codes.each do |phone_code| %>
     <%= link_to 'Edit', edit_phone_code_path(phone_code) %>
   <% end %>

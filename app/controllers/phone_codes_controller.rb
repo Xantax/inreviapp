@@ -2,6 +2,7 @@ class PhoneCodesController < ApplicationController
   before_action :set_phone_code, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, only: [:edit, :update, :destroy]
   before_action :user_count, only: [:new, :create]
+  before_action :before_email, only: [:new, :create]
   before_action :authenticate_user!
 
   def new
@@ -28,7 +29,7 @@ class PhoneCodesController < ApplicationController
   def update
     respond_to do |format|
       if @phone_code.update(phone_code_params)
-        format.html { redirect_to @phone_code, notice: 'Phone code was successfully updated.' }
+        format.html { redirect_to @phone_code }
         format.json { render :show, status: :ok, location: @phone_code }
       else
         format.html { render :edit }
@@ -40,7 +41,7 @@ class PhoneCodesController < ApplicationController
   def destroy
     @phone_code.destroy
     respond_to do |format|
-      format.html { redirect_to phone_codes_url, notice: 'Phone code was successfully destroyed.' }
+      format.html { redirect_to phone_codes_url }
       format.json { head :no_content }
     end
   end
@@ -63,6 +64,12 @@ class PhoneCodesController < ApplicationController
   
     def only_admin
       unless current_user.admin
+        redirect_to root_path
+      end
+    end
+  
+    def before_email
+      if current_user.confirmed_at.blank?
         redirect_to root_path
       end
     end

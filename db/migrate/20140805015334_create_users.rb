@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :banned
       t.string :image  
       t.integer :sms_code
+      t.datetime :last_seen_at
 
       t.timestamps
     end

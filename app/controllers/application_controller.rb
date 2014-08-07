@@ -5,7 +5,18 @@ class ApplicationController < ActionController::Base
   
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :record_user_activity
+  before_filter :banned?
+  
+  include UsersHelper
 
+  def banned?
+    if current_user.present? && current_user.banned?
+      sign_out current_user
+      flash[:notice] = "Blocked!"
+      root_path
+    end
+  end
+  
   protected
 
   def configure_permitted_parameters

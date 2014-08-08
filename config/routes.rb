@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'  
   
+  match 'terms' => "static_pages#terms", via: [:get]
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

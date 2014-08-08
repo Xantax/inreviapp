@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'  
   
   match 'terms' => "static_pages#terms", via: [:get]
+  match 'buycredit' => "static_pages#buycredit", via: [:get]
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

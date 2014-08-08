@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
   
   def terms
   end
+  
+  def buycredit
+  end
 end

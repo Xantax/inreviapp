@@ -52,7 +52,7 @@ Rails.application.configure do
   config.paperclip_defaults ={
      :storage => :s3,
      :s3_credentials => {
-     :bucket => 'prvi-test',
+       :bucket => 'inreviapp',
      :access_key_id => 'AKIAIGCJKAUC3OHB6ATA',
      :secret_access_key => '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'
    }

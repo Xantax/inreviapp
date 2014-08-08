@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806222746) do
+ActiveRecord::Schema.define(version: 20140807225050) do
 
   create_table "phone_codes", force: true do |t|
     t.string   "code"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(version: 20140806222746) do
   end
 
   add_index "phone_verifications", ["user_id"], name: "index_phone_verifications_on_user_id"
+
+  create_table "user_identifications", force: true do |t|
+    t.string   "real_name"
+    t.string   "city"
+    t.integer  "zip_code"
+    t.string   "address"
+    t.string   "country"
+    t.string   "id_photo"
+    t.string   "recent_photo"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_identifications", ["user_id"], name: "index_user_identifications_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

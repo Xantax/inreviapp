@@ -1,6 +1,9 @@
 class UserIdentificationsController < ApplicationController
   before_action :set_user_identification, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, only: [:edit, :update, :destroy]
+  before_action :user_count_identifications, only: [:new, :create]
+  before_action :before_user_count_phone_code, only: [:new, :create]
+  before_action :before_phone_correct, only: [:new, :create]
   before_action :authenticate_user!
 
   def show

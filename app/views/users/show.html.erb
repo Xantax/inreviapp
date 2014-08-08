@@ -10,7 +10,11 @@
 
 <div class="col-xs-4">
   <div class="user-profile-name">
-    <%= image_tag('1/user_not_verified.png') %>
+    <% if @user.user_identifications.count == 1 %>
+      <%= image_tag('1/user_verified.png') %>
+    <% else %>
+      <%= image_tag('1/user_not_verified.png') %>
+    <% end %>
     <%= @user.name %>
   </div>
 
@@ -18,7 +22,7 @@
 </div>
   
 <div class="col-xs-5" align="left">
-  Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br><br>
+  <%= image_tag('1/clock40.png') %>Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
   <% if @user.public_location.present? %>
     <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
   <% end %>

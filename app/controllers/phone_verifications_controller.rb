@@ -2,7 +2,7 @@ class PhoneVerificationsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_phone_verification, only: [:show, :edit, :update, :destroy]
   before_action :require_permission, only: :destroy
-  before_action :user_count, only: [:new, :create]
+  before_action :user_count_phone_verifications, only: [:new, :create]
   before_action :before_email, only: [:new, :create]
   before_action :authenticate_user!
 
@@ -51,20 +51,8 @@ class PhoneVerificationsController < ApplicationController
       params.require(:phone_verification).permit(:number, :user_id)
     end
   
-    def user_count
-      if current_user.phone_verifications.count == 1
-        redirect_to root_path
-      end
-    end
-  
     def require_permission
       if current_user != PhoneVerification.find(params[:id]).user
-        redirect_to root_path
-      end
-    end
-  
-    def before_email
-      if current_user.confirmed_at.blank?
         redirect_to root_path
       end
     end

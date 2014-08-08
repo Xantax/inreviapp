@@ -19,7 +19,7 @@
     
     <hr>
 
-    <% elsif current_user.confirmed_at.present? && current_user.website.blank? && current_user.phone_codes.empty? %> 
+  <% elsif current_user.confirmed_at.present? && current_user.user_identifications.count != 1 && current_user.phone_codes.count != 1 %> 
 
     <hr>
 

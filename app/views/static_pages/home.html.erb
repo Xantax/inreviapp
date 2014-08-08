@@ -1,16 +1,20 @@
 <% if user_signed_in? %>
 
-<div class="row">
-  
-  <div class="col-xs-10">
-    <p id="notice"><%= notice %></p>
-  </div>
 
-  <div class="col-xs-2">
-    <%= render 'user_verification' %>
+<% if current_user.user_identifications.count == 1 %>
+<% else %>
+  <div class="row">
+
+    <div class="col-xs-10">
+      <p id="notice"><%= notice %></p>
+    </div>
+
+    <div class="col-xs-2">
+      <%= render 'user_verification' %>
+    </div>
+
   </div>
-  
-</div>
+<% end %>
 
 <% else %>
 

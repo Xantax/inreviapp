@@ -55,7 +55,7 @@
       <%= f.country_select :country %>
     </div>
 
-    <%= f.hidden_field :user_id %><hr>
+    <%= f.hidden_field :user_id, value: current_user.id %><hr>
 
     <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Uploading..." }  %>
     

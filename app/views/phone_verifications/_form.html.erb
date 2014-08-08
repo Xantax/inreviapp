@@ -14,7 +14,7 @@
     <%= f.text_field :number, placeholder: "full number", class: "form-control devise", :required => true, autofocus: true %>
   </div>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-default" %>

@@ -1,7 +1,7 @@
 class PhoneCodesController < ApplicationController
   before_action :set_phone_code, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, only: [:edit, :update, :destroy]
-  before_action :user_count, only: [:new, :create]
+  before_action :user_count_phone_code, only: [:new, :create]
   before_action :before_email, only: [:new, :create]
   before_action :authenticate_user!
 
@@ -54,24 +54,6 @@ class PhoneCodesController < ApplicationController
 
     def phone_code_params
       params.require(:phone_code).permit(:code, :user_id)
-    end
-  
-    def user_count
-      if current_user.phone_codes.count == 1
-        redirect_to root_path
-      end
-    end
-  
-    def only_admin
-      unless current_user.admin
-        redirect_to root_path
-      end
-    end
-  
-    def before_email
-      if current_user.confirmed_at.blank?
-        redirect_to root_path
-      end
     end
   
 end

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :banned?
   
   include UsersHelper
+  include AuthorizationsHelper
 
   def banned?
     if current_user.present? && current_user.banned?

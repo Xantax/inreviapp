@@ -4,7 +4,9 @@
 
     <div><%= f.email_field :email, autofocus: true, class: "form-control devise", placeholder: "email" %></div><br>
 
-    <div><%= f.password_field :password, autocomplete: "off", class: "form-control devise", placeholder: "password" %></div><br>
+    <div>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control devise", placeholder: "password" %>
+    </div><br>
 
     <div><%= f.submit "Sign in", class: "btn btn-primary" %></div><br>
   

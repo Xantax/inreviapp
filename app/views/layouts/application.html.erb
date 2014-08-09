@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Inreviapp</title>
+  <title>Inrevi - Digital Market</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,10 @@
     <%= yield %>
   <div class="push"></div>
 </div>
-  <hr><div class="footer"><%= render 'layouts/footer' %></div>
+  <hr>
+<div class="footer">
+  <%= render 'layouts/footer' %>
+</div>
 
 </body>
 </html>

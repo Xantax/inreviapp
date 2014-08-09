@@ -1,16 +1,15 @@
-<br><br>
+<div class="digital-market-home" align="center">
+  <%= image_tag('1/d_market.png') %> Digital Market
+</div>
+
   <div class="row">
-
-    <div class="col-xs-6">
-
-      <div align="center">
-        <%= image_tag('1/signal_orange.png') %> Digital Market - apps, tutorials, writing, marketing...
-      </div>
-      
-      <hr><br>
+    
+    <div class="col-xs-1"></div>
+    
+    <div class="col-xs-5">
 
       <div class="col-xs-6 left-home">
-        <%= image_tag('1/gift_bonus.png') %> <b>$10</b> CREDIT<hr>
+        <%= image_tag('1/free_credit.png') %> <b>$10</b> CREDIT<hr>
         <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
         <%= image_tag('1/unlimited_list.png') %> FREE LISTINGS
       </div>
@@ -22,8 +21,8 @@
       </div>
 
     </div>
-
-    <div class="col-xs-6" align="center">
+    
+    <div class="col-xs-5" align="center">
       
     <p id="notice"><%= notice %></p>
       
@@ -43,14 +42,12 @@
         <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
         <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
         <div><%= f.hidden_field :sms_code, value: Random.rand(100000..999999) %></div><br>
-        <div><%= f.submit "Create my account", class: "btn btn-primary", data: { disable_with: "Creating..." } %></div>
+        <div><%= f.submit "Create my account", class: "btn btn-success", data: { disable_with: "Creating..." } %></div>
 
      <% end %>
 
-      <br> or <b><%= link_to "Sign in", 'users/sign_in' %></b>
-
     </div>
+    
+    <div class="col-xs-1"></div>
 
   </div>
-
-<br><br><br>

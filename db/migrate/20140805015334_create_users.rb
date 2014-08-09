@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
-      t.integer :credit, :default => 10
+      t.integer :credit, :default => 100
       t.text :bio
       t.string :website
       t.string :language

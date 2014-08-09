@@ -1,23 +1,19 @@
 @import "bootstrap";
 
-html {
-  overflow-y: scroll;
+* {
+	margin: 0;
 }
-
-body {
-margin:0px 0px; padding:0px;
-text-align:left;
+html, body {
+	height: 98%;
+  padding-left:1%;
+  padding-right:1%;
 }
-
-.body-container {
-width: 960px;
-margin:0px auto;
+.wrapper {
+	min-height: 98%;
+	margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
-
-#notice {
-  color: #E95656;
-  font-weight: bold;
-  text-align:center
+.footer, .push {
+	height: 50px; /* .push must be the same height as .footer */
 }
 
 /* HEADER */
@@ -25,6 +21,7 @@ margin:0px auto;
 .row.header{
   margin-bottom:40px;
   border-bottom: 2px solid #E8E8E8;
+  padding-bottom:5px;
 }
 
 .form-control.devise{
@@ -46,4 +43,17 @@ margin:0px auto;
 
 .col-xs-5.header-search{
   padding-top:5px;
+}
+
+.col-xs-7.login{
+  padding-top:10px;
+  text-align:right;
+}
+
+.input-login:focus{
+  border: 2px solid #0099CC;
+}
+
+.input-login:hover{
+  border: 2px solid #33CCFF;
 }

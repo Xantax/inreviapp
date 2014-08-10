@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   has_many :phone_verifications
   has_many :phone_codes
   has_many :user_identifications
+  has_many :offers
   
 end

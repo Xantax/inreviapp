@@ -101,6 +101,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    language_list (1.0.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -220,6 +221,7 @@ DEPENDENCIES
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-rails
+  language_list (~> 1.0.0)
   mailgun-ruby (~> 1.0.2)
   nokogiri (~> 1.6.1)
   paperclip (~> 4.1)

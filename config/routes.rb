@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :offers
+
   devise_for :users  
   resources :users
   resources :user_identifications

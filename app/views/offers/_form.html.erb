@@ -1,0 +1,63 @@
+<div class="col-xs-3">
+  <div class="alert alert-warning" role="alert">
+      * Do not use CAPS LOCK<br> 
+      * Do not repeat words<br>
+  </div>
+</div>
+
+<div class="col-xs-5">
+  <%= form_for(@offer) do |f| %>
+    <% if @offer.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <b>Title</b><br>
+      <%= f.text_field :name, class: "form-control", placeholder: "max 50 characters", :required => true %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control description", placeholder: "max 1000 characters", :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.radio_button :type, 'service', :checked => true, value: "service" %> 
+      <abbr title="e.g. writing, marketing...">Service</abbr>
+      <%= f.radio_button :type, 'product', value: "product" %>
+      <abbr title="e.g. domains, tutorials...">Product</abbr>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %>
+      $ <%= f.number_field :price, class: "form-control short", :required => true %>
+    </div><br>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Submit for review", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
+    </div>
+
+</div>
+
+<div class="col-xs-4">
+    <div class="field">
+      <% if @offer.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@offer.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %>
+      <b>Cover photo</b><br>
+      <small>(min 640x640)</small><br><br>
+      <%= f.file_field :image %>
+    </div>
+</div>
+
+<% end %>

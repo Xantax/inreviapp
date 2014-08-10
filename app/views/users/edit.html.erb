@@ -28,8 +28,10 @@
     <%= f.text_field :website, placeholder: "e.g. inrevi.com", class: "form-control devise" %><br>
       Location
     <%= f.text_field :public_location, placeholder: "e.g. San Francisco", class: "form-control devise" %><br>
-      Languages
-    <%= f.text_field :language, placeholder: "e.g. English, Spanish", class: "form-control devise" %><br>
+      First Language<br>
+    <%= f.select :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]} %><br><br>
+      Second Language<br>
+    <%= f.select :second_language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]} %>
   </div> 
   
 </div>

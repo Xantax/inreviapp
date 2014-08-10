@@ -25,6 +25,7 @@ gem 'mailgun-ruby', "~>1.0.2"
 gem 'twilio-ruby', '~> 3.11'
 gem 'countries', '~> 0.9.3'
 gem 'country_select', '~> 1.3.1'
+gem 'language_list', '~> 1.0.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

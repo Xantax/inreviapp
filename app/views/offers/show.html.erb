@@ -2,6 +2,32 @@
   
  <p id="notice"><%= notice %></p>
   <div class="col-xs-3">
+
+    <% if current_user == @offer.user %> 
+    
+          <small>Promote your offer on home page for <b>2</b> days.</small><br><br>
+
+        <%= form_for([@offer, @offer.promoted_offers.build]) do |f| %>
+          <% if @promoted_offer.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @promoted_offer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :offer_id %>
+
+            <span class="label label-primary">50</span> <%= link_to image_tag('1/in_coin_header.png'), buycredit_path %> 
+            <%= f.submit "Promote it", class: 'btn btn-warning' %>
+
+        <% end %><hr>
+    
+    <% end %>
+    
     <div id="offer-price">
       $ <%= @offer.price %>
     </div>
@@ -12,9 +38,9 @@
       <%= @offer.name %>
     </div><hr>
     <div align="center">
-      <%= image_tag(@offer.image, width: '480', height: '360', class: 'img-thumbnail') %>
+      <%= image_tag(@offer.image, width: '480') %>
     </div>
-    <hr><%= simple_format(@offer.description) %>
+    <hr><%= simple_format(@offer.description) %> - Created: <i><%= time_ago_in_words(@offer.created_at) %> ago</i>
   </div>
 
   <div class="col-xs-2">

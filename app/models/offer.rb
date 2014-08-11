@@ -3,6 +3,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :promoted_offers
   
   mount_uploader :image, ImageUploader
   
@@ -14,8 +15,8 @@ class Offer < ActiveRecord::Base
   validate :user_quota, :on => :create
   
   def user_quota
-    if user.offers.today.count >= 10
-      errors.add(:base, "You cannot create more offers now (SPAM prevention)")
+    if user.offers.today.count >= 5
+      errors.add(:base, "You cannot create more offers for now (SPAM prevention)")
     end
   end
   

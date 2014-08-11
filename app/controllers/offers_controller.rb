@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_permission, only: [:edit, :update, :destroy]
-  #before_action :must_be_completely_verified, except: [:show]
+  before_action :must_be_completely_verified, except: [:show]
 
   def index
     if params[:tag]
@@ -13,6 +13,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @promoted_offer = PromotedOffer.new
   end
 
   def new

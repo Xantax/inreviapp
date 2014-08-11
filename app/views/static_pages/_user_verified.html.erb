@@ -1,0 +1,15 @@
+      <div class="row">
+          <% @promoted_offers.each do |promoted_offer| %>
+            <div class="col-sm-6 col-md-3 offer">
+              <div class="thumbnail">
+                <%= link_to image_tag(promoted_offer.offer.image_url(:thumb).to_s, height: '200'), offer_path(promoted_offer.offer) %>
+                <div class="caption">
+                  <%= link_to truncate(promoted_offer.offer.name, length: 50), offer_path(promoted_offer.offer) %><hr>
+                  <%= image_tag('2/thumbsup_off.PNG') %> <b>15</b> | 
+                  <%= image_tag('2/thumbsdown_off.PNG') %> <b>1</b>
+                  <span class="offer-price-box"><mark>$<%= promoted_offer.offer.price %></mark></span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>

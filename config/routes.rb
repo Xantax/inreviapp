@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   match 'terms' => "static_pages#terms", via: [:get]
   match 'buycredit' => "static_pages#buycredit", via: [:get]
   
+  get 'tags/:tag', to: 'offers#index', as: :tag
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

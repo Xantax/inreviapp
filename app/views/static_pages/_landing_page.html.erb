@@ -1,53 +1,46 @@
 <div class="digital-market-home" align="center">
-  <%= image_tag('1/d_market.png') %> Digital products & services
+<%= image_tag('1/d_market.png') %> Digital products & services
 </div>
 
-  <div class="row">
-    
-    <div class="col-xs-1"></div>
-    
-    <div class="col-xs-5">
-
-      <div class="col-xs-6 left-home">
-        <%= image_tag('1/free_credit.png') %> <b>50</b> COINS<hr>
-        <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
-        <%= image_tag('1/unlimited_list.png') %> FREE LISTINGS
+<div class="row">
+  
+  <div class="col-xs-1"></div>
+  
+    <div class="col-xs-5 home-center">
+      <div class="row">
+        <div class="col-xs-6 left-home">
+          <%= image_tag('1/free_credit.png') %> <b>50</b> COINS<hr>
+          <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
+          <%= image_tag('1/unlimited_list.png') %> FREE LISTINGS
+        </div>
+        <div class="col-xs-6 left-home">
+          <%= image_tag('1/no_fee.png') %>NO FEES<hr>
+          <%= image_tag('1/any_pay.png') %> ANY PAYMENT<hr>
+          <%= image_tag('1/low_price.png') %> LOWEST PRICES
+        </div>
       </div>
-
-      <div class="col-xs-6 left-home">
-        <%= image_tag('1/no_fee.png') %>NO FEES<hr>
-        <%= image_tag('1/any_pay.png') %> ANY PAYMENT<hr>
-        <%= image_tag('1/low_price.png') %> LOWEST PRICES
-      </div>
-
     </div>
-    
-    <div class="col-xs-5" align="center">
-      
+  
+  <div class="col-xs-5 home-center" align="center">
     <p id="notice"><%= notice %></p>
-      
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-          <% if resource.errors.any? %>
-            <div id="error_explanation">
-              <ul>
-                <% resource.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-
-        <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %></div><br>
-        <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
-        <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
-        <div><%= f.hidden_field :sms_code, value: Random.rand(100000..999999) %></div><br>
-        <div><%= f.submit "Create my account", class: "btn btn-success", data: { disable_with: "Creating..." } %></div>
-
-     <% end %>
-
+      <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    
-    <div class="col-xs-1"></div>
-
+    <% end %>
+      <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %></div><br>
+      <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
+      <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
+      <div><%= f.hidden_field :sms_code, value: Random.rand(100000..999999) %></div><br>
+      <div><%= f.submit "Create my account", class: "btn btn-success", data: { disable_with: "Creating..." } %></div>
+    <% end %>
   </div>
+  
+  <div class="col-xs-1"></div>
+  
+</div>

@@ -1,12 +1,15 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
-  before_action :only_admin, only: [:index]
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :require_permission, only: [:edit, :update, :destroy]
   #before_action :must_be_completely_verified, except: [:show]
 
   def index
-    @offers = Offer.all.order('created_at DESC')
+    if params[:tag]
+      @offers = Offer.tagged_with(params[:tag])
+    else
+      @offers = Offer.all.order('created_at DESC')
+    end
   end
 
   def show
@@ -60,7 +63,7 @@ class OffersController < ApplicationController
     end
 
     def offer_params
-      params.require(:offer).permit(:name, :description, :image, :type, :price, :user_id)
+      params.require(:offer).permit(:name, :description, :image, :service, :price, :user_id, :tag_list)
     end
   
     def require_permission

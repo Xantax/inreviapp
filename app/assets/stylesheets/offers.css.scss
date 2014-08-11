@@ -1,3 +1,24 @@
 // Place all the styles related to the Offers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#offer-name{
+  font-size:130%;
+  padding-top:15px;
+  text-align:center;
+}
+
+#offer-price{
+  font-size:200%;
+}
+
+.col-xs-7.offer-center{
+  border-left: 1px solid #E8E8E8;
+  border-right: 1px solid #E8E8E8;
+  border-top: 1px solid #E8E8E8;
+}
+
+.col-sm-6.col-md-3.offer{
+  width:240px;
+  height:320px;
+}

@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   has_many :phone_verifications
   has_many :phone_codes
   has_many :user_identifications
-  has_many :offers
+  
+  has_many :offers do
+    def today
+    where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
+  end 
   
 end

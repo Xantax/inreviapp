@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.integer :credit, :default => 50
       t.text :bio
-      t.string :website
       t.string :language
       t.string :second_language
       t.string :public_location

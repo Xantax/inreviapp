@@ -4,7 +4,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :image
-      t.string :type
+      t.boolean :service
       t.integer :price
       t.references :user, index: true
 

@@ -1,33 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  
+ <p id="notice"><%= notice %></p>
+  <div class="col-xs-3">
+    <div id="offer-price">
+      $ <%= @offer.price %>
+    </div>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @offer.name %>
-</p>
+  <div class="col-xs-7 offer-center">
+    <div id="offer-name">
+      <%= @offer.name %>
+    </div><hr>
+    <div align="center">
+      <%= image_tag(@offer.image, width: '480', height: '360', class: 'img-thumbnail') %>
+    </div>
+    <hr><%= simple_format(@offer.description) %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @offer.description %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @offer.image %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @offer.type %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @offer.price %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @offer.user %>
-</p>
-
-<%= link_to 'Edit', edit_offer_path(@offer) %>
+  <div class="col-xs-2">
+    <% if @offer.user.image_url.blank? %>
+      <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+    <% else %>
+      <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+    <% end %><hr>
+    <%= @offer.user.name %>
+  </div>
+  
+</div>

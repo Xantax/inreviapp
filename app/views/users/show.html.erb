@@ -29,9 +29,6 @@
   <% if @user.language.present? %>
     <%= image_tag('1/user_language.png') %><%= @user.language %><br>
   <% end %>
-  <% if @user.website.present? %>
-    <%= image_tag('1/user_website.png') %><%= @user.website %><br><br>
-  <% end %>
   <% if @user.bio.present? %>
     <div class="img-thumbnail"><%= @user.bio %></div>
   <% end %>
@@ -45,3 +42,15 @@
   <% end %>
 <% end %>
 
+<div class="row">
+  <% @user.offers.each do |offer| %>
+    <div class="col-sm-6 col-md-3 offer">
+      <div class="thumbnail">
+        <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>
+        <div class="caption">
+          <%= link_to truncate(offer.name, length: 50), offer %><hr>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

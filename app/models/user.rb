@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  cattr_accessor :current 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :phone_codes
   has_many :user_identifications
   has_many :promoted_offers
+  
+  has_many :conversations
+  has_many :messages, :through => :conversations
+
   
   has_many :offers do
     def today

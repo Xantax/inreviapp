@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+
+  <div class="col-xs-3"></div>
+
+  <div class="col-xs-6">
+    <%= link_to image_tag(@conversation.offer.image_url(:thumb).to_s, width: '100', class: 'img-circle'), offer_path(@conversation.offer) %>
+    <strong><%= link_to @conversation.offer.name, offer_path(@conversation.offer) %></strong>
+    <hr>
+
+      <% @messages.each do |message| %>
+        <div class="row">
+          <div class="col-xs-2">
+            <% if message.sender.image_url.blank? %>
+                <%= image_tag("1/user_no_image.PNG", width: '50', class: 'img-thumbnail') %>
+            <% else %>
+            <%= image_tag(message.sender.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
+            <% end %><br>
+            <small><%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %></small>        
+          </div>
+          <div class="col-xs-8"><%= auto_link(simple_format(message.body), :html => { :target => "_blank" }) %></div>
+          <div class="col-xs-2"><small><%= time_ago_in_words(message.created_at) %></small></div>
+        </div><hr>
+      <% end %>
+
+    <%= form_for([@conversation, @conversation.messages.build]) do |f| %>
+
+      <% if current_user.id == @conversation.user_id %>
+        <%= f.hidden_field :sender_id, value: @conversation.user_id %>
+        <%= f.hidden_field :recipient_id, value: @conversation.recipient_id %>
+      <% elsif current_user.id == @conversation.recipient_id %>
+        <%= f.hidden_field :sender_id, value: @conversation.recipient_id %>
+        <%= f.hidden_field :recipient_id, value: @conversation.user_id %>
+      <% end %>
+        <%= f.hidden_field :conversation_id %>
+
+    <div class="field">
+      <%= f.text_area :body, class: 'form-control', placeholder: 'Type something here...', :onfocus => "this.placeholder = ''" %>
+    </div>
+      <div class="actions" align="right">
+        <%= f.submit "Send", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-3"></div>
+  
+</div>

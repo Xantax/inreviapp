@@ -50,6 +50,26 @@
       <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
     <% end %><hr>
     <%= @offer.user.name %>
+    
+    <%= form_for([@offer, @offer.conversations.build]) do |f| %>
+
+      <div class="field">
+        <%= f.label :user_id %><br>
+        <%= f.text_field :user_id, value: current_user.id %>
+      </div>
+      <div class="field">
+        <%= f.label :offer_id %><br>
+        <%= f.text_field :offer_id %>
+      </div>
+      <div class="field">
+        <%= f.label :recipient_id %><br>
+        <%= f.number_field :recipient_id, value: @offer.user.id %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    
   </div>
   
 </div>

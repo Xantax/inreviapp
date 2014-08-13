@@ -4,6 +4,7 @@ class Offer < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :promoted_offers
+  has_many :conversations
   
   mount_uploader :image, ImageUploader
   

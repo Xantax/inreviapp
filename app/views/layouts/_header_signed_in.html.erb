@@ -3,17 +3,20 @@
     </div>
   
     <div class="col-xs-5 header-search">
-      <%= text_field_tag :search, params[:search], :placeholder => "" , class: "form-control", autofocus: true %>
+      <%= text_field_tag :search, params[:search], :placeholder => "" , class: "form-control", autofocus: true %>      
     </div>
   
     <div class="col-xs-2"></div>
       
     <div class="col-xs-3 user-header">
       
-      <span class="label label-primary"><%= total_incoins %></span>
+      <span class="label label-success"><%= total_incoins %></span>
       <%= link_to image_tag('1/in_coin_header.png'), buycredit_path %> | 
       
-      <%= image_tag('1/messages3.png') %> <span class="badge alert-danger">0</span> | 
+      <%= link_to image_tag("1/messages3.png"), '/conversations' %>
+      <% if Conversation.count_unread_conversations > 0 %>
+        <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
+      <% end %>| 
       
       <div class="btn-group" align="left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

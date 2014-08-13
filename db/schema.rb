@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811164542) do
+ActiveRecord::Schema.define(version: 20140812142704) do
+
+  create_table "conversations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "offer_id"
+    t.integer  "recipient_id"
+    t.integer  "messages_count",     default: 0
+    t.datetime "content_changed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "conversations", ["offer_id"], name: "index_conversations_on_offer_id"
+  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "conversation_id"
+    t.text     "body"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "read_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
 
   create_table "offers", force: true do |t|
     t.string   "name"
@@ -89,7 +114,6 @@ ActiveRecord::Schema.define(version: 20140811164542) do
     t.string   "name"
     t.integer  "credit",                 default: 50
     t.text     "bio"
-    t.string   "website"
     t.string   "language"
     t.string   "second_language"
     t.string   "public_location"
@@ -98,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140811164542) do
     t.string   "image"
     t.integer  "sms_code"
     t.datetime "last_seen_at"
+    t.datetime "last_visited_inbox_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

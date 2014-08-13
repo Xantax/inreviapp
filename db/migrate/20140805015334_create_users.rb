@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image  
       t.integer :sms_code
       t.datetime :last_seen_at
+      t.datetime :last_visited_inbox_at
 
       t.timestamps
     end

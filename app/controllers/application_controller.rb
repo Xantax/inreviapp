@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :record_user_activity
   before_filter :banned?
+  before_filter :set_current_user
   
   include UsersHelper
   include AuthorizationsHelper
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Blocked!"
       root_path
     end
+  end
+  
+  def simple_format(content)
+    ERB.new(content).result(binding).html_safe
   end
   
   protected
@@ -31,6 +36,10 @@ class ApplicationController < ActionController::Base
     if current_user
       current_user.touch :last_seen_at
     end
+  end  
+      
+  def set_current_user
+    User.current = current_user
   end    
       
 end

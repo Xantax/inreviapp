@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
 
+  resources :messages
+
+  resources :conversations do
+    resources :messages
+  end
+
   devise_for :users  
-  resources :users
+  resources :users do
+    resources :conversations
+  end
   resources :user_identifications
   resources :phone_codes
   resources :phone_verifications
   resources :promoted_offers  
+  
   resources :offers do
     resources :promoted_offers
+    resources :conversations
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -16,7 +16,7 @@ class Conversation < ActiveRecord::Base
   
   # Inbox also contains sent messages
   def self.users_conversation
-    self.valid_conversation.where("user_id = ? OR recipient_id = ?", User.current.id, User.current.id).order('content_changed_at DESC')
+    self.valid_conversation.where("user_id = ? OR recipient_id = ?", User.current.id, User.current.id)
   end
   
   # Order by the last updated

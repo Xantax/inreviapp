@@ -9,5 +9,6 @@ class CreateConversations < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :conversations, :recipient_id
   end
 end

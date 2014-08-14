@@ -6,6 +6,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :image
       t.boolean :service
       t.integer :price
+      t.boolean :deleted, default: false
       t.references :user, index: true
 
       t.timestamps

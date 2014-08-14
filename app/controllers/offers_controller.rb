@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offer, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :require_permission, only: [:edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update]
   #before_action :must_be_completely_verified, except: [:show, :index]
 
   def index
@@ -28,7 +28,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Thank you. We are now reviewing your offer' }
+        format.html { redirect_to @offer }
         format.json { render :show, status: :created, location: @offer }
       else
         format.html { render :new }
@@ -40,20 +40,12 @@ class OffersController < ApplicationController
   def update
     respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
+        format.html { redirect_to @offer }
         format.json { render :show, status: :ok, location: @offer }
       else
         format.html { render :edit }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @offer.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Offer was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -64,7 +56,7 @@ class OffersController < ApplicationController
     end
 
     def offer_params
-      params.require(:offer).permit(:name, :description, :image, :service, :price, :user_id, :tag_list)
+      params.require(:offer).permit(:name, :description, :image, :service, :price, :user_id, :tag_list, :deleted)
     end
   
     def require_permission

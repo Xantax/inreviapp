@@ -1,7 +1,6 @@
 class Conversation < ActiveRecord::Base
   belongs_to :user
   belongs_to :offer
-  
   has_many :messages
   
   belongs_to :recipient,

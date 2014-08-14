@@ -43,7 +43,7 @@
 <% end %>
 
 <div class="row">
-  <% @user.offers.each do |offer| %>
+  <% @user.offers.published.each do |offer| %>
     <div class="col-sm-6 col-md-3 offer">
       <div class="thumbnail">
         <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>

@@ -1,4 +1,6 @@
 class Offer < ActiveRecord::Base
+
+  scope :published, -> { where(deleted: false) }
   
   belongs_to :user
   has_many :taggings

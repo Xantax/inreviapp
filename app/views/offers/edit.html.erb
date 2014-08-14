@@ -1,1 +1,80 @@
-<%= render 'form' %>
+<div class="row">
+
+<div class="col-xs-3">
+  <div class="alert alert-warning" role="alert">
+      * Do not use CAPS LOCK<br> 
+      * Do not repeat words<br>
+  </div>
+</div>
+
+<div class="col-xs-5">
+  <%= form_for(@offer) do |f| %>
+    <% if @offer.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <b>Title</b><br>
+      <%= f.text_field :name, class: "form-control", placeholder: "max 100 characters", :required => true %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control description", placeholder: "max 1000 characters", :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.radio_button :service, true, checked: true %> 
+      <%= f.label :service, 'Service' %>
+      <%= f.radio_button :service, false %>
+      <%= f.label :service, 'Product' %>
+    </div><br>
+  
+    <div class="field">
+      <%= f.label :tag_list, "Categories (max 5)" %><br>
+      <small><mark>* separate by commas</mark></small><br>
+      <small><mark>* do not repeat words</mark></small><br><br>
+      <%= f.text_field :tag_list, class: "form-control", placeholder: "e.g. translation, chinese, french" %>
+    </div><br><br>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Save", class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+    </div> <hr>
+  
+  <div style="color:red"><%= f.check_box :deleted %> <i>delete this offer</i></div>
+
+</div>
+
+<div class="col-xs-4">
+  
+<hr>
+    <div class="field">
+      <% if @offer.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@offer.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %>
+      <b>Cover photo</b><br>
+      <small>(min 400x400)</small><br><br>
+      <%= f.file_field :image %>
+    </div>
+<hr>  
+    <div class="field">
+      <%= f.label :price %>
+      $ <%= f.number_field :price, class: "form-control short", :required => true %>
+    </div>
+<hr>
+  
+</div>
+
+<% end %>
+  
+</div>

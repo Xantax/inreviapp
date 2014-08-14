@@ -16,7 +16,7 @@
       <%= link_to image_tag("1/messages3.png"), '/conversations' %>
       <% if Conversation.count_unread_conversations > 0 %>
         <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-      <% end %>| 
+      <% end %> | 
       
       <div class="btn-group" align="left">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -27,9 +27,6 @@
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
           <li><%= link_to "Sell an item", "/offers/new" %></li>
           <li><%= link_to "+ Add credit", buycredit_path %></li>
-          <li class="divider"></li>
-            <li><%= link_to "Sales", user_path(current_user) %></li>
-            <li><%= link_to "Shopping", edit_user_path(current_user) %></li>
           <li class="divider"></li>
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         </ul>

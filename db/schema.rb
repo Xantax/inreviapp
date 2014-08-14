@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140812142704) do
   end
 
   add_index "conversations", ["offer_id"], name: "index_conversations_on_offer_id"
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id"
 
   create_table "messages", force: true do |t|
@@ -31,12 +32,13 @@ ActiveRecord::Schema.define(version: 20140812142704) do
     t.text     "body"
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["recipient_id"], name: "index_messages_on_recipient_id"
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
 
   create_table "offers", force: true do |t|
     t.string   "name"
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140812142704) do
     t.string   "image"
     t.boolean  "service"
     t.integer  "price"
+    t.boolean  "deleted",     default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

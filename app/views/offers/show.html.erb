@@ -8,24 +8,19 @@
           <small>Promote your offer on home page for <b>2</b> days.</small><br><br>
 
         <%= form_for([@offer, @offer.promoted_offers.build]) do |f| %>
-          <% if @promoted_offer.errors.any? %>
-            <div id="error_explanation">
-              <ul>
-              <% @promoted_offer.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
 
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :offer_id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :offer_id, value: @offer.id %>
 
             <span class="label label-primary">50</span> <%= link_to image_tag('1/in_coin_header.png'), buycredit_path %> 
             <%= f.submit "Promote it", class: 'btn btn-warning' %>
 
         <% end %><hr>
     
+    <% end %>
+    
+    <% if current_user == @offer.user %>
+      <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success' %><hr>
     <% end %>
     
     <div id="offer-price">
@@ -49,25 +44,17 @@
     <% else %>
       <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
     <% end %><hr>
-    <%= @offer.user.name %>
+    <%= @offer.user.name %><br><br>
     
-    <%= form_for([@offer, @offer.conversations.build]) do |f| %>
-
-      <div class="field">
-        <%= f.label :user_id %><br>
-        <%= f.text_field :user_id, value: current_user.id %>
-      </div>
-      <div class="field">
-        <%= f.label :offer_id %><br>
-        <%= f.text_field :offer_id %>
-      </div>
-      <div class="field">
-        <%= f.label :recipient_id %><br>
-        <%= f.number_field :recipient_id, value: @offer.user.id %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+    <% if user_signed_in? %>
+      <% unless current_user == @offer.user %> 
+        <%= form_for([@offer, @offer.conversations.build]) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :offer_id, value: @offer.id %>
+            <%= f.hidden_field :recipient_id, value: @offer.user.id %>
+          <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
+        <% end %>
+      <% end %>
     <% end %>
     
   </div>

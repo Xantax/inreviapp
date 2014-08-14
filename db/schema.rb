@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812142704) do
+ActiveRecord::Schema.define(version: 20140814014535) do
+
+  create_table "buy_requests", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.integer  "offer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "buy_requests", ["conversation_id"], name: "index_buy_requests_on_conversation_id"
+  add_index "buy_requests", ["offer_id"], name: "index_buy_requests_on_offer_id"
+  add_index "buy_requests", ["user_id"], name: "index_buy_requests_on_user_id"
 
   create_table "conversations", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140812142704) do
     t.integer  "recipient_id"
     t.integer  "messages_count",     default: 0
     t.datetime "content_changed_at"
+    t.integer  "buy_requests",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

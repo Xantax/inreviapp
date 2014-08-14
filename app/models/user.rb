@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :phone_codes
   has_many :user_identifications
   has_many :promoted_offers
+  has_many :buy_requests
   
   has_many :conversations
   has_many :messages, :through => :conversations

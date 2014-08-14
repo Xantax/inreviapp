@@ -9,20 +9,23 @@
     </div>
   <% end %>
 
-<%= image_tag('1/secure_verification.png') %> <kbd>Secure & Encrypted</kbd><hr>
+  <%= image_tag('1/secure_verification.png') %> <kbd>Secure & Encrypted</kbd>
+  <div class="alert alert-success" role="alert">
+    Don't worry. All of your data is <b>100% private</b> and used for <b>verification</b> purposes only.
+  </div><hr>
 
 <div class="row">
   
   <div class="col-xs-4">
     <mark>PART 1</mark><hr>
-    <b>Official ID document</b><br><small>(e.g. passport / driver's license)</small><br>
+    <b>Official ID</b><br><small>(e.g. passport / driver's license)</small><br>
     <%= image_tag('1/id_sample_card.png') %><small>example</small><br><br>
     <i>Upload your scanned image below</i><br><br>
       <%= f.file_field :id_photo %>
     
   </div>
 
-  <div class="col-xs-3">
+  <div class="col-xs-4">
     <mark>PART 2</mark><hr>
     <div class="field">
       <b>Your real photo</b><br>      
@@ -32,7 +35,7 @@
     </div>
   </div>
   
-  <div class="col-xs-5">
+  <div class="col-xs-4">
     <mark>PART 3</mark><hr>
     <div class="field">
       <b>Full Name:</b><br>
@@ -51,7 +54,7 @@
       <%= f.text_field :zip_code, placeholder: "zip code", class: "form-control short" %>
     </div>
     <div class="field">
-      <%= f.label :country %>
+      <%= f.label :country %><br>
       <%= f.country_select :country %>
     </div>
 

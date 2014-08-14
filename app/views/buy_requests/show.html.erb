@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @buy_request.user %>
+</p>
+
+<p>
+  <strong>Conversation:</strong>
+  <%= @buy_request.conversation %>
+</p>
+
+<p>
+  <strong>Offer:</strong>
+  <%= @buy_request.offer %>
+</p>
+
+<%= link_to 'Edit', edit_buy_request_path(@buy_request) %> |
+<%= link_to 'Back', buy_requests_path %>

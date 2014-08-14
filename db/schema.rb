@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140814014535) do
     t.integer  "recipient_id"
     t.integer  "messages_count",     default: 0
     t.datetime "content_changed_at"
-    t.integer  "buy_requests",       default: 0
+    t.integer  "buy_requests_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

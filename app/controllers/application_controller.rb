@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   
   include UsersHelper
   include AuthorizationsHelper
+  include ConversationsHelper
 
   def banned?
     if current_user.present? && current_user.banned?
@@ -17,10 +18,6 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Blocked!"
       root_path
     end
-  end
-  
-  def simple_format(content)
-    ERB.new(content).result(binding).html_safe
   end
   
   protected

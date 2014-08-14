@@ -5,8 +5,40 @@
   <div class="col-xs-3"></div>
 
   <div class="col-xs-6">
-    <%= link_to image_tag(@conversation.offer.image_url(:thumb).to_s, width: '100', class: 'img-circle'), offer_path(@conversation.offer) %>
-    <strong><%= link_to @conversation.offer.name, offer_path(@conversation.offer) %></strong>    
+    
+    <div class="row">
+      
+      <div class="col-xs-3">
+       <%= link_to image_tag(@conversation.offer.image_url(:thumb).to_s, width: '100', class: 'img-circle'), offer_path(@conversation.offer) %>
+      </div>
+        <div class="col-xs-4" align="left">
+           <strong><%= link_to @conversation.offer.name, offer_path(@conversation.offer) %></strong><br><br>
+          <mark>$ <%= @conversation.offer.price %></mark>
+        </div>
+      
+      <div class="col-xs-5">
+        <% if user_can_send_buy_request %> 
+          <%= form_for([@conversation, @conversation.buy_requests.build]) do |f| %>
+
+            <% if current_user.id == @conversation.user_id %>
+              <%= f.hidden_field :user_id, value: @conversation.user_id %>
+            <% end %>
+              <%= f.hidden_field :conversation_id, value: @conversation.id %>
+              <%= f.hidden_field :offer_id, value: @conversation.offer_id %>
+
+            <div class="actions" align="right">
+              <%= f.submit "Request to Buy", class: 'btn btn-danger', data: { disable_with: "Sending..." } %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if user_can_accept_offer %>
+           <%= image_tag('2/has_request.png') %><br> <kbd>User wants to buy your offer.</kbd>
+          Accept
+        <% end %>
+      </div>
+      
+    </div>
     <hr>
 
     <% unless @conversation.messages_count > 0 %>
@@ -39,7 +71,7 @@
             <small><%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %></small>        
           </div>
           <div class="col-xs-8"><%= auto_link(simple_format(message.body), :html => { :target => "_blank" }) %></div>
-          <div class="col-xs-2"><small><%= time_ago_in_words(message.created_at) %></small></div>
+          <div class="col-xs-2"><div class="time-last-message"><%= time_ago_in_words(message.created_at) %></div></div>
         </div><hr>
       <% end %>
 

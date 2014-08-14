@@ -1,26 +1,18 @@
 class BuyRequestsController < ApplicationController
-  before_action :set_buy_request, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @buy_requests = BuyRequest.all
-  end
-
-  def show
-  end
-
-  def new
-    @buy_request = BuyRequest.new
-  end
-
-  def edit
-  end
+  before_action :authenticate_user!
+  before_action :set_buy_request
+  before_action :set_conversation
+  before_action :there_are_messages
+  before_action :none_other_request
+  before_action :creator_of_convo
 
   def create
-    @buy_request = BuyRequest.new(buy_request_params)
+    @conversation = Conversation.find(params[:conversation_id])
+    @buy_request = @conversation.buy_requests.create(buy_request_params)
 
     respond_to do |format|
       if @buy_request.save
-        format.html { redirect_to @buy_request, notice: 'Buy request was successfully created.' }
+        format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @buy_request }
       else
         format.html { render :new }
@@ -29,33 +21,40 @@ class BuyRequestsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @buy_request.update(buy_request_params)
-        format.html { redirect_to @buy_request, notice: 'Buy request was successfully updated.' }
-        format.json { render :show, status: :ok, location: @buy_request }
-      else
-        format.html { render :edit }
-        format.json { render json: @buy_request.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @buy_request.destroy
-    respond_to do |format|
-      format.html { redirect_to buy_requests_url, notice: 'Buy request was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
     def set_buy_request
       @buy_request = BuyRequest.find(params[:id])
     end
+  
+    def set_conversation
+      @conversation = Conversation.find(params[:conversation_id])
+    end
 
     def buy_request_params
       params.require(:buy_request).permit(:user_id, :conversation_id, :offer_id)
     end
+  
+  # Only create a request if there is some activity
+    def there_are_messages
+      unless @conversation.messages_count > 2
+        redirect_to root_path
+      end
+    end
+  
+  # Only 1 request per conversation
+    def none_other_request
+      unless @conversation.buy_requests_count < 1
+          redirect_to root_path
+      end
+    end
+
+  # User has created a conversation
+    def creator_of_convo
+      unless @conversation.user_id == current_user.id
+          redirect_to root_path
+      end
+    end
+    
+  
 end

@@ -7,7 +7,7 @@ class BuyRequestsController < ApplicationController
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
-    @buy_request = @conversation.buy_requests.create(buy_request_params)
+    @buy_request = @conversation.create_buy_request(buy_request_params)
 
     respond_to do |format|
       if @buy_request.save
@@ -32,6 +32,7 @@ class BuyRequestsController < ApplicationController
   
   # Only create a request if there is some activity
     def there_are_messages
+      @conversation = Conversation.find(params[:conversation_id])
       unless @conversation.messages_count > 2
         redirect_to root_path
       end
@@ -39,13 +40,15 @@ class BuyRequestsController < ApplicationController
   
   # Only 1 request per conversation
     def none_other_request
-      unless @conversation.buy_requests_count < 1
+      @conversation = Conversation.find(params[:conversation_id])
+      if @conversation.buy_request.present?
           redirect_to root_path
       end
     end
 
   # User has created a conversation
     def creator_of_convo
+      @conversation = Conversation.find(params[:conversation_id])
       unless @conversation.user_id == current_user.id
           redirect_to root_path
       end

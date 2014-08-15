@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Positive:</strong>
+  <%= @review.positive %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @review.body %>
+</p>
+
+<p>
+  <strong>Proof:</strong>
+  <%= @review.proof %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @review.image %>
+</p>
+
+<p>
+  <strong>Offer:</strong>
+  <%= @review.offer %>
+</p>
+
+<p>
+  <strong>Buyer:</strong>
+  <%= @review.buyer_id %>
+</p>
+
+<p>
+  <strong>Seller:</strong>
+  <%= @review.seller_id %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @review.order %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

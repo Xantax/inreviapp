@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :orders
+  resources :reviews
+
+  resources :orders do
+    resources :reviews
+  end
   resources :buy_requests
   resources :messages
 
   resources :conversations do
     resources :messages
-    resources :buy_requests
-    resources :orders
+    resource :buy_requests
+    resource :orders
   end
 
   devise_for :users  

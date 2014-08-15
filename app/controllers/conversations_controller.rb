@@ -13,6 +13,7 @@ class ConversationsController < ApplicationController
   
   def show
     @messages = Message.where(conversation_id: params[:id])
+    @review = Review.new
   end
   
   def create

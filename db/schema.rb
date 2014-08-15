@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814214835) do
+ActiveRecord::Schema.define(version: 20140815150935) do
 
   create_table "buy_requests", force: true do |t|
     t.integer  "user_id"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140814214835) do
     t.datetime "updated_at"
   end
 
-  add_index "buy_requests", ["conversation_id"], name: "index_buy_requests_on_conversation_id"
   add_index "buy_requests", ["offer_id"], name: "index_buy_requests_on_offer_id"
   add_index "buy_requests", ["user_id"], name: "index_buy_requests_on_user_id"
 
@@ -31,8 +30,6 @@ ActiveRecord::Schema.define(version: 20140814214835) do
     t.integer  "recipient_id"
     t.integer  "messages_count",     default: 0
     t.datetime "content_changed_at"
-    t.integer  "buy_requests_count", default: 0
-    t.integer  "orders_count",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,12 +71,12 @@ ActiveRecord::Schema.define(version: 20140814214835) do
     t.integer  "conversation_id"
     t.integer  "buyer_id"
     t.integer  "seller_id"
+    t.integer  "reviews_count",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id"
-  add_index "orders", ["conversation_id"], name: "index_orders_on_conversation_id"
   add_index "orders", ["offer_id"], name: "index_orders_on_offer_id"
   add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
 
@@ -110,6 +107,24 @@ ActiveRecord::Schema.define(version: 20140814214835) do
 
   add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id"
   add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id"
+
+  create_table "reviews", force: true do |t|
+    t.boolean  "positive"
+    t.text     "body"
+    t.text     "proof"
+    t.string   "image"
+    t.integer  "offer_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["buyer_id"], name: "index_reviews_on_buyer_id"
+  add_index "reviews", ["offer_id"], name: "index_reviews_on_offer_id"
+  add_index "reviews", ["order_id"], name: "index_reviews_on_order_id"
+  add_index "reviews", ["seller_id"], name: "index_reviews_on_seller_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

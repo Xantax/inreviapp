@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
   before_action :none_other_order, only: [:create]
-  before_action :set_conversation
+  before_action :set_conversation, only: [:create]
   before_action :user_is_convo_recipient, only: [:create]
   before_action :there_is_buy_request, only: [:create]
   before_action :authenticate_user!
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
-    @order = @conversation.orders.create(order_params)
+    @order = @conversation.create_order(order_params)
 
     respond_to do |format|
       if @order.save
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     # Only 1 order per conversation
       def none_other_order
         @conversation = Conversation.find(params[:conversation_id])
-        unless @conversation.orders_count < 1
+        if @conversation.order.present?
             redirect_to root_path
         end
       end
@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
     # Make sure there is a buy_request
       def there_is_buy_request
         @conversation = Conversation.find(params[:conversation_id])
-        unless @conversation.buy_requests_count > 0
+        unless @conversation.buy_request.present?
             redirect_to root_path
         end
       end

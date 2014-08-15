@@ -8,6 +8,7 @@ class Offer < ActiveRecord::Base
   has_many :promoted_offers
   has_many :conversations
   has_many :buy_requests
+  has_many :orders
   
   mount_uploader :image, ImageUploader
   

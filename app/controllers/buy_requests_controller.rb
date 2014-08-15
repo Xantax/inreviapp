@@ -1,6 +1,5 @@
 class BuyRequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_buy_request
   before_action :set_conversation
   before_action :there_are_messages
   before_action :none_other_request
@@ -22,10 +21,6 @@ class BuyRequestsController < ApplicationController
   end
 
   private
-
-    def set_buy_request
-      @buy_request = BuyRequest.find(params[:id])
-    end
   
     def set_conversation
       @conversation = Conversation.find(params[:conversation_id])

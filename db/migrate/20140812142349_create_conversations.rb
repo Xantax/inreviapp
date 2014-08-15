@@ -7,6 +7,7 @@ class CreateConversations < ActiveRecord::Migration
       t.integer :messages_count, default: 0
       t.datetime :content_changed_at
       t.integer :buy_requests_count, default: 0
+      t.integer :orders_count, default: 0
 
       t.timestamps
     end

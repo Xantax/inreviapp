@@ -29,8 +29,11 @@
                       <% end %>
                     </div>
                     <div class="col-xs-8">
-                      <% if conversation.buy_requests_count > 0 %>
+                      <% if (conversation.buy_requests_count > 0) && (conversation.orders_count < 1) %>
                         <%= image_tag('2/has_request.png') %>
+                      <% end %>
+                      <% if conversation.orders_count > 0 %>
+                        <%= image_tag('2/has_order.png') %>
                       <% end %>
                       <strong><%= link_to conversation.offer.name, conversation %></strong><br>
                       <% conversation.messages.last(1).each do |message| %>

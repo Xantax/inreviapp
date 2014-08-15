@@ -7,7 +7,7 @@ module ConversationsHelper
   
   # Button to create order is shown to the seller
   def user_can_accept_offer
-    (@conversation.buy_requests_count > 0) && (current_user.id == @conversation.recipient_id)
+   (@conversation.buy_requests_count > 0) && (current_user.id == @conversation.recipient_id) && (@conversation.orders_count < 1)
   end
   
 end

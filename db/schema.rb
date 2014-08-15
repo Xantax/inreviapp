@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814014535) do
+ActiveRecord::Schema.define(version: 20140814214835) do
 
   create_table "buy_requests", force: true do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140814014535) do
     t.integer  "messages_count",     default: 0
     t.datetime "content_changed_at"
     t.integer  "buy_requests_count", default: 0
+    t.integer  "orders_count",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,13 +60,28 @@ ActiveRecord::Schema.define(version: 20140814014535) do
     t.string   "image"
     t.boolean  "service"
     t.integer  "price"
-    t.boolean  "deleted",     default: false
+    t.boolean  "deleted",      default: false
     t.integer  "user_id"
+    t.integer  "orders_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "offers", ["user_id"], name: "index_offers_on_user_id"
+
+  create_table "orders", force: true do |t|
+    t.integer  "offer_id"
+    t.integer  "conversation_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id"
+  add_index "orders", ["conversation_id"], name: "index_orders_on_conversation_id"
+  add_index "orders", ["offer_id"], name: "index_orders_on_offer_id"
+  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
 
   create_table "phone_codes", force: true do |t|
     t.string   "code"

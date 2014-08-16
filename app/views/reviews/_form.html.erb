@@ -1,8 +1,6 @@
-<%= form_for(@review) do |f| %>
+<%= form_for([@conversation, @review]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
       <ul>
       <% @review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,38 +10,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :positive %><br>
-    <%= f.check_box :positive %>
+    <%= image_tag('2/thumbsup_off.PNG') %>
+    <%= f.radio_button :positive, true, checked: true %> | 
+    <%= image_tag('2/thumbsdown_off.PNG') %>
+    <%= f.radio_button :positive, false %>    
+  </div><br>
+  <div class="field">
+    <%= image_tag('2/writerevicon.png') %> Review:<br>
+    <%= f.text_area :body, placeholder: 'Write your experience here', class: 'form-control review' %>
+  </div><br>
+  <div class="field">
+    <%= image_tag('2/proof-dp.png') %>
+    Proof that you have bought/delivered the offer<br>
+    <%= f.text_area :proof, class: 'form-control review', placeholder: 'Write, post links, upload image below...' %>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= image_tag('2/photo-upload.png') %> <i>(optional)</i><br>
+    <% if @review.image_url.present? %>
+      <%= image_tag(@review.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+    <% end %>
+    <%= f.file_field :image %>
   </div>
-  <div class="field">
-    <%= f.label :proof %><br>
-    <%= f.text_area :proof %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :offer_id %><br>
-    <%= f.text_field :offer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :buyer_id %><br>
-    <%= f.number_field :buyer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :seller_id %><br>
-    <%= f.number_field :seller_id %>
-  </div>
-  <div class="field">
-    <%= f.label :order_id %><br>
-    <%= f.text_field :order_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+      <% if current_user.id == @conversation.user_id %>
+        <%= f.hidden_field :buyer_id, value: current_user.id %>
+        <%= f.hidden_field :seller_id, value: @conversation.recipient_id %>
+      <% elsif current_user.id == @conversation.recipient_id %>
+        <%= f.hidden_field :buyer_id, value: current_user.id %>
+        <%= f.hidden_field :seller_id, value: @conversation.user_id %>
+      <% end %>
+    <%= f.hidden_field :offer_id, value: @conversation.offer.id %>
+    <%= f.hidden_field :order_id, value: @conversation.orders.first.id %>
+    <%= f.hidden_field :conversation_id, value: @conversation.id %>
+
+  <div class="actions" align="right">
+    <%= f.submit "Submit", class: 'btn btn-success', data: { disable_with: "Uploading..." } %>
   </div>
 <% end %>

@@ -9,7 +9,7 @@ class Offer < ActiveRecord::Base
   has_many :conversations
   has_many :buy_requests
   has_many :orders
-  has_many :reviews, :through => :orders
+  has_many :reviews
   
   mount_uploader :image, ImageUploader
   

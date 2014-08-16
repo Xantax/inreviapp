@@ -1,44 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  
+  <div class="col-xs-4"></div>
 
-<p>
-  <strong>Positive:</strong>
-  <%= @review.positive %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @review.body %>
-</p>
-
-<p>
-  <strong>Proof:</strong>
-  <%= @review.proof %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @review.image %>
-</p>
-
-<p>
-  <strong>Offer:</strong>
-  <%= @review.offer %>
-</p>
-
-<p>
-  <strong>Buyer:</strong>
-  <%= @review.buyer_id %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @review.seller_id %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @review.order %>
-</p>
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+  <div class="col-xs-4">
+    
+    <%= link_to @review.offer.name, offer_path(@review.offer) %><hr>
+    
+    <% if @review.positive == true %>
+      <%= image_tag('2/thumbsup_off.PNG') %>
+    <% elsif @review.positive == false %>
+      <%= image_tag('2/thumbsdown_off.PNG') %>
+    <% end %><br><br>
+    
+    <% if @review.body.present? %>
+      <%= image_tag('2/writerevicon.png') %> <%= @review.body %><br><br>
+    <% end %>
+    <% if @review.proof.present? %>
+      <%= image_tag('2/proof-dp.png') %> <%= @review.proof %><br><br>
+    <% end %>
+    <% if @review.image.present? %>
+      <%= image_tag('2/photo-upload.png') %> 
+      <%= link_to image_tag(@review.image_url(:thumb).to_s, class: 'img-thumbnail'), @review.image_url, target: :_blank %><br><br>
+    <% end %>
+    Author: <%= link_to @review.buyer.name, user_path(@review.buyer) %><hr>
+    <% if current_user.id == @review.buyer_id %>
+      <%= link_to 'Edit', edit_conversation_review_path(@review.conversation, @review), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  
+  <div class="col-xs-4"></div>
+  
+</div>

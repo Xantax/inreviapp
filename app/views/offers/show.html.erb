@@ -12,7 +12,7 @@
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :offer_id, value: @offer.id %>
 
-            <span class="label label-primary">50</span> <%= link_to image_tag('1/in_coin_header.png'), buycredit_path %> 
+            <span class="badge alert-warning">50</span>
             <%= f.submit "Promote it", class: 'btn btn-warning' %>
 
         <% end %><hr>
@@ -23,9 +23,30 @@
       <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success' %><hr>
     <% end %>
     
-    <div id="offer-price">
+    <%= image_tag('2/thumbsup_off.PNG') %>
+      <b><%= @positive_reviews.count %></b> | 
+    <%= image_tag('2/thumbsdown_off.PNG') %>
+      <b><%= @negative_reviews.count %></b> 
+    
+    <span id="offer-price">
       $ <%= @offer.price %>
-    </div>
+    </span> <hr>
+    
+    <% @reviews.each do |review| %>
+      <% if review.positive == true %>
+        <%= image_tag('2/thumbsup_off.PNG') %>
+      <% elsif review.positive == false %>
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+      <% end %>
+      <%= truncate(review.body, length: 150) %><br><br>
+      <%= image_tag('2/proof-dp.png') if review.proof.present? %>
+      <%= image_tag('2/photo-upload.png') if review.image.present? %>
+    <%= link_to "...read more", review_path(review) %><br>
+      - <span class="offer-review-time"><%= time_ago_in_words(review.created_at) %> ago</span> | 
+      <%= link_to review.buyer.name, user_path(review.buyer) %>
+    <hr>
+    <% end %>
+    
   </div>
 
   <div class="col-xs-7 offer-center">
@@ -35,7 +56,7 @@
     <div align="center">
       <%= image_tag(@offer.image, width: '480') %>
     </div>
-    <hr><%= simple_format(@offer.description) %> - Created: <i><%= time_ago_in_words(@offer.created_at) %> ago</i>
+    <hr><%= simple_format(@offer.description) %>
   </div>
 
   <div class="col-xs-2">
@@ -44,7 +65,8 @@
     <% else %>
       <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
     <% end %><hr>
-    <%= @offer.user.name %><br><br>
+    <%= image_tag('1/user_verified.png') %>
+    <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
     <% if user_signed_in? %>
       <% unless current_user == @offer.user %> 

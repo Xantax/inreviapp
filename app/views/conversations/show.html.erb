@@ -19,21 +19,21 @@
       <div class="col-xs-5">
         <% if user_can_send_buy_request %> 
         
-        <%= form_for([@conversation, @conversation.build_buy_request]) do |f| %>
+        <%= form_for([@conversation, @conversation.buy_requests.build]) do |f| %>
               <%= f.hidden_field :user_id, value: @conversation.user_id %>
               <%= f.hidden_field :conversation_id, value: @conversation.id %>
               <%= f.hidden_field :offer_id, value: @conversation.offer_id %>
             <div class="actions" align="right">
-              <%= f.submit "Request to Buy", class: 'btn btn-danger', data: { disable_with: "Sending..." } %>
+              <%= f.submit "Request to Buy", class: 'btn btn-warning', data: { disable_with: "Sending..." } %>
             </div>
           <% end %>
         
         <% end %>
 
         <% if user_can_accept_offer %>
-           <%= image_tag('2/has_request.png') %><br> <kbd>User wants to buy your offer.</kbd><br><br>
+           <kbd>User wants to buy your offer.</kbd><br><br>
         
-            <%= form_for([@conversation, @conversation.build_order]) do |f| %>
+            <%= form_for([@conversation, @conversation.orders.build]) do |f| %>
                 <%= f.hidden_field :offer_id, value: @conversation.offer_id %>
                 <%= f.hidden_field :conversation_id, value: @conversation.id %>
                 <%= f.hidden_field :buyer_id, value: @conversation.user_id %>
@@ -44,11 +44,23 @@
             <% end %>
         
         <% end %>
-        
-        <% if @conversation.order.present? %>
-          <%= link_to "Leave a feedback", order_path(@conversation.order.id), class: 'btn btn-danger' %>
+        <% if @conversation.orders_count > 0 && @conversation.reviews_count == 0 %>
+          <%= link_to "Post Your Feedback", new_conversation_review_path(@conversation.id), class: 'btn btn-danger' %><br><br>
+        <% end %>
+        <% if @conversation.orders_count > 0 && @conversation.orders.first.reviews_count == 1 %>
+            <% @conversation.reviews.first(1).each do |review| %>
+              <% unless current_user.id == review.buyer_id %>
+            <%= link_to "Post Your Feedback", new_conversation_review_path(@conversation.id), class: 'btn btn-danger' %><br><br>
+              <% end %>
+            <% end %>
         <% end %>
         
+        <% if @conversation.reviews_count > 0 %>
+          <% @conversation.reviews.each do |review| %>
+            <%= image_tag('2/writerevicon.png') %> 
+        <%= link_to review.buyer.name, conversation_review_path(review.conversation, review), target: :blank %><br><br>
+          <% end %>
+        <% end %>
         
       </div>
       

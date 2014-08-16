@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :require_permission, only: [:edit, :update]
-  #before_action :must_be_completely_verified, except: [:show, :index]
+  before_action :must_be_completely_verified, except: [:show, :index]
 
   def index
     if params[:tag]
@@ -14,6 +14,9 @@ class OffersController < ApplicationController
 
   def show
     @promoted_offer = PromotedOffer.new
+    @reviews = Review.where("buyer_id != ?", @offer.user.id)
+    @positive_reviews = Review.positive.where("buyer_id != ?", @offer.user.id)
+    @negative_reviews = Review.negative.where("buyer_id != ?", @offer.user.id)
   end
 
   def new

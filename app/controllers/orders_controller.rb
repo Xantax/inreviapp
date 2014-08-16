@@ -7,11 +7,13 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @review = Review.new
+    @reviews = Review.where(order_id: @order.id)
   end
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
-    @order = @conversation.create_order(order_params)
+    @order = @conversation.orders.create(order_params)
 
     respond_to do |format|
       if @order.save
@@ -41,7 +43,7 @@ class OrdersController < ApplicationController
     # Only 1 order per conversation
       def none_other_order
         @conversation = Conversation.find(params[:conversation_id])
-        if @conversation.order.present?
+        unless @conversation.orders_count < 1
             redirect_to root_path
         end
       end
@@ -57,8 +59,8 @@ class OrdersController < ApplicationController
     # Make sure there is a buy_request
       def there_is_buy_request
         @conversation = Conversation.find(params[:conversation_id])
-        unless @conversation.buy_request.present?
-            redirect_to root_path
+        unless @conversation.buy_requests_count > 0
+          redirect_to root_path
         end
       end
   

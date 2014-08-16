@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :conversations do
     resources :messages
-    resource :buy_requests
-    resource :orders
+    resources :buy_requests
+    resources :orders
+    resources :reviews
   end
 
   devise_for :users  

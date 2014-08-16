@@ -2,8 +2,9 @@ class Conversation < ActiveRecord::Base
   belongs_to :user
   belongs_to :offer
   has_many :messages
-  has_one :buy_request
-  has_one :order
+  has_many :buy_requests
+  has_many :orders
+  has_many :reviews
   
   belongs_to :recipient,
    :class_name => 'User',

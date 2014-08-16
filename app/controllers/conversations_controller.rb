@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
   before_action :require_permission, only: :destroy
   before_action :correct_conversation, only: :show
   before_action :authenticate_user!
-  #before_action :must_be_completely_verified
+  before_action :must_be_completely_verified
   before_filter :record_last_inbox_visit, only: [:index, :show]
   
   def index
@@ -19,6 +19,7 @@ class ConversationsController < ApplicationController
   def create
     @offer = Offer.find(params[:offer_id])
     @conversation = @offer.conversations.create(conversation_params)
+    
     respond_to do |format|
       if @conversation.save
         format.html { redirect_to @conversation }
@@ -72,3 +73,5 @@ class ConversationsController < ApplicationController
     end
   end
 end
+
+

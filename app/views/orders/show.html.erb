@@ -1,19 +1,37 @@
-<p>
-  <strong>Offer:</strong>
-  <%= @order.offer %>
-</p>
+<div class="row">
+  
+  <div class="col-xs-2"></div>
+  
+  <div class="col-xs-4">
+    <div class="panel panel-warning"> 
+      - <b><%= @order.buyer.name %></b> (buyer)
+      <div class="panel-body">
+        
+        <% if current_user.id == @order.buyer_id %>
+          <%= link_to "Create a review", new_order_review_path(@order.id), class: 'btn btn-primary' %>
+        <% end %>
+        
+        <%= @reviews %>
+        
+      </div>
+    </div>
+  </div> 
+  
+  <div class="col-xs-4">
+    <div class="panel panel-info"> 
+      - <b><%= @order.seller.name %></b> (seller)
+      <div class="panel-body">
+        
+        <% if current_user.id == @order.seller_id %>
+          <%= link_to "Create a review", new_order_review_path(@order.id), class: 'btn btn-primary' %>
+        <% end %> 
+        
+        <%= @reviews %>
 
-<p>
-  <strong>Conversation:</strong>
-  <%= @order.conversation %>
-</p>
-
-<p>
-  <strong>Buyer:</strong>
-  <%= @order.buyer_id %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <%= @order.seller_id %>
-</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-xs-2"></div>
+  
+</div>

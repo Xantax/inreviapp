@@ -7,7 +7,7 @@ class BuyRequestsController < ApplicationController
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
-    @buy_request = @conversation.create_buy_request(buy_request_params)
+    @buy_request = @conversation.buy_requests.create(buy_request_params)
 
     respond_to do |format|
       if @buy_request.save
@@ -41,8 +41,8 @@ class BuyRequestsController < ApplicationController
   # Only 1 request per conversation
     def none_other_request
       @conversation = Conversation.find(params[:conversation_id])
-      if @conversation.buy_request.present?
-          redirect_to root_path
+      unless @conversation.buy_requests_count < 1
+        redirect_to root_path
       end
     end
 

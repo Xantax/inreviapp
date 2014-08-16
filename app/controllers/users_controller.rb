@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @positive_reviews = Review.positive.where(seller_id: params[:id])
+    @negative_reviews = Review.negative.where(seller_id: params[:id])
   end
 
   def edit

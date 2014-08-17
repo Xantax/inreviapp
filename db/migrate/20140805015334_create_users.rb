@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.integer :credit, :default => 50
-      t.text :bio
+      t.string :bio
       t.string :language
       t.string :second_language
       t.string :public_location

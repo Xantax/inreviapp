@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.integer  "credit",                 default: 50
-    t.text     "bio"
+    t.string   "bio"
     t.string   "language"
     t.string   "second_language"
     t.string   "public_location"

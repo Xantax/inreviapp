@@ -1,17 +1,23 @@
-<hr>
-<div align="center">
-
-    <samp>Incoins <%= image_tag('1/in_coin_header.png') %> enable you to advertise on the site, promote your digital products and services.</samp><br><br>
-    $<b>1</b> = <mark>10 <%= image_tag('1/in_coin_header.png') %></mark><hr>
+<div class="row">
+  <div class="col-xs-3"></div>
   
+  <div class="col-xs-6">
+    
+    <h4>What is InCoin?</h4>
+    <%= image_tag('1/in_coin_header.png') %> Virtual currency you can use to promote your stuff on the site.<br><br>
+    <h4>Can I buy more InCoins?</h4>
+    - Yes. Select a plan below and click 'Buy Now'.<br>
+    - You will get a discount if you select plan #2 or #3.<br>
+    - Your balance will be updated <b>within 24 hours</b> after the purchase.<hr>
+
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="UHGDX8HWF324Y">
     <table>
     <tr><td><input type="hidden" name="on0" value="Select a plan">Select a plan</td></tr><tr><td><select name="os0">
       <option value="Option 1">200 Incoins - $20.00 USD</option>
-      <option value="Option 2">500 Incoins - $50.00 USD</option>
-      <option value="Option 3">2000 Incoins - $200.00 USD</option>
+      <option value="Option 2">600 Incoins - $50.00 USD</option>
+      <option value="Option 3">2500 Incoins - $200.00 USD</option>
     </select> </td></tr>
     <tr><td>
       <br>
@@ -22,7 +28,9 @@
     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
-  
-<hr>
-<kbd>Your account balance will be updated within 24 hours</kbd>
+    
+  </div>
 
+<div class="col-xs-3"></div>
+  
+</div>

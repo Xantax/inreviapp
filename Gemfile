@@ -29,13 +29,12 @@ gem 'language_list', '~> 1.0.0'
 gem 'will_paginate', '~> 3.0.7'
 gem 'rails_autolink', '~> 1.1.6'
 gem 'pg_search', '~> 0.7.6'
-gem 'pg', '0.15.1'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :production do
-  
+  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
   gem 'heroku-deflater'
 end

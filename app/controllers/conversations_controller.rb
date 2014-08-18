@@ -8,11 +8,11 @@ class ConversationsController < ApplicationController
   before_filter :record_last_inbox_visit, only: [:index, :show]
   
   def index
-    @conversations = Conversation.ordered_conversations
+    @conversations = Conversation.ordered_conversations.paginate(:page => params[:page], :per_page => 10)
   end
   
   def show
-    @messages = Message.where(conversation_id: params[:id])
+    @messages = Message.where(conversation_id: params[:id]).paginate(:page => params[:page], :per_page => 15)
     @review = Review.new
   end
   

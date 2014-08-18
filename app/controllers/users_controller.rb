@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @positive_reviews = Review.positive.where(seller_id: params[:id])
     @negative_reviews = Review.negative.where(seller_id: params[:id])
+    @user_offers = Offer.published.where(user_id: params[:id]).paginate(:page => params[:page], :per_page => 20)
   end
 
   def edit

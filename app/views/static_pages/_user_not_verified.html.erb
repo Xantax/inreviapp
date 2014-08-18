@@ -19,8 +19,12 @@
               </div>
             </div>
           <% end %>
-        </div>
       
+          <div class="digg_pagination">
+            <%= will_paginate @promoted_offers, :page_links => false %>
+          </div>
+          
+      </div>
     </div>
 
     <div class="col-xs-2">

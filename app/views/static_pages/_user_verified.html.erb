@@ -16,4 +16,9 @@
               </div>
             </div>
           <% end %>
+      
+          <div class="digg_pagination">
+            <%= will_paginate @promoted_offers, :page_links => false %>
+          </div>
+        
         </div>

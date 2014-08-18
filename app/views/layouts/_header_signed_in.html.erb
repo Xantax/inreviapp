@@ -3,7 +3,9 @@
     </div>
   
     <div class="col-xs-5 header-search">
-      <%= text_field_tag :search, params[:search], :placeholder => "" , class: "form-control", autofocus: true %>      
+      <%= form_tag offerz_search_path, :method => :get do %>
+       <%= text_field_tag :search, params[:search] , class: "form-control", autofocus: true %>  
+      <% end %>
     </div>
   
     <div class="col-xs-2"></div>

@@ -1,5 +1,16 @@
 class Offer < ActiveRecord::Base
-
+  include PgSearch
+    pg_search_scope :search_by_name, :against => [:name], :using => {
+    :tsearch => {:prefix => true}
+      },
+      :associated_against => {
+      :tags => [:name]
+      }
+  
+  def self.search(search)
+    Offer.search_by_name(search)
+  end
+  
   scope :published, -> { where(deleted: false) }
   
   belongs_to :user

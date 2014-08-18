@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140815150935) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "buy_requests", force: true do |t|
     t.integer  "user_id"
     t.integer  "conversation_id"
@@ -21,9 +24,9 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "buy_requests", ["conversation_id"], name: "index_buy_requests_on_conversation_id"
-  add_index "buy_requests", ["offer_id"], name: "index_buy_requests_on_offer_id"
-  add_index "buy_requests", ["user_id"], name: "index_buy_requests_on_user_id"
+  add_index "buy_requests", ["conversation_id"], name: "index_buy_requests_on_conversation_id", using: :btree
+  add_index "buy_requests", ["offer_id"], name: "index_buy_requests_on_offer_id", using: :btree
+  add_index "buy_requests", ["user_id"], name: "index_buy_requests_on_user_id", using: :btree
 
   create_table "conversations", force: true do |t|
     t.integer  "user_id"
@@ -38,9 +41,9 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "conversations", ["offer_id"], name: "index_conversations_on_offer_id"
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
-  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id"
+  add_index "conversations", ["offer_id"], name: "index_conversations_on_offer_id", using: :btree
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "conversation_id"
@@ -51,9 +54,9 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["recipient_id"], name: "index_messages_on_recipient_id"
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "offers", force: true do |t|
     t.string   "name"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "offers", ["user_id"], name: "index_offers_on_user_id"
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "offer_id"
@@ -80,10 +83,10 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id"
-  add_index "orders", ["conversation_id"], name: "index_orders_on_conversation_id"
-  add_index "orders", ["offer_id"], name: "index_orders_on_offer_id"
-  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
+  add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id", using: :btree
+  add_index "orders", ["conversation_id"], name: "index_orders_on_conversation_id", using: :btree
+  add_index "orders", ["offer_id"], name: "index_orders_on_offer_id", using: :btree
+  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
 
   create_table "phone_codes", force: true do |t|
     t.string   "code"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "phone_codes", ["user_id"], name: "index_phone_codes_on_user_id"
+  add_index "phone_codes", ["user_id"], name: "index_phone_codes_on_user_id", using: :btree
 
   create_table "phone_verifications", force: true do |t|
     t.string   "number"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "phone_verifications", ["user_id"], name: "index_phone_verifications_on_user_id"
+  add_index "phone_verifications", ["user_id"], name: "index_phone_verifications_on_user_id", using: :btree
 
   create_table "promoted_offers", force: true do |t|
     t.integer  "user_id"
@@ -110,8 +113,8 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id"
-  add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id"
+  add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id", using: :btree
+  add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.boolean  "positive"
@@ -127,11 +130,11 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["buyer_id"], name: "index_reviews_on_buyer_id"
-  add_index "reviews", ["conversation_id"], name: "index_reviews_on_conversation_id"
-  add_index "reviews", ["offer_id"], name: "index_reviews_on_offer_id"
-  add_index "reviews", ["order_id"], name: "index_reviews_on_order_id"
-  add_index "reviews", ["seller_id"], name: "index_reviews_on_seller_id"
+  add_index "reviews", ["buyer_id"], name: "index_reviews_on_buyer_id", using: :btree
+  add_index "reviews", ["conversation_id"], name: "index_reviews_on_conversation_id", using: :btree
+  add_index "reviews", ["offer_id"], name: "index_reviews_on_offer_id", using: :btree
+  add_index "reviews", ["order_id"], name: "index_reviews_on_order_id", using: :btree
+  add_index "reviews", ["seller_id"], name: "index_reviews_on_seller_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -140,8 +143,8 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "taggings", ["offer_id"], name: "index_taggings_on_offer_id"
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["offer_id"], name: "index_taggings_on_offer_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -162,7 +165,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  add_index "user_identifications", ["user_id"], name: "index_user_identifications_on_user_id"
+  add_index "user_identifications", ["user_id"], name: "index_user_identifications_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -195,8 +198,8 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.string   "unconfirmed_email"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

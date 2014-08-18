@@ -17,6 +17,9 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        
+        UserMailer.new_order(@order).deliver
+        
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @order }
       else

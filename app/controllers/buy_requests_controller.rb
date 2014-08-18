@@ -11,6 +11,9 @@ class BuyRequestsController < ApplicationController
 
     respond_to do |format|
       if @buy_request.save
+        
+        UserMailer.new_buy_request(@buy_request).deliver
+        
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @buy_request }
       else

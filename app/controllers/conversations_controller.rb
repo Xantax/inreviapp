@@ -22,6 +22,9 @@ class ConversationsController < ApplicationController
     
     respond_to do |format|
       if @conversation.save
+        
+        UserMailer.new_conversation(@conversation).deliver
+        
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @conversation }
       else

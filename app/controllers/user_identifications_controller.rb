@@ -1,23 +1,11 @@
 class UserIdentificationsController < ApplicationController
-  before_action :set_user_identification, only: [:show, :edit, :update, :destroy]
-  before_action :only_admin, only: [:show, :index, :edit, :update, :destroy]
   before_action :user_count_identifications, only: [:new, :create]
   before_action :before_user_count_phone_code, only: [:new, :create]
   before_action :before_phone_correct, only: [:new, :create]
   before_action :authenticate_user!
 
-  def index
-     @user_identifications = UserIdentification.all.order('created_at DESC')
-  end
-  
-  def show
-  end
-
   def new
     @user_identification = UserIdentification.new
-  end
-
-  def edit
   end
 
   def create
@@ -31,26 +19,6 @@ class UserIdentificationsController < ApplicationController
         format.html { render :new }
         format.json { render json: @user_identification.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @user_identification.update(user_identification_params)
-        format.html { redirect_to @user_identification, notice: 'User identification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_identification }
-      else
-        format.html { render :edit }
-        format.json { render json: @user_identification.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @user_identification.destroy
-    respond_to do |format|
-      format.html { redirect_to user_identifications_url, notice: 'User identification was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

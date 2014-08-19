@@ -4,10 +4,6 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :authenticate_user!, except: [:show]
 
-  def index
-    @users = User.all
-  end
-
   def show
     @positive_reviews = Review.positive.where(seller_id: params[:id])
     @negative_reviews = Review.negative.where(seller_id: params[:id])

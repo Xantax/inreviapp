@@ -19,18 +19,6 @@ class User < ActiveRecord::Base
   
   has_many :conversations
   has_many :messages, :through => :conversations
-
-  def self.current
-    Thread.current[:user]
-  end
-  
-  def self.current=(user)
-    Thread.current[:user] = user
-  end
-  
-  def self.creditz
-    self.current.credit
-  end
   
   has_many :offers do
     def today

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   devise_for :users  
   resources :users do
     resources :conversations
+    resources :promoted_offers
   end
   resources :user_identifications
   resources :phone_codes

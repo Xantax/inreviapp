@@ -12,4 +12,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
   
+  def yoy
+    100
+  end
+  
 end

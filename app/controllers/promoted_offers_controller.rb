@@ -1,6 +1,6 @@
 class PromotedOffersController < ApplicationController
   before_action :set_promoted_offer, only: [:show]
-  before_action :must_be_completely_verified
+  #before_action :must_be_completely_verified
 
   def new
     @offer = Offer.find(params[:offer_id])

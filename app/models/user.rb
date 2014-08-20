@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
   
+  def credit
+    self.credit.to_i
+  end
+  
   has_many :offers do
     def today
     where(:created_at => (Time.now.beginning_of_day..Time.now))

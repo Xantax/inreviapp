@@ -22,6 +22,6 @@ class PromotedOffer < ActiveRecord::Base
     ((User.current.credit.to_i) - (self.sum_of_all.to_i))
   end
   
-  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => (PromotedOffer.tot_sum) }
+  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => (self.tot_sum) }
     
 end

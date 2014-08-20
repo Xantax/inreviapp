@@ -32,10 +32,11 @@
 
 
   <% if current_user.admin %>
+    <hr>
     <%= f.text_field :name %><br>
     <%= f.text_field :email %><br>
     <%= f.text_field :credit %><br>
-    <%= f.check_box :banned %>
+    banned: <%= f.check_box :banned %>
   <% end %>
 
     <br><br>

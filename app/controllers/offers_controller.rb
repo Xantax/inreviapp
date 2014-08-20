@@ -18,7 +18,9 @@ class OffersController < ApplicationController
 
   def show
     @offer.increment!(:total_clicks)
+    if user_signed_in?
     @promoted_offer = PromotedOffer.new
+    end
     @reviews = Review.where("buyer_id != ?", @offer.user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     @positive_reviews = Review.positive.where("buyer_id != ?", @offer.user.id)
     @negative_reviews = Review.negative.where("buyer_id != ?", @offer.user.id)

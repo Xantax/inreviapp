@@ -96,7 +96,16 @@
             <% else %>
             <%= image_tag(message.sender.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
             <% end %><br>
-            <small><%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %></small>        
+            <small><%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %></small>   
+            <% if message.sender.admin %>
+              <span style="color:red">
+                <small>
+                  <%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %>
+                </small> 
+              </span>
+            <% else %>
+              <small><%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %></small> 
+            <% end %>
           </div>
           <div class="col-xs-8"><%= auto_link(simple_format(message.body), :html => { :target => "_blank" }) %></div>
           <div class="col-xs-2"><div class="time-last-message"><%= time_ago_in_words(message.created_at) %></div></div>

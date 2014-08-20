@@ -71,7 +71,7 @@ class ConversationsController < ApplicationController
   end
   
   def correct_conversation
-    unless (current_user.id == @conversation.user_id) || (current_user.id == @conversation.recipient_id)
+    unless (current_user.id == @conversation.user_id) || (current_user.id == @conversation.recipient_id) || (current_user.admin)
       redirect_to root_path
     end
   end

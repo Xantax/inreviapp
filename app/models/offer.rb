@@ -7,6 +7,8 @@ class Offer < ActiveRecord::Base
       :tags => [:name]
       }
   
+  validates :price, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
+  
   def self.search(search)
     Offer.search_by_name(search)
   end
@@ -30,10 +32,17 @@ class Offer < ActiveRecord::Base
   validates :user_id, presence: true
   
   validate :user_quota, :on => :create
+  validate :conversation_quota, :on => :create
   
   def user_quota
     if user.offers.today.count >= 5
       errors.add(:base, "You cannot create more offers for now (SPAM prevention)")
+    end
+  end
+  
+  def conversation_quota
+    if user.offers.today.count >= 5
+      redirect_to root_path
     end
   end
   

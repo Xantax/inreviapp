@@ -25,6 +25,16 @@ class User < ActiveRecord::Base
     def today
     where(:created_at => (Time.now.beginning_of_day..Time.now))
     end
-  end 
+  end
+  
+  has_many :conversations do
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
+  end
+  
+  def remember_me
+    true
+  end
   
 end

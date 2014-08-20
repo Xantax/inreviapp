@@ -60,7 +60,7 @@
         <% if @conversation.reviews_count > 0 %>
           <% @conversation.reviews.each do |review| %>
             <%= image_tag('2/writerevicon.png') %> 
-        <%= link_to review.buyer.name, conversation_review_path(review.conversation, review), target: :blank %><br><br>
+        <%= link_to review.buyer.name, conversation_review_path(review.conversation, review) %><br><br>
           <% end %>
         <% end %>
         

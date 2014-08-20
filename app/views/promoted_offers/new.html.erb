@@ -1,0 +1,24 @@
+<strong>Promote your offer (1 click = 1 incoin)</strong><br><br>
+          * You only have <span class="badge alert-warning"><%= PromotedOffer.tot_sum %></span> incoins. 
+          <%= link_to "Get more", buycredit_path %><br><br>
+
+        <%= form_for([@offer, @promoted_offer]) do |f| %>
+          <% if @promoted_offer.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% @promoted_offer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :offer_id, value: @offer.id %>
+          How many clicks do you want? 
+          <small>(max <b><%= PromotedOffer.tot_sum %></b>)</small><br><br>
+          <%= f.number_field :set_clicks %><br><br>
+
+            <%= f.submit "Promote it", class: 'btn btn-warning' %>
+
+        <% end %>

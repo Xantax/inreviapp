@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :user_identifications
   resources :phone_codes
   resources :phone_verifications
-  resources :promoted_offers  
+  resources :promoted_offers
   
   resources :offers do
     resources :promoted_offers

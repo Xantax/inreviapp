@@ -7,9 +7,9 @@
           <% @promoted_offers.each do |promoted_offer| %>
             <div class="col-sm-6 col-md-3 offer">
               <div class="thumbnail">
-                <%= link_to image_tag(promoted_offer.offer.image_url(:thumb).to_s, height: '200'), offer_path(promoted_offer.offer) %>
+                <%= link_to image_tag(promoted_offer.offer.image_url(:thumb).to_s, height: '200'), promoted_offer %>
                 <div class="caption">
-                  <%= link_to truncate(promoted_offer.offer.name, length: 50), offer_path(promoted_offer.offer) %><hr>
+                  <%= link_to truncate(promoted_offer.offer.name, length: 50), promoted_offer %><hr>
                   <%= image_tag('2/thumbsup_off.PNG') %> 
                   <b><%= promoted_offer.offer.reviews.positive.where("buyer_id != ?", promoted_offer.user.id).count %></b> | 
                   <%= image_tag('2/thumbsdown_off.PNG') %> 

@@ -1,7 +1,17 @@
 class PromotedOffersController < ApplicationController
-  before_action :user_not_enough_credit, only: [:create]
+  before_action :set_promoted_offer, only: [:show]
   before_action :must_be_completely_verified
 
+  def new
+    @offer = Offer.find(params[:offer_id])
+    @promoted_offer = PromotedOffer.new
+  end
+  
+  def show
+    @promoted_offer.increment!(:clicks)
+    redirect_to @promoted_offer.offer
+  end
+  
   def create
     @offer = Offer.find(params[:offer_id])
     @promoted_offer = @offer.promoted_offers.create(promoted_offer_params)
@@ -24,6 +34,6 @@ class PromotedOffersController < ApplicationController
     end
 
     def promoted_offer_params
-      params.require(:promoted_offer).permit(:user_id, :offer_id)
+      params.require(:promoted_offer).permit(:user_id, :offer_id, :set_clicks)
     end
 end

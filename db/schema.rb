@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.boolean  "deleted",      default: false
     t.integer  "user_id"
     t.integer  "orders_count", default: 0
+    t.integer  "total_clicks", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -109,6 +110,8 @@ ActiveRecord::Schema.define(version: 20140815150935) do
   create_table "promoted_offers", force: true do |t|
     t.integer  "user_id"
     t.integer  "offer_id"
+    t.integer  "clicks",     default: 0
+    t.integer  "set_clicks", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,7 +172,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "credit",                 default: 50
+    t.integer  "credit",                 default: 20
     t.string   "bio"
     t.string   "language"
     t.string   "second_language"

@@ -18,10 +18,10 @@ class PromotedOffer < ActiveRecord::Base
   end
   
   # Total Incoins
-#  def self.tot_sum
-#    ((User.current.credit.to_i) - (self.sum_of_all.to_i))
-#  end
+  def self.tot_sum
+    ((User.current.credit.to_i) - (self.sum_of_all.to_i))
+  end
   
-  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => (self.sum_of_all) }
+  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => (self.tot_sum) }
     
 end

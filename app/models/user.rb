@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
   
-  def creditz
-    self.current.credit.to_i
+  def self.creditz
+    self.current.credit
   end
   
   has_many :offers do

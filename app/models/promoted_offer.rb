@@ -4,6 +4,6 @@ class PromotedOffer < ActiveRecord::Base
   
   scope :published, -> { where('clicks <= set_clicks') }
   
-  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, less_than_or_equal_to: :credit) }
+  validates :set_clicks, numericality: { only_integer: true, :greater_than => 0, less_than_or_equal_to: :credit }
     
 end

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.1'
 
 gem 'rails', '4.1.0'
 
@@ -41,7 +42,6 @@ group :production do
 end
 
 group :development do
-  #gem 'sqlite3', '1.3.8'
   gem 'spring'
 end
 
@@ -53,4 +53,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

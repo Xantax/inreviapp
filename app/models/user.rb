@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
   
-  def self.yoyo
-    self.current.credit + 50
+  def yoyo
+    self[:credit] + 50
   end
   
   has_many :offers do

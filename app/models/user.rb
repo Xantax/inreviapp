@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
   
   def self.yoyo
-    (self.credit) + (50*24)
+    (User.current.credit.to_i) + (50*24)
   end
   
   has_many :offers do

@@ -30,10 +30,6 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
   
-  def yoyo
-    self[:credit] + 50
-  end
-  
   has_many :offers do
     def today
     where(:created_at => (Time.now.beginning_of_day..Time.now))
@@ -48,6 +44,15 @@ class User < ActiveRecord::Base
   
   def remember_me
     true
+  end
+  
+  validates :price, numericality: 
+    { only_integer: true, :greater_than => 0, :less_than_or_equal_to => :max_num }
+  
+  private
+  
+  def max_num
+    credit * 50
   end
   
 end

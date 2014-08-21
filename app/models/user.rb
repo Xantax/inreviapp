@@ -21,11 +21,11 @@ class User < ActiveRecord::Base
   has_many :messages, :through => :conversations
   
   def self.currentz
-    Thread.currentz[:user]
+    Thread.current[:user]
   end
   
   def self.currentz=(user)
-    Thread.currentz[:user] = user
+    Thread.current[:user] = user
   end
   
   has_many :offers do

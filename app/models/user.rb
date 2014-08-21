@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   cattr_accessor :current 
+  
+  attr_reader :credit
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -29,7 +31,7 @@ class User < ActiveRecord::Base
   end
   
   def self.yoyo
-    self.current[:credit] + 50
+    self.current.credit + 50
   end
   
   has_many :offers do

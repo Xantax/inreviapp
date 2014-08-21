@@ -6,7 +6,7 @@ class PromotedOffer < ActiveRecord::Base
   
     # Find PromotedOffers created by current_user
   def self.users_promotion_offers
-    self.where(user_id: User.current.id)
+    self.where(user_id: user_current.id)
   end
   
   # Array of :set_clicks values

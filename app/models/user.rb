@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
   
-  def creditz
+  def self.creditz
     self.current.(:credit)
   end
   

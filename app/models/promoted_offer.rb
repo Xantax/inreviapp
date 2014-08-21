@@ -5,11 +5,13 @@ class PromotedOffer < ActiveRecord::Base
   scope :published, -> { where('clicks <= set_clicks') }
   
     # Find PromotedOffers created by current_user
-  scope :promos_by_cu, ->(user) { where(:user_id => user.id)}
+  def self.users_promotion_offers
+    self.where("user_id = ?", User.current.id)
+  end
   
   # Array of :set_clicks values
   def self.get_clickz
-    self.promos_by_cu(user.id).map{ |v| v.set_clicks }
+    self.users_promotion_offers.map{ |v| v.set_clicks }
   end
   
   # Sum of all set_clicks values for the current_user

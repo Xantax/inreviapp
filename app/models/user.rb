@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   cattr_accessor :current 
-  
-  attr_reader :credit
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -46,13 +44,25 @@ class User < ActiveRecord::Base
     true
   end
   
-  validates :price, numericality: 
-    { only_integer: true, :greater_than => 0, :less_than_or_equal_to => :max_num }
+  # Find PromotedOffers created by current_user
+  def all_promos
+    User.current.promoted_offers.each do |promo|
+      promo
+    end
+  end
   
-  private
+  # Array of :set_clicks values
+  def get_clickz
+    all_promos.map{ |v| v.set_clicks }
+  end
+  
+  # Sum of all set_clicks values for the current_user
+  def sum_of_all
+    get_clickz.inject{|sum,x| sum + x }
+  end
   
   def max_num
-    credit * 50
+    (User.current.credit.to_i) - (User.current.sum_of_all.to_i)
   end
   
 end

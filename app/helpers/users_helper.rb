@@ -4,4 +4,8 @@ module UsersHelper
     user == current_user
   end
   
+  def total_incoins
+    current_user.max_num
+  end
+  
 end

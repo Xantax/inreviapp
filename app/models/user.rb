@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
   has_many :conversations
   has_many :messages, :through => :conversations
   
-  def self.current
-    Thread.current[:user]
+  def self.currentz
+    Thread.currentz[:user]
   end
   
-  def self.current=(user)
-    Thread.current[:user] = user
+  def self.currentz=(user)
+    Thread.currentz[:user] = user
   end
   
   has_many :offers do

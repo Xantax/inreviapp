@@ -8317,6 +8317,11 @@ div.field, div.actions {
   font-size: 130%;
   color: #B0B0B0;
 }
+
+/* line 23, /home/action/inreviapp/app/assets/stylesheets/static_pages.css.scss */
+#how-works {
+  margin-top: 200px;
+}
 /* line 5, /home/action/inreviapp/app/assets/stylesheets/users.css.scss */
 .user-profile-name {
   font-size: 130%;

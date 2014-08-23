@@ -12,4 +12,7 @@ class StaticPagesController < ApplicationController
   
   def buycredit
   end
+  
+  def howworks
+  end
 end

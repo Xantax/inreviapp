@@ -8087,7 +8087,7 @@ html, body {
 }
 
 /* line 39, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
-.col-xs-3.user-header {
+.col-xs-4.user-header {
   padding-top: 5px;
   text-align: right;
 }
@@ -8261,26 +8261,27 @@ div.field, div.actions {
 
 /* line 27, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
 #notice {
-  color: green;
+  color: red;
+  font-weight: bold;
 }
 
-/* line 31, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
+/* line 32, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #F24F4F;
   display: table;
 }
 
-/* line 37, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
+/* line 38, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #F24F4F;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 44, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
+/* line 45, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -8291,7 +8292,7 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 54, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
+/* line 55, /home/action/inreviapp/app/assets/stylesheets/scaffolds.css.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;

@@ -8,9 +8,12 @@
       <% end %>
     </div>
   
-    <div class="col-xs-2"></div>
+    <div class="col-xs-1"></div>
       
-    <div class="col-xs-3 user-header">
+    <div class="col-xs-4 user-header">
+
+        <b><%= link_to "Create an offer", "offers/new" %></b> | 
+      
       <% if user_signed_in? %>
       <%= link_to image_tag('2/add_cred.png'), buycredit_path %><span class="badge alert-warning"><%= total_incoins %></span> | 
       <% end %>

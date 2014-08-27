@@ -15,4 +15,7 @@ class StaticPagesController < ApplicationController
   
   def howworks
   end
+  
+  def user_verification
+  end
 end

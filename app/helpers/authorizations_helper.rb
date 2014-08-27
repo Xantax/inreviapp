@@ -53,8 +53,8 @@ module AuthorizationsHelper
   
   # Must be completely verified
     def must_be_completely_verified
-      unless current_user.user_identifications.count == 1
-        redirect_to root_path, notice: 'You need to be verified'
+      unless current_user.phone_codes.count == 1
+        redirect_to verify_path
       end
     end
   

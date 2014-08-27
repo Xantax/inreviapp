@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   match 'terms' => "static_pages#terms", via: [:get]
   match 'buycredit' => "static_pages#buycredit", via: [:get]
   match 'how' => "static_pages#howworks", via: [:get]
+  match 'verify' => "static_pages#user_verification", via: [:get]
   match 'offerz/search' => "offers#search", via: [:get]
   
   get 'tags/:tag', to: 'offers#index', as: :tag

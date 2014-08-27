@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :number %><br>
-    <%= f.text_field :number, placeholder: "full number (example: +13258352130)", class: "form-control devise", :required => true, autofocus: true %>
+    <%= f.text_field :number, placeholder: "full number (example: +13258352130)", :required => true, autofocus: true %>
   </div>
 
 <%= f.hidden_field :user_id, value: current_user.id %>

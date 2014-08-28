@@ -36,9 +36,8 @@ html, body {
   width:100px;
 }
 
-.col-xs-4.user-header{
+.col-xs-3.user-header{
   padding-top:5px;
-  text-align:right;
 }
 
 .col-xs-5.header-search{
@@ -56,6 +55,67 @@ html, body {
 
 .input-login:hover{
   border: 2px solid #33CCFF;
+}
+
+#header-create-offer{
+  a{text-decoration: underline;}
+  a:hover{text-decoration: none;}
+  font-size:110%;
+  font-weight:bold;
+}
+
+.badge.alert-warning.incoins{
+  a{color:brown;}
+}
+
+/* header icons hover */
+
+#message-icon {
+  a::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: asset-data-url("1/messages2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+  }
+}
+
+#message-icon:hover {
+  a::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: asset-data-url("1/messages2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -30px;
+  }
+}
+
+#profile-icon {
+  a::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 32px;
+    background-image: asset-data-url("1/profile3.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+  }
+}
+
+#profile-icon:hover {
+  a::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 32px;
+    background-image: asset-data-url("1/profile3.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -32px;
+  }
 }
 
 /* FORMS */

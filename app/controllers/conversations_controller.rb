@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
   before_action :require_permission, only: :destroy
   before_action :correct_conversation, only: :show
   before_action :authenticate_user!
-  before_action :must_be_completely_verified
+  #before_action :must_be_completely_verified
   before_filter :record_last_inbox_visit, only: [:index, :show]
   
   def index

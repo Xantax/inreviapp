@@ -8087,34 +8087,97 @@ html, body {
 }
 
 /* line 39, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
-.col-xs-4.user-header {
+.col-xs-3.user-header {
   padding-top: 5px;
-  text-align: right;
 }
 
-/* line 44, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+/* line 43, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
 .col-xs-5.header-search {
   padding-top: 5px;
 }
 
-/* line 48, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+/* line 47, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
 .col-xs-7.login {
   padding-top: 10px;
   text-align: right;
 }
 
-/* line 53, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+/* line 52, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
 .input-login:focus {
   border: 2px solid #0099CC;
 }
 
-/* line 57, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+/* line 56, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
 .input-login:hover {
   border: 2px solid #33CCFF;
 }
 
+/* line 60, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#header-create-offer {
+  font-size: 110%;
+  font-weight: bold;
+}
+/* line 61, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#header-create-offer a {
+  text-decoration: underline;
+}
+/* line 62, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#header-create-offer a:hover {
+  text-decoration: none;
+}
+
+/* line 68, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+.badge.alert-warning.incoins a {
+  color: brown;
+}
+
+/* header icons hover */
+/* line 74, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#message-icon a::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url(data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAIAAAD%2BNp3IAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAvRJREFUWEftllloE0EAhpuLUKkPtb6p9SFp7Wmp1hr1QWobbcELT7QSrRbr0VoPlFKCV72w4kWg3lQQK5YKou8%2BFHwoeBs1mkAqCSY10RbxfIm%2FDKTLZnZ3dtYYhCz7MJn5%2F2%2FOnfy6WCyWkaQH6CQ9GUni%2FlmMlKFfv33fe%2Bd%2Bx9GTa%2Bsd5dMq8KKAn6hEk%2FywJEft8QYcGzYZDAayx5mZY8rKyvGiQGrQBAFkUh1Q0B%2BGvjj3d2RljdXpdCtWrrnVe%2FfJi3fRkV8EgQJ%2BohJNEEAGMSyJHYjR4eg326w5GNTcquoH%2FQPyU4YAMohhgVEkFqPXNzRCeuRYJ%2Fv2QgwLjHLoU6ddEK1zNLBziRIWGGEXGkdHPRiMmkymGZW2UOSrWjQsMMIOSNw7ir7ddw89X7xyXS2X6GGEHRAKunXXXrS53%2Fj50DDCDggFjRlZLFY%2BLnHBDggFbc3Lx6sFnT%2BlAJ8rBV1jr8WMnr%2Fy8dE9viDs25p3UtBt7QfQdt51iQ99rfsm7Dd6%2Biho7AOuheqaBRzoyPDPqnl2vV7vGwxT0Kja2NiEnrdsbVFLJ6er3XmI%2FsmgNhgewU6KzpBiNxcud8OyeOny%2BBVGLOI75OlLL6Hva3MqQp%2B5vatW1%2BP%2BKy4pDYSGRXrKper1hyZMnFRSOlUKjcnhzsNhMJvNRqNxc9N24RLT1zpeO72ikqA%2Ffv5x5lxXYVHxTNvsRUuW2efX5eZOxjDJv0Ft3cKBR26pEdD%2FZQgaF0JBYREQmITFmpedPQ4FHKHmHbtdXVf7Hz6WXzFJNE4SoDk54090nh369F1x3RMFkmisY0vrHn8gwgGlnxBSe%2FDwcRwVbqgcWiM0jaYuYOoyn5b9TN2o%2F%2FOk6hE8fyepComJZc6kKg8VtqpLquxcomRNqmq5RM%2BUVPnQTEmVD62cVPm4xKWQVLWglZMqJ50lqfKhmZIqH5o1qaqlq0uq7HSepKpI50%2BqMmitSZWg00kVAQH5Op1UtQSlf535fgPzQKeZSIQSmAAAAABJRU5ErkJggg%3D%3D);
+  background-repeat: no-repeat;
+  background-position: 0 0px;
+}
+
+/* line 86, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#message-icon:hover a::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url(data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAA8CAIAAAD%2BNp3IAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAvRJREFUWEftllloE0EAhpuLUKkPtb6p9SFp7Wmp1hr1QWobbcELT7QSrRbr0VoPlFKCV72w4kWg3lQQK5YKou8%2BFHwoeBs1mkAqCSY10RbxfIm%2FDKTLZnZ3dtYYhCz7MJn5%2F2%2FOnfy6WCyWkaQH6CQ9GUni%2FlmMlKFfv33fe%2Bd%2Bx9GTa%2Bsd5dMq8KKAn6hEk%2FywJEft8QYcGzYZDAayx5mZY8rKyvGiQGrQBAFkUh1Q0B%2BGvjj3d2RljdXpdCtWrrnVe%2FfJi3fRkV8EgQJ%2BohJNEEAGMSyJHYjR4eg326w5GNTcquoH%2FQPyU4YAMohhgVEkFqPXNzRCeuRYJ%2Fv2QgwLjHLoU6ddEK1zNLBziRIWGGEXGkdHPRiMmkymGZW2UOSrWjQsMMIOSNw7ir7ddw89X7xyXS2X6GGEHRAKunXXXrS53%2Fj50DDCDggFjRlZLFY%2BLnHBDggFbc3Lx6sFnT%2BlAJ8rBV1jr8WMnr%2Fy8dE9viDs25p3UtBt7QfQdt51iQ99rfsm7Dd6%2Biho7AOuheqaBRzoyPDPqnl2vV7vGwxT0Kja2NiEnrdsbVFLJ6er3XmI%2FsmgNhgewU6KzpBiNxcud8OyeOny%2BBVGLOI75OlLL6Hva3MqQp%2B5vatW1%2BP%2BKy4pDYSGRXrKper1hyZMnFRSOlUKjcnhzsNhMJvNRqNxc9N24RLT1zpeO72ikqA%2Ffv5x5lxXYVHxTNvsRUuW2efX5eZOxjDJv0Ft3cKBR26pEdD%2FZQgaF0JBYREQmITFmpedPQ4FHKHmHbtdXVf7Hz6WXzFJNE4SoDk54090nh369F1x3RMFkmisY0vrHn8gwgGlnxBSe%2FDwcRwVbqgcWiM0jaYuYOoyn5b9TN2o%2F%2FOk6hE8fyepComJZc6kKg8VtqpLquxcomRNqmq5RM%2BUVPnQTEmVD62cVPm4xKWQVLWglZMqJ50lqfKhmZIqH5o1qaqlq0uq7HSepKpI50%2BqMmitSZWg00kVAQH5Op1UtQSlf535fgPzQKeZSIQSmAAAAABJRU5ErkJggg%3D%3D);
+  background-repeat: no-repeat;
+  background-position: 0 -30px;
+}
+
+/* line 98, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#profile-icon a::before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 32px;
+  background-image: url(data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAABACAYAAAAEX2dfAAAABGdBTUEAALGPC%2FxhBQAAA2ZJREFUWEftmD1LK0EUhr2%2FKBaChUSxin0QSRVEsRF%2FQVKoSNQYopVfMWiMH1gJCQoxqRIhiSlCtLQRC9HCT9CoUc%2B971427M7u7OzdXXILHRjYzJ45z5x3Zs7s5Bf9KW2tKAC1orS1AiKp9j1Bn5%2BfdHZ2RltbWzQ%2FPy9VPJ%2BenhLemSlC6V5eXmhjY4PGx8d1K949Pz8LWYYgjNYIIsPX19eFkRmCarUaNxI2wmq1ahiVIWhzc9M0KJFIWAeFw2HToNnZWesgdOYtArZ9ZmaGvr6%2BuDBD6TDJZkHxeNx6RJVKxTTo5OTEOujj44OWl5eFsKWlJWo0GtZB6Pn09ERwxJNwcXGRHh8f7W1YuTdGWywWaXV1laampqS6srIitYkikX1wF8P7%2Bzudn5%2FT3d2darTIFmx%2Bgw1s0YdXNCA4KRQKhOUKuTD6bDZLt7e3Gh9oy%2BVykg1sp6enKZ%2FPE%2BaWLSoQZNje3ubORzQaJSxjVDzz5g2ZnZVUBTo6OhKuMLP7KpPJqIJqgrC6JicnHQPB18PDQxPWBJXLZccgctSlUkkLSqfTjoNSqZQWtL%2B%2F7zgIPjX7qGWgw8NDmpubc7QeHBxoIxImK5sGwq8gm%2F5%2FIrIv4M8cWdbwm0qHoxkpanR0lPr6%2BqSKZ6QYvWNbT1%2BhdDi8hoaGyOVy6Va8u7%2B%2FF86dIQijhaP29nYVhP09ODgojMwQhMMQTmXH8rNem%2FLs%2BWfpRkZGmiAWwsKHh4etfxL39vZKkrFS6c1XT0%2BPdRA6K0FG0nV3d1u%2FH2GSWZD8m5XO7%2Fdbj2hvb8%2F0Ytjd3bUOent7o4GBAcMFgcj6%2B%2FsJtkZFuGFvbm4kR0rJlMvb6%2FXS9fW1vQ0r98Zok8kk%2BXw%2B6uzslCoiRdvr66sQAgNuRPV6nY6Pj%2Bny8lLlCNmCzW%2BwgS368IoGBCdra2vkdrsluTB6%2FMl0cXGh8QHAwsKCZAM5u7q6KBaL6d4CVSBINDY2xp18j8dDWMaoeNbLFmhDZmcXhwqEyxWvsygFKd9DiUgkolKgCcLq6ujo0D0KzKQgOS3JtvB1dXWl%2FYDc2dnhnjm8s0jUjium5jaBGxqbVthR6r1nJVPaTExMaEHBYNDxiAKBwH8E4T8CnD9O1lAo9HObMJU37R0T9hF%2FPQjPI6dAvwEbdjclz%2Bn3BgAAAABJRU5ErkJggg%3D%3D);
+  background-repeat: no-repeat;
+  background-position: 0 0px;
+}
+
+/* line 110, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+#profile-icon:hover a::before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 32px;
+  background-image: url(data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAABACAYAAAAEX2dfAAAABGdBTUEAALGPC%2FxhBQAAA2ZJREFUWEftmD1LK0EUhr2%2FKBaChUSxin0QSRVEsRF%2FQVKoSNQYopVfMWiMH1gJCQoxqRIhiSlCtLQRC9HCT9CoUc%2B971427M7u7OzdXXILHRjYzJ45z5x3Zs7s5Bf9KW2tKAC1orS1AiKp9j1Bn5%2BfdHZ2RltbWzQ%2FPy9VPJ%2BenhLemSlC6V5eXmhjY4PGx8d1K949Pz8LWYYgjNYIIsPX19eFkRmCarUaNxI2wmq1ahiVIWhzc9M0KJFIWAeFw2HToNnZWesgdOYtArZ9ZmaGvr6%2BuDBD6TDJZkHxeNx6RJVKxTTo5OTEOujj44OWl5eFsKWlJWo0GtZB6Pn09ERwxJNwcXGRHh8f7W1YuTdGWywWaXV1laampqS6srIitYkikX1wF8P7%2Bzudn5%2FT3d2darTIFmx%2Bgw1s0YdXNCA4KRQKhOUKuTD6bDZLt7e3Gh9oy%2BVykg1sp6enKZ%2FPE%2BaWLSoQZNje3ubORzQaJSxjVDzz5g2ZnZVUBTo6OhKuMLP7KpPJqIJqgrC6JicnHQPB18PDQxPWBJXLZccgctSlUkkLSqfTjoNSqZQWtL%2B%2F7zgIPjX7qGWgw8NDmpubc7QeHBxoIxImK5sGwq8gm%2F5%2FIrIv4M8cWdbwm0qHoxkpanR0lPr6%2BqSKZ6QYvWNbT1%2BhdDi8hoaGyOVy6Va8u7%2B%2FF86dIQijhaP29nYVhP09ODgojMwQhMMQTmXH8rNem%2FLs%2BWfpRkZGmiAWwsKHh4etfxL39vZKkrFS6c1XT0%2BPdRA6K0FG0nV3d1u%2FH2GSWZD8m5XO7%2Fdbj2hvb8%2F0Ytjd3bUOent7o4GBAcMFgcj6%2B%2FsJtkZFuGFvbm4kR0rJlMvb6%2FXS9fW1vQ0r98Zok8kk%2BXw%2B6uzslCoiRdvr66sQAgNuRPV6nY6Pj%2Bny8lLlCNmCzW%2BwgS368IoGBCdra2vkdrsluTB6%2FMl0cXGh8QHAwsKCZAM5u7q6KBaL6d4CVSBINDY2xp18j8dDWMaoeNbLFmhDZmcXhwqEyxWvsygFKd9DiUgkolKgCcLq6ujo0D0KzKQgOS3JtvB1dXWl%2FYDc2dnhnjm8s0jUjium5jaBGxqbVthR6r1nJVPaTExMaEHBYNDxiAKBwH8E4T8CnD9O1lAo9HObMJU37R0T9hF%2FPQjPI6dAvwEbdjclz%2Bn3BgAAAABJRU5ErkJggg%3D%3D);
+  background-repeat: no-repeat;
+  background-position: 0 -32px;
+}
+
 /* FORMS */
-/* line 63, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
+/* line 123, /home/action/inreviapp/app/assets/stylesheets/custom.css.scss */
 .form-control.description {
   height: 300px;
 }
@@ -8333,6 +8396,11 @@ div.field, div.actions {
 /* line 11, /home/action/inreviapp/app/assets/stylesheets/users.css.scss */
 .col-xs-2.user-show-profile {
   border-right: 1px solid #E8E8E8;
+}
+
+/* line 15, /home/action/inreviapp/app/assets/stylesheets/users.css.scss */
+#user-settings-info {
+  font-size: 75%;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

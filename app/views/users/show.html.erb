@@ -35,17 +35,19 @@
 
       <%= image_tag('2/green_dot.gif') %> 
       <span class="time-last-message"><b><%= time_ago_in_words(@user.last_seen_at) %></b> ago</span><br><br>
-      <%= image_tag('1/clock40.png') %>Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
-      <% if @user.public_location.present? %>
-        <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
-      <% end %>
-      <% if @user.language.present? %>
-        <%= image_tag('1/user_language.png') %><%= @user.language %><br>
-      <% end %>
-      <% if @user.bio.present? %>
-        <%= image_tag('2/user_bio.png') %>
-        <%= @user.bio %>
-      <% end %>
+      <div id="user-settings-info">
+        <%= image_tag('1/clock40.png') %>Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
+        <% if @user.public_location.present? %>
+          <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
+        <% end %>
+        <% if @user.language.present? %>
+          <%= image_tag('1/user_language.png') %><%= @user.language %><br>
+        <% end %>
+        <% if @user.bio.present? %>
+          <%= image_tag('2/user_bio.png') %>
+          <%= @user.bio %>
+        <% end %>
+      </div>
 
     <hr>  
     <% if user_signed_in? && current_user.admin %>

@@ -8,21 +8,20 @@
       <% end %>
     </div>
   
-    <div class="col-xs-1"></div>
+    <div class="col-xs-2"></div>
       
-    <div class="col-xs-4 user-header">
+    <div class="col-xs-3 user-header">
 
-        <b><%= link_to "Create an offer", "/offers/new" %></b> | 
+        <span id="header-create-offer"><%= link_to "Create an offer", "/offers/new" %></span> | 
       
       <% if user_signed_in? %>
-      <%= link_to image_tag('2/add_cred.png'), buycredit_path %><span class="badge alert-warning"><%= total_incoins %></span> | 
+      <span class="badge alert-warning incoins"><%= link_to total_incoins, buycredit_path %></span> | 
       <% end %>
-      
+      <span id="message-icon"><%= link_to "", '/conversations' %></span>
       <%= link_to image_tag("1/messages3.png"), '/conversations' %>
       <% if Conversation.count_unread_conversations > 0 %>
         <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-      <% end %> |  
-      
-           <%= link_to image_tag('1/profile7.png'), user_path(current_user) %> | 
+      <% end %>| 
+      <span id="profile-icon"><%= link_to "", user_path(current_user) %></span> | 
       
     </div>

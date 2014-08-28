@@ -83,7 +83,6 @@ keywords: %w(@offer.tag_list)
     <% else %>
       <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
     <% end %><hr>
-    <%= image_tag('1/user_verified.png') %>
     <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
     <% if user_signed_in? %>

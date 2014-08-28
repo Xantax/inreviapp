@@ -8329,6 +8329,11 @@ div.field, div.actions {
   padding-top: 10px;
   margin-bottom: 10px;
 }
+
+/* line 11, /home/action/inreviapp/app/assets/stylesheets/users.css.scss */
+.col-xs-2.user-show-profile {
+  border-right: 1px solid #E8E8E8;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   match 'buycredit' => "static_pages#buycredit", via: [:get]
   match 'how' => "static_pages#howworks", via: [:get]
   match 'verify' => "static_pages#user_verification", via: [:get]
+  match 'first_message' => "static_pages#first_message", via: [:get]
   match 'offerz/search' => "offers#search", via: [:get]
   
   get 'tags/:tag', to: 'offers#index', as: :tag

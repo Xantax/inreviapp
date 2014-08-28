@@ -18,4 +18,7 @@ class StaticPagesController < ApplicationController
   
   def user_verification
   end
+  
+  def first_message
+  end
 end

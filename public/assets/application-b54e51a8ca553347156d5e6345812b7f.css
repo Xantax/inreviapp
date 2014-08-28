@@ -8392,6 +8392,17 @@ div.field, div.actions {
 #how-works {
   margin-top: 200px;
 }
+
+/* line 27, /home/action/inreviapp/app/assets/stylesheets/static_pages.css.scss */
+.how-user-points {
+  font-size: 125%;
+  color: #B0B0B0;
+}
+
+/* line 32, /home/action/inreviapp/app/assets/stylesheets/static_pages.css.scss */
+.how-general {
+  color: #707070;
+}
 /* line 5, /home/action/inreviapp/app/assets/stylesheets/users.css.scss */
 .user-profile-name {
   font-size: 130%;

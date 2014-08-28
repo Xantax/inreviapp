@@ -3,25 +3,41 @@ description: "Inrevi is a global marketplace. Buy and sell digital products and 
 keywords: %w(inrevi marketplace digital)
 %>
 
-  <h4>General:</h4>
-  - Inrevi is a marketplace for buying/selling '<b>offers</b>' <br>
-  - <b>Offer</b> is either a digital product <i>(e.g. app, domain, book)</i> or a digital service <i>(e.g. writing, acting, tutoring)</i><br>
-  - All users must be completely verified (email, phone, ID)<br>
-  - You use this site to find/sell offers and communicate with sellers/buyers<br>
-  - Payment and delivery are handled between users<hr>
+<div class="row">
+
+  <div class="col-xs-1"></div>
   
-  <h4>Buyers:</h4>
-  1. Find an offer<br>
-  2. Contact the seller<br>
-  3. Communicate about details of payment/delivery<br>
-  4. Submit a request to buy the offer<br>
-  5. Seller will Accept/Decline your request <small>(email notification)</small><br>
-  6. Post a Feedback<hr>
+  <div class="col-xs-4">
+    <mark>SELLER</mark><hr>
+    <div class="how-user-points">
+      <%= image_tag('2/add_offer.png') %> 1. Create an <b>offer</b><br><br>
+      <span style="padding-right:20px"></span><%= image_tag('2/contact_buyers.png') %> 2. Communicate with buyers<br><br>
+      <span style="padding-right:40px"></span><%= image_tag('2/complete_order.png') %> 3. Confirm orders<br><br>
+      <span style="padding-right:60px"></span><%= image_tag('2/post_feedback.png') %> 4. Post a feedback<br><br>  
+    </div>
+  </div>
   
-  <h4>Sellers:</h4>
-  1. Create an offer<br>
-  2. Buyer contacts you <small>(email notification)</small><br>
-  3. Communicate about details of payment/delivery<br>
-  4. Buyer might submit a request to buy your offer <small>(email notification)</small><br>
-  5. Accept/Decline the request<br>
-  6. Post a Feedback<hr>
+  <div class="col-xs-2"></div>
+  
+  <div class="col-xs-4">
+    <mark>BUYER</mark><hr>
+    <div class="how-user-points">
+      <%= image_tag('2/find_offer.png') %> 1. Find an <b>offer</b><br><br>
+      <span style="padding-right:20px"></span><%= image_tag('2/contact_seller.png') %> 2. Contact the seller<br><br>
+      <span style="padding-right:40px"></span><%= image_tag('2/submit_buy.png') %> 3. Request to buy it<br><br>
+      <span style="padding-right:60px"></span><%= image_tag('2/post_feedback.png') %> 4. Post a feedback<br><br>
+    </div>
+  </div>
+  
+  <div class="col-xs-1"></div>
+  
+</div>
+
+<hr>
+
+    <div class="how-general">
+      <%= image_tag('3/pay_users.png') %> Payment and delivery are handled between users<br>
+      <%= image_tag('3/offer_how.png') %> 
+      <b>Offer</b> is either a digital product <i>(e.g. app, domain, book)</i> 
+      or a service <i>(e.g. writing, acting, tutoring)</i>
+    </div>

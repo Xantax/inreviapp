@@ -68,56 +68,6 @@ html, body {
   a{color:brown;}
 }
 
-/* header icons hover */
-
-#message-icon {
-  a::before {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: asset-data-url("1/messages2.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 0px;
-  }
-}
-
-#message-icon:hover {
-  a::before {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: asset-data-url("1/messages2.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 -30px;
-  }
-}
-
-#profile-icon {
-  a::before {
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 32px;
-    background-image: asset-data-url("1/profile3.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 0px;
-  }
-}
-
-#profile-icon:hover {
-  a::before {
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 32px;
-    background-image: asset-data-url("1/profile3.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 -32px;
-  }
-}
-
 /* FORMS */
 
 .form-control.description{

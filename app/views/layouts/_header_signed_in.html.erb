@@ -17,10 +17,8 @@
       <% if user_signed_in? %>
       <span class="badge alert-warning incoins"><%= link_to total_incoins, buycredit_path %></span> | 
       <% end %>
-      <span id="message-icon"><%= link_to "", '/conversations' %></span>
-      <% if Conversation.count_unread_conversations > 0 %>
-        <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-      <% end %> | 
-       <span id="profile-icon"><%= link_to "", user_path(current_user) %></span> |
+      <%= link_to image_tag('3/chat51.png'), '/conversations' %>
+        <span class="label label-danger"><%= Conversation.count_unread_conversations %></span> | 
+      <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
       
     </div>

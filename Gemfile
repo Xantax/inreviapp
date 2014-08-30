@@ -20,7 +20,7 @@ gem 'fog', '~> 1.22.1'
 gem 'aws-sdk', '~> 1.42.0'
 gem 'nokogiri', '~> 1.6.1'
 gem 'sprockets', '~> 2.11.0'
-gem "paperclip", "~> 4.1"
+#gem "paperclip", "~> 4.1"
 gem 'mailgun-ruby', "~>1.0.2"
 gem 'twilio-ruby', '~> 3.11'
 gem 'countries', '~> 0.9.3'
@@ -36,7 +36,7 @@ gem 'newrelic_rpm'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :production do
-  gem 'pg', '0.15.1'
+  gem 'pg'
   gem 'rails_12factor', '0.0.2'
   gem 'heroku-deflater'
   gem 'unicorn', '~> 4.8.3'

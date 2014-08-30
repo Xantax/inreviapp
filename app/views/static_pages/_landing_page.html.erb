@@ -1,12 +1,11 @@
-<div class="digital-market-home" align="center">
-<%= image_tag('1/digil.png') %> <span class="landing-description">Digital products & services</span>
-</div>
-
 <div class="row">
   
   <div class="col-xs-1"></div>
   
     <div class="col-xs-5 home-center">
+      <div class="digital-market-home" align="center">
+        <%= image_tag('1/digil.png') %> <span class="landing-description">Digital products & services</span>
+      </div>
       <div class="row">
         <div class="col-xs-6 left-home">
           <%= image_tag('1/free_credit.png') %> <b>20</b> INCOINS<hr>
@@ -22,6 +21,7 @@
     </div>
   
   <div class="col-xs-5 home-center" align="right">
+    <div style="padding-top:60px"></div>
     <p id="notice"><%= notice %></p>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <% if resource.errors.any? %>
@@ -46,5 +46,5 @@
 </div>
 
 <div id="how-works" align="center">
-  <%= link_to "How it Works", '/how', class: 'btn btn-default' %>
+  <%= link_to "How it Works", '/how', class: 'btn btn-warning' %>
 </div>

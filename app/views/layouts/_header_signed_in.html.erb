@@ -1,5 +1,5 @@
     <div class="col-xs-2">
-      <%= link_to image_tag('logou8.png'), root_path %>
+      <%= link_to image_tag('logo.PNG'), root_path %>
     </div>
   
     <div class="col-xs-5 header-search">
@@ -18,10 +18,9 @@
       <span class="badge alert-warning incoins"><%= link_to total_incoins, buycredit_path %></span> | 
       <% end %>
       <span id="message-icon"><%= link_to "", '/conversations' %></span>
-      <%= link_to image_tag("1/messages3.png"), '/conversations' %>
       <% if Conversation.count_unread_conversations > 0 %>
         <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-      <% end %>| 
-      <span id="profile-icon"><%= link_to "", user_path(current_user) %></span> | 
+      <% end %> | 
+       <span id="profile-icon"><%= link_to "", user_path(current_user) %></span> |
       
     </div>

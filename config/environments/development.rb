@@ -43,7 +43,7 @@ Rails.application.configure do
   :port => 587,
   :domain => "inrevi.com",
   :user_name => "postmaster@inrevi.com",
-  :password => "8e0a03652080d9e6a15a7f976deaaf7a"
+  :password => ENV['MAILGUN_PASS']
 }
 
   # Raises error for missing translations

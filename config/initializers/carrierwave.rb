@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: "AWS",
-    aws_access_key_id: 'AKIAIGCJKAUC3OHB6ATA',
-    aws_secret_access_key: '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'
+    aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   }
   config.asset_host = "http://d2c0q6kxs6d400.cloudfront.net"
   #config.cache_dir = "#{Rails.root}/tmp/uploads"

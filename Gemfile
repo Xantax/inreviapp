@@ -30,6 +30,7 @@ gem 'rails_autolink', '~> 1.1.6'
 gem 'pg_search', '~> 0.7.6'
 gem 'metamagic', '~> 3.1.6'
 gem 'newrelic_rpm'
+gem "figaro"
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

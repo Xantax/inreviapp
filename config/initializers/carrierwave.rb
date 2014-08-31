@@ -8,5 +8,5 @@ CarrierWave.configure do |config|
   #config.cache_dir = "#{Rails.root}/tmp/uploads"
   config.fog_directory = 'inreviapp'
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
-  #config.storage = :fog
+  config.storage = :fog
 end

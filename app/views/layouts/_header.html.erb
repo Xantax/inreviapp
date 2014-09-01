@@ -1,7 +1,11 @@
 <div class="row header">
   <% if user_signed_in? %>
-    <%= render 'layouts/header_signed_in' %>
+      <%= render 'layouts/header_signed_in' %>
   <% else %>
     <%= render 'layouts/header_not_signed_in' %>
   <% end %>  
+</div>
+
+<div class="row cat-navbar" align="center">
+  <%= image_tag('3/dm.png') %> <%= link_to "Digital products & services", "/how" %>
 </div>

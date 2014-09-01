@@ -8,20 +8,16 @@ html, body {
   padding-left:1%;
   padding-right:1%;
 }
-.wrapper {
-	min-height: 98%;
-	margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-	height: 50px; /* .push must be the same height as .footer */
-}
 
 /* HEADER */
 
 .row.header{
-  margin-bottom:40px;
   border-bottom: 2px solid #E8E8E8;
-  padding-bottom:5px;
+}
+
+.row.cat-navbar{
+  margin-bottom:40px;
+  background-color:#F5F5F5;
 }
 
 .form-control.devise{

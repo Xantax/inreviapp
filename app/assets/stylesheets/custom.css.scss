@@ -13,6 +13,7 @@ html, body {
 
 .row.header{
   border-bottom: 2px solid #E8E8E8;
+  padding-bottom:10px;
 }
 
 .row.cat-navbar{
@@ -62,6 +63,29 @@ html, body {
 
 .badge.alert-warning.incoins{
   a{color:brown;}
+}
+
+.logospr {
+a::before {
+content: "";
+position: absolute;
+width: 128px;
+height: 46px;
+background-image: asset-data-url("3/logospr.PNG");
+background-repeat: no-repeat;
+background-position: 0 -46px;
+}
+}
+.logospr:hover {
+a::before {
+content: "";
+position: absolute;
+width: 128px;
+height: 46px;
+background-image: asset-data-url("3/logospr.PNG");
+background-repeat: no-repeat;
+background-position: 0 0px;
+}
 }
 
 /* FORMS */

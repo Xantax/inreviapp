@@ -30,3 +30,80 @@
 .how-general{
   color:#707070;
 }
+
+/* landing page features */
+
+.no-fee {
+  display:inline-block;
+  position: absolute; 
+  top:-5px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -0px;
+}
+
+.any-pay {
+  display:inline-block;
+  position: absolute; 
+  top:-5px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -32px;
+}
+
+.ver-users {
+  display:inline-block;
+  position: absolute; 
+  top:60px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -64px;
+}
+
+.free-list {
+  display:inline-block;
+  position: absolute; 
+  top:60px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -96px;
+}
+
+.low-price {
+  display:inline-block;
+  position: absolute; 
+  top:130px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -128px;
+}
+
+.free-credit {
+  display:inline-block;
+  position: absolute; 
+  top:130px;
+    height:32px;
+    width:32px;
+    background-image: asset-data-url("3/features_hp.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -160px;
+}
+
+.feature-name{
+  padding-left:40px;
+}
+
+.feature-space{
+  padding-bottom:10px;
+  padding-bottom:10px;
+}

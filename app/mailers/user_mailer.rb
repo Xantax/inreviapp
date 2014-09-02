@@ -1,14 +1,14 @@
 class UserMailer < ActionMailer::Base
   default from: "support@inrevi.com"
   
-  def new_conversation(conversation)
-    @conversation = conversation
-    @author = conversation.user
-    @user = conversation.offer.user
-    @offer = conversation.offer
+  def new_message(message)
+    @message = message
+    @author = message.sender
+    @user = message.recipient
+    @offer = message.conversation.offer
     @url  = 'http://www.inrevi.com/conversations'
     
-    mail(to: @user.email, subject: 'Inrevi - Someone wants to buy your offer')
+    mail(to: @user.email, subject: 'Inrevi - You have a new message')
   end
   
   def new_buy_request(buy_request)
@@ -28,6 +28,6 @@ class UserMailer < ActionMailer::Base
     @offer = order.offer
     @url  = 'http://www.inrevi.com/conversations'
     
-    mail(to: @user.email, subject: 'Inrevi - Your request to buy an offer was approved by the seller')
+    mail(to: @user.email, subject: 'Inrevi - Your request was approved by the seller')
   end
 end

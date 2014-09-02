@@ -21,10 +21,7 @@ class ConversationsController < ApplicationController
     @conversation = @offer.conversations.create(conversation_params)
     
     respond_to do |format|
-      if @conversation.save
-        
-        UserMailer.new_conversation(@conversation).deliver
-        
+      if @conversation.save        
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @conversation }
       else

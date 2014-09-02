@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        
+        UserMailer.new_message(@message).deliver
+        
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @conversation }
       else

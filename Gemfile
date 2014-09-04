@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 3.2.4'
@@ -31,6 +33,7 @@ gem 'pg_search', '~> 0.7.6'
 gem 'metamagic', '~> 3.1.6'
 gem 'newrelic_rpm'
 gem "figaro"
+gem 'simple_form'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

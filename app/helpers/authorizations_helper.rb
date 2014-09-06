@@ -54,7 +54,7 @@ module AuthorizationsHelper
   # Must be completely verified
     def must_be_completely_verified
       unless current_user.phone_codes.count == 1
-        redirect_to verify_path
+        redirect_to root_path
       end
     end
   

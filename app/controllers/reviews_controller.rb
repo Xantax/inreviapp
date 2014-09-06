@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_action :only_two_reviews, only: [:new, :create]
   before_action :one_per_user, only: [:new, :create]
   before_action :require_permission, only: [:edit, :update]
-  #before_action :must_be_completely_verified, only: [:new, :create, :edit, :update]
+  before_action :must_be_completely_verified, only: [:new, :create, :edit, :update]
 
   def show
   end

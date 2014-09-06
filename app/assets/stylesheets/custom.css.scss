@@ -119,27 +119,26 @@
 }
 
 .logospr {
-  padding-top:5px;
-a::before {
-content: "";
-position: absolute;
-width: 121px;
-height: 32px;
-background-image: asset-data-url("3/logoap.PNG");
-background-repeat: no-repeat;
-background-position: 0 0px;
-}
+  a::before {
+    content: "";
+    position: absolute;
+    width: 124px;
+    height: 35px;
+    background-image: asset-data-url("3/logoz.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -4px;
+  }
 }
 .logospr:hover {
-a::before {
-content: "";
-position: absolute;
-width: 121px;
-height: 32px;
-background-image: asset-data-url("3/logoap.PNG");
-background-repeat: no-repeat;
-background-position: 0 -33px;
-}
+  a::before {
+    content: "";
+    position: absolute;
+    width: 124px;
+    height: 35px;
+    background-image: asset-data-url("3/logoz.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -39px;
+  }
 }
 
 /* FORMS */

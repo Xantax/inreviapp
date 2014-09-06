@@ -162,21 +162,6 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.datetime "updated_at"
   end
 
-  create_table "user_identifications", force: true do |t|
-    t.string   "real_name"
-    t.string   "city"
-    t.integer  "zip_code"
-    t.string   "address"
-    t.string   "country"
-    t.string   "id_photo"
-    t.string   "recent_photo"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_identifications", ["user_id"], name: "index_user_identifications_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.integer  "credit",                 default: 20

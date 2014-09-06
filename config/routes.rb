@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#home'  
+  
+  match 'terms' => "static_pages#terms", via: [:get]
+  match 'buycredit' => "static_pages#buycredit", via: [:get]
+  match 'how' => "static_pages#howworks", via: [:get]
+  match 'first_message' => "static_pages#first_message", via: [:get]
+  match 'offerz/search' => "offers#search", via: [:get]
+  
+  get 'tags/:tag', to: 'offers#index', as: :tag
+  
   resources :reviews
 
   resources :orders do
@@ -19,8 +29,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :conversations
     resources :promoted_offers
-  end
-  resources :user_identifications
+  end  
   resources :phone_codes
   resources :phone_verifications
   resources :promoted_offers
@@ -34,15 +43,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'  
-  
-  match 'terms' => "static_pages#terms", via: [:get]
-  match 'buycredit' => "static_pages#buycredit", via: [:get]
-  match 'how' => "static_pages#howworks", via: [:get]
-  match 'first_message' => "static_pages#first_message", via: [:get]
-  match 'offerz/search' => "offers#search", via: [:get]
-  
-  get 'tags/:tag', to: 'offers#index', as: :tag
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -2,7 +2,7 @@
           * You only have <span class="badge alert-warning"><%= total_incoins %></span> incoins. 
           <%= link_to "Get more", buycredit_path %><br><br>
 
-        <%= form_for([@offer, @promoted_offer]) do |f| %>
+        <%= form_for [@promotable, @promoted_offer] do |f| %>
           <% if @promoted_offer.errors.any? %>
               <div id="error_explanation">
                 <ul>
@@ -14,7 +14,6 @@
             <% end %>
 
           <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :offer_id, value: @offer.id %>
           How many clicks do you want? 
           <small>(max <b><%= total_incoins %></b>)</small><br><br>
           <%= f.number_field :set_clicks %><br><br>

@@ -18,7 +18,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :tags, through: :taggings
-  has_many :promoted_offers
+  has_many :promoted_offers, as: :promotable
   has_many :conversations, as: :convoable
   has_many :buy_requests, as: :buyable
   has_many :orders, as: :orderable

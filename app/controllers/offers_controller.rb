@@ -27,6 +27,9 @@ class OffersController < ApplicationController
     @convoable = @offer
     @conversations = @convoable.conversations
     @conversation = Conversation.new
+    @promotable = @offer
+    @comments = @promotable.promoted_offers
+    @promoted_offer = PromotedOffer.new
   end
 
   def new

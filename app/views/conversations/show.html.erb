@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% meta title: "Inrevi - Conversation" %>
-
+<%= @conversation.convoable_type %>
 <div class="row">
 
   <div class="col-xs-3"></div>
@@ -11,11 +11,11 @@
     <div class="row">
       
       <div class="col-xs-3">
-       <%= link_to image_tag(@conversation.offer.image_url(:thumb).to_s, width: '100', class: 'img-circle'), offer_path(@conversation.offer) %>
+        <%= link_to image_tag(@conversation.convoable.image_url(:thumb).to_s, width: '100', class: 'img-circle'), "/#{@conversation.convoable_type.downcase.pluralize}/#{@conversation.convoable_id}" %>
       </div>
         <div class="col-xs-4" align="left">
-           <strong><%= link_to @conversation.offer.name, offer_path(@conversation.offer) %></strong><br><br>
-          <mark>$ <%= @conversation.offer.price %></mark>
+           <strong><%= link_to @conversation.convoable.name, "/#{@conversation.convoable_type.downcase.pluralize}/#{@conversation.convoable_id}" %></strong><br><br>
+          <mark>$ <%= @conversation.convoable.price %></mark>
         </div>
       
       <div class="col-xs-5">
@@ -24,7 +24,8 @@
         <%= form_for([@conversation, @conversation.buy_requests.build]) do |f| %>
               <%= f.hidden_field :user_id, value: @conversation.user_id %>
               <%= f.hidden_field :conversation_id, value: @conversation.id %>
-              <%= f.hidden_field :offer_id, value: @conversation.offer_id %>
+              <%= f.hidden_field :buyable_id, value: @conversation.convoable_id %>
+              <%= f.hidden_field :buyable_type, value: @conversation.convoable_type %>
             <div class="actions" align="right">
               <%= f.submit "Request to Buy", class: 'btn btn-warning', data: { disable_with: "Sending..." } %>
             </div>
@@ -36,7 +37,8 @@
            <kbd>User wants to buy your offer.</kbd><br><br>
         
             <%= form_for([@conversation, @conversation.orders.build]) do |f| %>
-                <%= f.hidden_field :offer_id, value: @conversation.offer_id %>
+                <%= f.hidden_field :orderable_id, value: @conversation.convoable_id %>
+                <%= f.hidden_field :orderable_type, value: @conversation.convoable_type %>
                 <%= f.hidden_field :conversation_id, value: @conversation.id %>
                 <%= f.hidden_field :buyer_id, value: @conversation.user_id %>
                 <%= f.hidden_field :seller_id, value: @conversation.recipient_id %>
@@ -81,8 +83,7 @@
         </div>
       </div>
       <div class="col-xs-4" align="right">
-        <%= link_to 'Cancel', conversation_path(@conversation),
-                    method: :delete, class: 'btn btn-default' %>
+        <%= link_to 'Cancel', @conversation, method: :delete, class: 'btn btn-default' %>
       </div>
     </div>
       <hr>

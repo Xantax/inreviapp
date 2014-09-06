@@ -30,13 +30,13 @@ class BuyRequestsController < ApplicationController
     end
 
     def buy_request_params
-      params.require(:buy_request).permit(:user_id, :conversation_id, :offer_id)
+      params.require(:buy_request).permit(:user_id, :conversation_id, :buyable_id, :buyable_type)
     end
   
   # Only create a request if there is some activity
     def there_are_messages
       @conversation = Conversation.find(params[:conversation_id])
-      unless @conversation.messages_count > 2
+      unless @conversation.messages_count > 1
         redirect_to root_path
       end
     end

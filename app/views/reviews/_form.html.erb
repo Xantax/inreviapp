@@ -39,9 +39,10 @@
         <%= f.hidden_field :buyer_id, value: current_user.id %>
         <%= f.hidden_field :seller_id, value: @conversation.user_id %>
       <% end %>
-    <%= f.hidden_field :offer_id, value: @conversation.offer.id %>
-    <%= f.hidden_field :order_id, value: @conversation.orders.first.id %>
-    <%= f.hidden_field :conversation_id, value: @conversation.id %>
+      <%= f.hidden_field :reviewable_id, value: @conversation.convoable_id %>
+      <%= f.hidden_field :reviewable_type, value: @conversation.convoable_type %>
+      <%= f.hidden_field :order_id, value: @conversation.orders.first.id %>
+      <%= f.hidden_field :conversation_id, value: @conversation.id %>
 
   <div class="actions" align="right">
     <%= f.submit "Submit", class: 'btn btn-success', data: { disable_with: "Uploading..." } %>

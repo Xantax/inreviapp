@@ -85,11 +85,10 @@ keywords: %w(@offer.tag_list)
     <% end %><hr>
     <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
-    <% if user_signed_in? && (current_user.phone_codes.count == 1) %>
+    <% if user_signed_in? && (current_user.phone_codes.count == 0) %>
       <% unless current_user == @offer.user %> 
-        <%= form_for([@offer, @offer.conversations.build]) do |f| %>
+        <%= form_for [@convoable, @conversation] do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :offer_id, value: @offer.id %>
             <%= f.hidden_field :recipient_id, value: @offer.user.id %>
           <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
         <% end %>

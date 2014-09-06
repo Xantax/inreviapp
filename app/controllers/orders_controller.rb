@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:offer_id, :conversation_id, :buyer_id, :seller_id)
+      params.require(:order).permit(:orderable_id, :orderable_type, :conversation_id, :buyer_id, :seller_id)
     end
   
     # Only 1 order per conversation

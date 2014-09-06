@@ -10,10 +10,12 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :seller_id
       t.references :order, index: true
       t.references :conversation, index: true
+      t.belongs_to :reviewable, polymorphic: true
 
       t.timestamps
     end
     add_index :reviews, :buyer_id
     add_index :reviews, :seller_id
+    add_index :reviews, [:reviewable_id, :reviewable_type]
   end
 end

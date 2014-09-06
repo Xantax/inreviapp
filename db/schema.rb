@@ -19,29 +19,31 @@ ActiveRecord::Schema.define(version: 20140815150935) do
   create_table "buy_requests", force: true do |t|
     t.integer  "user_id"
     t.integer  "conversation_id"
-    t.integer  "offer_id"
+    t.integer  "buyable_id"
+    t.string   "buyable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "buy_requests", ["buyable_id", "buyable_type"], name: "index_buy_requests_on_buyable_id_and_buyable_type", using: :btree
   add_index "buy_requests", ["conversation_id"], name: "index_buy_requests_on_conversation_id", using: :btree
-  add_index "buy_requests", ["offer_id"], name: "index_buy_requests_on_offer_id", using: :btree
   add_index "buy_requests", ["user_id"], name: "index_buy_requests_on_user_id", using: :btree
 
   create_table "conversations", force: true do |t|
     t.integer  "user_id"
-    t.integer  "offer_id"
     t.integer  "recipient_id"
     t.integer  "messages_count",     default: 0
     t.datetime "content_changed_at"
     t.integer  "buy_requests_count", default: 0
     t.integer  "orders_count",       default: 0
     t.integer  "reviews_count",      default: 0
+    t.integer  "convoable_id"
+    t.string   "convoable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "conversations", ["offer_id"], name: "index_conversations_on_offer_id", using: :btree
+  add_index "conversations", ["convoable_id", "convoable_type"], name: "index_conversations_on_convoable_id_and_convoable_type", using: :btree
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
@@ -75,18 +77,19 @@ ActiveRecord::Schema.define(version: 20140815150935) do
   add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.integer  "offer_id"
     t.integer  "conversation_id"
     t.integer  "buyer_id"
     t.integer  "seller_id"
     t.integer  "reviews_count",   default: 0
+    t.integer  "orderable_id"
+    t.string   "orderable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id", using: :btree
   add_index "orders", ["conversation_id"], name: "index_orders_on_conversation_id", using: :btree
-  add_index "orders", ["offer_id"], name: "index_orders_on_offer_id", using: :btree
+  add_index "orders", ["orderable_id", "orderable_type"], name: "index_orders_on_orderable_id_and_orderable_type", using: :btree
   add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
 
   create_table "phone_codes", force: true do |t|
@@ -129,6 +132,8 @@ ActiveRecord::Schema.define(version: 20140815150935) do
     t.integer  "seller_id"
     t.integer  "order_id"
     t.integer  "conversation_id"
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140815150935) do
   add_index "reviews", ["conversation_id"], name: "index_reviews_on_conversation_id", using: :btree
   add_index "reviews", ["offer_id"], name: "index_reviews_on_offer_id", using: :btree
   add_index "reviews", ["order_id"], name: "index_reviews_on_order_id", using: :btree
+  add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
   add_index "reviews", ["seller_id"], name: "index_reviews_on_seller_id", using: :btree
 
   create_table "taggings", force: true do |t|

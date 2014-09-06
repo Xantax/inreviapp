@@ -1,11 +1,12 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :edit, :update, :destroy]
+  before_action :set_conversation, only: [:show, :destroy]
   before_action :require_permission_for_deleting, only: :destroy
   before_action :require_permission, only: :destroy
   before_action :correct_conversation, only: :show
   before_action :authenticate_user!
-  before_action :must_be_completely_verified, except: [:index]
+  #before_action :must_be_completely_verified, except: [:index]
   before_filter :record_last_inbox_visit, only: [:index, :show]
+  before_filter :load_convoable, except: [:index]
   
   def index
     @conversations = Conversation.ordered_conversations.paginate(:page => params[:page], :per_page => 10)
@@ -16,9 +17,8 @@ class ConversationsController < ApplicationController
     @review = Review.new
   end
   
-  def create
-    @offer = Offer.find(params[:offer_id])
-    @conversation = @offer.conversations.create(conversation_params)
+  def create 
+    @conversation = @convoable.conversations.new(conversation_params)
     
     respond_to do |format|
       if @conversation.save        
@@ -34,7 +34,7 @@ class ConversationsController < ApplicationController
   def destroy
     @conversation.destroy
     respond_to do |format|
-      format.html { redirect_to conversations_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
@@ -45,8 +45,13 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
   end
   
+  def load_convoable
+    resource, id = request.path.split('/')[1, 2]
+    @convoable = resource.singularize.classify.constantize.find(id)
+  end
+  
   def conversation_params
-    params.require(:conversation).permit(:user_id, :offer_id, :recipient_id, :buy_request)
+    params.require(:conversation).permit(:user_id, :recipient_id, :buy_request)
   end
   
   def record_last_inbox_visit

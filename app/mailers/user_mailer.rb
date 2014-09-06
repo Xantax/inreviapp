@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
     @message = message
     @author = message.sender
     @user = message.recipient
-    @offer = message.conversation.offer
+    @offer = message.conversation.convoable
     @url  = 'http://www.inrevi.com/conversations'
     
     mail(to: @user.email, subject: 'Inrevi - You have a new message')
@@ -14,8 +14,8 @@ class UserMailer < ActionMailer::Base
   def new_buy_request(buy_request)
     @buy_request = buy_request
     @author = buy_request.user
-    @user = buy_request.offer.user
-    @offer = buy_request.offer
+    @user = buy_request.buyable.user
+    @offer = buy_request.buyable
     @url  = 'http://www.inrevi.com/conversations'
     
     mail(to: @user.email, subject: 'Inrevi - You have a new order')
@@ -23,9 +23,9 @@ class UserMailer < ActionMailer::Base
   
   def new_order(order)
     @order = order
-    @seller = order.offer.user
+    @seller = order.orderable.user
     @user = order.buyer
-    @offer = order.offer
+    @offer = order.orderable
     @url  = 'http://www.inrevi.com/conversations'
     
     mail(to: @user.email, subject: 'Inrevi - Your request was approved by the seller')

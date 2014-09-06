@@ -1,24 +1,29 @@
 @import "bootstrap";
 
-* {
-	margin: 0;
-}
-html, body {
-	height: 98%;
-  padding-left:1%;
-  padding-right:1%;
-}
-
 /* HEADER */
 
 .row.header{
   border-bottom: 2px solid #E8E8E8;
   padding-bottom:10px;
+  margin-bottom:40px;
 }
 
 .row.cat-navbar{
-  margin-bottom:40px;
+  height:40px;
   background-color:#F5F5F5;
+  padding-top:5px;
+}
+
+.row.header-not-signed{
+  height:50px;
+  border-bottom: 2px solid #E8E8E8;
+  padding-top:10px;
+}
+
+.row.cats-not-signed{
+  height:52px;
+  border-bottom: 2px solid #E8E8E8;
+  margin-bottom:50px;
 }
 
 .form-control.devise{
@@ -33,12 +38,60 @@ html, body {
   width:100px;
 }
 
-.col-xs-3.user-header{
+.col-xs-2.logo-signed{
   padding-top:10px;
 }
 
-.col-xs-5.header-search{
-  padding-top:5px;
+.col-xs-10.sections{
+  height:40px;
+}
+
+.col-xs-6.products{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+  }
+}
+
+.col-xs-6.products:hover{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -53px;
+  }
+}
+
+.col-xs-6.services{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -106px;
+  }
+}
+
+.col-xs-6.services:hover{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -159px;
+  }
 }
 
 .col-xs-7.login{
@@ -66,25 +119,26 @@ html, body {
 }
 
 .logospr {
+  padding-top:5px;
 a::before {
 content: "";
 position: absolute;
-width: 128px;
-height: 46px;
-background-image: asset-data-url("3/logospr.PNG");
+width: 121px;
+height: 32px;
+background-image: asset-data-url("3/logoap.PNG");
 background-repeat: no-repeat;
-background-position: 0 -46px;
+background-position: 0 0px;
 }
 }
 .logospr:hover {
 a::before {
 content: "";
 position: absolute;
-width: 128px;
-height: 46px;
-background-image: asset-data-url("3/logospr.PNG");
+width: 121px;
+height: 32px;
+background-image: asset-data-url("3/logoap.PNG");
 background-repeat: no-repeat;
-background-position: 0 0px;
+background-position: 0 -33px;
 }
 }
 

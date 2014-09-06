@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_action :only_two_reviews, only: [:new, :create]
   before_action :one_per_user, only: [:new, :create]
   before_action :require_permission, only: [:edit, :update]
-  before_action :must_be_completely_verified, only: [:new, :create, :edit, :update]
+  #before_action :must_be_completely_verified, only: [:new, :create, :edit, :update]
 
   def show
   end
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:positive, :body, :proof, :image, :offer_id, :buyer_id, :seller_id, :order_id, :conversation_id)
+      params.require(:review).permit(:positive, :body, :proof, :image, :offer_id, :buyer_id, :seller_id, :order_id, :conversation_id, :reviewable_id, :reviewable_type)
     end
   
     # There should be only 2 reviews per conversation

@@ -4,4 +4,3 @@ jQuery ->
         errorField: '#gmaps-error'
 
     completer.autoCompleteInit
-        country: "us"

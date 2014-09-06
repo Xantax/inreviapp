@@ -19,10 +19,10 @@ class Offer < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :promoted_offers
-  has_many :conversations
-  has_many :buy_requests
-  has_many :orders
-  has_many :reviews
+  has_many :conversations, as: :convoable
+  has_many :buy_requests, as: :buyable
+  has_many :orders, as: :orderable
+  has_many :reviews, as: :reviewable
   
   mount_uploader :image, ImageUploader
   

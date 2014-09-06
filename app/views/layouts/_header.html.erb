@@ -1,5 +1,11 @@
-<% if user_signed_in? %>
-  <%= render 'layouts/header_signed_in' %>
-<% else %>
-  <%= render 'layouts/header_not_signed_in' %>
-<% end %>
+<div class="row header">
+  <div class="col-xs-2 logo-signed">
+    <span style="padding-right:20px"></span>
+    <span class="logospr"><%= link_to "", root_path %></span>
+  </div>
+
+  <div class="col-xs-10 sections">
+    <div class="col-xs-6 products"><%= link_to "Products", "/how" %></div>
+    <div class="col-xs-6 services"><%= link_to "Services", "/how" %></div>
+  </div> 
+</div>

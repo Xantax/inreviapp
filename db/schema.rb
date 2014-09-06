@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815150935) do
+ActiveRecord::Schema.define(version: 20140906171302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,17 @@ ActiveRecord::Schema.define(version: 20140815150935) do
 
   add_index "promoted_offers", ["promotable_id", "promotable_type"], name: "index_promoted_offers_on_promotable_id_and_promotable_type", using: :btree
   add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.boolean  "positive"

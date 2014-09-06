@@ -28,20 +28,6 @@ module AuthorizationsHelper
       end
     end
   
-  # User has only one ID verification
-    def user_count_identifications
-      if current_user.user_identifications.count == 1
-        redirect_to root_path
-      end
-    end
-  
-  # User has submitted a phone code
-    def before_user_count_phone_code
-      unless current_user.phone_codes.count == 1
-        redirect_to root_path
-      end
-    end
-  
   # User phone code is correct
     def before_phone_correct
       current_user.phone_codes.first(1).each do |code|

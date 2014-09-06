@@ -14,10 +14,17 @@ class User < ActiveRecord::Base
   has_many :promoted_offers
   has_many :buy_requests
   has_many :orders
-  has_many :reviews, :through => :offers
+  has_many :reviews
   
   has_many :conversations
   has_many :messages, :through => :conversations
+  
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id",
+            class_name: "Relationship",
+            dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
   
   def self.current
     Thread.current[:user]
@@ -62,6 +69,22 @@ class User < ActiveRecord::Base
   
   def max_num
     (User.current.credit.to_i) - (User.current.sum_of_all.to_i)
+  end
+  
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def not_following?(other_user)
+    other_user != self && !following?(other_user)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
   
 end

@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   
   get 'tags/:tag', to: 'offers#index', as: :tag
   
+  resources :relationships, only: [:create, :destroy]
+  
   resources :reviews
 
   resources :orders do
     resources :reviews
   end
+  
   resources :buy_requests
   resources :messages
 
@@ -27,6 +30,9 @@ Rails.application.routes.draw do
 
   devise_for :users  
   resources :users do
+    member do
+      get :following, :followers
+    end
     resources :conversations
     resources :promoted_offers
   end  

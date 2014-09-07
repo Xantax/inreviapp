@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.col-xs-6.left-home{
+.col-sm-6.left-home{
   font-size:120%;
 }
 
@@ -11,10 +11,6 @@
   margin-bottom:30px;
   font-size:150%;
   border-bottom: 1px solid #E8E8E8;
-}
-
-.col-xs-5.home-center{
-  width:450px;
 }
 
 .landing-description{
@@ -29,6 +25,36 @@
 
 .how-general{
   color:#707070;
+}
+
+.col-xs-6.newsfeed{
+  padding: 20px;
+  border-top: 1px solid #E8E8E8;
+  border-right: 1px solid #E8E8E8;
+  border-left: 1px solid #E8E8E8;
+}
+
+.right-cats-home{
+  background-color:#F8F8F8;
+  padding:8px;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.right-cats-home:hover{
+  background-color:#F0F0F0;
+  padding:8px;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.label.label-danger.right{
+  float:right;
+}
+
+.badge.alert-warning.incoins{
+  a{color:brown;}
+  float:right;
 }
 
 /* landing page features */

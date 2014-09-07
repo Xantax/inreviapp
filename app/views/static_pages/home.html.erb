@@ -7,10 +7,32 @@ keywords: %w(inrevi marketplace free)
 <% if user_signed_in? %>
 
   <div class="row">
+    <div class="col-xs-2">
+      <div class="right-cats-home">
+        <%= link_to image_tag('3/chat51.png'), '/conversations' %>
+        <b><%= link_to "Messages", '/conversations' %></b>
+        <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
+      </div>
+      <div class="right-cats-home">
+        <%= link_to image_tag('3/coin11.png'), buycredit_path %>
+        <b><%= link_to "Incoins", buycredit_path %></b>
+        <span class="badge alert-warning incoins"><%= link_to total_incoins, buycredit_path %></span>
+      </div>
+      <div class="right-cats-home">
+        <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
+        <b><%= link_to "Profile", user_path(current_user) %></b>
+      </div>
+      <div class="right-cats-home">
+        <%= link_to image_tag('3/logout15.png'), destroy_user_session_path, :method => :delete %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      </div>
+    </div>
     <div class="col-xs-1"></div>
-    <div class="col-xs-2"></div>
-    <div class="col-xs-6"></div>
-    <div class="col-xs-3"><p id="notice"><%= notice %></p><%= render 'user_verification' %></div>
+    <div class="col-xs-6 newsfeed"><p id="notice"><%= notice %></p>
+      sdfsdf
+    </div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-2"><%= render 'user_verification' %></div>
   </div>
 
 <% else %>

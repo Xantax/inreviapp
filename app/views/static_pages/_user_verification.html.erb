@@ -12,7 +12,7 @@
 
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.hidden_field :email, autofocus: true, :value => current_user.email %>
-      <i>Didn't receive it yet?</i> <%= f.submit "Resend email", data: { disable_with: "email sent" }, class: "btn btn-success" %>
+      <i>Didn't receive it yet?</i><br><br> <%= f.submit "Resend email", data: { disable_with: "email sent" }, class: "btn btn-success" %>
       <% end %>
     
 <hr><% elsif current_user.confirmed_at.present? && current_user.phone_codes.count != 1 %><hr>

@@ -55,8 +55,7 @@
     <% end %>
     
     <% if current_user?(@user) %>
-      <%= image_tag('2/user_settings.png') %><%= link_to "Settings", edit_user_path(@user) %><br><br>
-      <%= image_tag('2/log_out.png') %><%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <%= image_tag('2/user_settings.png') %><%= link_to "Settings", edit_user_path(@user) %>
     <% end %>
   
   </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'activities/index'
+
   root 'static_pages#home'  
   
   match 'terms' => "static_pages#terms", via: [:get]
@@ -10,8 +12,8 @@ Rails.application.routes.draw do
   
   get 'tags/:tag', to: 'offers#index', as: :tag
   
-  resources :relationships, only: [:create, :destroy]
-  
+  resources :activities
+  resources :relationships, only: [:create, :destroy]  
   resources :reviews
 
   resources :orders do

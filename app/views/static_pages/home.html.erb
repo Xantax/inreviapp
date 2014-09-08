@@ -5,12 +5,12 @@ keywords: %w(inrevi marketplace free)
 %>
 
 <% if user_signed_in? %>
-
+  <div align="center"><p id="notice"><%= notice %></p></div>
   <div class="row">
     <div class="col-xs-2">
       <div class="right-cats-home">
         <%= link_to image_tag('3/chat51.png'), '/conversations' %>
-        <b><%= link_to "Messages", '/conversations' %></b>
+        <b><%= link_to "Inbox", '/conversations' %></b>
         <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
       </div>
       <div class="right-cats-home">
@@ -28,8 +28,12 @@ keywords: %w(inrevi marketplace free)
       </div>
     </div>
     <div class="col-xs-1"></div>
-    <div class="col-xs-6 newsfeed"><p id="notice"><%= notice %></p>
-      sdfsdf
+    <div class="col-xs-6 newsfeed">
+      <% @activities.each do |activity| %>
+        <div class="activity">
+          <%= render_activity activity %>
+        </div>
+      <% end %>
     </div>
     <div class="col-xs-1"></div>
     <div class="col-xs-2"><%= render 'user_verification' %></div>

@@ -34,6 +34,7 @@ gem 'metamagic', '~> 3.1.6'
 gem 'newrelic_rpm'
 gem "figaro"
 gem 'simple_form'
+gem 'public_activity'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

@@ -9,7 +9,7 @@ class PromotedOffersController < ApplicationController
   
   def show
     @promoted_offer.increment!(:clicks)
-    redirect_to @promoted_offer.offer
+    redirect_to "/#{@promoted_offer.promotabe_type}/#{@promoted_offer.promotabe_id}"
   end
   
   def create

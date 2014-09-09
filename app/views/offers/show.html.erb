@@ -12,9 +12,13 @@ keywords: %w(@offer.tag_list)
   
   <div class="col-xs-2">
     <% if current_user == @offer.user %> 
-      <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-warning' %><br><br>
+      <%= link_to "Promote", promotion_offer_path, class: 'btn btn-warning' %><br><br>
       <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success' %><hr>
     <% end %>    
+    
+    <% if current_user.admin %>
+      <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
+    <% end %>
   </div>
 
   <div class="col-xs-6 offer-center">

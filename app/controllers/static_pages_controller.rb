@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, only: [:buycredit]
+  before_action :authenticate_user!, only: [:first_message]
   
   def home
     if user_signed_in?
@@ -11,13 +11,7 @@ class StaticPagesController < ApplicationController
   def terms
   end
   
-  def buycredit
-  end
-  
   def howworks
-  end
-  
-  def user_verification
   end
   
   def first_message

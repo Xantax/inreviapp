@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_offer, only: [:show, :edit, :update, :promotion]
+  before_action :authenticate_user!, except: [:show, :index, :promotion]
   before_action :require_permission, only: [:edit, :update]
   #before_action :must_be_completely_verified, except: [:show, :index]
 
@@ -66,6 +66,9 @@ class OffersController < ApplicationController
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def promotion
   end
 
   private

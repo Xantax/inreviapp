@@ -11,12 +11,9 @@ keywords: %w(inrevi marketplace free)
       <div class="right-cats-home">
         <%= link_to image_tag('3/chat51.png'), '/conversations' %>
         <b><%= link_to "Inbox", '/conversations' %></b>
-        <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
-      </div>
-      <div class="right-cats-home">
-        <%= link_to image_tag('3/coin11.png'), buycredit_path %>
-        <b><%= link_to "Incoins", buycredit_path %></b>
-        <span class="badge alert-warning incoins"><%= link_to total_incoins, buycredit_path %></span>
+        <% if Conversation.count_unread_conversations > 0 %>
+          <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
+        <% end %>
       </div>
       <div class="right-cats-home">
         <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>

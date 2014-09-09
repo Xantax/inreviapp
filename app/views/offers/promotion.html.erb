@@ -1,0 +1,28 @@
+<% meta title: "Promotion" %>
+
+<div class="col-xs-3"></div>
+
+<div class="col-xs-3">
+  
+  <h4>Promote your offer</h4><br>
+  <mark>$0.5 / click</mark><br><br>
+  + <b>Special offer</b> - 10% more free clicks.<br> (e.g. order 200 clicks, get 20 for free)<hr>
+  <mark>Quantity</mark> = number of clicks you want<hr>
+
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="LVBUSV7UQN7GS">
+    <table>
+    <tr><td><input type="hidden" name="on0" value="Product ID"></td></tr><tr><td><input type="hidden" name="os0" maxlength="200" value="<%= @offer.id %>"></td></tr>
+    </table><br><br>
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  </form>
+  
+</div>
+
+<div class="col-xs-3"><br>
+  <%= image_tag('3/pp_quantity.PNG') %>
+</div>
+
+<div class="col-xs-3"></div>

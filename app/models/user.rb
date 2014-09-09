@@ -50,27 +50,6 @@ class User < ActiveRecord::Base
     true
   end
   
-  # Find PromotedOffers created by current_user
-  def all_promos
-    User.current.promoted_offers.each do |promo|
-      promo
-    end
-  end
-  
-  # Array of :set_clicks values
-  def get_clickz
-    all_promos.map{ |v| v.set_clicks }
-  end
-  
-  # Sum of all set_clicks values for the current_user
-  def sum_of_all
-    get_clickz.inject{|sum,x| sum + x }
-  end
-  
-  def max_num
-    (User.current.credit.to_i) - (User.current.sum_of_all.to_i)
-  end
-  
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end

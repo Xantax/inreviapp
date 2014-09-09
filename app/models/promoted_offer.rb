@@ -6,10 +6,6 @@ class PromotedOffer < ActiveRecord::Base
   scope :published, -> { where('clicks <= set_clicks') }
   
   validates :set_clicks, numericality: 
-    { only_integer: true, :greater_than => 0, :less_than_or_equal_to => :user_max_num }
-    
-  def user_max_num
-    User.current.max_num
-  end
+    { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000 }
   
 end

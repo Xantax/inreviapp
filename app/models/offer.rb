@@ -28,9 +28,13 @@ class Offer < ActiveRecord::Base
   has_many :reviews, as: :reviewable
   
   mount_uploader :image, ImageUploader
+  mount_uploader :image_a, ImageUploader
+  mount_uploader :image_b, ImageUploader
+  mount_uploader :image_c, ImageUploader
+  mount_uploader :image_d, ImageUploader
   
-  validates :name, length: { maximum: 100 }
-  validates :description, length: { maximum: 1000 }
+  validates :name, length: { maximum: 120 }
+  validates :description, length: { maximum: 5000 }
   validates :image, presence: true
   validates :user_id, presence: true
   

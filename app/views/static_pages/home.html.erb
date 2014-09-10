@@ -7,31 +7,38 @@ keywords: %w(inrevi marketplace free)
 <% if user_signed_in? %>
   <div align="center"><p id="notice"><%= notice %></p></div>
   <div class="row">
-    <div class="col-xs-2">
-      <div class="right-cats-home">
-        <%= link_to image_tag('3/chat51.png'), '/conversations' %>
-        <b><%= link_to "Inbox", '/conversations' %></b>
-        <% if Conversation.count_unread_conversations > 0 %>
-          <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
+<div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      
+        <div class="col-xs-3 right-cats-home">
+          <%= link_to image_tag('3/chat51.png'), '/conversations' %>
+          <b><%= link_to "Inbox", '/conversations' %></b>
+          <% if Conversation.count_unread_conversations > 0 %>
+            <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
+          <% end %>
+        </div>
+        <div class="col-xs-3 right-cats-home">
+          <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
+          <b><%= link_to "Profile", user_path(current_user) %></b>
+        </div>
+        <div class="col-xs-3 right-cats-home">
+          <%= link_to image_tag('3/note36.png'), "" %>
+          <b><%= link_to "Update", "" %></b>
+        </div>
+        <div class="col-xs-3 right-cats-home">
+          <%= link_to image_tag('3/logout15.png'), destroy_user_session_path, :method => :delete %>
+          <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+        </div>
+      
+      <div class="newsfeed">
+        <% @activities.each do |activity| %>
+          <div class="activity">
+            <%= render_activity activity %>
+          </div>
         <% end %>
       </div>
-      <div class="right-cats-home">
-        <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
-        <b><%= link_to "Profile", user_path(current_user) %></b>
-      </div>
-      <div class="right-cats-home">
-        <%= link_to image_tag('3/logout15.png'), destroy_user_session_path, :method => :delete %>
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-      </div>
     </div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-6 newsfeed">
-      <% @activities.each do |activity| %>
-        <div class="activity">
-          <%= render_activity activity %>
-        </div>
-      <% end %>
-    </div>
+    
     <div class="col-xs-1"></div>
     <div class="col-xs-2"><%= render 'user_verification' %></div>
   </div>

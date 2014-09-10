@@ -27,25 +27,33 @@
   color:#707070;
 }
 
-.col-xs-6.newsfeed{
-  padding: 20px;
+.newsfeed{
+  padding-top: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 40px;
   border-top: 1px solid #E8E8E8;
   border-right: 1px solid #E8E8E8;
   border-left: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
 }
 
-.right-cats-home{
+.col-xs-3.right-cats-home{
   background-color:#F8F8F8;
   padding:8px;
   border-top: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
+  border-left: 1px solid #E8E8E8;
+  border-right: 1px solid #E8E8E8;
 }
 
-.right-cats-home:hover{
+.col-xs-3.right-cats-home:hover{
   background-color:#F0F0F0;
   padding:8px;
   border-top: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
+  border-left: 1px solid #E8E8E8;
+  border-right: 1px solid #E8E8E8;
 }
 
 .label.label-danger.right{

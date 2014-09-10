@@ -81,12 +81,18 @@ ActiveRecord::Schema.define(version: 20140907033841) do
     t.string   "name"
     t.text     "description"
     t.string   "image"
-    t.boolean  "service"
+    t.string   "image_a"
+    t.string   "image_b"
+    t.string   "image_c"
+    t.string   "image_d"
+    t.string   "location"
+    t.boolean  "new"
     t.integer  "price"
     t.boolean  "deleted",      default: false
     t.integer  "user_id"
     t.integer  "orders_count", default: 0
     t.integer  "total_clicks", default: 0
+    t.integer  "quantity",     default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

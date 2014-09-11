@@ -13,7 +13,8 @@ keywords: %w(@offer.tag_list)
   <div class="col-xs-2">
     <% if current_user == @offer.user %> 
       <%= link_to "Promote", promotion_offer_path, class: 'btn btn-warning' %><br><br>
-      <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success' %><hr>
+      <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success', target: :_blank %><br><br>
+      Clicks: <b><%= @offer.total_clicks %></b><hr>
     <% end %>    
     
     <% if current_user.admin %>
@@ -22,25 +23,42 @@ keywords: %w(@offer.tag_list)
   </div>
 
   <div class="col-xs-6 offer-center">
+    <% if @offer.deleted %>
+      <div class="alert alert-danger" role="alert">This product has been removed and is not available anymore.</div>
+    <% end %>
+    
     <div class="row">
       <div class="col-xs-5">
         <%= link_to image_tag(@offer.image_url(:thumb).to_s), @offer.image_url, target: :_blank %>
       </div>
       
       <div class="col-xs-7" align="left">  
-        <strong><%= @offer.name %></strong><br><br>
-        <mark>$ <%= @offer.price %></mark><br><br>
-        
+        <strong><%= @offer.name %></strong><br><br>        
         <%= image_tag('2/thumbsup_off.PNG') %>
           <b><%= @positive_reviews.count %></b> | 
         <%= image_tag('2/thumbsdown_off.PNG') %>
-          <b><%= @negative_reviews.count %></b> 
+          <b><%= @negative_reviews.count %></b> <br><br>     
+        Price: $ <span class="label label-success"><%= @offer.price %></span> | 
+        Quantity: <span class="label label-primary"><%= @offer.quantity %></span> | 
+        <% if @offer.new %>
+          <mark>New</mark>
+        <% else %>
+          <mark>Used</mark>
+        <% end %> 
+        <% if @offer.free_delivery %>
+         <br><br> + <u>Free delivery</u>
+        <% end %><br><br>
+        <% if @offer.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= @offer.location %>
+        <% end %> 
       </div>
     </div>
     
-    <hr><%= simple_format(@offer.description) %><hr>
+    <hr><%= simple_format(@offer.description) %>
     
-    <% @reviews.each do |review| %>
+    <% @reviews.each do |review| %><hr>
         <div class="row">
           <div class="col-xs-2">
             <% if review.buyer.image_url.blank? %>
@@ -72,7 +90,6 @@ keywords: %w(@offer.tag_list)
             <% end %>
           </div>
         </div>
-      <hr>
       <% end %>
     
     <div class="digg_pagination">
@@ -89,15 +106,17 @@ keywords: %w(@offer.tag_list)
     <% end %><hr>
     <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
-    <% if user_signed_in? && (current_user.phone_codes.count == 1) %>
-      <% unless current_user == @offer.user %> 
-        <%= form_for [@convoable, @conversation] do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :recipient_id, value: @offer.user.id %>
-          <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
+    <% unless @offer.deleted %>
+      <% if user_signed_in? && (current_user.phone_codes.count == 1) %>
+        <% unless current_user == @offer.user %> 
+          <%= form_for [@convoable, @conversation] do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :recipient_id, value: @offer.user.id %>
+            <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>    
+      <% end %>  
+    <% end %>
   </div>
   
   <div class="col-xs-1"></div>

@@ -8,6 +8,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :image_b
       t.string :image_c
       t.string :image_d
+      t.string :image_e
       t.string :location
       t.boolean :new
       t.integer :price
@@ -16,6 +17,8 @@ class CreateOffers < ActiveRecord::Migration
       t.integer :orders_count, default: 0
       t.integer :total_clicks, default: 0
       t.integer :quantity, default: 1
+      t.integer :barcode
+      t.boolean :free_delivery, default: false
 
       t.timestamps
     end

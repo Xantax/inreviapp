@@ -11,6 +11,7 @@ class Offer < ActiveRecord::Base
       }
   
   validates :price, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
+  validates :quantity, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
   
   def self.search(search)
     Offer.search_by_name(search)
@@ -32,6 +33,7 @@ class Offer < ActiveRecord::Base
   mount_uploader :image_b, ImageUploader
   mount_uploader :image_c, ImageUploader
   mount_uploader :image_d, ImageUploader
+  mount_uploader :image_e, ImageUploader
   
   validates :name, length: { maximum: 120 }
   validates :description, length: { maximum: 5000 }

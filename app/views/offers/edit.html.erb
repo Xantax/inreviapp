@@ -5,6 +5,7 @@
   <%= simple_form_for(@offer) do |f| %>
   
 <div class="col-xs-3">
+  <h4>Additional Photos:</h4><hr>
     <div class="field">
       <% if @offer.image_a_url.blank? %>
         <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
@@ -36,6 +37,14 @@
       <%= image_tag(@offer.image_d_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
       <% end %><br>
       <%= f.file_field :image_d %>
+    </div><hr>  
+    <div class="field">
+      <% if @offer.image_e_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+      <%= image_tag(@offer.image_e_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_e %>
     </div><hr>
 </div>
 
@@ -61,18 +70,18 @@
     </div>
 
     <div class="field">
-      <%= f.radio_button :new, true, checked: true %> New
+      <%= f.radio_button :new, true %> New
       <%= f.radio_button :new, false %> Used
     </div><br>
   
     <div class="field">
-      Categories (max <b>3</b>)<br><br>
+      Categories (max <b>3</b>)
       <small><mark>* separate by commas</mark></small><br><br>
       <%= f.text_field :tag_list, class: "form-control", placeholder: "e.g. electronics, monitors" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control devise", placeholder: "Any"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control"}, :required => true %><br>      
     </div><br><br>
 
     <%= f.hidden_field :user_id, value: @offer.user.id %>
@@ -81,7 +90,7 @@
       <%= f.submit "Save", class: "btn btn-primary", data: { disable_with: "Saving..." } %>
     </div> <hr>
   
-  <div style="color:red"><%= f.check_box :deleted %> <i>delete this offer</i></div>
+  <div style="color:red"><%= f.check_box :deleted %> <i>delete this item</i></div>
 
 </div>
 
@@ -98,11 +107,21 @@
       <small>(min 200x200)</small><br><br>
       <%= f.file_field :image %>
     </div>
-<hr>  
-  
+<hr>    
     <div class="field">
       <%= f.label :price %>
       $ <%= f.number_field :price, class: "form-control short", :required => true %>
+    </div><hr>    
+    <div class="field">
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity, class: "form-control short", :required => true %>
+    </div><hr>    
+      <div class="field">
+        <%= f.label :barcode %>
+        <%= f.number_field :barcode, class: "form-control short" %>
+    </div><hr>    
+      <div class="field">
+        <%= f.check_box :free_delivery %> Free delivery
     </div>
 <hr>
   

@@ -85,14 +85,17 @@ ActiveRecord::Schema.define(version: 20140907033841) do
     t.string   "image_b"
     t.string   "image_c"
     t.string   "image_d"
+    t.string   "image_e"
     t.string   "location"
     t.boolean  "new"
     t.integer  "price"
-    t.boolean  "deleted",      default: false
+    t.boolean  "deleted",       default: false
     t.integer  "user_id"
-    t.integer  "orders_count", default: 0
-    t.integer  "total_clicks", default: 0
-    t.integer  "quantity",     default: 1
+    t.integer  "orders_count",  default: 0
+    t.integer  "total_clicks",  default: 0
+    t.integer  "quantity",      default: 1
+    t.integer  "barcode"
+    t.boolean  "free_delivery", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

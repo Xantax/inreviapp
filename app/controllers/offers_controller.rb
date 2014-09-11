@@ -78,7 +78,7 @@ class OffersController < ApplicationController
     end
 
     def offer_params
-      params.require(:offer).permit(:name, :description, :image, :service, :price, :user_id, :tag_list, :deleted)
+      params.require(:offer).permit(:name, :description, :image, :new, :price, :user_id, :tag_list, :deleted, :image_a, :image_b, :image_c, :image_d, :image_e, :location, :quantity, :barcode, :free_delivery)
     end
   
     def require_permission

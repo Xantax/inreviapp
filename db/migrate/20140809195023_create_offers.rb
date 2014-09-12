@@ -11,7 +11,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :image_e
       t.string :location
       t.boolean :new
-      t.integer :price
+      t.decimal :price
       t.boolean :deleted, default: false
       t.references :user, index: true
       t.integer :orders_count, default: 0

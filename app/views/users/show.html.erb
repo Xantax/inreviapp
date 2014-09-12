@@ -38,9 +38,6 @@
         <% if @user.public_location.present? %>
           <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
         <% end %>
-        <% if @user.language.present? %>
-          <%= image_tag('1/user_language.png') %><%= @user.language %><br>
-        <% end %>
         <% if @user.bio.present? %>
           <%= image_tag('2/user_bio.png') %>
           <%= @user.bio %>
@@ -69,9 +66,13 @@
           <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>
           <div class="caption">
            <%= link_to truncate(offer.name, length: 50), offer %><hr>
-           <%= image_tag('2/thumbsup_off.PNG') %> <b><%= offer.reviews.positive.where("buyer_id != ?", offer.user.id).count %></b> | 
-            <%= image_tag('2/thumbsdown_off.PNG') %> <b><%= offer.reviews.negative.where("buyer_id != ?", offer.user.id).count %></b>
-           <span class="offer-price-box"><mark>$<%= offer.price %></mark></span>
+            <%= image_tag('2/thumbsup_off.PNG') %> 
+            <b><%= offer.reviews.positive.where("buyer_id != ?", offer.user.id).count %></b> | 
+            <%= image_tag('2/thumbsdown_off.PNG') %> 
+            <b><%= offer.reviews.negative.where("buyer_id != ?", offer.user.id).count %></b>
+           <span class="offer-price-box">
+             <mark><%= number_to_currency(offer.price) %></mark>
+            </span>
           </div>
         </div>
       </div>

@@ -14,8 +14,7 @@
         <%= link_to image_tag(@conversation.convoable.image_url(:thumb).to_s, width: '100', class: 'img-circle'), "/#{@conversation.convoable_type.downcase.pluralize}/#{@conversation.convoable_id}" %>
       </div>
         <div class="col-xs-4" align="left">
-           <strong><%= link_to @conversation.convoable.name, "/#{@conversation.convoable_type.downcase.pluralize}/#{@conversation.convoable_id}" %></strong><br><br>
-          <mark>$ <%= @conversation.convoable.price %></mark>
+           <strong><%= link_to @conversation.convoable.name, "/#{@conversation.convoable_type.downcase.pluralize}/#{@conversation.convoable_id}" %></strong>
         </div>
       
       <div class="col-xs-5">

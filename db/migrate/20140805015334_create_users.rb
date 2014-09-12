@@ -2,9 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
-      t.string :bio
-      t.string :language
-      t.string :second_language
+      t.text :bio
       t.string :public_location
       t.boolean :admin
       t.boolean :banned

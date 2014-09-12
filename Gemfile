@@ -27,7 +27,6 @@ gem 'mailgun-ruby', "~>1.0.2"
 gem 'twilio-ruby', '~> 3.11'
 gem 'countries', '~> 0.9.3'
 gem 'country_select', '~> 1.3.1'
-gem 'language_list', '~> 1.0.0'
 gem 'will_paginate', '~> 3.0.7'
 gem 'rails_autolink', '~> 1.1.6'
 gem 'pg_search', '~> 0.7.6'
@@ -37,6 +36,7 @@ gem 'figaro', '~> 0.7.0'
 gem 'simple_form', '~> 3.0.2'
 gem 'public_activity', '~> 1.4.2'
 gem 'bootstrap-wysihtml5-rails'
+gem 'rails-i18n', '~> 4.0.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

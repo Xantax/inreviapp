@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20140907033841) do
     t.string   "image_e"
     t.string   "location"
     t.boolean  "new"
-    t.integer  "price"
+    t.decimal  "price"
     t.boolean  "deleted",       default: false
     t.integer  "user_id"
     t.integer  "orders_count",  default: 0
@@ -201,9 +201,7 @@ ActiveRecord::Schema.define(version: 20140907033841) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "bio"
-    t.string   "language"
-    t.string   "second_language"
+    t.text     "bio"
     t.string   "public_location"
     t.boolean  "admin"
     t.boolean  "banned"

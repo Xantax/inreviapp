@@ -10,7 +10,7 @@ class Offer < ActiveRecord::Base
       :tags => [:name]
       }
   
-  validates :price, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
+  validates :price, numericality: { :greater_than => 0, :less_than_or_equal_to => 100000000 }
   validates :quantity, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
   
   def self.search(search)

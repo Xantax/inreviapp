@@ -21,12 +21,9 @@
     <% end %>
     Change image:<br><br>
     <%= f.file_field :image %><hr>
-    <%= f.input :bio, :input_html => { class: "form-control devise" } %><br>
-    <%= f.input :public_location, :input_html =>{:id => 'gmaps-input-address', class: "form-control devise"} %><br>
-      First Language<br>
-    <%= f.select :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]} %><br><br>
-      Second Language<br>
-    <%= f.select :second_language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]} %>
+    <b>About me:</b><br>
+    <%= f.text_area :bio, class: "form-control user-bio" %><br>
+    <%= f.input :public_location, :input_html =>{:id => 'gmaps-input-address', class: "form-control devise"} %>
 
 
   <% if current_user.admin %>

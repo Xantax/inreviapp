@@ -38,7 +38,7 @@ keywords: %w(@offer.tag_list)
           <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
         <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
         <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>     
-        Price: $ <span class="label label-success"><%= @offer.price %></span> | 
+        Price: <span class="label label-success"><%= number_to_currency(@offer.price) %></span> | 
         Quantity: <span class="label label-primary"><%= @offer.quantity %></span> | 
         <% if @offer.new %>
           <mark>New</mark>

@@ -5,10 +5,25 @@ keywords: %w(inrevi marketplace free)
 %>
 
 <% if user_signed_in? %>
-  <div align="center"><p id="notice"><%= notice %></p></div>
-  <div class="row">
-<div class="col-xs-3"></div>
-    <div class="col-xs-6">
+
+<div class="main-nf">
+  
+        <div align="center"><p id="notice"><%= notice %></p></div>
+  
+        <% if current_user.confirmed_at.blank? %>
+        <div class="alert alert-warning nf" role="alert">
+           Please check and confirm your <b>email</b>.
+          <span><i>Didn't receive it yet?</i> <%= link_to "Resend email", '/users/confirmation' %></span>
+        </div>
+        <% elsif current_user.confirmed_at.present? && current_user.phone_verifications.count == 0 %>
+        <div class="alert alert-warning nf" role="alert">
+          One more step - Confirm your <b>phone number</b>. <%= link_to "Click here", 'phone_verifications/new' %>
+        </div>
+        <% elsif current_user.phone_verifications.count > 0 && current_user.phone_codes.count == 0 %>
+        <div class="alert alert-warning nf" role="alert">
+          You need to type in a correct code. <%= link_to "Click here", 'phone_codes/new' %>
+        </div>
+        <% end %>
       
         <div class="col-xs-3 right-cats-home">
           <%= link_to image_tag('3/chat51.png'), '/conversations' %>
@@ -37,11 +52,8 @@ keywords: %w(inrevi marketplace free)
           </div>
         <% end %>
       </div>
-    </div>
-    
-    <div class="col-xs-1"></div>
-    <div class="col-xs-2"><%= render 'user_verification' %></div>
-  </div>
+
+</div>
 
 <% else %>
   <%= render 'landing_page' %>

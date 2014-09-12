@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_create :give_code
+  
   cattr_accessor :current 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -64,6 +66,12 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
+  end
+  
+  private
+  
+  def give_code
+    self.sms_code = Random.rand(100000..999999)
   end
   
 end

@@ -1,3 +1,29 @@
-<% if activity.trackable %>
-  <%= link_to activity.trackable.name, activity.trackable %>
-<% end %>
+<div class="row">
+  <% if activity.trackable %>
+  <div class="col-xs-2">
+    <% if activity.owner.image_url.blank? %>
+        <%= link_to image_tag("1/user_no_image.PNG", width: '80'), user_path(activity.owner) %>
+      <% else %>
+        <%= link_to image_tag(activity.owner.image_url(:thumb).to_s, width: '80'), user_path(activity.owner) %>
+    <% end %>
+  </div>
+  <div class="col-xs-10">
+    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> listed a product for sale 
+    <span class="image-news-story"><%= image_tag('1/pr_icon.PNG') %></span>
+    
+    <div class="row product-short">
+      <div class="col-xs-4">
+      <% if activity.trackable.image_url.blank? %>
+          <%= link_to image_tag("1/user_no_image.PNG", width: '150'), activity.trackable %>
+        <% else %>
+          <%= link_to image_tag(activity.trackable.image_url(:thumb).to_s, width: '150'), activity.trackable %>
+      <% end %>
+      </div>
+      <div class="col-xs-8">
+          <%= link_to activity.trackable.name, activity.trackable %>
+      </div>
+    </div>
+    <span class="story-created"><%= time_ago_in_words(activity.trackable.created_at) %> ago</span>
+  </div>
+  <% end %>
+</div><hr>

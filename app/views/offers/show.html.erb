@@ -8,21 +8,21 @@ keywords: %w(@offer.tag_list)
 
 <div class="row">
   
-  <div class="col-xs-1"></div>
-  
-  <div class="col-xs-2">
-    <% if current_user == @offer.user %> 
-      <%= link_to "Promote", promotion_offer_path, class: 'btn btn-warning' %><br><br>
-      <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success', target: :_blank %><br><br>
-      Clicks: <b><%= @offer.total_clicks %></b><hr>
-    <% end %>    
-    
-    <% if current_user.admin %>
-      <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
+  <div class="col-xs-1">
+    <% if user_signed_in? %>
+      <% if current_user == @offer.user %> 
+        <%= link_to "Promote", promotion_offer_path, class: 'btn btn-warning' %><br><br>
+        <%= link_to "Edit", edit_offer_path(@offer), class: 'btn btn-sm btn-success', target: :_blank %><br><br>
+        Clicks: <b><%= @offer.total_clicks %></b><hr>
+      <% end %>    
+
+      <% if current_user.admin %>
+        <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
+      <% end %>
     <% end %>
   </div>
 
-  <div class="col-xs-6 offer-center">
+  <div class="col-xs-8 offer-center">
     <% if @offer.deleted %>
       <div class="alert alert-danger" role="alert">This product has been removed and is not available anymore.</div>
     <% end %>
@@ -34,10 +34,10 @@ keywords: %w(@offer.tag_list)
       
       <div class="col-xs-7" align="left">  
         <strong><%= @offer.name %></strong><br><br>        
-        <%= image_tag('2/thumbsup_off.PNG') %>
-          <b><%= @positive_reviews.count %></b> | 
-        <%= image_tag('2/thumbsdown_off.PNG') %>
-          <b><%= @negative_reviews.count %></b> <br><br>     
+        <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
+          <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
+        <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
+        <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>     
         Price: $ <span class="label label-success"><%= @offer.price %></span> | 
         Quantity: <span class="label label-primary"><%= @offer.quantity %></span> | 
         <% if @offer.new %>
@@ -56,8 +56,9 @@ keywords: %w(@offer.tag_list)
       </div>
     </div>
     
-    <hr><%= simple_format(@offer.description) %>
+    <hr><%= raw(@offer.description) %>
     
+    <div id="reviews-list">
     <% @reviews.each do |review| %><hr>
         <div class="row">
           <div class="col-xs-2">
@@ -91,6 +92,7 @@ keywords: %w(@offer.tag_list)
           </div>
         </div>
       <% end %>
+      </div>
     
     <div class="digg_pagination">
       <%= will_paginate @reviews, :page_links => false %>

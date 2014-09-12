@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.col-xs-6.offer-center{
+.col-xs-8.offer-center{
   border-top: 1px solid #E8E8E8;
   border-right: 1px solid #E8E8E8;
   border-left: 1px solid #E8E8E8;
@@ -21,4 +21,17 @@
   font-size:90%;
   color:#787878;
   font-style:italic;
+}
+
+#some-textarea{
+  width:100%;
+  height:500px;
+}
+
+#some-textarea:focus{
+  border: 2px solid #0099CC;
+}
+
+#some-textarea:hover{
+  border: 2px solid #33CCFF;
 }

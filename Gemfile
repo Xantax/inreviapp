@@ -18,6 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "valid_email2", '~> 1.1.0'
 gem 'rmagick', '~> 2.13.3'
 gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick'
 gem 'fog', '~> 1.22.1'
 gem 'aws-sdk', '~> 1.42.0'
 gem 'nokogiri', '~> 1.6.1'
@@ -35,6 +36,7 @@ gem 'newrelic_rpm'
 gem 'figaro', '~> 0.7.0'
 gem 'simple_form', '~> 3.0.2'
 gem 'public_activity', '~> 1.4.2'
+gem 'bootstrap-wysihtml5-rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

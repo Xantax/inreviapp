@@ -1,13 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <% meta title: "Inrevi - Conversation" %>
-<%= @conversation.convoable_type %>
-<div class="row">
 
-  <div class="col-xs-3"></div>
-
-  <div class="col-xs-6">
-    
+<div class="main-nf">  
+  <%= render 'shared/upper_newsfeed' %>      
+<div class="newsfeed">     
     <div class="row">
       
       <div class="col-xs-3">
@@ -126,7 +121,4 @@
       </div>
     <% end %>
   </div>
-
-  <div class="col-xs-3"></div>
-  
 </div>

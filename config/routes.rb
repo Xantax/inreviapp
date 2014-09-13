@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :alerts
+
   get 'activities/index'
 
   root 'static_pages#home'  

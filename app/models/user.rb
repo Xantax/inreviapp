@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :buy_requests
   has_many :orders
   has_many :reviews
+  has_many :alerts
   
   has_many :conversations
   has_many :messages, :through => :conversations

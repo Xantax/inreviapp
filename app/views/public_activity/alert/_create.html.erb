@@ -1,0 +1,31 @@
+  <% if activity.trackable %>
+<div class="row">
+  <div class="col-xs-2">
+    <% if activity.owner.image_url.blank? %>
+        <%= link_to image_tag("1/user_no_image.PNG", width: '80'), user_path(activity.owner) %>
+      <% else %>
+        <%= link_to image_tag(activity.owner.image_url(:thumb).to_s, width: '80'), user_path(activity.owner) %>
+    <% end %>
+  </div>
+  <div class="col-xs-10">
+    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> 
+    <span class="image-news-story"><%= image_tag('3/note36.png') %></span>
+    
+    <div class="row product-short">
+      <%= simple_format(activity.trackable.body) %>
+      <% unless activity.trackable.image_url.blank? %>
+          <%= link_to image_tag(activity.trackable.image_url(:thumb).to_s, width: '150'), activity.trackable.image_url, target: :_blank %>
+      <% end %>
+    </div>
+    <span class="story-created">
+      <% if current_user == activity.owner %>
+      <b><%= link_to "Edit", edit_alert_path(activity.trackable) %></b> / 
+        <b><%= link_to "Delete", [activity.trackable],
+                        method: :delete,
+                        data: { confirm: 'Delete. Are you sure?'} %></b> / 
+      <% end %>
+      <%= time_ago_in_words(activity.trackable.created_at) %> ago
+    </span>
+  </div>
+</div><hr>
+  <% end %>

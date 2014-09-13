@@ -8,42 +8,7 @@ keywords: %w(inrevi marketplace free)
 
 <div class="main-nf">
   
-        <div align="center"><p id="notice"><%= notice %></p></div>
-  
-        <% if current_user.confirmed_at.blank? %>
-        <div class="alert alert-warning nf" role="alert">
-           Please check and confirm your <b>email</b>.
-          <span><i>Didn't receive it yet?</i> <%= link_to "Resend email", '/users/confirmation' %></span>
-        </div>
-        <% elsif current_user.confirmed_at.present? && current_user.phone_verifications.count == 0 %>
-        <div class="alert alert-warning nf" role="alert">
-          One more step - Confirm your <b>phone number</b>. <%= link_to "Click here", 'phone_verifications/new' %>
-        </div>
-        <% elsif current_user.phone_verifications.count > 0 && current_user.phone_codes.count == 0 %>
-        <div class="alert alert-warning nf" role="alert">
-          You need to type in a correct code. <%= link_to "Click here", 'phone_codes/new' %>
-        </div>
-        <% end %>
-      
-        <div class="col-xs-3 right-cats-home">
-          <%= link_to image_tag('3/chat51.png'), '/conversations' %>
-          <b><%= link_to "Inbox", '/conversations' %></b>
-          <% if Conversation.count_unread_conversations > 0 %>
-            <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
-          <% end %>
-        </div>
-        <div class="col-xs-3 right-cats-home">
-          <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
-          <b><%= link_to "Profile", user_path(current_user) %></b>
-        </div>
-        <div class="col-xs-3 right-cats-home">
-          <%= link_to image_tag('3/note36.png'), "" %>
-          <b><%= link_to "Update", "" %></b>
-        </div>
-        <div class="col-xs-3 right-cats-home">
-          <%= link_to image_tag('3/logout15.png'), destroy_user_session_path, :method => :delete %>
-          <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-        </div>
+  <%= render 'shared/upper_newsfeed' %>
       
       <div class="newsfeed">
         <% @activities.each do |activity| %>

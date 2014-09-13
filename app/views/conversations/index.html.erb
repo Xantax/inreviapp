@@ -1,11 +1,10 @@
 <% meta title: "Inbox" %>
 
-<div class="row">
-
-  <div class="col-xs-3"></div>
-
-  <div class="col-xs-6">
-    
+<div class="main-nf">
+  
+  <%= render 'shared/upper_newsfeed' %>
+      
+ <div class="newsfeed">    
     <% if @conversations.count == 0 %><hr>    
         <div class="row">
           <div class="col-xs-2">
@@ -80,7 +79,5 @@
     <% end %>
     
   </div>
-
-  <div class="col-xs-3"></div>
   
 </div>

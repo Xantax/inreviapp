@@ -1,0 +1,12 @@
+<%= simple_form_for(@alert) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.text_area :body, placeholder: "Send a message to your followers...", class: "form-control" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= image_tag('2/photo-upload.png') %> <%= f.file_field :image %>
+    
+    <div align="right">
+      <%= f.submit "Send", class: "btn btn-primary", data: { disable_with: "Sending..." } %>
+    </div>
+
+<% end %>

@@ -1,4 +1,4 @@
-<% meta title: "Edit Your Offer" %>
+<% meta title: "Edit" %>
 
 <div class="row">
   
@@ -132,9 +132,11 @@
     </div><hr>    
       <div class="field">
         <%= f.check_box :free_delivery %> Free delivery
-    </div>
-<hr>
-  
+    </div><hr>
+    <div class="field">
+      <%= f.radio_button :sell, true %> Sell
+      <%= f.radio_button :sell, false %> Request
+    </div>  
 </div>
 
 <% end %>

@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
     @offer = buy_request.buyable
     @url  = 'http://www.inrevi.com/conversations'
     
-    mail(to: @user.email, subject: 'Inrevi - You have a new order')
+    mail(to: @user.email, subject: 'Inrevi - You have a new request')
   end
   
   def new_order(order)

@@ -1,4 +1,4 @@
-<% meta title: "List Your Product" %>
+<% meta title: "New Product" %>
 
 <div class="row">
   
@@ -54,7 +54,7 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
 
     <div class="actions" align="right">
-      <%= f.submit "Submit for review", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
     </div> <hr>
 </div>
   
@@ -84,6 +84,10 @@
       <div class="field">
         <%= f.check_box :free_delivery %> Free delivery
     </div><hr>
+    <div class="field">
+      <%= f.radio_button :sell, true %> Sell
+      <%= f.radio_button :sell, false %> Request
+    </div>
   </div>
 
 <% end %>

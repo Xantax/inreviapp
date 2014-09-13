@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20140913020432) do
     t.string   "image_e"
     t.string   "location"
     t.boolean  "new"
+    t.boolean  "sell"
     t.decimal  "price"
     t.boolean  "deleted",       default: false
     t.integer  "user_id"

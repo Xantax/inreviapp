@@ -30,11 +30,9 @@
     <hr>
     <%= f.input :name %><br>
     <%= f.input :email %><br>
-    <%= f.input :credit %><br>
     banned: <%= f.check_box :banned %>
-  <% end %>
-
-    <br><br>
+  <% end %><br><br>
+  
     <%= f.submit "Update", class: "btn btn-primary" %>
 
 <% end %>

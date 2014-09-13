@@ -33,7 +33,7 @@ class OffersController < ApplicationController
   end
 
   def new
-    @offer = Offer.new
+    @offer = Offer.new(:sell => (params[:sell] == '1'))
   end
 
   def edit
@@ -78,7 +78,7 @@ class OffersController < ApplicationController
     end
 
     def offer_params
-      params.require(:offer).permit(:name, :description, :image, :new, :price, :user_id, :tag_list, :deleted, :image_a, :image_b, :image_c, :image_d, :image_e, :location, :quantity, :barcode, :free_delivery)
+      params.require(:offer).permit(:name, :description, :image, :new, :price, :user_id, :tag_list, :deleted, :image_a, :image_b, :image_c, :image_d, :image_e, :location, :quantity, :barcode, :free_delivery, :sell)
     end
   
     def require_permission

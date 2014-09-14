@@ -7,10 +7,7 @@ keywords: %w(inrevi marketplace free)
 <% if user_signed_in? %>
 
 <div class="main-nf">
-  <%= link_to "List your product", new_offer_path(:sell => '1') %>
-  <%= link_to "Request a product", new_offer_path(:sell => '0') %>
-  <%= render 'shared/upper_newsfeed' %>
-      
+  <%= render 'shared/upper_newsfeed' %>    
       <div class="newsfeed">
         <% @activities.each do |activity| %>
           <div class="activity">
@@ -18,7 +15,6 @@ keywords: %w(inrevi marketplace free)
           </div>
         <% end %>
       </div>
-
 </div>
 
 <% else %>

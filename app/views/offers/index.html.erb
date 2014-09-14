@@ -1,31 +1,26 @@
-<% meta title: "Latest Offers" %>
+<% meta title: "Products" %>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Provider</th>
-      <th>Categories</th>
-      <th>Created</th>
-    </tr>
-  </thead>
+<%= render 'main_bar' %>
 
-  <tbody>
-    <% @offers.each do |offer| %>
-      <tr>
-        <td><%= link_to offer.name, offer %></td>
-        <td>$ <%= offer.price %></td>
-        <td><%= link_to offer.user.name, user_path(offer.user.id) %></td>
-        <td><%= raw offer.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-        <td><%= time_ago_in_words(offer.created_at) %> ago</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @offers.each do |offer| %>
+    <div class="col-sm-6 col-md-3 offer">
+      <div class="thumbnail">
+        <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>
+        <div class="caption">
+         <% unless offer.sell %>
+          <small><b>R - </b></small>
+         <% end %>
+        <%= link_to truncate(offer.name, length: 50), offer %><hr>
+        <%= image_tag('2/thumbsup_off.PNG') %> <b><%= offer.reviews.positive.where("buyer_id != ?", offer.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %> <b><%= offer.reviews.negative.where("buyer_id != ?", offer.user.id).count %></b>
+        <span class="offer-price-box">
+          <mark><%= number_to_currency(offer.price) %></mark>
+        </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
       <div class="digg_pagination">
         <%= will_paginate @offers, :page_links => false %>
       </div>
-
-<br>

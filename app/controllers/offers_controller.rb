@@ -8,12 +8,12 @@ class OffersController < ApplicationController
     if params[:tag]
       @offers = Offer.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
     else
-      @offers = Offer.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
+      @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
     end
   end
   
   def search
-    @offers = Offer.search(params[:search]).paginate(:page => params[:page], :per_page => 20)
+    @offers = Offer.published.search(params[:search]).paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

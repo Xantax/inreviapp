@@ -5,7 +5,13 @@
   </div>
 
   <div class="col-xs-10 sections">
-    <div class="col-xs-6 products"><%= link_to "Products", "/how" %></div>
+    <div class="col-xs-6 products">
+      <% if user_signed_in? %>
+        <%= link_to "Products", "/offers" %>
+      <% else %>
+        <%= link_to "Products", "/how" %>
+      <% end %>
+    </div>
     <div class="col-xs-6 services"><%= link_to "Services", "/how" %></div>
   </div> 
 </div>

@@ -1,0 +1,16 @@
+<div class="prodct-main-bar">
+  <div class="row">
+    <div class="col-xs-4" style="padding-top:5px">
+      <%= link_to "* List your product", new_offer_path(:sell => '1') %><br>
+      <%= link_to "* Request a product", new_offer_path(:sell => '0') %>
+    </div>
+    <div class="col-xs-7" style="padding-top:5px">
+      <%= form_tag offerz_search_path, :method => :get do %>
+      <%= text_field_tag :search, params[:search] , class: "form-control", placeholder: "e.g. iPhone in Canada" %>
+    </div>
+    <div class="col-xs-1" style="padding-top:5px">
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,9 @@
           <% if Conversation.count_unread_conversations > 0 %>
             <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
           <% end %>
+          <% if current_user.last_visited_inbox_at.blank? && (Conversation.users_conversation.count == 0) %>
+            <span class="label label-danger right">1</span>
+          <% end %>
         </div>
         <div class="col-xs-3 right-cats-home">
           <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>

@@ -3,8 +3,8 @@ class Offer < ActiveRecord::Base
   # tracked owner: ->(controller, model) { controller && controller.current_user }
     
   include PgSearch
-    pg_search_scope :search_by_name, :against => [:name], :using => {
-    :tsearch => {:prefix => true}
+    pg_search_scope :search_by_name, :against => [:name, :location], :using => {
+    :tsearch => {:prefix => true, :any_word => true}
       },
       :associated_against => {
       :tags => [:name]

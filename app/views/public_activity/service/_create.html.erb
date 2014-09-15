@@ -8,13 +8,8 @@
     <% end %>
   </div>
   <div class="col-xs-10">
-    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> 
-    <% if activity.trackable.sell %>
-      listed a product for sale 
-    <% else %>
-      requested a product
-    <% end %>
-    <span class="image-news-story"><%= image_tag('1/products.png') %></span>
+    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> listed a service
+    <span class="image-news-story"><%= image_tag('3/servic.png') %></span>
     
     <div class="row product-short">
       <div class="col-xs-4">

@@ -12,6 +12,12 @@
         <%= link_to "Products", "/how" %>
       <% end %>
     </div>
-    <div class="col-xs-6 services"><%= link_to "Services", "/how" %></div>
+    <div class="col-xs-6 services">
+      <% if user_signed_in? %>
+        <%= link_to "Services", "/services" %>
+      <% else %>
+        <%= link_to "Services", "/how" %>
+      <% end %>
+    </div>
   </div> 
 </div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  image: MyString
+  location: MyString
+  price: 9.99
+  deleted: false
+  user_id: 
+  total_clicks: 1
+
+two:
+  name: MyString
+  description: MyText
+  image: MyString
+  location: MyString
+  price: 9.99
+  deleted: false
+  user_id: 
+  total_clicks: 1

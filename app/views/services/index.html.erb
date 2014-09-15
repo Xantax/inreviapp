@@ -1,0 +1,23 @@
+<% meta title: "Services" %>
+
+<%= render 'main_bar' %>
+
+  <% @services.each do |service| %>
+    <div class="col-sm-6 col-md-3 offer">
+      <div class="thumbnail">
+        <%= link_to image_tag(service.image_url(:thumb).to_s, height: '200'), service %>
+        <div class="caption">
+        <%= link_to truncate(service.name, length: 50), service %><hr>
+        <%= image_tag('2/thumbsup_off.PNG') %> <b><%= service.reviews.positive.where("buyer_id != ?", service.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %> <b><%= service.reviews.negative.where("buyer_id != ?", service.user.id).count %></b>
+        <span class="offer-price-box">
+          <mark><%= number_to_currency(service.price) %></mark>
+        </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @services, :page_links => false %>
+      </div>

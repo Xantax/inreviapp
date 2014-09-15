@@ -1,0 +1,15 @@
+<div class="service-main-bar">
+  <div class="row">
+    <div class="col-xs-4" style="padding-top:5px">
+      <%= link_to "* List your service", new_service_path() %>
+    </div>    
+    <div class="col-xs-8" style="padding-top:5px">
+      <div class="input-group">
+        <%= form_tag servicez_search_path, :method => :get do %>
+        <%= text_field_tag :search, params[:search], :placeholder => "e.g. Designer, Plumber in San Diego" , class: "form-control search" %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

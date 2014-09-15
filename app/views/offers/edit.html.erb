@@ -119,8 +119,11 @@
     </div>
 <hr>    
     <div class="field">
-      <%= f.label :price %> $ 
-       <%= f.number_field :price, class: "form-control short", :required => true %>
+        <b>Price:</b>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.number_field :price, class: "form-control short", :required => true %>
+        </div>
     </div><hr>    
     <div class="field">
         <%= f.label :quantity %>

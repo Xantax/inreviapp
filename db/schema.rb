@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913020432) do
+ActiveRecord::Schema.define(version: 20140914194255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,14 +194,31 @@ ActiveRecord::Schema.define(version: 20140913020432) do
   add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
   add_index "reviews", ["seller_id"], name: "index_reviews_on_seller_id", using: :btree
 
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.string   "location"
+    t.decimal  "price"
+    t.boolean  "deleted"
+    t.integer  "user_id"
+    t.integer  "total_clicks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "offer_id"
+    t.integer  "service_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "taggings", ["offer_id"], name: "index_taggings_on_offer_id", using: :btree
+  add_index "taggings", ["service_id"], name: "index_taggings_on_service_id", using: :btree
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|

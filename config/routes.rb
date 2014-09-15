@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match 'how' => "static_pages#howworks", via: [:get]
   match 'first_message' => "static_pages#first_message", via: [:get]
   match 'offerz/search' => "offers#search", via: [:get]
+  match 'servicez/search' => "services#search", via: [:get]
   
   get 'tags/:tag', to: 'offers#index', as: :tag
   
@@ -51,6 +52,15 @@ Rails.application.routes.draw do
     resources :promoted_offers
     resources :conversations
   end
+  
+  resources :services do
+    member do
+      get 'promotion'
+    end
+    resources :promoted_offers
+    resources :conversations
+  end
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

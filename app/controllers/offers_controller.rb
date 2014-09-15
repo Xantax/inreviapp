@@ -21,14 +21,15 @@ class OffersController < ApplicationController
     if user_signed_in?
     @promoted_offer = PromotedOffer.new
     end
-    @reviews = Review.where("buyer_id != ?", @offer.user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
-    @positive_reviews = Review.positive.where("buyer_id != ?", @offer.user.id)
-    @negative_reviews = Review.negative.where("buyer_id != ?", @offer.user.id)
+    @reviewable = @offer
+    @reviews = @reviewable.reviews.where("buyer_id != ?", @offer.user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @positive_reviews = @reviewable.reviews.positive.where("buyer_id != ?", @offer.user.id)
+    @negative_reviews = @reviewable.reviews.negative.where("buyer_id != ?", @offer.user.id)
     @convoable = @offer
     @conversations = @convoable.conversations
     @conversation = Conversation.new
     @promotable = @offer
-    @comments = @promotable.promoted_offers
+    @promoted_offers = @promotable.promoted_offers
     @promoted_offer = PromotedOffer.new
   end
 

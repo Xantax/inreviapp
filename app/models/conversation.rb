@@ -12,6 +12,14 @@ class Conversation < ActiveRecord::Base
    :primary_key => 'user_id',
    :foreign_key => 'recipient_id'
   
+  validate :conversation_quota, :on => :create
+  
+  def conversation_quota
+    if user.conversations.today.count >= 5
+      redirect_to root_path
+    end
+  end
+  
   # conversation has at least 1 message a.k.a user contacted a seller
   def self.valid_conversation
     self.where("messages_count > 0")

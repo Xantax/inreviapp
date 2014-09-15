@@ -7,7 +7,9 @@ class PhoneVerificationsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @phone_verification = PhoneVerification.new
+    @geoip = GeoIP.new("#{Rails.root}/db/GeoIP.dat").country(current_user.current_sign_in_ip).country_code2.to_s
+    @dial_code = Country.find_country_by_alpha2(@geoip).country_code.to_i
+    @phone_verification = PhoneVerification.new(:number => "#{@dial_code}")
   end
 
   def create
@@ -16,11 +18,11 @@ class PhoneVerificationsController < ApplicationController
     respond_to do |format|
       if @phone_verification.save
         
-          client = Twilio::REST::Client.new('ACfae1e12a1f052f3fcbc91d029509b18f', '4785b63938b2761c7be6f8a1522fb07c')
+          client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
           # Create and send an SMS message
           client.account.sms.messages.create(
           from: "+14849860545",
-          to: @phone_verification.number,
+          to: "+#{@phone_verification.number}",
           body: "Hello from Inrevi. This is your verification code: #{current_user.sms_code}"
           )
         

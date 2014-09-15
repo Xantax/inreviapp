@@ -12,7 +12,7 @@
         <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
       <% else %>
         <%= image_tag(@user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
-      <% end %>
+      <% end %><br><br>
 
         <% if @user.phone_codes.count == 1 %>
           <% @user.phone_codes.first(1).each do |code| %>
@@ -22,9 +22,9 @@
            <% end %>
         <% end %>    
     
-      <div class="user-profile-name">
+      <span class="user-profile-name">
           <%= @user.name %>
-      </div><br><br>
+      </span><br><hr>
 
         <%= image_tag('2/thumbsup_off.PNG') %>
           <b><%= @positive_reviews.count %></b> | 

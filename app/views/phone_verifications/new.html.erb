@@ -1,22 +1,8 @@
 <% meta title: "Verify your phone number" %>
 
-<div class="row">
-
-  <div class="col-xs-4">
-    <hr>
-      Put the <b>full number</b> on the right
-    <hr>
-      full number = <kbd>+</kbd> <kbd>country_code</kbd> <kbd>your_number</kbd>
-    <hr>
-      <i>example:</i><br><br>
-      <%= image_tag('1/usa_flag.png') %>
-      +13258352130 = <kbd>+</kbd> <kbd>1</kbd> <kbd>3258352130</kbd> 
-    <hr>
-    <%= link_to "List of country codes", "http://wikitravel.org/en/List_of_country_calling_codes", target: :blank %>
-  </div>
-  
-  <div class="col-xs-3">
-    <%= render 'form' %>
-  </div>
-    
+<div class="main-nf">
+  <%= render 'shared/upper_newsfeed' %>    
+      <div class="newsfeed">
+        <%= render 'form' %>
+      </div>
 </div>

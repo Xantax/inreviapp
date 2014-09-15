@@ -9,14 +9,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number, placeholder: "full number (e.g. +13258352130)", class: "form-control", :required => true, autofocus: true %>
-  </div>
+      <div class="field">
+        <b>Phone number:</b>
+        <div class="input-group">
+          <span class="input-group-addon">+</span>
+          <%= f.number_field :number, class: "form-control devise", :required => true %>
+        </div>
+      </div>
 
-<%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-default" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

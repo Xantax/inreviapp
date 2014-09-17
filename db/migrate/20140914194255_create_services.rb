@@ -5,6 +5,7 @@ class CreateServices < ActiveRecord::Migration
       t.text :description
       t.string :image
       t.string :location
+      t.string :tag_list
       t.decimal :price
       t.boolean :deleted
       t.references :user, index: true

@@ -10,6 +10,7 @@ class CreateOffers < ActiveRecord::Migration
       t.string :image_d
       t.string :image_e
       t.string :location
+      t.string :tag_list
       t.boolean :new
       t.boolean :sell
       t.decimal :price

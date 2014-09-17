@@ -1,37 +1,42 @@
 <div class="row header">
-  <div class="col-xs-2 logo-signed">
-    <span style="padding-right:20px"></span>
-    <span class="logospr"><%= link_to "", root_path %></span>
-  </div>
-
-  <div class="col-xs-10 sections">
-    <div class="col-xs-3 products">
+   
+    <div class="col-xs-2 logo">
+      <span class="logospr"><%= link_to "", root_path %></span>
+    </div>
+    <div class="col-xs-2 products">
       <% if user_signed_in? %>
         <%= link_to "Products", "/offers" %>
       <% else %>
         <%= link_to "Products", "/how" %>
       <% end %>
     </div>
-    <div class="col-xs-3 services">
+    <div class="col-xs-2 services">
       <% if user_signed_in? %>
         <%= link_to "Services", "/services" %>
       <% else %>
         <%= link_to "Services", "/how" %>
       <% end %>
     </div>
-    <div class="col-xs-3 jobs">
+    <div class="col-xs-2 jobs">
       <% if user_signed_in? %>
         <%= link_to "Jobs", "/jobs" %>
       <% else %>
         <%= link_to "Jobs", "/how" %>
       <% end %>
     </div>
-    <div class="col-xs-3 investing">
+    <div class="col-xs-2 investing">
+      <% if user_signed_in? %>
+        <%= link_to "", "" %>
+      <% else %>
+        <%= link_to "", "" %>
+      <% end %>
+    </div>    
+    <div class="col-xs-2 rent">
       <% if user_signed_in? %>
         <%= link_to "", "" %>
       <% else %>
         <%= link_to "", "" %>
       <% end %>
     </div>
-  </div> 
+
 </div>

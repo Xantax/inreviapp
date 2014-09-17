@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140915221042) do
     t.text     "description"
     t.string   "image"
     t.string   "location"
+    t.string   "tag_list"
     t.boolean  "deleted"
     t.boolean  "remote"
     t.integer  "user_id"
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20140915221042) do
     t.string   "image_d"
     t.string   "image_e"
     t.string   "location"
+    t.string   "tag_list"
     t.boolean  "new"
     t.boolean  "sell"
     t.decimal  "price"
@@ -214,6 +216,7 @@ ActiveRecord::Schema.define(version: 20140915221042) do
     t.text     "description"
     t.string   "image"
     t.string   "location"
+    t.string   "tag_list"
     t.decimal  "price"
     t.boolean  "deleted"
     t.integer  "user_id"
@@ -223,26 +226,6 @@ ActiveRecord::Schema.define(version: 20140915221042) do
   end
 
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
-
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "offer_id"
-    t.integer  "service_id"
-    t.integer  "job_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "taggings", ["job_id"], name: "index_taggings_on_job_id", using: :btree
-  add_index "taggings", ["offer_id"], name: "index_taggings_on_offer_id", using: :btree
-  add_index "taggings", ["service_id"], name: "index_taggings_on_service_id", using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-
-  create_table "tags", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", force: true do |t|
     t.string   "name"

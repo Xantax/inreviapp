@@ -1,7 +1,6 @@
 class PromotedOffer < ActiveRecord::Base
   belongs_to :user
   belongs_to :offer
-  belongs_to :promotable, polymorphic: true
   
   scope :published, -> { where('clicks <= set_clicks') }
   

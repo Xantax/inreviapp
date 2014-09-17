@@ -166,15 +166,14 @@ ActiveRecord::Schema.define(version: 20140915221042) do
 
   create_table "promoted_offers", force: true do |t|
     t.integer  "user_id"
-    t.integer  "clicks",          default: 0
-    t.integer  "set_clicks",      default: 0
-    t.integer  "promotable_id"
-    t.string   "promotable_type"
+    t.integer  "clicks",     default: 0
+    t.integer  "set_clicks", default: 0
+    t.integer  "offer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "promoted_offers", ["promotable_id", "promotable_type"], name: "index_promoted_offers_on_promotable_id_and_promotable_type", using: :btree
+  add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id", using: :btree
   add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id", using: :btree
 
   create_table "relationships", force: true do |t|

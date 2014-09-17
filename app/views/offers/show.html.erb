@@ -17,7 +17,7 @@ keywords: %w(@offer.tag_list)
       <% end %>    
 
     <% unless current_user.admin %>
-        <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
+        <%= link_to "Promote", new_offer_promoted_offer_path(@offer), class: 'btn btn-danger' %>
       <% end %>
     <% end %>
   </div>

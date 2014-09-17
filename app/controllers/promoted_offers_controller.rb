@@ -1,10 +1,10 @@
 class PromotedOffersController < ApplicationController
-  #before_action :set_promoted_offer, only: [:show]
-  #before_action :must_be_completely_verified, except: [:show]
-  before_filter :load_promotable
+  before_action :set_promoted_offer, only: [:show]
+  before_action :must_be_completely_verified, except: [:show]
 
   def new
-    @promoted_offer = @promotable.promoted_offers.new
+    @offer = Offer.find(params[:offer_id])
+    @promoted_offer = PromotedOffer.new
   end
   
   def show
@@ -13,7 +13,8 @@ class PromotedOffersController < ApplicationController
   end
   
   def create
-    @promoted_offer = @promotable.promoted_offers.new(promoted_offer_params)
+    @offer = Offer.find(params[:offer_id])
+    @promoted_offer = @offer.promoted_offers.create(promoted_offer_params)
     
     respond_to do |format|
       if @promoted_offer.save
@@ -27,11 +28,6 @@ class PromotedOffersController < ApplicationController
   end
 
   private
-  
-  def load_promotable
-    resource, id = request.path.split('/')[1, 2]
-    @promotable = resource.singularize.classify.constantize.find(id)
-  end
 
     def set_promoted_offer
       @promoted_offer = PromotedOffer.find(params[:id])

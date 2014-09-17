@@ -5,18 +5,32 @@
   </div>
 
   <div class="col-xs-10 sections">
-    <div class="col-xs-6 products">
+    <div class="col-xs-3 products">
       <% if user_signed_in? %>
         <%= link_to "Products", "/offers" %>
       <% else %>
         <%= link_to "Products", "/how" %>
       <% end %>
     </div>
-    <div class="col-xs-6 services">
+    <div class="col-xs-3 services">
       <% if user_signed_in? %>
         <%= link_to "Services", "/services" %>
       <% else %>
         <%= link_to "Services", "/how" %>
+      <% end %>
+    </div>
+    <div class="col-xs-3 jobs">
+      <% if user_signed_in? %>
+        <%= link_to "Jobs", "/jobs" %>
+      <% else %>
+        <%= link_to "Jobs", "/how" %>
+      <% end %>
+    </div>
+    <div class="col-xs-3 investing">
+      <% if user_signed_in? %>
+        <%= link_to "", "" %>
+      <% else %>
+        <%= link_to "", "" %>
       <% end %>
     </div>
   </div> 

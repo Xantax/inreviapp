@@ -43,7 +43,7 @@ class Service < ActiveRecord::Base
   end
   
   def self.tagged_with(name)
-    Tag.find_by_name!(name).offers
+    Tag.find_by_name!(name).services
   end
   
   def self.tag_counts

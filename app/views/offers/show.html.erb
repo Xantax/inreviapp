@@ -16,7 +16,7 @@ keywords: %w(@offer.tag_list)
         Clicks: <b><%= @offer.total_clicks %></b><hr>
       <% end %>    
 
-      <% if current_user.admin %>
+    <% unless current_user.admin %>
         <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
       <% end %>
     <% end %>
@@ -33,7 +33,7 @@ keywords: %w(@offer.tag_list)
       </div>
       
       <div class="col-xs-7" align="left">  
-        <% unless @offer.sell %> [Request] <% end %> <strong><%= @offer.name %></strong><br><br>        
+        <%= @offer.sell %> [Request]  <strong><%= @offer.name %></strong><br><br>        
         <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
           <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
         <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>

@@ -37,7 +37,7 @@
       <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
       <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
       <%= image_tag('3/check_terms.png') %> I agree to <%= link_to "Terms & Privacy", terms_path %><br><br>
-      <div><%= f.submit "Create my account", class: "btn btn-success", data: { disable_with: "Creating..." } %></div>
+      <div><%= f.submit "Create my account", class: "btn btn-default", data: { disable_with: "Creating..." } %></div>
     <% end %>
   </div>
   

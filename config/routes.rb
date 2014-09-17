@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   match 'first_message' => "static_pages#first_message", via: [:get]
   match 'offerz/search' => "offers#search", via: [:get]
   match 'servicez/search' => "services#search", via: [:get]
+  match 'jobz/search' => "jobs#search", via: [:get]
   
-  get 'tags/:tag', to: 'offers#index', as: :tag
+#  get 'tags/:tag', to: 'offers#index', as: :tag
   
   resources :activities
   resources :relationships, only: [:create, :destroy]  
@@ -54,6 +55,14 @@ Rails.application.routes.draw do
   end
   
   resources :services do
+    member do
+      get 'promotion'
+    end
+    resources :promoted_offers
+    resources :conversations
+  end
+  
+  resources :jobs do
     member do
       get 'promotion'
     end

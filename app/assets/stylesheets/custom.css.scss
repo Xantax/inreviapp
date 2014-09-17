@@ -34,6 +34,8 @@ img { max-height: 100%; }
 
 .form-control.devise{
   width:220px;
+  border: 3px solid #C0C0C0;
+  padding:4px;
 }
 
 .form-control.devise.text{
@@ -52,11 +54,11 @@ img { max-height: 100%; }
   height:40px;
 }
 
-.col-xs-6.products{
+.col-xs-3.products{
   a::before {
     content: "";
     position: absolute;
-    width: 540px;
+    width: 100%;
     height: 50px;
     background-image: asset-data-url("3/cathov2.PNG");
     background-repeat: no-repeat;
@@ -64,11 +66,11 @@ img { max-height: 100%; }
   }
 }
 
-.col-xs-6.products:hover{
+.col-xs-3.products:hover{
   a::before {
     content: "";
     position: absolute;
-    width: 540px;
+    width: 100%;
     height: 50px;
     background-image: asset-data-url("3/cathov2.PNG");
     background-repeat: no-repeat;
@@ -76,11 +78,11 @@ img { max-height: 100%; }
   }
 }
 
-.col-xs-6.services{
+.col-xs-3.services{
   a::before {
     content: "";
     position: absolute;
-    width: 540px;
+    width: 100%;
     height: 50px;
     background-image: asset-data-url("3/cathov2.PNG");
     background-repeat: no-repeat;
@@ -88,15 +90,63 @@ img { max-height: 100%; }
   }
 }
 
-.col-xs-6.services:hover{
+.col-xs-3.services:hover{
   a::before {
     content: "";
     position: absolute;
-    width: 540px;
+    width: 100%;
     height: 50px;
     background-image: asset-data-url("3/cathov2.PNG");
     background-repeat: no-repeat;
     background-position: 0 -106px;
+  }
+}
+
+.col-xs-3.jobs{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -265px;
+  }
+}
+
+.col-xs-3.jobs:hover{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -212px;
+  }
+}
+
+.col-xs-3.investing{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -371px;
+  }
+}
+
+.col-xs-3.investing:hover{
+  a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-image: asset-data-url("3/cathov2.PNG");
+    background-repeat: no-repeat;
+    background-position: 0 -318px;
   }
 }
 
@@ -107,7 +157,9 @@ img { max-height: 100%; }
 
 .input-login{
   height:30px;
-  width:200px;
+  width:200px;  
+  border: 2px solid #C0C0C0;
+  padding:4px;
 }
 
 .input-login:focus{

@@ -1,4 +1,4 @@
-class Offer < ActiveRecord::Base
+class Job < ActiveRecord::Base
   include PublicActivity::Common
   # tracked owner: ->(controller, model) { controller && controller.current_user }
     
@@ -10,11 +10,8 @@ class Offer < ActiveRecord::Base
       :tags => [:name]
       }
   
-  validates :price, numericality: { :greater_than => 0, :less_than_or_equal_to => 100000000 }
-  validates :quantity, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
-  
   def self.search(search)
-    Offer.search_by_name(search)
+    Job.search_by_name(search)
   end
   
   scope :published, -> { where(deleted: false) }
@@ -29,11 +26,6 @@ class Offer < ActiveRecord::Base
   has_many :reviews, as: :reviewable
   
   mount_uploader :image, ImageUploader
-  mount_uploader :image_a, ImageUploader
-  mount_uploader :image_b, ImageUploader
-  mount_uploader :image_c, ImageUploader
-  mount_uploader :image_d, ImageUploader
-  mount_uploader :image_e, ImageUploader
   
   validates :name, length: { maximum: 120 }
   validates :description, length: { maximum: 10000 }
@@ -42,13 +34,13 @@ class Offer < ActiveRecord::Base
   validate :user_quota, :on => :create
   
   def user_quota
-    if user.offers.today.count >= 4
-      errors.add(:base, "You cannot create more offers for now (SPAM prevention)")
+    if user.jobs.today.count >= 4
+      errors.add(:base, "You cannot create more for now (SPAM prevention)")
     end
   end
   
   def self.tagged_with(name)
-    Tag.find_by_name!(name).offers
+    Tag.find_by_name!(name).jobs
   end
   
   def self.tag_counts
@@ -65,5 +57,4 @@ class Offer < ActiveRecord::Base
       Tag.where(name: n.strip).first_or_create!
     end
   end
-  
 end

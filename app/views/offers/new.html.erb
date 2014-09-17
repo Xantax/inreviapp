@@ -16,9 +16,14 @@
       </div>
     <% end %>
 
+  
+    <div class="field">
+      <%= f.radio_button :sell, true %> Sell
+      <%= f.radio_button :sell, false %> Request
+    </div><hr>
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control", :required => true %><br>
+      <%= f.text_field :name, class: "form-control blue", :required => true %><br>
     </div>
 
     <div class="field">
@@ -44,12 +49,12 @@
     <div class="field">
       <b>Categories</b> (max <b>3</b>) 
       <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control", placeholder: "e.g. electronics, monitors" %>
+      <%= f.text_field :tag_list, class: "form-control blue", placeholder: "e.g. electronics, monitors" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control", placeholder: "Anywhere"}, :required => true %><br>      
-    </div><br><br>
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue", placeholder: "Anywhere"}, :required => true %><br>      
+    </div><br>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 
@@ -73,24 +78,20 @@
         <b>Price:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
-          <%= f.number_field :price, class: "form-control short", :required => true %>
+          <%= f.number_field :price, class: "form-control short blue" %>
         </div>
       </div><hr>    
       <div class="field">
         <%= f.label :quantity %>
-        <%= f.number_field :quantity, class: "form-control short", :required => true %>
+        <%= f.number_field :quantity, class: "form-control short blue" %>
     </div><hr>    
       <div class="field">
         <%= f.label :barcode %>
-        <%= f.number_field :barcode, class: "form-control short" %>
+        <%= f.number_field :barcode, class: "form-control short blue" %>
     </div><hr>    
       <div class="field">
         <%= f.check_box :free_delivery %> Free delivery
     </div><hr>
-    <div class="field">
-      <%= f.radio_button :sell, true %> Sell
-      <%= f.radio_button :sell, false %> Request
-    </div>
   </div>
 
 <% end %>

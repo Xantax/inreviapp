@@ -2,6 +2,12 @@
 
 <%= render 'main_bar' %>
 
+  <% @poffers.each do |offer| %>
+    <div class="col-sm-6 col-md-3 offer">
+      <%= offer.set_clicks %>
+    </div>
+  <% end %>
+
   <% @offers.each do |offer| %>
     <div class="col-sm-6 col-md-3 offer">
       <div class="thumbnail">

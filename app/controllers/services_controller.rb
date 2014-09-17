@@ -5,11 +5,7 @@ class ServicesController < ApplicationController
   #before_action :must_be_completely_verified, except: [:show, :index]offer
 
   def index
-    if params[:tag]
-      @services = Service.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
-    else
       @services = Service.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
-    end
   end
   
   def search
@@ -29,7 +25,7 @@ class ServicesController < ApplicationController
     @conversations = @convoable.conversations
     @conversation = Conversation.new
     @promotable = @service
-    @promoted_services = @promotable.promoted_offers
+    @promoted_offer = @promotable.promoted_offers
     @promoted_offer = PromotedOffer.new
   end
 
@@ -79,7 +75,7 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:name, :description, :image, :price, :user_id, :tag_list, :deleted, :location,)
+      params.require(:service).permit(:name, :description, :image, :price, :user_id, :tag_list, :deleted, :location)
     end
   
     def require_permission

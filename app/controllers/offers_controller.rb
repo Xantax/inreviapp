@@ -5,11 +5,8 @@ class OffersController < ApplicationController
   #before_action :must_be_completely_verified, except: [:show, :index]
 
   def index
-    if params[:tag]
-      @offers = Offer.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 20)
-    else
-      @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
-    end
+    @poffers = PromotedOffer.published.order('created_at DESC').paginate(:page => params[:page]).limit(2)
+    @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 1)
   end
   
   def search

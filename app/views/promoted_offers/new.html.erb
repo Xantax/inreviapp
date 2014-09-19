@@ -9,8 +9,14 @@
               </div>
             <% end %>
 
-          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :user_id, value: @offer.user.id %>
           <%= f.hidden_field :offer_id, value: @offer.id %>
+          <%= f.text_field :name, value: @offer.name %>
+          <%= f.text_field :location, value: @offer.location %>
+          <%= f.text_field :tag_list, value: @offer.tag_list %>
+          <%= f.text_field :image, value: @offer.image %>
+          <%= f.number_field :price, value: @offer.price %>
+
           How many clicks do you want? <br>
           <%= f.number_field :set_clicks %><br><br>
 

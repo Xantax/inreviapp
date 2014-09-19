@@ -3,12 +3,10 @@ class Offer < ActiveRecord::Base
   # tracked owner: ->(controller, model) { controller && controller.current_user }
     
   include PgSearch
-    pg_search_scope :search_by_name, :against => [:name, :location], :using => {
+    pg_search_scope :search_by_name, :against => [:name, :location, :tag_list], :using => {
     :tsearch => {:prefix => true, :any_word => true}
-      },
-      :associated_against => {
-      :tags => [:name]
       }
+
   
   validates :price, numericality: { :greater_than => 0, :less_than_or_equal_to => 100000000 }
   validates :quantity, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }

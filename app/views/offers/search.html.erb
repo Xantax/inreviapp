@@ -2,29 +2,78 @@
 
 <%= render 'main_bar' %>
 
-<% if @offers.blank? %>
-  No results!
-<% else %>
-  <% @offers.each do |offer| %>
-    <div class="col-sm-6 col-md-3 offer">
-      <div class="thumbnail">
-        <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>
-      <div class="caption">
-         <% unless offer.sell %>
-          <small><b>R - </b></small>
-         <% end %>
-       <%= link_to truncate(offer.name, length: 50), offer %><hr>
-       <%= image_tag('2/thumbsup_off.PNG') %> <b><%= offer.reviews.positive.where("buyer_id != ?", offer.user.id).count %></b> | 
-       <%= image_tag('2/thumbsdown_off.PNG') %> <b><%= offer.reviews.negative.where("buyer_id != ?", offer.user.id).count %></b>
-        <span class="offer-price-box">
-          <mark><%= number_to_currency(offer.price) %></mark>
-        </span>
+<div class="main-nf">
+  <% @poffers.each do |poffer| %>
+    <div class="row promoted-product">
+      <div class="col-xs-4">
+      <% if poffer.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(poffer.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
       </div>
-      </div>
+     <div class="col-xs-8">
+       <% unless poffer.offer.sell %> [Request] <% end %> 
+       <strong><%= link_to poffer.name, promoted_offer_path(poffer) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= poffer.offer.reviews.positive.where("buyer_id != ?", poffer.offer.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= poffer.offer.reviews.negative.where("buyer_id != ?", poffer.offer.user.id).count %></b> <br><br>     
+        Price: <span class="label label-success"><%= number_to_currency(poffer.price) %></span> | 
+        Quantity: <span class="label label-primary"><%= poffer.offer.quantity %></span> | 
+        <% if poffer.offer.new %>
+          <mark>New</mark>
+        <% else %>
+          <mark>Used</mark>
+        <% end %> 
+        <% if poffer.offer.free_delivery %>
+         <br><br> + <u>Free delivery</u>
+        <% end %><br><br>
+        <% if poffer.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= poffer.location %>
+        <% end %> 
+     </div>
     </div>
   <% end %>
-<% end %>
 
-<div class="digg_pagination">
-  <%= will_paginate @offers, :page_links => false %>
+  <% @offers.each do |offer| %>
+    <div class="row product-results">
+      <div class="col-xs-4">
+      <% if offer.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(offer.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <% unless offer.sell %> [Request] <% end %> 
+       <strong><%= link_to offer.name, offer_path(offer) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= offer.reviews.positive.where("buyer_id != ?", offer.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= offer.reviews.negative.where("buyer_id != ?", offer.user.id).count %></b> <br><br>     
+        Price: <span class="label label-success"><%= number_to_currency(offer.price) %></span> | 
+        Quantity: <span class="label label-primary"><%= offer.quantity %></span> | 
+        <% if offer.new %>
+          <mark>New</mark>
+        <% else %>
+          <mark>Used</mark>
+        <% end %> 
+        <% if offer.free_delivery %>
+         <br><br> + <u>Free delivery</u>
+        <% end %><br><br>
+        <% if offer.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= offer.location %>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @offers, :page_links => false %>
+      </div>
 </div>

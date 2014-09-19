@@ -1,6 +1,6 @@
 class PromotedOffersController < ApplicationController
   before_action :set_promoted_offer, only: [:show]
-  before_action :must_be_completely_verified, except: [:show]
+  #before_action :must_be_completely_verified, except: [:show]
 
   def new
     @offer = Offer.find(params[:offer_id])
@@ -9,7 +9,7 @@ class PromotedOffersController < ApplicationController
   
   def show
     @promoted_offer.increment!(:clicks)
-    redirect_to "/#{@promoted_offer.promotabe_type}/#{@promoted_offer.promotabe_id}"
+    redirect_to @promoted_offer.offer
   end
   
   def create
@@ -34,6 +34,6 @@ class PromotedOffersController < ApplicationController
     end
 
     def promoted_offer_params
-      params.require(:promoted_offer).permit(:user_id, :offer_id, :set_clicks)
+      params.require(:promoted_offer).permit(:user_id, :offer_id, :set_clicks, :name, :location, :tag_list, :price, :image)
     end
 end

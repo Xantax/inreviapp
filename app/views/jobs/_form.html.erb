@@ -45,8 +45,6 @@
     <div class="field">
       <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control orange", placeholder: "Anywhere"}, :required => true %>      
     </div>
-    <%= f.check_box :remote, onClick: "toggle('example', 'gmaps-input-address')", id: 'example' %> 
-    <abbr title="People can work remotely">Remote</abbr> <br>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 
@@ -74,11 +72,3 @@
 <% end %>
   
 </div>
-
-<script type="text/javascript">
-  function toggle(checkboxID, toggleID) {
-  var checkbox = document.getElementById(checkboxID);
-  var toggle = document.getElementById(toggleID);
-  updateToggle = checkbox.checked ? toggle.disabled=true : toggle.disabled=false;
-}
-</script>

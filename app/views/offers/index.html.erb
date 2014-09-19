@@ -2,16 +2,14 @@
 
 <%= render 'main_bar' %>
 
-  <% @poffers.each do |offer| %>
-    <div class="col-sm-6 col-md-3 offer">
-      <%= offer.set_clicks %>
-    </div>
-  <% end %>
-
   <% @offers.each do |offer| %>
     <div class="col-sm-6 col-md-3 offer">
-      <div class="thumbnail">
+      <div class="thumbnail">        
+      <% if offer.image_url.blank? %>
+        <%= link_to image_tag("1/user_no_image.PNG", height: '200'), offer %>
+      <% else %>
         <%= link_to image_tag(offer.image_url(:thumb).to_s, height: '200'), offer %>
+      <% end %> 
         <div class="caption">
          <% unless offer.sell %>
           <small><b>R - </b></small>

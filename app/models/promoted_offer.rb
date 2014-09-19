@@ -1,4 +1,16 @@
 class PromotedOffer < ActiveRecord::Base
+  
+  include PgSearch
+    pg_search_scope :search_by_name, :against => [:name, :location, :tag_list], :using => {
+    :tsearch => {:prefix => true, :any_word => true}
+      }
+  
+  def self.search(search)
+    PromotedOffer.search_by_name(search)
+  end
+  
+  mount_uploader :image, ImageUploader
+  
   belongs_to :user
   belongs_to :offer
   

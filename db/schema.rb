@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915221042) do
+ActiveRecord::Schema.define(version: 20140918004955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,14 @@ ActiveRecord::Schema.define(version: 20140915221042) do
   add_index "orders", ["orderable_id", "orderable_type"], name: "index_orders_on_orderable_id_and_orderable_type", using: :btree
   add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "phone_codes", force: true do |t|
     t.string   "code"
     t.integer  "user_id"
@@ -165,6 +173,11 @@ ActiveRecord::Schema.define(version: 20140915221042) do
   add_index "phone_verifications", ["user_id"], name: "index_phone_verifications_on_user_id", using: :btree
 
   create_table "promoted_offers", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "tag_list"
+    t.decimal  "price"
+    t.string   "image"
     t.integer  "user_id"
     t.integer  "clicks",     default: 0
     t.integer  "set_clicks", default: 0

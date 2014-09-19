@@ -7,7 +7,6 @@ class CreateJobs < ActiveRecord::Migration
       t.string :location
       t.string :tag_list
       t.boolean :deleted
-      t.boolean :remote
       t.references :user, index: true
       t.integer :total_clicks
 

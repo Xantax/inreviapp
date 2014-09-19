@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  image: MyString
+  location: MyString
+  tag_list: MyString
+  price: 9.99
+  user_id: 
+  service_id: 
+
+two:
+  name: MyString
+  image: MyString
+  location: MyString
+  tag_list: MyString
+  price: 9.99
+  user_id: 
+  service_id: 

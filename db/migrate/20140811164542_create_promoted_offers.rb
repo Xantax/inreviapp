@@ -6,6 +6,11 @@ class CreatePromotedOffers < ActiveRecord::Migration
       t.string :tag_list
       t.decimal :price
       t.string :image
+      t.boolean :new
+      t.boolean :sell
+      t.integer :quantity
+      t.integer :barcode
+      t.boolean :free_delivery
       t.references :user, index: true
       t.integer :clicks, default: 0
       t.integer :set_clicks, default: 0

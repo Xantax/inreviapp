@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918004955) do
+ActiveRecord::Schema.define(version: 20140919174644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20140918004955) do
     t.string   "location"
     t.string   "tag_list"
     t.boolean  "deleted"
-    t.boolean  "remote"
     t.integer  "user_id"
     t.integer  "total_clicks"
     t.datetime "created_at"
@@ -178,9 +177,14 @@ ActiveRecord::Schema.define(version: 20140918004955) do
     t.string   "tag_list"
     t.decimal  "price"
     t.string   "image"
+    t.boolean  "new"
+    t.boolean  "sell"
+    t.integer  "quantity"
+    t.integer  "barcode"
+    t.boolean  "free_delivery"
     t.integer  "user_id"
-    t.integer  "clicks",     default: 0
-    t.integer  "set_clicks", default: 0
+    t.integer  "clicks",        default: 0
+    t.integer  "set_clicks",    default: 0
     t.integer  "offer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -188,6 +192,23 @@ ActiveRecord::Schema.define(version: 20140918004955) do
 
   add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id", using: :btree
   add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id", using: :btree
+
+  create_table "promoted_services", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "location"
+    t.string   "tag_list"
+    t.decimal  "price"
+    t.integer  "user_id"
+    t.integer  "service_id"
+    t.integer  "clicks",     default: 0
+    t.integer  "set_clicks", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "promoted_services", ["service_id"], name: "index_promoted_services_on_service_id", using: :btree
+  add_index "promoted_services", ["user_id"], name: "index_promoted_services_on_user_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

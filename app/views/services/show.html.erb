@@ -11,7 +11,7 @@ keywords: %w(@service.tag_list)
   <div class="col-xs-1">
     <% if user_signed_in? %>
       <% if current_user.admin %>
-        <%= link_to "Promote", [:new, @promotable, :promoted_offer], class: 'btn btn-danger' %>
+        <%= link_to "Promote", new_service_promoted_service_path(@service), class: 'btn btn-danger' %>
       <% end %>
     <% end %>
   </div>
@@ -22,11 +22,15 @@ keywords: %w(@service.tag_list)
     <% end %>
     
     <div class="row">
-      <div class="col-xs-5">     
-        <%= link_to image_tag(@service.image_url(:thumb).to_s), @service.image_url, target: :_blank %>
+      <div class="col-xs-4"> 
+        <% if @service.image_url.blank? %>
+          <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+        <% else %>
+          <%= link_to image_tag(@service.image_url(:thumb).to_s), @service.image_url, target: :_blank %>
+        <% end %>
       </div>
       
-      <div class="col-xs-7" align="left">  
+      <div class="col-xs-8" align="left">  
         <strong><%= @service.name %></strong><br><br>        
         <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
           <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 

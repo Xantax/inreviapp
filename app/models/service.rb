@@ -19,7 +19,7 @@ class Service < ActiveRecord::Base
   scope :published, -> { where(deleted: false) }
   
   belongs_to :user
-  has_many :promoted_offers, as: :promotable
+  has_many :promoted_services
   has_many :conversations, as: :convoable
   has_many :buy_requests, as: :buyable
   has_many :orders, as: :orderable
@@ -29,7 +29,6 @@ class Service < ActiveRecord::Base
   
   validates :name, length: { maximum: 120 }
   validates :description, length: { maximum: 10000 }
-  validates :image, presence: true
   validates :user_id, presence: true
   
   validate :user_quota, :on => :create

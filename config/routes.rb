@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :promoted_services
+
   resources :alerts
 
   get 'activities/index'

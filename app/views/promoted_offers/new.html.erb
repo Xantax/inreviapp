@@ -16,6 +16,11 @@
           <%= f.text_field :tag_list, value: @offer.tag_list %>
           <%= f.text_field :image, value: @offer.image %>
           <%= f.number_field :price, value: @offer.price %>
+          <%= f.radio_button :sell, value: @offer.sell %>
+          <%= f.radio_button :new, value: @offer.new %>
+          <%= f.number_field :quantity, value: @offer.quantity %>
+          <%= f.number_field :barcode, value: @offer.barcode %>
+          <%= f.check_box :free_delivery, value: @offer.free_delivery %><hr>
 
           How many clicks do you want? <br>
           <%= f.number_field :set_clicks %><br><br>

@@ -1,0 +1,25 @@
+        <%= form_for([@service, @promoted_service]) do |f| %>
+          <% if @promoted_service.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% @promoted_service.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+          <%= f.hidden_field :user_id, value: @service.user.id %>
+          <%= f.hidden_field :service_id, value: @service.id %>
+          <%= f.text_field :name, value: @service.name %>
+          <%= f.text_field :location, value: @service.location %>
+          <%= f.text_field :tag_list, value: @service.tag_list %>
+          <%= f.text_field :image, value: @service.image %>
+          <%= f.number_field :price, value: @service.price %><hr>
+
+          How many clicks do you want? <br>
+          <%= f.number_field :set_clicks %><br><br>
+
+            <%= f.submit "Promote it", class: 'btn btn-warning' %>
+
+        <% end %>

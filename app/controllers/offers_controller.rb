@@ -5,7 +5,7 @@ class OffersController < ApplicationController
   #before_action :must_be_completely_verified, except: [:show, :index]
 
   def index
-    @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 1)
+    @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
   end
   
   def search
@@ -15,9 +15,7 @@ class OffersController < ApplicationController
 
   def show
     @offer.increment!(:total_clicks)
-    if user_signed_in?
     @promoted_offer = PromotedOffer.new
-    end
     @reviewable = @offer
     @reviews = @reviewable.reviews.where("buyer_id != ?", @offer.user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     @positive_reviews = @reviewable.reviews.positive.where("buyer_id != ?", @offer.user.id)

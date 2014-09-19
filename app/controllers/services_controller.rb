@@ -5,18 +5,17 @@ class ServicesController < ApplicationController
   #before_action :must_be_completely_verified, except: [:show, :index]offer
 
   def index
-      @services = Service.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
+    @services = Service.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
   end
   
   def search
-    @services = Service.published.search(params[:search]).paginate(:page => params[:page], :per_page => 20)
+    @pservices = PromotedService.published.search(params[:search]).paginate(:page => params[:page]).limit(2)
+    @services = Service.published.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
     @service.increment!(:total_clicks)
-    if user_signed_in?
-    @promoted_offer = PromotedOffer.new
-    end
+    @promoted_service = PromotedService.new
     @reviewable = @service
     @reviews = @reviewable.reviews.where("buyer_id != ?", @service.user.id).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     @positive_reviews = @reviewable.reviews.positive.where("buyer_id != ?", @service.user.id)
@@ -24,9 +23,6 @@ class ServicesController < ApplicationController
     @convoable = @service
     @conversations = @convoable.conversations
     @conversation = Conversation.new
-    @promotable = @service
-    @promoted_offer = @promotable.promoted_offers
-    @promoted_offer = PromotedOffer.new
   end
 
   def new

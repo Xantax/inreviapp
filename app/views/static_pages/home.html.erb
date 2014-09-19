@@ -13,9 +13,11 @@ keywords: %w(inrevi marketplace free)
             <%= render_activity activity %>
           </div>
         <% end %>
+        <div class="digg_pagination">
+          <%= will_paginate @activities, :page_links => false %>
+        </div>
       </div>
 </div>
-
 <% else %>
   <%= render 'landing_page' %>
 <% end %>

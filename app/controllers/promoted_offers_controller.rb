@@ -1,5 +1,6 @@
 class PromotedOffersController < ApplicationController
   before_action :set_promoted_offer, only: [:show]
+  before_action :only_admin, except: [:show]
   #before_action :must_be_completely_verified, except: [:show]
 
   def new

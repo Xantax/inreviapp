@@ -1,6 +1,6 @@
 class PromotedServicesController < ApplicationController
   before_action :set_promoted_service, only: [:show]
-  before_action :only_admin, except: [:show]
+  #before_action :only_admin, except: [:show]
   #before_action :must_be_completely_verified, except: [:show]
 
   def show
@@ -19,7 +19,7 @@ class PromotedServicesController < ApplicationController
 
     respond_to do |format|
       if @promoted_service.save
-        format.html { redirect_to @promoted_service, notice: 'Promoted service was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Your service is now promoted' }
         format.json { render :show, status: :created, location: @promoted_service }
       else
         format.html { render :new }

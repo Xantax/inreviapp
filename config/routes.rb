@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     member do
       get 'promotion'
     end
-    resources :promoted_offers
+    resources :promoted_services
     resources :conversations
   end
   

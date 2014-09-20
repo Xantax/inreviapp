@@ -1,7 +1,7 @@
 class PromotedOffer < ActiveRecord::Base
   
   include PgSearch
-    pg_search_scope :search_by_name, :against => [:name, :location, :tag_list], :using => {
+  pg_search_scope :search_by_name, :against => [:name, :location, :tag_list, :barcode], :using => {
     :tsearch => {:prefix => true, :any_word => true}
       }
   

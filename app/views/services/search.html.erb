@@ -2,26 +2,58 @@
 
 <%= render 'main_bar' %>
 
-<% if @services.blank? %>
-  No results!
-<% else %>
-  <% @services.each do |service| %>
-    <div class="col-sm-6 col-md-3 offer">
-      <div class="thumbnail">
-        <%= link_to image_tag(service.image_url(:thumb).to_s, height: '200'), service %>
-      <div class="caption">
-       <%= link_to truncate(service.name, length: 50), service %><hr>
-       <%= image_tag('2/thumbsup_off.PNG') %> <b><%= service.reviews.positive.where("buyer_id != ?", service.user.id).count %></b> | 
-       <%= image_tag('2/thumbsdown_off.PNG') %> <b><%= service.reviews.negative.where("buyer_id != ?", service.user.id).count %></b>
-        <span class="offer-price-box">
-          <mark><%= number_to_currency(service.price) %></mark>
-        </span>
+<div class="main-nf">
+  <% @pservices.each do |pservice| %>
+    <div class="row promoted-product">
+      <div class="col-xs-4">
+      <% if pservice.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(pservice.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
       </div>
-      </div>
+     <div class="col-xs-8">
+       <strong><%= link_to pservice.name, promoted_service_path(pservice) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= pservice.service.reviews.positive.where("buyer_id != ?", pservice.service.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= pservice.service.reviews.negative.where("buyer_id != ?", pservice.service.user.id).count %></b> <br><br>     
+        Price: <span class="label label-success"><%= number_to_currency(pservice.price) %></span> <br><br>
+        <% if pservice.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= pservice.location %>
+        <% end %> 
+     </div>
     </div>
   <% end %>
-<% end %>
 
-<div class="digg_pagination">
-  <%= will_paginate @services, :page_links => false %>
+  <% @services.each do |service| %>
+    <div class="row product-results">
+      <div class="col-xs-4">
+      <% if service.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(service.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <strong><%= link_to service.name, service_path(service) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= service.reviews.positive.where("buyer_id != ?", service.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= service.reviews.negative.where("buyer_id != ?", service.user.id).count %></b> <br><br>     
+        Price: <span class="label label-success"><%= number_to_currency(service.price) %></span> <br><br>
+        <% if service.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= service.location %>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @services, :page_links => false %>
+      </div>
 </div>

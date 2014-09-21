@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :promoted_services
-
   resources :alerts
 
   get 'activities/index'
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
   match 'offerz/search' => "offers#search", via: [:get]
   match 'servicez/search' => "services#search", via: [:get]
   match 'jobz/search' => "jobs#search", via: [:get]
+  match 'rentz/search' => "rents#search", via: [:get]
   
 #  get 'tags/:tag', to: 'offers#index', as: :tag
   
@@ -68,7 +67,13 @@ Rails.application.routes.draw do
     member do
       get 'promotion'
     end
-    resources :promoted_offers
+    resources :conversations
+  end
+  
+  resources :rents do
+    member do
+      get 'promotion'
+    end
     resources :conversations
   end
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919174644) do
+ActiveRecord::Schema.define(version: 20140920231158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,21 +73,6 @@ ActiveRecord::Schema.define(version: 20140919174644) do
   add_index "conversations", ["convoable_id", "convoable_type"], name: "index_conversations_on_convoable_id_and_convoable_type", using: :btree
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
-
-  create_table "jobs", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image"
-    t.string   "location"
-    t.string   "tag_list"
-    t.boolean  "deleted"
-    t.integer  "user_id"
-    t.integer  "total_clicks"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "conversation_id"
@@ -220,6 +205,25 @@ ActiveRecord::Schema.define(version: 20140919174644) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "rents", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.string   "location"
+    t.string   "tag_list"
+    t.boolean  "deleted"
+    t.integer  "user_id"
+    t.boolean  "unavailable"
+    t.integer  "total_clicks"
+    t.integer  "quantity"
+    t.boolean  "sell"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rents", ["user_id"], name: "index_rents_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.boolean  "positive"

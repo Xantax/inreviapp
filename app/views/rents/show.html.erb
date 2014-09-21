@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rent.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rent.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @rent.image %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @rent.location %>
+</p>
+
+<p>
+  <strong>Tag list:</strong>
+  <%= @rent.tag_list %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @rent.deleted %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rent.user %>
+</p>
+
+<p>
+  <strong>Unavailable:</strong>
+  <%= @rent.unavailable %>
+</p>
+
+<p>
+  <strong>Total clicks:</strong>
+  <%= @rent.total_clicks %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @rent.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_rent_path(@rent) %> |
+<%= link_to 'Back', rents_path %>

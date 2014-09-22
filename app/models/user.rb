@@ -12,6 +12,8 @@ mount_uploader :image, ImageUploader
   has_many :phone_verifications
   has_many :phone_codes
   has_many :promoted_offers
+  has_many :promoted_services
+  has_many :promoted_rents
   has_many :buy_requests
   has_many :orders
   has_many :reviews

@@ -9,8 +9,8 @@ class CreatePromotedRents < ActiveRecord::Migration
       t.integer :quantity
       t.references :user, index: true
       t.references :rent, index: true
-      t.integer :clicks
-      t.integer :set_clicks
+      t.integer :clicks, default: 0
+      t.integer :set_clicks, default: 0
       t.boolean :sell
       t.boolean :unavailable
       t.integer :temporal_id

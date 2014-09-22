@@ -193,8 +193,8 @@ ActiveRecord::Schema.define(version: 20140922004149) do
     t.integer  "quantity"
     t.integer  "user_id"
     t.integer  "rent_id"
-    t.integer  "clicks"
-    t.integer  "set_clicks"
+    t.integer  "clicks",          default: 0
+    t.integer  "set_clicks",      default: 0
     t.boolean  "sell"
     t.boolean  "unavailable"
     t.integer  "temporal_id"

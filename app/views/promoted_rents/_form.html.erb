@@ -1,24 +1,30 @@
-<%= simple_form_for(@promoted_rent) do |f| %>
-  <%= f.error_notification %>
+      <%= form_for([@rent, @promoted_rent]) do |f| %>
+          <% if @promoted_rent.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% @promoted_rent.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :location %>
-    <%= f.input :tag_list %>
-    <%= f.input :price %>
-    <%= f.input :image %>
-    <%= f.input :quantity %>
-    <%= f.association :user %>
-    <%= f.association :rent %>
-    <%= f.input :clicks %>
-    <%= f.input :set_clicks %>
-    <%= f.input :sell %>
-    <%= f.input :unavailable %>
-    <%= f.input :temporal_id %>
-    <%= f.input :per_temporal_id %>
-  </div>
+          <%= f.hidden_field :user_id, value: @rent.user.id %>
+          <%= f.hidden_field :rent_id, value: @rent.id %>
+          <%= f.text_field :name, value: @rent.name %>
+          <%= f.text_field :location, value: @rent.location %>
+          <%= f.text_field :tag_list, value: @rent.tag_list %>
+          <%= f.text_field :image, value: @rent.image %>
+          <%= f.number_field :price, value: @rent.price %>
+          <%= f.number_field :temporal_id, value: @rent.temporal_id %>
+          <%= f.number_field :per_temporal_id, value: @rent.per_temporal_id %>
+          <%= f.check_box :sell, value: @rent.sell %>
+          <%= f.check_box :unavailable, value: @rent.unavailable %>
+          <%= f.number_field :quantity, value: @rent.quantity %><hr>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+          How many clicks do you want? <br>
+          <%= f.number_field :set_clicks %><br><br>
+
+            <%= f.submit "Promote it", class: 'btn btn-warning' %>
+
+        <% end %>

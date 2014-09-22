@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :promoted_rents
-
   resources :alerts
 
   get 'activities/index'
@@ -44,10 +42,11 @@ Rails.application.routes.draw do
     end
     resources :conversations
     resources :promoted_offers
+    resources :promoted_rents
+    resources :promoted_services
   end  
   resources :phone_codes
   resources :phone_verifications
-  resources :promoted_offers
   
   resources :offers do
     member do
@@ -65,19 +64,17 @@ Rails.application.routes.draw do
     resources :conversations
   end
   
-  resources :jobs do
-    member do
-      get 'promotion'
-    end
-    resources :conversations
-  end
-  
   resources :rents do
     member do
       get 'promotion'
     end
+    resources :promoted_rents
     resources :conversations
   end
+    
+    resources :promoted_offers
+    resources :promoted_rents
+    resources :promoted_services
   
 
   # The priority is based upon order of creation: first created -> highest priority.

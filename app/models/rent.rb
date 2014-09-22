@@ -20,6 +20,7 @@ class Rent < ActiveRecord::Base
   has_many :buy_requests, as: :buyable
   has_many :orders, as: :orderable
   has_many :reviews, as: :reviewable
+  has_many :promoted_rents
   
   mount_uploader :image, ImageUploader
   

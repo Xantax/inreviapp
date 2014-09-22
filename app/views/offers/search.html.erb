@@ -13,20 +13,20 @@
       <% end %>
       </div>
      <div class="col-xs-8">
-       <% unless poffer.offer.sell %> [Request] <% end %> 
+       <% if poffer.sell == false %> [Request] <% end %> 
        <strong><%= link_to poffer.name, promoted_offer_path(poffer) %></strong><br><br>        
         <%= image_tag('2/thumbsup_off.PNG') %>
          <b><%= poffer.offer.reviews.positive.where("buyer_id != ?", poffer.offer.user.id).count %></b> | 
         <%= image_tag('2/thumbsdown_off.PNG') %>
         <b><%= poffer.offer.reviews.negative.where("buyer_id != ?", poffer.offer.user.id).count %></b> <br><br>     
         Price: <span class="label label-success"><%= number_to_currency(poffer.price) %></span> | 
-        Quantity: <span class="label label-primary"><%= poffer.offer.quantity %></span> | 
-        <% if poffer.offer.new %>
+        Quantity: <span class="label label-primary"><%= poffer.quantity %></span> | 
+        <% if poffer.new %>
           <mark>New</mark>
         <% else %>
           <mark>Used</mark>
         <% end %> 
-        <% if poffer.offer.free_delivery %>
+        <% if poffer.free_delivery %>
          <br><br> + <u>Free delivery</u>
         <% end %><br><br>
         <% if poffer.location.blank? %>

@@ -1,0 +1,77 @@
+<% meta title: "Search Results" %>
+
+<%= render 'main_bar' %>
+
+<div class="main-nf">
+  <% @prents.each do |prent| %>
+    <div class="row promoted-product">
+      <div class="col-xs-4">
+      <% if prent.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(prent.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <% if prent.unavailable %> [Not Available] <% end %>
+       <% if prent.sell == false %> [Request] <% end %> 
+       <strong><%= link_to prent.name, promoted_rent_path(prent) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= prent.rent.reviews.positive.where("buyer_id != ?", prent.rent.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= prent.rent.reviews.negative.where("buyer_id != ?", prent.rent.user.id).count %></b> <br><br>     
+        Price: 
+       <span class="label label-success">
+         <%= number_to_currency(prent.price) %> <%= prent.per_temporal.name if prent.per_temporal.present? %>
+       </span> | 
+        Quantity: 
+       <span class="label label-primary">
+         <%= prent.quantity %> <%= prent.temporal.name if prent.temporal.present? %>
+       </span> <br><br>
+        <% if prent.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= prent.location %>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+  <% @rents.each do |rent| %>
+    <div class="row product-results">
+      <div class="col-xs-4">
+      <% if rent.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(rent.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <% if rent.unavailable %> [Not Available] <% end %>
+       <% unless rent.sell %> [Request] <% end %> 
+       <strong><%= link_to rent.name, rent_path(rent) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= rent.reviews.positive.where("buyer_id != ?", rent.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= rent.reviews.negative.where("buyer_id != ?", rent.user.id).count %></b> <br><br>     
+        Price: 
+       <span class="label label-success">
+         <%= number_to_currency(rent.price) %> <%= rent.per_temporal.name if rent.per_temporal.present? %>
+       </span> | 
+        Quantity: 
+       <span class="label label-primary">
+         <%= rent.quantity %> <%= rent.temporal.name if rent.temporal.present? %>
+       </span> <br><br>
+        <% if rent.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= rent.location %>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @rents, :page_links => false %>
+      </div>
+</div>

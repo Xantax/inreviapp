@@ -11,7 +11,7 @@ keywords: %w(@rent.tag_list)
   <div class="col-xs-1">
     <% if user_signed_in? %>
     <% unless current_user.admin %>
-        <%= link_to "Promote", "", class: 'btn btn-danger' %>
+    <%= link_to "Promote", new_rent_promoted_rent_path(@rent), class: 'btn btn-danger' %>
       <% end %>
     <% end %>
   </div>

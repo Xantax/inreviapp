@@ -48,146 +48,126 @@ img { max-height: 100%; }
 }
 
 .col-xs-2.logo{
+  padding-top:10px;
+  padding-left:40px;
   a::before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    width: 124px;
+    height: 35px;
+    background-image: asset-data-url("3/logoz.PNG");
     background-repeat: no-repeat;
-    background-position: 0 -583px;
+    background-position: 0 -4px;
   }
 }
 
 .col-xs-2.logo:hover{
+  padding-top:10px;
+  padding-left:40px;
   a::before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    width: 124px;
+    height: 35px;
+    background-image: asset-data-url("3/logoz.PNG");
     background-repeat: no-repeat;
-    background-position: 0 -530px;
+    background-position: 0 -39px;
   }
 }
 
-.col-xs-2.products{
+.col-xs-3.products{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -53px;
   }
 }
 
-.col-xs-2.products:hover{
+.col-xs-3.products:hover{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 0px;
   }
 }
 
-.col-xs-2.services{
+.col-xs-3.services{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -159px;
   }
 }
 
-.col-xs-2.services:hover{
+.col-xs-3.services:hover{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -106px;
   }
 }
 
-.col-xs-2.jobs{
+.col-xs-3.jobs{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -265px;
   }
 }
 
-.col-xs-2.jobs:hover{
+.col-xs-3.jobs:hover{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -212px;
   }
 }
 
-.col-xs-2.investing{
+.col-xs-3.rent{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -371px;
   }
 }
 
-.col-xs-2.investing:hover{
+.col-xs-3.rent:hover{
   a::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
+    background-image: asset-data-url("3/cathov26.PNG");
     background-repeat: no-repeat;
     background-position: 0 -318px;
-  }
-}
-
-.col-xs-2.rent{
-  a::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 -477px;
-  }
-}
-
-.col-xs-2.rent:hover{
-  a::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    background-image: asset-data-url("3/cathov2.PNG");
-    background-repeat: no-repeat;
-    background-position: 0 -424px;
   }
 }
 

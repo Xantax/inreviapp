@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @promoted_rent.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @promoted_rent.location %>
+</p>
+
+<p>
+  <strong>Tag list:</strong>
+  <%= @promoted_rent.tag_list %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @promoted_rent.price %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @promoted_rent.image %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @promoted_rent.quantity %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @promoted_rent.user %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @promoted_rent.rent %>
+</p>
+
+<p>
+  <strong>Clicks:</strong>
+  <%= @promoted_rent.clicks %>
+</p>
+
+<p>
+  <strong>Set clicks:</strong>
+  <%= @promoted_rent.set_clicks %>
+</p>
+
+<p>
+  <strong>Sell:</strong>
+  <%= @promoted_rent.sell %>
+</p>
+
+<p>
+  <strong>Unavailable:</strong>
+  <%= @promoted_rent.unavailable %>
+</p>
+
+<p>
+  <strong>Temporal:</strong>
+  <%= @promoted_rent.temporal_id %>
+</p>
+
+<p>
+  <strong>Per temporal:</strong>
+  <%= @promoted_rent.per_temporal_id %>
+</p>
+
+<%= link_to 'Edit', edit_promoted_rent_path(@promoted_rent) %> |
+<%= link_to 'Back', promoted_rents_path %>

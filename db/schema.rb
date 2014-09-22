@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921203516) do
+ActiveRecord::Schema.define(version: 20140922004149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,28 @@ ActiveRecord::Schema.define(version: 20140921203516) do
 
   add_index "promoted_offers", ["offer_id"], name: "index_promoted_offers_on_offer_id", using: :btree
   add_index "promoted_offers", ["user_id"], name: "index_promoted_offers_on_user_id", using: :btree
+
+  create_table "promoted_rents", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "tag_list"
+    t.decimal  "price"
+    t.string   "image"
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.integer  "rent_id"
+    t.integer  "clicks"
+    t.integer  "set_clicks"
+    t.boolean  "sell"
+    t.boolean  "unavailable"
+    t.integer  "temporal_id"
+    t.integer  "per_temporal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "promoted_rents", ["rent_id"], name: "index_promoted_rents_on_rent_id", using: :btree
+  add_index "promoted_rents", ["user_id"], name: "index_promoted_rents_on_user_id", using: :btree
 
   create_table "promoted_services", force: true do |t|
     t.string   "name"

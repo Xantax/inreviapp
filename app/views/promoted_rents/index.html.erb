@@ -1,0 +1,51 @@
+<h1>Listing promoted_rents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Tag list</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th>Quantity</th>
+      <th>User</th>
+      <th>Rent</th>
+      <th>Clicks</th>
+      <th>Set clicks</th>
+      <th>Sell</th>
+      <th>Unavailable</th>
+      <th>Temporal</th>
+      <th>Per temporal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @promoted_rents.each do |promoted_rent| %>
+      <tr>
+        <td><%= promoted_rent.name %></td>
+        <td><%= promoted_rent.location %></td>
+        <td><%= promoted_rent.tag_list %></td>
+        <td><%= promoted_rent.price %></td>
+        <td><%= promoted_rent.image %></td>
+        <td><%= promoted_rent.quantity %></td>
+        <td><%= promoted_rent.user %></td>
+        <td><%= promoted_rent.rent %></td>
+        <td><%= promoted_rent.clicks %></td>
+        <td><%= promoted_rent.set_clicks %></td>
+        <td><%= promoted_rent.sell %></td>
+        <td><%= promoted_rent.unavailable %></td>
+        <td><%= promoted_rent.temporal_id %></td>
+        <td><%= promoted_rent.per_temporal_id %></td>
+        <td><%= link_to 'Show', promoted_rent %></td>
+        <td><%= link_to 'Edit', edit_promoted_rent_path(promoted_rent) %></td>
+        <td><%= link_to 'Destroy', promoted_rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Promoted rent', new_promoted_rent_path %>

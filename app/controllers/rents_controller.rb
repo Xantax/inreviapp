@@ -65,7 +65,7 @@ class RentsController < ApplicationController
     end
 
     def rent_params
-      params.require(:rent).permit(:name, :description, :image, :location, :tag_list, :deleted, :user_id, :unavailable, :total_clicks, :quantity, :sell, :price)
+      params.require(:rent).permit(:name, :description, :image, :location, :tag_list, :deleted, :user_id, :unavailable, :total_clicks, :quantity, :sell, :price, :temporal_id, :per_temporal_id)
     end
   
     def require_permission

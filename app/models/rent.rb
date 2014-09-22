@@ -14,6 +14,8 @@ class Rent < ActiveRecord::Base
   scope :published, -> { where(deleted: false) }
   
   belongs_to :user
+  belongs_to :temporal
+  belongs_to :per_temporal
   has_many :conversations, as: :convoable
   has_many :buy_requests, as: :buyable
   has_many :orders, as: :orderable

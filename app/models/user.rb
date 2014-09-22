@@ -51,12 +51,6 @@ mount_uploader :image, ImageUploader
   end
   end
   
-  has_many :jobs do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
-  end  
-  
   has_many :rents do
   def today
   where(:created_at => (Time.now.beginning_of_day..Time.now))

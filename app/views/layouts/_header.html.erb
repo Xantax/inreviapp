@@ -23,14 +23,7 @@
       <% else %>
         <%= link_to "Jobs", "/how" %>
       <% end %>
-    </div>
-    <div class="col-xs-2 investing">
-      <% if user_signed_in? %>
-        <%= link_to "", "" %>
-      <% else %>
-        <%= link_to "", "" %>
-      <% end %>
-    </div>    
+    </div>   
     <div class="col-xs-2 rent">
       <% if user_signed_in? %>
       <%= link_to "", "/rents" %>
@@ -38,5 +31,12 @@
         <%= link_to "", "" %>
       <% end %>
     </div>
+    <div class="col-xs-2 investing">
+      <% if user_signed_in? %>
+        <%= link_to "", "" %>
+      <% else %>
+        <%= link_to "", "" %>
+      <% end %>
+    </div> 
 
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920231158) do
+ActiveRecord::Schema.define(version: 20140921203516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,12 @@ ActiveRecord::Schema.define(version: 20140920231158) do
   add_index "orders", ["orderable_id", "orderable_type"], name: "index_orders_on_orderable_id_and_orderable_type", using: :btree
   add_index "orders", ["seller_id"], name: "index_orders_on_seller_id", using: :btree
 
+  create_table "per_temporals", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
     t.integer  "searchable_id"
@@ -214,9 +220,11 @@ ActiveRecord::Schema.define(version: 20140920231158) do
     t.string   "tag_list"
     t.boolean  "deleted"
     t.integer  "user_id"
+    t.integer  "temporal_id"
+    t.integer  "per_temporal_id"
     t.boolean  "unavailable"
     t.integer  "total_clicks"
-    t.integer  "quantity"
+    t.integer  "quantity",        default: 1
     t.boolean  "sell"
     t.decimal  "price"
     t.datetime "created_at"
@@ -263,6 +271,12 @@ ActiveRecord::Schema.define(version: 20140920231158) do
   end
 
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
+
+  create_table "temporals", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

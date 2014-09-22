@@ -61,12 +61,12 @@
 
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control blue", :required => true %><br>
+      <%= f.text_field :name, class: "form-control red", :required => true %><br>
     </div>
 
     <div class="field">
       <b>Description</b><br><br>
-      <%= f.text_area :description, id: "some-textarea", class: 'wysihtml5' %>
+      <%= f.text_area :description, id: "some-textarea-red", class: 'wysihtml5' %>
     </div>
 
     <script type="text/javascript">
@@ -87,17 +87,17 @@
     <div class="field">
       Categories (max <b>3</b>)
       <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control blue", placeholder: "e.g. electronics, monitors" %>
+      <%= f.text_field :tag_list, class: "form-control red", placeholder: "e.g. electronics, monitors" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control red"}, :required => true %><br>      
     </div><br>
 
     <%= f.hidden_field :user_id, value: @offer.user.id %>
 
     <div class="actions" align="right">
-      <%= f.submit "Save", class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+      <%= f.submit "Save", class: "btn btn-danger", data: { disable_with: "Saving..." } %>
     </div> <hr>
   
   <div style="color:red"><%= f.check_box :deleted %> <i>delete this item</i></div>
@@ -122,16 +122,16 @@
         <b>Price:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
-          <%= f.number_field :price, class: "form-control short blue", :required => true %>
+          <%= f.number_field :price, class: "form-control short red", :required => true %>
         </div>
     </div><hr>    
     <div class="field">
         <%= f.label :quantity %>
-      <%= f.number_field :quantity, class: "form-control short blue", :required => true %>
+      <%= f.number_field :quantity, class: "form-control short red", :required => true %>
     </div><hr>    
       <div class="field">
         <%= f.label :barcode %>
-        <%= f.number_field :barcode, class: "form-control short blue" %>
+        <%= f.number_field :barcode, class: "form-control short red" %>
     </div><hr>    
       <div class="field">
         <%= f.check_box :free_delivery %> Free delivery

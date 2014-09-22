@@ -18,12 +18,12 @@
 
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control red", :required => true %><br>
+      <%= f.text_field :name, class: "form-control blue", :required => true %><br>
     </div>
 
     <div class="field">
       <b>Description</b><br><br>
-      <%= f.text_area :description, id: "some-textarea-red", class: 'wysihtml5' %>
+      <%= f.text_area :description, id: "some-textarea", class: 'wysihtml5' %>
     </div><br>
 
     <script type="text/javascript">
@@ -39,17 +39,17 @@
     <div class="field">
       <b>Categories</b> (max <b>3</b>) 
       <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control red", placeholder: "e.g. construction, writing, tutoring" %>
+      <%= f.text_field :tag_list, class: "form-control blue", placeholder: "e.g. construction, writing, tutoring" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control red", placeholder: "Anywhere"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue", placeholder: "Anywhere"}, :required => true %><br>      
     </div><br>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 
     <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-danger", data: { disable_with: "Creating..." } %>
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
     </div> <hr>
 </div>
   
@@ -68,7 +68,7 @@
         <b>Price:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
-          <%= f.number_field :price, class: "form-control short red", :required => true %>
+          <%= f.number_field :price, class: "form-control short blue", :required => true %>
         </div>
       </div><hr>  
       <div class="field"> 

@@ -22,12 +22,12 @@
     </div><hr>
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control purple", :required => true %><br>
+      <%= f.text_field :name, class: "form-control green", :required => true %><br>
     </div>
 
     <div class="field">
       <b>Description</b><br><br>
-      <%= f.text_area :description, id: "some-textarea-purple", class: 'wysihtml5' %>
+      <%= f.text_area :description, id: "some-textarea-green", class: 'wysihtml5' %>
     </div><br>
 
     <script type="text/javascript">
@@ -43,17 +43,17 @@
     <div class="field">
       <b>tags</b> (max <b>10</b>) 
       <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control purple", placeholder: "e.g. female roomate, vacation rental" %>
+      <%= f.text_field :tag_list, class: "form-control green", placeholder: "e.g. female roomate, vacation rental" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control purple", placeholder: "Anywhere"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control green", placeholder: "Anywhere"}, :required => true %><br>      
     </div><br>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 
     <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
+      <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Creating..." } %>
     </div> <hr>
 </div>
   
@@ -72,7 +72,7 @@
         <b>Price:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
-          <%= f.number_field :price, class: "form-control short purple" %>
+          <%= f.number_field :price, class: "form-control short green" %>
           <span class="input-group-addon">
             <%= f.select :per_temporal_id, PerTemporal.all.collect {|c| [ c.name, c.id ] }, :prompt => "" %>
           </span>
@@ -81,7 +81,7 @@
       <div class="field">
         <b>For How Long?</b>
         <div class="input-group">
-          <%= f.number_field :quantity, class: "form-control short purple", :required => true %>
+          <%= f.number_field :quantity, class: "form-control short green", :required => true %>
           <span class="input-group-addon">
             <%= f.select :temporal_id, Temporal.all.collect {|c| [ c.name, c.id ] }, :prompt => "" %>
           </span>

@@ -20,16 +20,16 @@
     </div>
     <div class="col-xs-3 jobs">
       <% if user_signed_in? %>
-        <%= link_to "Jobs", "/jobs" %>
+        <%= link_to "Jobs", "/works" %>
       <% else %>
         <%= link_to "Jobs", "/how" %>
       <% end %>
     </div>   
     <div class="col-xs-3 rent">
       <% if user_signed_in? %>
-      <%= link_to "", "/rents" %>
+        <%= link_to "Rents", "/rents" %>
       <% else %>
-        <%= link_to "", "" %>
+        <%= link_to "Rents", "/how" %>
       <% end %>
     </div>
   </div>

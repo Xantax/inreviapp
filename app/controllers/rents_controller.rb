@@ -59,6 +59,9 @@ class RentsController < ApplicationController
       end
     end
   end
+  
+  def promotion
+  end
 
   private
 

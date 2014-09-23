@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  tag_list: MyString
+  price: 9.99
+  image: MyString
+  quantity: 1
+  user_id: 
+  work_id: 
+  clicks: 1
+  set_clicks: 1
+  temporal_id: 1
+  per_temporal_id: 1
+
+two:
+  name: MyString
+  location: MyString
+  tag_list: MyString
+  price: 9.99
+  image: MyString
+  quantity: 1
+  user_id: 
+  work_id: 
+  clicks: 1
+  set_clicks: 1
+  temporal_id: 1
+  per_temporal_id: 1

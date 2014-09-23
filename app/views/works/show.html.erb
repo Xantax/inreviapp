@@ -1,7 +1,7 @@
 <%
-  meta title: "#{@rent.name}",
-description: "#{@rent.description}",
-keywords: %w(@rent.tag_list)
+  meta title: "#{@work.name}",
+description: "#{@work.description}",
+keywords: %w(@work.tag_list)
 %>
 
 <p id="notice"><%= notice %></p>
@@ -11,51 +11,52 @@ keywords: %w(@rent.tag_list)
   <div class="col-xs-1">
     <% if user_signed_in? %>
     <% unless current_user.admin %>
-    <%= link_to "Promote", new_rent_promoted_rent_path(@rent), class: 'btn btn-danger' %>
+    <%= link_to "Promote", new_work_promoted_work_path(@work), class: 'btn btn-danger' %>
       <% end %>
     <% end %>
   </div>
 
   <div class="col-xs-8 offer-center">
-    <% if @rent.deleted %>
+    <% if @work.deleted %>
       <div class="alert alert-danger" role="alert">This has been removed and is not available anymore.</div>
     <% end %>
     
     <div class="row">
       <div class="col-xs-4">
-      <% if @rent.image_url.blank? %>
+      <% if @work.image_url.blank? %>
         <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
       <% else %>
-        <%= link_to image_tag(@rent.image_url(:thumb).to_s), @rent.image_url, target: :_blank %>
+        <%= link_to image_tag(@work.image_url(:thumb).to_s), @work.image_url, target: :_blank %>
       <% end %> 
       </div>
       
       <div class="col-xs-8" align="left">  
-        <% unless @rent.sell %> [Request] <% end %> <strong><%= @rent.name %></strong><br><br>        
+        <strong><%= @work.name %></strong><br><br>        
         <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
           <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
         <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
         <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>
-        <% unless @rent.price.blank? %>
-          Price: 
+        <% unless @work.price.blank? %>
+          Pay: 
           <span class="label label-success">
-            <%= number_to_currency(@rent.price) %> <%= @rent.per_temporal.name if @rent.per_temporal.present? %>
+            <%= number_to_currency(@work.price) %> <%= @work.per_temporal.name if @work.per_temporal.present? %>
           </span> | 
         <% end %>
-        <% unless @rent.quantity.blank? %>
+        <% unless @work.quantity.blank? %>
+          Period: 
           <span class="label label-primary">
-            <%= @rent.quantity %> <%= @rent.temporal.name if @rent.temporal.present? %>
+            <%= @work.quantity %> <%= @work.temporal.name if @work.temporal.present? %>
           </span><br><br>
         <% end %>
-        <% if @rent.location.blank? %>
+        <% if @work.location.blank? %>
           <%= image_tag('3/map6.png') %> Anywhere
         <% else %>
-          <%= image_tag('3/map6.png') %> <%= @rent.location %>
+          <%= image_tag('3/map6.png') %> <%= @work.location %>
         <% end %> 
       </div>
     </div>
     
-    <hr><%= raw(@rent.description) %>
+    <hr><%= raw(@work.description) %>
     
     <div id="reviews-list">
     <% @reviews.each do |review| %><hr>
@@ -100,19 +101,19 @@ keywords: %w(@rent.tag_list)
   </div>
 
   <div class="col-xs-2">
-    <% if @rent.user.image_url.blank? %>
+    <% if @work.user.image_url.blank? %>
       <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
     <% else %>
-      <%= image_tag(@rent.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+      <%= image_tag(@work.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
     <% end %><hr>
-    <strong><%= link_to @rent.user.name, user_path(@rent.user) %></strong><br><br>
+    <strong><%= link_to @work.user.name, user_path(@work.user) %></strong><br><br>
     
-    <% unless @rent.deleted %>
+    <% unless @work.deleted %>
       <% if user_signed_in? && (current_user.phone_codes.count == 1) %>
-        <% unless current_user == @rent.user %> 
+        <% unless current_user == @work.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.hidden_field :recipient_id, value: @rent.user.id %>
+              <%= f.hidden_field :recipient_id, value: @work.user.id %>
             <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
           <% end %>
         <% end %>

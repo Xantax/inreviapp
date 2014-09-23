@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   match 'servicez/search' => "services#search", via: [:get]
   match 'jobz/search' => "jobs#search", via: [:get]
   match 'rentz/search' => "rents#search", via: [:get]
-  
-#  get 'tags/:tag', to: 'offers#index', as: :tag
+  match 'workz/search' => "works#search", via: [:get]
   
   resources :activities
   resources :relationships, only: [:create, :destroy]  
@@ -71,10 +70,19 @@ Rails.application.routes.draw do
     resources :promoted_rents
     resources :conversations
   end
+  
+  resources :works do
+    member do
+      get 'promotion'
+    end
+    resources :conversations
+    resources :promoted_works
+  end
     
     resources :promoted_offers
     resources :promoted_rents
     resources :promoted_services
+    resources :promoted_works
   
 
   # The priority is based upon order of creation: first created -> highest priority.

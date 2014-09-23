@@ -1,15 +1,15 @@
-<% meta title: "List it" %>
+<% meta title: "Post a Job" %>
 
 <div class="row">
   
 <div class="col-xs-1"></div>
   
 <div class="col-xs-8">
-  <%= simple_form_for(@rent) do |f| %>
-    <% if @rent.errors.any? %>
+  <%= simple_form_for(@work) do |f| %>
+    <% if @work.errors.any? %>
       <div id="error_explanation">
         <ul>
-        <% @rent.errors.full_messages.each do |message| %>
+        <% @work.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
@@ -17,17 +17,13 @@
     <% end %>
 
     <div class="field">
-      <%= f.radio_button :sell, true %> Rent Out
-      <%= f.radio_button :sell, false %> Request to Rent
-    </div><hr>
-    <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control green", :required => true %><br>
+      <%= f.text_field :name, class: "form-control orange", :required => true %><br>
     </div>
 
     <div class="field">
       <b>Description</b><br><br>
-      <%= f.text_area :description, id: "some-textarea-green", class: 'wysihtml5' %>
+      <%= f.text_area :description, id: "some-textarea-orange", class: 'wysihtml5' %>
     </div><br>
 
     <script type="text/javascript">
@@ -41,38 +37,38 @@
     </script>
 
     <div class="field">
-      <b>tags</b> (max <b>10</b>) 
+      <b>Skills</b> (max <b>10</b>) 
       <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control green", placeholder: "e.g. female roomate, vacation rental" %>
+      <%= f.text_field :tag_list, class: "form-control orange", placeholder: "e.g. finance, italian language" %>
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control green", placeholder: "Anywhere"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control orange", placeholder: "Anywhere"}, :required => true %><br>      
     </div><br>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 
     <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Creating..." } %>
+      <%= f.submit "Submit", class: "btn btn-warning", data: { disable_with: "Creating..." } %>
     </div> <hr>
 </div>
   
   <div class="col-xs-2"><hr>
     <div class="field">
-        <% if @rent.image_url.blank? %>
+        <% if @work.image_url.blank? %>
           <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
         <% else %>
-          <%= image_tag(@rent.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+          <%= image_tag(@work.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
         <% end %>
         <b>Cover photo</b><br>
         <small>(min 200x200)</small><br><br>
         <%= f.file_field :image %>
       </div><hr>  
       <div class="field">
-        <b>Price:</b>
+        <b>Pay:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
-          <%= f.number_field :price, class: "form-control short green" %>
+          <%= f.number_field :price, class: "form-control short orange" %>
           <span class="input-group-addon">
             <%= f.select :per_temporal_id, PerTemporal.all.collect {|c| [ c.name, c.id ] } %>
           </span>
@@ -81,14 +77,11 @@
       <div class="field">
         <b>For How Long?</b>
         <div class="input-group">
-          <%= f.number_field :quantity, class: "form-control short green", :required => true %>
+          <%= f.number_field :quantity, class: "form-control short orange", :required => true %>
           <span class="input-group-addon">
             <%= f.select :temporal_id, Temporal.all.collect {|c| [ c.name, c.id ] } %>
           </span>
         </div>
-      </div><hr>  
-      <div class="field"> 
-        <%= f.check_box :unavailable %> Not available
       </div><hr>  
       <div class="field"> 
         <%= f.check_box :deleted %> Delete

@@ -1,0 +1,28 @@
+      <%= form_for([@work, @promoted_work]) do |f| %>
+          <% if @promoted_work.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% @promoted_work.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+          <%= f.hidden_field :user_id, value: @work.user.id %>
+          <%= f.hidden_field :work_id, value: @work.id %>
+          <%= f.text_field :name, value: @work.name %>
+          <%= f.text_field :location, value: @work.location %>
+          <%= f.text_field :tag_list, value: @work.tag_list %>
+          <%= f.text_field :image, value: @work.image %>
+          <%= f.number_field :price, value: @work.price %>
+          <%= f.number_field :temporal_id, value: @work.temporal_id %>
+          <%= f.number_field :per_temporal_id, value: @work.per_temporal_id %>
+          <%= f.number_field :quantity, value: @work.quantity %><hr>
+
+          How many clicks do you want? <br>
+          <%= f.number_field :set_clicks %><br><br>
+
+            <%= f.submit "Promote it", class: 'btn btn-warning' %>
+
+        <% end %>

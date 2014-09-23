@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922004149) do
+ActiveRecord::Schema.define(version: 20140923185707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,26 @@ ActiveRecord::Schema.define(version: 20140922004149) do
   add_index "promoted_services", ["service_id"], name: "index_promoted_services_on_service_id", using: :btree
   add_index "promoted_services", ["user_id"], name: "index_promoted_services_on_user_id", using: :btree
 
+  create_table "promoted_works", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "tag_list"
+    t.decimal  "price"
+    t.string   "image"
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.integer  "work_id"
+    t.integer  "clicks",          default: 0
+    t.integer  "set_clicks",      default: 0
+    t.integer  "temporal_id"
+    t.integer  "per_temporal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "promoted_works", ["user_id"], name: "index_promoted_works_on_user_id", using: :btree
+  add_index "promoted_works", ["work_id"], name: "index_promoted_works_on_work_id", using: :btree
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -331,5 +351,24 @@ ActiveRecord::Schema.define(version: 20140922004149) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "works", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.string   "location"
+    t.string   "tag_list"
+    t.integer  "user_id"
+    t.boolean  "deleted"
+    t.integer  "temporal_id"
+    t.integer  "per_temporal_id"
+    t.integer  "total_clicks"
+    t.integer  "quantity",        default: 1
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "works", ["user_id"], name: "index_works_on_user_id", using: :btree
 
 end

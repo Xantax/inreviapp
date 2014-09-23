@@ -14,6 +14,7 @@ mount_uploader :image, ImageUploader
   has_many :promoted_offers
   has_many :promoted_services
   has_many :promoted_rents
+  has_many :promoted_works
   has_many :buy_requests
   has_many :orders
   has_many :reviews
@@ -54,6 +55,12 @@ mount_uploader :image, ImageUploader
   end
   
   has_many :rents do
+  def today
+  where(:created_at => (Time.now.beginning_of_day..Time.now))
+  end
+  end 
+  
+  has_many :works do
   def today
   where(:created_at => (Time.now.beginning_of_day..Time.now))
   end

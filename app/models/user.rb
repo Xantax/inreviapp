@@ -86,8 +86,13 @@ mount_uploader :image, ImageUploader
   relationships.find_by(followed_id: other_user.id).destroy
   end
   
+  def self.all_ids
+    select(:id).all.map { |user| user.id }
+  end
+  
   private
   def give_code
   self.sms_code = Random.rand(100000..999999)
   end
+  
 end

@@ -30,6 +30,7 @@
     </div>
     <span class="story-created">
       <% if current_user == activity.owner %>
+      <b><%= link_to "Promote", promotion_rent_path(activity.trackable) %></b> / 
       <b><%= link_to "Edit", edit_rent_path(activity.trackable) %></b> /  
       <% end %>
       <%= time_ago_in_words(activity.trackable.created_at) %> ago

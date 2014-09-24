@@ -1,12 +1,5 @@
 module AuthorizationsHelper
   
-  # User has only one phone code
-    def user_count_phone_code
-      if current_user.phone_codes.count == 1
-        redirect_to root_path
-      end
-    end
-  
   # User is administrator
     def only_admin
       unless current_user.admin
@@ -28,20 +21,27 @@ module AuthorizationsHelper
       end
     end
   
-  # User phone code is correct
-    def before_phone_correct
-      current_user.phone_codes.first(1).each do |code|
-        unless code.code.to_i == current_user.sms_code
-          redirect_to root_path
-        end
+  # User has a phone number
+    def user_has_number
+      unless current_user.phone_verifications.count > 0
+        redirect_to root_path
       end
     end
   
   # Must be completely verified
     def must_be_completely_verified
-      unless current_user.phone_codes.count == 1
+      unless current_user.sms_code.to_i == current_user.confirm_code.to_i
         redirect_to root_path
       end
     end
+  
+  # User is verified for views  
+  def user_is_verified?
+    current_user.sms_code.to_i == current_user.confirm_code.to_i
+  end
+  
+  def user_in_not_verified
+    current_user.sms_code.to_i != current_user.confirm_code.to_i
+  end
   
 end

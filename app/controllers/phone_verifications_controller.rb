@@ -26,7 +26,7 @@ class PhoneVerificationsController < ApplicationController
           body: "Hello from Inrevi. This is your verification code: #{current_user.sms_code}"
           )
         
-        format.html { redirect_to "/phone_codes/new" }
+        format.html { redirect_to real_code_user_path(current_user) }
         format.json { render :show, status: :created, location: @phone_verification } 
       else
         format.html { render :new }

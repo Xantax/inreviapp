@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :banned
       t.string :image  
       t.integer :sms_code
+      t.integer :confirm_code
+      t.integer :credit, default: 5
       t.datetime :last_seen_at
       t.datetime :last_visited_inbox_at
       t.integer :num_following, default: 0

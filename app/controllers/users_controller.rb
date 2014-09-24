@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :banning]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :banning, :real_code]
   before_action :only_admin, only: [:index]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :real_code]
+  before_action :user_has_number, only: [:real_code]
   before_action :authenticate_user!, except: [:show]
 
   def show
@@ -44,6 +45,9 @@ class UsersController < ApplicationController
     @user.toggle!(:banned)
     redirect_to @user
   end
+  
+  def real_code
+  end
 
   private
 
@@ -57,7 +61,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :credit, :bio, :language, :public_location, :admin, :banned, :image, :phone_code, :second_language)
+      params.require(:user).permit(:name, :email, :credit, :bio, :language, :public_location, :admin, :banned, :image, :confirm_code)
     end
   
 end

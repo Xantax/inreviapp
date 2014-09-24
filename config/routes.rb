@@ -19,33 +19,24 @@ Rails.application.routes.draw do
   resources :activities
   resources :relationships, only: [:create, :destroy]  
   resources :reviews
-
-  resources :orders do
-    resources :reviews
-  end
-    resources :messages
+  resources :messages
 
   resources :conversations do
     member do
       get :requestz, :confirm_order
     end
     resources :messages
-    resources :buy_requests
-    resources :orders
     resources :reviews
   end
 
   devise_for :users  
   resources :users do
     member do
-      get :following, :followers, :banning
+      get :following, :followers, :banning, :real_code
     end
     resources :conversations
-    resources :promoted_offers
-    resources :promoted_rents
-    resources :promoted_services
   end  
-  resources :phone_codes
+
   resources :phone_verifications
   
   resources :offers do

@@ -1,0 +1,27 @@
+<% meta title: "Code Verification" %>
+
+<div class="main-nf">
+  <%= render 'shared/upper_newsfeed' %>    
+      <div class="newsfeed">
+        <i>Check your phone. It might take a minute to get the 6 digit code.</i><br><br>
+          <%= simple_form_for :user, url: user_path(@user), method: :patch do |f| %>
+            <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>        
+              <%= f.text_field :confirm_code, class: "form-control devise" %>
+              <small>You only have 3 attempts. Be careful.</small><br><br>  
+              <%= f.submit "Confirm", class: "btn btn-primary" %>
+          <% end %><hr>
+            <% current_user.phone_verifications.first(1).each do |phone_verification| %>
+              Didn't get the code? 
+              <%= link_to 'Click here', phone_verification, method: :delete, data: { confirm: 'Are you sure?' } %> 
+              to try again.
+            <% end %>
+      </div>
+</div>

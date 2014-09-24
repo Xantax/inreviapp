@@ -114,15 +114,6 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.datetime "updated_at"
   end
 
-  create_table "phone_codes", force: true do |t|
-    t.string   "code"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "phone_codes", ["user_id"], name: "index_phone_codes_on_user_id", using: :btree
-
   create_table "phone_verifications", force: true do |t|
     t.string   "number"
     t.integer  "user_id"
@@ -298,6 +289,8 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.boolean  "banned"
     t.string   "image"
     t.integer  "sms_code"
+    t.integer  "confirm_code"
+    t.integer  "credit",                 default: 5
     t.datetime "last_seen_at"
     t.datetime "last_visited_inbox_at"
     t.integer  "num_following",          default: 0

@@ -97,7 +97,7 @@ keywords: %w(@service.tag_list)
     <strong><%= link_to @service.user.name, user_path(@service.user) %></strong><br><br>
     
     <% unless @service.deleted %>
-      <% if user_signed_in? && (current_user.phone_codes.count == 1) %>
+      <% if user_signed_in? && user_is_verified? %>
         <% unless current_user == @service.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

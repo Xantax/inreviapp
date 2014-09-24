@@ -9,9 +9,13 @@
         <div class="alert alert-warning nf" role="alert">
           One more step - Confirm your <b>phone number</b>. <%= link_to "Click here", 'phone_verifications/new' %>
         </div>
-        <% elsif current_user.phone_verifications.count > 0 && current_user.phone_codes.count == 0 %>
+        <% elsif current_user.phone_verifications.count > 0 && current_user.confirm_code.blank? %>
         <div class="alert alert-warning nf" role="alert">
-          You need to type in a correct code. <%= link_to "Click here", 'phone_codes/new' %>
+          You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
+        </div>
+        <% elsif current_user.confirm_code.present? && user_is_not_verified %>
+        <div class="alert alert-warning nf" role="alert">
+          You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>
         <% end %>
       

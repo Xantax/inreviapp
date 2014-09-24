@@ -103,7 +103,7 @@ keywords: %w(@offer.tag_list)
     <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
     <% unless @offer.deleted %>
-      <% if user_signed_in? && (current_user.phone_codes.count == 0) %>
+      <% if user_signed_in? && user_is_verified? %>
         <% unless current_user == @offer.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

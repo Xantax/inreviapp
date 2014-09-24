@@ -1,8 +1,8 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :promotion]
-  before_action :authenticate_user!, except: [:show, :index, :promotion]
-  before_action :require_permission, only: [:edit, :update]
-  before_action :must_be_completely_verified, except: [:show, :index]
+  before_action :set_offer, only: [:show, :edit, :update, :promotion, :imaging]
+  before_action :authenticate_user!, except: [:show, :index, :promotion, :imaging]
+  before_action :require_permission, only: [:edit, :update, :imaging]
+  #before_action :must_be_completely_verified, except: [:show, :index, :imaging]
 
   def index
     @offers = Offer.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
@@ -62,6 +62,9 @@ class OffersController < ApplicationController
   end
   
   def promotion
+  end
+  
+  def imaging
   end
 
   private

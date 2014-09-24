@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   resources :offers do
     member do
       get 'promotion'
+      get 'imaging'
     end
     resources :promoted_offers
     resources :conversations

@@ -7,7 +7,7 @@
   <div class="col-xs-2">
     
     <% if user_signed_in? %>
-      <% if user.admin %>
+      <% if current_user.admin %>
         <% if @user.banned %>
         <%= link_to "Unban!", banning_user_path(@user), class: 'btn btn-success', data: { disable_with: "Unbanning" } %>    
         <% else %>

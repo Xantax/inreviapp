@@ -13,6 +13,7 @@ class PromotedService < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :service
+  belongs_to :per_temporal
   
   scope :published, -> { where('clicks <= set_clicks') }
   

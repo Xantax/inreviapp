@@ -10,6 +10,7 @@ class CreateServices < ActiveRecord::Migration
       t.boolean :deleted
       t.references :user, index: true
       t.integer :total_clicks
+      t.integer :per_temporal_id
 
       t.timestamps
     end

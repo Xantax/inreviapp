@@ -69,6 +69,9 @@
         <div class="input-group">
           <span class="input-group-addon">$</span>
           <%= f.number_field :price, class: "form-control short blue", :required => true %>
+          <span class="input-group-addon">
+            <%= f.select :per_temporal_id, PerTemporal.all.collect {|c| [ c.name, c.id ] } %>
+          </span>
         </div>
       </div><hr>  
       <div class="field"> 

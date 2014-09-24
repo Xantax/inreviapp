@@ -214,8 +214,9 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.decimal  "price"
     t.integer  "user_id"
     t.integer  "service_id"
-    t.integer  "clicks",     default: 0
-    t.integer  "set_clicks", default: 0
+    t.integer  "clicks",          default: 0
+    t.integer  "set_clicks",      default: 0
+    t.integer  "per_temporal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -308,6 +309,7 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.boolean  "deleted"
     t.integer  "user_id"
     t.integer  "total_clicks"
+    t.integer  "per_temporal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

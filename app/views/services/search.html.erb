@@ -18,7 +18,10 @@
          <b><%= pservice.service.reviews.positive.where("buyer_id != ?", pservice.service.user.id).count %></b> | 
         <%= image_tag('2/thumbsdown_off.PNG') %>
         <b><%= pservice.service.reviews.negative.where("buyer_id != ?", pservice.service.user.id).count %></b> <br><br>     
-        Price: <span class="label label-success"><%= number_to_currency(pservice.price) %></span> <br><br>
+        Price: 
+       <span class="label label-success">
+         <%= number_to_currency(pservice.price) %> <%= pservice.per_temporal.name if pservice.per_temporal.present? %>
+       </span> <br><br>
         <% if pservice.location.blank? %>
           <%= image_tag('3/map6.png') %> Anywhere
         <% else %>
@@ -43,7 +46,10 @@
          <b><%= service.reviews.positive.where("buyer_id != ?", service.user.id).count %></b> | 
         <%= image_tag('2/thumbsdown_off.PNG') %>
         <b><%= service.reviews.negative.where("buyer_id != ?", service.user.id).count %></b> <br><br>     
-        Price: <span class="label label-success"><%= number_to_currency(service.price) %></span> <br><br>
+        Price:
+       <span class="label label-success">
+         <%= number_to_currency(service.price) %> <%= service.per_temporal.name if service.per_temporal.present? %>
+       </span> <br><br>
         <% if service.location.blank? %>
           <%= image_tag('3/map6.png') %> Anywhere
         <% else %>

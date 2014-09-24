@@ -10,6 +10,7 @@ class CreatePromotedServices < ActiveRecord::Migration
       t.references :service, index: true
       t.integer :clicks, default: 0
       t.integer :set_clicks, default: 0
+      t.integer :per_temporal_id
 
       t.timestamps
     end

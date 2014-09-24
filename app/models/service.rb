@@ -16,6 +16,7 @@ class Service < ActiveRecord::Base
   scope :published, -> { where(deleted: false) }
   
   belongs_to :user
+  belongs_to :per_temporal
   has_many :promoted_services
   has_many :conversations, as: :convoable
   has_many :buy_requests, as: :buyable

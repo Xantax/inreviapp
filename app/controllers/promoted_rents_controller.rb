@@ -1,7 +1,7 @@
 class PromotedRentsController < ApplicationController
   before_action :set_promoted_rent, only: [:show]
-  #before_action :only_admin, except: [:show]
-  #before_action :must_be_completely_verified, except: [:show]
+  before_action :only_admin, except: [:show]
+  before_action :must_be_completely_verified, except: [:show]
 
   def show
     @promoted_rent.increment!(:clicks)

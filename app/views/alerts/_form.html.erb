@@ -2,11 +2,14 @@
   <%= f.error_notification %>
 
     <%= f.text_area :body, placeholder: "Send a message to your followers...", class: "form-control" %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= image_tag('2/photo-upload.png') %> <%= f.file_field :image %>
+    <%= f.hidden_field :user_id, value: current_user.id %><br>
+    <div class="row">
+    <div class="col-xs-1"><%= image_tag('2/photo-upload.png') %> </div>
+    <div class="col-xs-4"><%= f.file_field :image %></div>
     
-    <div align="right">
+    <div class="col-xs-7" align="right">
       <%= f.submit "Send", class: "btn btn-primary", data: { disable_with: "Sending..." } %>
+    </div>
     </div>
 
 <% end %>

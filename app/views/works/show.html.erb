@@ -10,7 +10,7 @@ keywords: %w(@work.tag_list)
   
   <div class="col-xs-1">
     <% if user_signed_in? %>
-    <% unless current_user.admin %>
+    <% if current_user.admin %>
     <%= link_to "Promote", new_work_promoted_work_path(@work), class: 'btn btn-danger' %>
       <% end %>
     <% end %>

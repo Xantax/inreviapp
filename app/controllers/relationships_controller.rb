@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :must_be_completely_verified
 
   def create
     @user = User.find(params[:relationship][:followed_id])

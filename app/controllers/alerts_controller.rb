@@ -2,7 +2,7 @@ class AlertsController < ApplicationController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :update, :destroy]
-  #before_action :must_be_completely_verified
+  before_action :must_be_completely_verified
 
   def show
     redirect_to root_url

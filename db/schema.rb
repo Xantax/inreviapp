@@ -300,6 +300,8 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.integer  "sms_code"
     t.datetime "last_seen_at"
     t.datetime "last_visited_inbox_at"
+    t.integer  "num_following",          default: 0
+    t.integer  "num_followers",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

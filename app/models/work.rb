@@ -17,8 +17,6 @@ class Work < ActiveRecord::Base
   belongs_to :temporal
   belongs_to :per_temporal
   has_many :conversations, as: :convoable
-  has_many :buy_requests, as: :buyable
-  has_many :orders, as: :orderable
   has_many :reviews, as: :reviewable
   has_many :promoted_works
   

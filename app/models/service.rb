@@ -19,8 +19,6 @@ class Service < ActiveRecord::Base
   belongs_to :per_temporal
   has_many :promoted_services
   has_many :conversations, as: :convoable
-  has_many :buy_requests, as: :buyable
-  has_many :orders, as: :orderable
   has_many :reviews, as: :reviewable
   
   mount_uploader :image, ImageUploader

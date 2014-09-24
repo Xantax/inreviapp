@@ -20,8 +20,6 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   has_many :promoted_offers
   has_many :conversations, as: :convoable
-  has_many :buy_requests, as: :buyable
-  has_many :orders, as: :orderable
   has_many :reviews, as: :reviewable
   
   mount_uploader :image, ImageUploader

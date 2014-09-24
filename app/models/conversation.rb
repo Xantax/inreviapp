@@ -3,8 +3,6 @@ class Conversation < ActiveRecord::Base
   belongs_to :offer
   belongs_to :convoable, polymorphic: true
   has_many :messages
-  has_many :buy_requests
-  has_many :orders
   has_many :reviews
   
   belongs_to :recipient,

@@ -15,8 +15,6 @@ mount_uploader :image, ImageUploader
   has_many :promoted_services
   has_many :promoted_rents
   has_many :promoted_works
-  has_many :buy_requests
-  has_many :orders
   has_many :reviews
   has_many :alerts
   has_many :messages, :through => :conversations

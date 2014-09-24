@@ -71,10 +71,6 @@ keywords: %w(@rent.tag_list)
           <div class="col-xs-9">
             <%= image_tag('2/writerevicon.png') %> 
             <%= review.body %><br><br>
-            <% if review.proof.present? %>
-              <%= image_tag('2/proof-dp.png') %> 
-              <%= auto_link(simple_format(review.proof), :html => { :target => "_blank" }) %><br>
-            <% end %>
             <% if review.image_url.present? %>
              <%= link_to image_tag(review.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail'), review.image_url, target: :_blank %>
             <% end %><br>

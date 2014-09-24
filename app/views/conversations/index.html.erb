@@ -47,13 +47,13 @@
                         <% end %>
                       </div>
                       <div class="col-xs-8">
-                        <% if (conversation.buy_requests_count > 0) && (conversation.orders_count < 1) %>
+                        <% if (conversation.request == true) && (conversation.confirm == false) %>
                           <%= image_tag('2/buy_request.png') %>
                         <% end %>
-                        <% if conversation.orders_count > 0 && conversation.reviews_count <= 1 %>
+                        <% if conversation.confirm == true && conversation.reviews_count <= 1 %>
                           <%= image_tag('2/has_order.png') %>
                         <% end %>
-                        <% if conversation.orders_count > 0 && conversation.reviews_count == 2 %>
+                        <% if conversation.confirm == true && conversation.reviews_count == 2 %>
                           <%= image_tag('2/finished_order.png') %>
                         <% end %>
                         <strong><%= link_to conversation.convoable.name, conversation %></strong><br>

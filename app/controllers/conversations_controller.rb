@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :destroy]
+  before_action :set_conversation, only: [:show, :destroy, :requestz, :confirm_order]
   before_action :require_permission_for_deleting, only: :destroy
   before_action :require_permission, only: :destroy
   before_action :correct_conversation, only: :show
@@ -38,6 +38,20 @@ class ConversationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def requestz
+    @conversation.toggle!(:request)
+    @conversation.touch(:content_changed_at)
+    UserMailer.new_buy_request(@conversation).deliver
+    redirect_to @conversation
+  end
+  
+  def confirm_order
+    @conversation.toggle!(:confirm)
+    @conversation.touch(:content_changed_at)
+    UserMailer.new_order(@conversation).deliver
+    redirect_to @conversation
+  end
 
   private
   
@@ -51,7 +65,7 @@ class ConversationsController < ApplicationController
   end
   
   def conversation_params
-    params.require(:conversation).permit(:user_id, :recipient_id, :buy_request)
+    params.require(:conversation).permit(:user_id, :recipient_id, :buy_request, :request, :confirm)
   end
   
   def record_last_inbox_visit

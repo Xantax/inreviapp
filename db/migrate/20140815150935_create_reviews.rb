@@ -8,7 +8,6 @@ class CreateReviews < ActiveRecord::Migration
       t.references :offer, index: true
       t.integer :buyer_id
       t.integer :seller_id
-      t.references :order, index: true
       t.references :conversation, index: true
       t.belongs_to :reviewable, polymorphic: true
 

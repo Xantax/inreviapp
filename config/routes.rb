@@ -23,11 +23,13 @@ Rails.application.routes.draw do
   resources :orders do
     resources :reviews
   end
-  
-  resources :buy_requests
-  resources :messages
+    resources :messages
 
   resources :conversations do
+    member do
+      get :requestz, :confirm_order
+      patch :requestz, :confirm_order
+    end
     resources :messages
     resources :buy_requests
     resources :orders

@@ -11,21 +11,21 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Inrevi - You have a new message')
   end
   
-  def new_buy_request(buy_request)
-    @buy_request = buy_request
-    @author = buy_request.user
-    @user = buy_request.buyable.user
-    @offer = buy_request.buyable
+  def new_buy_request(conversation)
+    @conversation = conversation
+    @author = conversation.user
+    @user = conversation.convoable.user
+    @offer = conversation.convoable
     @url  = 'http://www.inrevi.com/conversations'
     
     mail(to: @user.email, subject: 'Inrevi - You have a new request')
   end
   
-  def new_order(order)
-    @order = order
-    @seller = order.orderable.user
-    @user = order.buyer
-    @offer = order.orderable
+  def new_order(conversation)
+    @conversation = conversation
+    @seller = conversation.convoable.user
+    @user = conversation.user
+    @offer = conversation.convoable
     @url  = 'http://www.inrevi.com/conversations'
     
     mail(to: @user.email, subject: 'Inrevi - Your request was approved by the seller')

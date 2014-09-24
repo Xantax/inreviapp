@@ -16,7 +16,6 @@ class CreateOffers < ActiveRecord::Migration
       t.decimal :price
       t.boolean :deleted, default: false
       t.references :user, index: true
-      t.integer :orders_count, default: 0
       t.integer :total_clicks, default: 0
       t.integer :quantity, default: 1
       t.integer :barcode

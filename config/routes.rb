@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   resources :conversations do
     member do
       get :requestz, :confirm_order
-      patch :requestz, :confirm_order
     end
     resources :messages
     resources :buy_requests
@@ -40,7 +39,6 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers, :banning
-      patch :banning
     end
     resources :conversations
     resources :promoted_offers
@@ -54,6 +52,7 @@ Rails.application.routes.draw do
     member do
       get 'promotion'
       get 'imaging'
+      get 'remove'
     end
     resources :promoted_offers
     resources :conversations

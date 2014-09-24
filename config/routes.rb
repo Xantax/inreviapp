@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   devise_for :users  
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :banning
+      patch :banning
     end
     resources :conversations
     resources :promoted_offers

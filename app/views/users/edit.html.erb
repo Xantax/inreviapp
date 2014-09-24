@@ -23,15 +23,7 @@
     <%= f.file_field :image %><hr>
     <b>About me:</b><br>
     <%= f.text_area :bio, class: "form-control user-bio" %><br>
-    <%= f.input :public_location, :input_html =>{:id => 'gmaps-input-address', class: "form-control"} %>
-
-
-  <% if current_user.admin %>
-    <hr>
-    <%= f.input :name %><br>
-    <%= f.input :email %><br>
-    banned: <%= f.check_box :banned %>
-  <% end %><br><br>
+    <%= f.input :public_location, :input_html =>{:id => 'gmaps-input-address', class: "form-control"} %><br><br>
   
     <%= f.submit "Update", class: "btn btn-primary" %>
 

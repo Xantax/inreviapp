@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :banning]
   before_action :only_admin, only: [:index]
   before_action :correct_user, only: [:edit, :update]
   before_action :authenticate_user!, except: [:show]
@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
+  def banning
+    @user.toggle!(:banned)
+    redirect_to @user
+  end
 
   private
 

@@ -41,7 +41,7 @@ module AuthorizationsHelper
   end
   
   def user_in_not_verified
-    current_user.sms_code.to_i != current_user.confirm_code.to_i
+    !user_is_verified?
   end
   
 end

@@ -7,6 +7,8 @@ class ConversationsController < ApplicationController
   before_action :must_be_completely_verified, except: [:index]
   before_filter :record_last_inbox_visit, only: [:index, :show]
   before_filter :load_convoable, except: [:index]
+  before_filter :permission_to_request, only: [:requestz]
+  before_filter :permission_to_confirm, only: [:confirm_order]
   
   def index
     @conversations = Conversation.ordered_conversations.paginate(:page => params[:page], :per_page => 10)
@@ -76,6 +78,18 @@ class ConversationsController < ApplicationController
   
   def require_permission
     if current_user != Conversation.find(params[:id]).user
+      redirect_to root_path
+    end
+  end
+  
+  def permission_to_request
+    unless current_user == Conversation.find(params[:id]).user
+      redirect_to root_path
+    end
+  end
+  
+  def permission_to_confirm
+    unless current_user.id == Conversation.find(params[:id]).recipient_id
       redirect_to root_path
     end
   end

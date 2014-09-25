@@ -1,5 +1,9 @@
-  <% if activity.trackable %>
-<div class="row">
+<% if activity.trackable %>
+  <% if activity.trackable.deleted %>
+    <div class="row removed">
+  <% else %>
+    <div class="row">
+  <% end %>
   <div class="col-xs-2">
     <% if activity.owner.image_url.blank? %>
         <%= link_to image_tag("1/user_no_image.PNG", width: '80'), user_path(activity.owner) %>
@@ -43,4 +47,4 @@
     </span>
   </div>
 </div><hr>
-  <% end %>
+<% end %>

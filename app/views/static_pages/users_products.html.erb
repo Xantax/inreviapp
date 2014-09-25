@@ -1,0 +1,28 @@
+<% meta title: "My Poducts" %>
+
+<div class="main-nf">
+  <%= render 'shared/upper_newsfeed' %>    
+    <div class="newsfeed">
+      <%= render 'shared/up_promotions' %><hr>
+        <% @user_products.each do |product| %>
+          <div class="row">
+            <div class="col-xs-3">
+              <% if product.image_url.blank? %>
+                  <%= link_to image_tag("1/user_no_image.PNG", width: '80'), offer_path(product) %>
+                <% else %>
+                  <%= link_to image_tag(product.image_url(:thumb).to_s, width: '80'), offer_path(product) %>
+              <% end %>
+            </div>
+            <div class="col-xs-6">
+              <%= link_to product.name, offer_path(product) %>
+            </div>
+            <div class="col-xs-3">
+              <%= link_to "Promote", promotion_offer_path(product), class: "btn btn-sm btn-success" %>
+            </div>
+          </div><hr>
+        <% end %><br>      
+          <div class="digg_pagination">
+            <%= will_paginate @user_products, :page_links => false %>
+          </div>   
+    </div>
+</div>

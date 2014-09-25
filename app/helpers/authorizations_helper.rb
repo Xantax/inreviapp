@@ -31,7 +31,7 @@ module AuthorizationsHelper
   # Must be completely verified
     def must_be_completely_verified
       unless current_user.sms_code.to_i == current_user.confirm_code.to_i
-        redirect_to root_path
+        redirect_to root_path, notice: "You need to be verified!"
       end
     end
   

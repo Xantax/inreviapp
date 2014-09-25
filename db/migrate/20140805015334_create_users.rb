@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image  
       t.integer :sms_code
       t.integer :confirm_code
-      t.decimal :credit, default: 10
+      t.integer :credit, default: 10
       t.datetime :last_seen_at
       t.datetime :last_visited_inbox_at
       t.integer :num_following, default: 0

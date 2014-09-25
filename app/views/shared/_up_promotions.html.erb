@@ -1,0 +1,11 @@
+Credit: 
+        <span class="label label-success">
+            <%= number_to_currency(current_user.credit) %>
+        </span>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3"><span id="promo-products"><%= link_to "Products", users_products_path %></span></div>
+        <div class="col-xs-3"><span id="promo-services"><%= link_to "Services", users_services_path %></span></div>
+        <div class="col-xs-3"><span id="promo-jobs"><%= link_to "Jobs", users_jobs_path %></span></div>
+        <div class="col-xs-3"><span id="promo-rents"><%= link_to "Rent", users_rents_path %></span></div>
+      </div>

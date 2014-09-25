@@ -21,6 +21,11 @@ class Rent < ActiveRecord::Base
   has_many :promoted_rents
   
   mount_uploader :image, ImageUploader
+  mount_uploader :image_a, ImageUploader
+  mount_uploader :image_b, ImageUploader
+  mount_uploader :image_c, ImageUploader
+  mount_uploader :image_d, ImageUploader
+  mount_uploader :image_e, ImageUploader
   
   validates :name, length: { maximum: 120 }
   validates :description, length: { maximum: 10000 }

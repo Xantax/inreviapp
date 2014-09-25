@@ -1,8 +1,8 @@
 class RentsController < ApplicationController
-  before_action :set_rent, only: [:show, :edit, :update, :promotion]
-  before_action :authenticate_user!, except: [:show, :index, :promotion]
-  before_action :require_permission, only: [:edit, :update]
-  before_action :must_be_completely_verified, except: [:show, :index]
+  before_action :set_rent, only: [:show, :edit, :update, :promotion, :imaging, :remove]
+  before_action :authenticate_user!, except: [:show, :index, :promotion, :imaging, :remove]
+  before_action :require_permission, only: [:edit, :update, :imaging, :remove]
+  before_action :must_be_completely_verified, except: [:show, :index, :imaging, :remove]
 
   def index
     @rents = Rent.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
@@ -62,6 +62,14 @@ class RentsController < ApplicationController
   
   def promotion
   end
+  
+  def imaging
+  end
+  
+  def remove
+    @rent.toggle!(:deleted)
+    redirect_to root_url
+  end
 
   private
 
@@ -70,7 +78,7 @@ class RentsController < ApplicationController
     end
 
     def rent_params
-      params.require(:rent).permit(:name, :description, :image, :location, :tag_list, :deleted, :user_id, :unavailable, :total_clicks, :quantity, :sell, :price, :temporal_id, :per_temporal_id)
+      params.require(:rent).permit(:name, :description, :image, :location, :tag_list, :deleted, :image_a, :image_b, :image_c, :image_d, :image_e, :user_id, :total_clicks, :quantity, :sell, :price, :temporal_id, :per_temporal_id)
     end
   
     def require_permission

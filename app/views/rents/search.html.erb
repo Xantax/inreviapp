@@ -13,7 +13,6 @@
       <% end %>
       </div>
      <div class="col-xs-8">
-       <% if prent.unavailable %> [Not Available] <% end %>
        <% if prent.sell == false %> [Request] <% end %> 
        <strong><%= link_to prent.name, promoted_rent_path(prent) %></strong><br><br>        
         <%= image_tag('2/thumbsup_off.PNG') %>
@@ -47,7 +46,6 @@
       <% end %>
       </div>
      <div class="col-xs-8">
-       <% if rent.unavailable %> [Not Available] <% end %>
        <% unless rent.sell %> [Request] <% end %> 
        <strong><%= link_to rent.name, rent_path(rent) %></strong><br><br>        
         <%= image_tag('2/thumbsup_off.PNG') %>

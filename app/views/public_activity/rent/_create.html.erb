@@ -32,6 +32,12 @@
       <% if current_user == activity.owner %>
       <b><%= link_to "Promote", promotion_rent_path(activity.trackable) %></b> / 
       <b><%= link_to "Edit", edit_rent_path(activity.trackable) %></b> /  
+      <%= link_to "Images", imaging_rent_path(activity.trackable) %> / 
+          <% if activity.trackable.deleted %>
+            <%= link_to "Unsuspend", remove_rent_path(activity.trackable) %> / 
+          <% else %>
+            <%= link_to "Suspend", remove_rent_path(activity.trackable) %> / 
+          <% end %> 
       <% end %>
       <%= time_ago_in_words(activity.trackable.created_at) %> ago
     </span>

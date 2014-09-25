@@ -12,7 +12,6 @@ class CreatePromotedRents < ActiveRecord::Migration
       t.integer :clicks, default: 0
       t.integer :set_clicks, default: 0
       t.boolean :sell
-      t.boolean :unavailable
       t.integer :temporal_id
       t.integer :per_temporal_id
 

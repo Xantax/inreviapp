@@ -157,7 +157,6 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.integer  "clicks",          default: 0
     t.integer  "set_clicks",      default: 0
     t.boolean  "sell"
-    t.boolean  "unavailable"
     t.integer  "temporal_id"
     t.integer  "per_temporal_id"
     t.datetime "created_at"
@@ -220,13 +219,17 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.string   "name"
     t.text     "description"
     t.string   "image"
+    t.string   "image_a"
+    t.string   "image_b"
+    t.string   "image_c"
+    t.string   "image_d"
+    t.string   "image_e"
     t.string   "location"
     t.string   "tag_list"
     t.boolean  "deleted"
     t.integer  "user_id"
     t.integer  "temporal_id"
     t.integer  "per_temporal_id"
-    t.boolean  "unavailable"
     t.integer  "total_clicks"
     t.integer  "quantity",        default: 1
     t.boolean  "sell"
@@ -290,19 +293,19 @@ ActiveRecord::Schema.define(version: 20140923185707) do
     t.string   "image"
     t.integer  "sms_code"
     t.integer  "confirm_code"
-    t.integer  "credit",                 default: 5
+    t.decimal  "credit",                 default: 10.0
     t.datetime "last_seen_at"
     t.datetime "last_visited_inbox_at"
     t.integer  "num_following",          default: 0
     t.integer  "num_followers",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

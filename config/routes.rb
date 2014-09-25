@@ -60,6 +60,8 @@ Rails.application.routes.draw do
   resources :rents do
     member do
       get 'promotion'
+      get 'imaging'
+      get 'remove'
     end
     resources :promoted_rents
     resources :conversations

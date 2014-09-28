@@ -19,7 +19,7 @@
         </div>
         <% end %>
       
-        <div class="col-xs-3 right-cats-home">
+        <div class="col-xs-2 right-cats-home">
           <%= link_to image_tag('3/chat51.png'), '/conversations' %>
           <b><%= link_to "Inbox", '/conversations' %></b>
           <% if Conversation.count_unread_conversations > 0 %>
@@ -29,15 +29,19 @@
             <span class="label label-danger right">1</span>
           <% end %>
         </div>
-        <div class="col-xs-3 right-cats-home">
+        <div class="col-xs-2 right-cats-home short">
           <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
           <b><%= link_to "Profile", user_path(current_user) %></b>
         </div>
-        <div class="col-xs-3 right-cats-home">
+        <div class="col-xs-2 right-cats-home short">
           <%= link_to image_tag('3/note36.png'), new_alert_path() %>
           <b><%= link_to "Update", new_alert_path() %></b>
         </div>
-        <div class="col-xs-3 right-cats-home">
+        <div class="col-xs-2 right-cats-home medium">
           <%= link_to image_tag('1/viewing.png'), adscenter_path %>
-          <b><%= link_to "Promotions", adscenter_path %></b>
+          <b><%= link_to "Listings", adscenter_path %></b>
+        </div>
+        <div class="col-xs-2 right-cats-home long">
+          <%= link_to image_tag('2/like3.png'), adscenter_path %>
+          <b><%= link_to "Endorsements", adscenter_path %></b>
         </div>

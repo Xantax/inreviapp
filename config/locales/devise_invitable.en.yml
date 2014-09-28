@@ -16,6 +16,6 @@ en:
       invitation_instructions:
         subject: 'You are invited to Inrevi'
         hello: 'Hello %{email}'
-        someone_invited_you: 'Someone has invited you to %{url}, you can accept it through the link below.Inrevi.com is a marketplace where you can sell your products or buy something at the lowest price, monetize your talents or find other talented people, rent out your properties and much more... No fees, No limitations.'
+        someone_invited_you: 'Someone has invited you to %{url}, you can accept it through the link below. Inrevi.com is a marketplace where you can sell your products or buy something at the lowest price, monetize your talents or find talented people, rent out your properties and much more... No fees, No limitations.'
         accept: 'Accept invitation'
         ignore: "If you don't want to accept the invitation, please ignore this email.<br />Your account won't be created until you access the link above and set your password."

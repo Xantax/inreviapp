@@ -1,11 +1,18 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<% meta title: "Invite" %>
 
-<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
+<div class="main-nf">
+  <%= render 'shared/upper_newsfeed' %>    
+      <div class="newsfeed">
+        <h2><%= t "devise.invitations.new.header" %></h2>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <%= f.input field %>
-<% end -%>
+        <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+          <%= devise_error_messages! %>
+        
+        <% resource.class.invite_key_fields.each do |field| -%>
+          <%= f.input field %>
+        <% end -%><br>
 
-<%= f.submit t("devise.invitations.new.submit_button") %>
-<% end %>
+        <%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-success" %>
+        <% end %>
+      </div>
+</div>

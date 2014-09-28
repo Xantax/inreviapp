@@ -1,11 +1,41 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<% meta title: "Join" %>
 
-<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+<div class="row">
+  
+  <div class="col-xs-1"></div>  
+  
+    <div class="col-xs-5">
+      <div style="padding-top:40px"></div>
+      <div class="row">
+        <div class="col-sm-6 left-home"><hr>
+          <%= image_tag('1/no_fee.png') %> NO FEES<hr>
+          <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
+          <%= image_tag('1/free_lis.png') %> FREE LISTINGS<hr>
+        </div>
+        <div class="col-sm-6 left-home"><hr>
+          <%= image_tag('1/low_price.png') %> LOWEST PRICES<hr>
+          <%= image_tag('1/any_pay.png') %> ANY PAYMENT<hr>
+          <%= image_tag('1/free_credit.png') %> <b>+ $10</b> <abbr title="After your first promotion">AD CREDIT</abbr><hr>
+        </div>
+      </div>
+    </div>
+  
+  <div class="col-xs-5" align="center">
+    <div style="padding-top:50px"></div>
+    <p id="notice"><%= notice %></p>
+      <h2><%= t 'devise.invitations.edit.header' %></h2>
 
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
+      <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :invitation_token %>
 
-  <%= f.submit t("devise.invitations.edit.submit_button") %>
-<% end %>
+    <%= f.password_field :password, class: "form-control devise", placeholder: "password" %><br>
+    <%= f.password_field :password_confirmation, class: "form-control devise", placeholder: "confirm password" %><br>
+
+        <%= f.submit t("devise.invitations.edit.submit_button"), class: "btn btn-primary" %>
+      <% end %>
+  </div>
+  
+  <div class="col-xs-1"></div>
+  
+</div>

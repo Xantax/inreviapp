@@ -38,7 +38,8 @@
   border-bottom: 1px solid #E8E8E8;
 }
 
-.col-xs-3.right-cats-home{
+.col-xs-2.right-cats-home{
+  width:126px;
   background-color:#F8F8F8;
   padding:8px;
   border-top: 1px solid #E8E8E8;
@@ -47,13 +48,26 @@
   border-right: 1px solid #E8E8E8;
 }
 
-.col-xs-3.right-cats-home:hover{
+.col-xs-2.right-cats-home:hover{
+  width:126px;
   background-color:#F0F0F0;
   padding:8px;
   border-top: 1px solid #E8E8E8;
   border-bottom: 1px solid #E8E8E8;
   border-left: 1px solid #E8E8E8;
   border-right: 1px solid #E8E8E8;
+}
+
+.col-xs-2.right-cats-home.short{
+  width:100px;
+}
+
+.col-xs-2.right-cats-home.medium{
+  width:110px;
+}
+
+.col-xs-2.right-cats-home.long{
+  width:194px;
 }
 
 .label.label-danger.right{

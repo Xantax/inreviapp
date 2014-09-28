@@ -18,15 +18,12 @@
           You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>
         <% end %>
-      
+
         <div class="col-xs-2 right-cats-home">
           <%= link_to image_tag('3/chat51.png'), '/conversations' %>
           <b><%= link_to "Inbox", '/conversations' %></b>
           <% if Conversation.count_unread_conversations > 0 %>
             <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
-          <% end %>
-          <% if current_user.last_visited_inbox_at.blank? && (Conversation.users_conversation.count == 0) %>
-            <span class="label label-danger right">1</span>
           <% end %>
         </div>
         <div class="col-xs-2 right-cats-home short">
@@ -42,6 +39,9 @@
           <b><%= link_to "Listings", adscenter_path %></b>
         </div>
         <div class="col-xs-2 right-cats-home long">
-          <%= link_to image_tag('2/like3.png'), adscenter_path %>
-          <b><%= link_to "Endorsements", adscenter_path %></b>
+          <%= link_to image_tag('2/like3.png'), user_endorsements_path(current_user) %>
+          <b><%= link_to "Endorsements", user_endorsements_path(current_user) %></b>
+          <% if current_user.unread_endores > 0 %>
+            <span class="label label-danger right"><%= current_user.unread_endores %></span>
+          <% end %>
         </div>

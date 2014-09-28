@@ -75,4 +75,21 @@
         </div>
   </div>
   
+  <div class="col-xs-3">
+    <% unless current_user?(@user) %>
+      <%= link_to "Endorse", new_user_endorsement_path(@user), class: 'btn btn-lg btn-success' %><hr>
+    <% end %>
+    <% @endorsements.each do |endorsement| %>
+      <div class="row">     
+          <b><%= link_to endorsement.writer.name, user_path(endorsement.writer) %></b>
+          <%= endorsement.body %>
+      </div>
+      <div class="time-last-message"><%= time_ago_in_words(endorsement.created_at) %> ago</div><hr>
+      <% end %>
+    
+      <div class="digg_pagination">
+        <%= will_paginate @endorsements, :page_links => false %>
+      </div>
+  </div>
+  
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925164848) do
+ActiveRecord::Schema.define(version: 20140928030652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20140925164848) do
   add_index "conversations", ["convoable_id", "convoable_type"], name: "index_conversations_on_convoable_id_and_convoable_type", using: :btree
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
+
+  create_table "endorsements", force: true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "writer_id"
+    t.boolean  "approved",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "endorsements", ["user_id"], name: "index_endorsements_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "conversation_id"
@@ -293,19 +304,20 @@ ActiveRecord::Schema.define(version: 20140925164848) do
     t.string   "image"
     t.integer  "sms_code"
     t.integer  "confirm_code"
-    t.integer  "credit",                 default: 10
+    t.integer  "credit",                  default: 10
     t.datetime "last_seen_at"
     t.datetime "last_visited_inbox_at"
-    t.integer  "num_following",          default: 0
-    t.integer  "num_followers",          default: 0
+    t.datetime "last_visited_endorse_at"
+    t.integer  "num_following",           default: 0
+    t.integer  "num_followers",           default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: ""
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -321,7 +333,7 @@ ActiveRecord::Schema.define(version: 20140925164848) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
+    t.integer  "invitations_count",       default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

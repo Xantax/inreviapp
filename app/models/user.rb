@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
-before_create :give_code
-cattr_accessor :current
-# Include default devise modules. Others available are:
-# :confirmable, :lockable, :timeoutable and :omniauthable
-devise :invitable, :database_authenticatable, :registerable,
-:recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
-validates :email, email: { disposable: true }
-  
-mount_uploader :image, ImageUploader
+  before_create :give_code
+  after_create :inbox_time
+  after_create :endorse_time
+  cattr_accessor :current
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :invitable, :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
+  validates :email, email: { disposable: true }
+
+  mount_uploader :image, ImageUploader
   
   has_many :phone_verifications
   has_many :promoted_offers
@@ -26,61 +28,71 @@ mount_uploader :image, ImageUploader
   has_many :followers, through: :reverse_relationships, source: :follower
   
   def self.current
-  Thread.current[:user]
+    Thread.current[:user]
   end
   
   def self.current=(user)
-  Thread.current[:user] = user
+    Thread.current[:user] = user
   end
   
   has_many :offers do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
   end
   
   has_many :conversations do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
   end
   
   has_many :services do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
   end
   
   has_many :rents do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
   end 
   
   has_many :works do
-  def today
-  where(:created_at => (Time.now.beginning_of_day..Time.now))
-  end
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
+  end 
+  
+  has_many :endorsements do
+    def today
+      where(:created_at => (Time.now.beginning_of_day..Time.now))
+    end
   end 
   
   def remember_me
-  true
+    true
   end
   
   def following?(other_user)
-  relationships.find_by(followed_id: other_user.id)
+    relationships.find_by(followed_id: other_user.id)
   end
   
   def not_following?(other_user)
-  other_user != self && !following?(other_user)
+    other_user != self && !following?(other_user)
   end
   
   def follow!(other_user)
-  relationships.create!(followed_id: other_user.id)
+    relationships.create!(followed_id: other_user.id)
   end
   
   def unfollow!(other_user)
-  relationships.find_by(followed_id: other_user.id).destroy
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+  
+  def unread_endores
+    Endorsement.users_endorsement(self).where('created_at >= ?', self.last_visited_endorse_at).count
   end
   
   def self.all_ids
@@ -88,8 +100,17 @@ mount_uploader :image, ImageUploader
   end
   
   private
+  
   def give_code
-  self.sms_code = Random.rand(100000..999999)
+    self.sms_code = Random.rand(100000..999999)
+  end
+  
+  def inbox_time
+    self.touch :last_visited_inbox_at
+  end
+  
+  def endorse_time
+    self.touch :last_visited_endorse_at
   end
   
 end

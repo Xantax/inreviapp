@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :credit, default: 10
       t.datetime :last_seen_at
       t.datetime :last_visited_inbox_at
+      t.datetime :last_visited_endorse_at
       t.integer :num_following, default: 0
       t.integer :num_followers, default: 0
 

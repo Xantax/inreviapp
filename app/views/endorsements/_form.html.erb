@@ -1,0 +1,8 @@
+<%= form_for([@user, @user.endorsements.build]) do |f| %>
+
+    <%= f.text_area :body, class: "form-control endorse", placeholder: 'Write something about a user' %>
+    <%= f.hidden_field :writer_id, value: current_user.id %>
+    <%= f.hidden_field :user_id, value: @user.id %> <br><br>
+
+    <div align="center"><%= f.submit "Submit", class: 'btn btn-primary' %></div>
+<% end %>

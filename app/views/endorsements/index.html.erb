@@ -1,0 +1,35 @@
+<% meta title: "Endorsements" %>
+
+<div class="main-nf">
+  <%= render 'shared/upper_newsfeed' %>    
+    <div class="newsfeed">
+      
+    <% if @endorsements.blank? %>
+      <div id="just-joined">Empty</div>
+    <% else %>
+      
+      <% @endorsements.each do |endorsement| %>
+      <div class="row">     
+        <div class="col-xs-9">
+          <b><%= link_to endorsement.writer.name, user_path(endorsement.writer) %></b>
+          <%= endorsement.body %>
+        </div>  
+        <div class="col-xs-3">
+          <% if endorsement.approved %>
+            <%= link_to "Deny", approving_user_endorsement_path(current_user, endorsement), class: 'btn btn-danger', data: { disable_with: "Denying" } %>
+          <% else %>
+            <%= link_to "Approve", approving_user_endorsement_path(current_user, endorsement), class: 'btn btn-primary', data: { disable_with: "Approving" } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="time-last-message"><%= time_ago_in_words(endorsement.created_at) %> ago</div><hr>
+      <% end %>
+      
+    <% end %>
+      
+      <div class="digg_pagination">
+        <%= will_paginate @endorsements, :page_links => false %>
+      </div>
+      
+    </div>
+</div>

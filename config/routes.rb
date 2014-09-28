@@ -40,6 +40,11 @@ Rails.application.routes.draw do
       get :following, :followers, :banning, :real_code
     end
     resources :conversations
+    resources :endorsements do
+      member do
+        get :approving
+      end
+    end
   end  
 
   resources :phone_verifications

@@ -1,1 +1,1 @@
-run "cd /srv/www/inreviapp/current && /usr/local/binbundle exec rake assets:precompile"
+run "cd /srv/www/inreviapp/current && /usr/local/bin/bundle exec rake assets:precompile"

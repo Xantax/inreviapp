@@ -1,0 +1,1 @@
+run "cd /srv/www/inreviapp/current && /usr/local/binbundle exec rake assets:precompile"

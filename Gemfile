@@ -48,7 +48,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor', '0.0.2'
   gem 'heroku-deflater'
-  gem 'unicorn', '~> 4.8.3'
+  gem 'passenger', '~> 4.0.52'
 end
 
 group :development do

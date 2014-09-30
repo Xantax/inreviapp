@@ -1,0 +1,1 @@
+run "bundle exec rake papertrail:start" # Start remote_syslog daemon to push logs to papertrail

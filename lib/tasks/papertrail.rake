@@ -1,6 +1,5 @@
 PAPERTRAIL_CONFIG = File.expand_path("../../../config/remote_syslog.yml", __FILE__)
 PAPERTRAIL_PID = File.expand_path("../../../tmp/pids/remote_syslog.pid", __FILE__)
-PAPERTRAIL_PORT= 18154
  
 namespace :papertrail do
 def papertrail_is_running?

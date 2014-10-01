@@ -39,7 +39,6 @@ gem 'public_activity', '~> 1.4.2'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'geoip', '~> 1.4.0'
 
-# bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :production do
@@ -52,12 +51,3 @@ end
 group :development do
   gem 'spring'
 end
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

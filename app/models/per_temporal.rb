@@ -5,4 +5,5 @@ class PerTemporal < ActiveRecord::Base
   has_many :promoted_works
   has_many :services
   has_many :promoted_services
+  validates_uniqueness_of :name
 end

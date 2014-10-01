@@ -39,7 +39,6 @@ gem 'public_activity', '~> 1.4.2'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'geoip', '~> 1.4.0'
-gem 'less-rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc

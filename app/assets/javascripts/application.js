@@ -15,9 +15,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
-//= require bootstrap/dropdown
-//= require bootstrap/modal
 //= require gmaps-auto-complete
-//= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/locales
 //= require_tree .

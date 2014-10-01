@@ -13,7 +13,6 @@
         </ul>
       </div>
     <% end %>
-
   
     <div class="field">
       <%= f.radio_button :sell, true %> Sell
@@ -25,19 +24,9 @@
     </div>
 
     <div class="field">
-      <b>Description</b><br><br>
-      <%= f.text_area :description, id: "some-textarea-red", class: 'wysihtml5' %>
+      <b>Description</b><br>
+      <%= f.text_area :description, id: "some-textarea-red" %>
     </div>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-
-        $('.wysihtml5').each(function(i, elem) {
-          $(elem).wysihtml5();
-        });
-
-      })
-    </script>
 
     <div class="field">
       <%= f.radio_button :new, true, checked: true %> New
@@ -52,7 +41,7 @@
   
     <div class="field">
       <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control red", placeholder: "Anywhere"}, :required => true %><br>      
-    </div><br>
+    </div>
 
       <%= f.hidden_field :user_id, value: current_user.id %>
 

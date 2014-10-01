@@ -36,8 +36,6 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
-    bootstrap-wysihtml5-rails (0.3.2.100)
-      railties (>= 3.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -95,13 +93,6 @@ GEM
     geoip (1.4.0)
     gmaps-autocomplete-rails (0.1.4)
       rails (>= 3.1.0)
-    haml (4.0.5)
-      tilt
-    haml-rails (0.5.3)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 3.1, < 5.0)
-      railties (>= 4.0.1)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
@@ -250,7 +241,6 @@ DEPENDENCIES
   aws-sdk (~> 1.42.0)
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
-  bootstrap-wysihtml5-rails
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   countries (~> 0.9.3)
@@ -261,7 +251,6 @@ DEPENDENCIES
   fog (~> 1.22.1)
   geoip (~> 1.4.0)
   gmaps-autocomplete-rails
-  haml-rails
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-rails

@@ -2,6 +2,9 @@
 @import "bootstrap";
 @import "bootstrap/glyphicons";
 
+$iconSpritePath: asset-url("glyphicons-halflings.png", image) !default;
+$iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
+
 img { max-width: 100%; }
 img { max-height: 100%; }
 

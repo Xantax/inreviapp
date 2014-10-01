@@ -1,8 +1,8 @@
 //
 // Sprites
 // --------------------------------------------------
-@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
-@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png')!default;
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png')!default;
 
 
 // ICONS

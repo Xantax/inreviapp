@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, only: [:first_message, :adscenter, :users_products, :users_services, :users_rents, :users_jobs]
+  before_action :authenticate_user!, except: [:terms, :howworks]
   
   def home
     if user_signed_in?
@@ -19,6 +19,9 @@ class StaticPagesController < ApplicationController
   end
   
   def adscenter
+  end
+  
+  def add_new
   end
   
   def users_products

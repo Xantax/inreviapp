@@ -1,19 +1,21 @@
 <% if user_signed_in? %>
   <div class="row">
-    <div class="col-xs-4"><%= image_tag('m/news26.png') %><br><b>News feed</b></div>
-    <div class="col-xs-4"><%= image_tag('m/chat51.png') %><br>
+    <div class="col-xs-4"><%= link_to image_tag('m/news26.png'), activities_path %><br>
+      <small><b><%= link_to "News feed", activities_path %></b></small></div>
+    <div class="col-xs-4"><%= link_to image_tag('m/chat51.png'), conversations_path %><br>
             <% if Conversation.count_unread_conversations > 0 %>
               <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-            <% end %><b>Inbox</b></div>
+            <% end %>
+      <b><%= link_to "Inbox", conversations_path %></b></div>
     <div class="col-xs-4"><%= image_tag('m/profile7.png') %><br><b>Profile</b></div>
   </div><hr>
   <div class="row">
-    <div class="col-xs-4"><%= image_tag('m/products.PNG') %><br><b>Products</b></div>
-    <div class="col-xs-4"><%= image_tag('m/services.png') %><br><b>Services</b></div>
-    <div class="col-xs-4"><%= image_tag('m/jobs.png') %><br><b>Jobs</b></div>
+    <div class="col-xs-4"><%= image_tag('m/productz.png') %><br><b>Products</b></div>
+    <div class="col-xs-4"><%= image_tag('m/servicez.png') %><br><b>Services</b></div>
+    <div class="col-xs-4"><%= image_tag('m/jobz.png') %><br><b>Jobs</b></div>
   </div><hr>
   <div class="row">
-    <div class="col-xs-4"><%= image_tag('m/rent.png') %><br><b>Rent</b></div>
+    <div class="col-xs-4"><%= image_tag('m/rentz.png') %><br><b>Rent</b></div>
     <div class="col-xs-4"><%= image_tag('m/viewing.png') %><br><b>Listings</b></div>
     <div class="col-xs-4"><%= image_tag('m/like3.png') %><br>
       <% if current_user.unread_endores > 0 %>
@@ -27,11 +29,9 @@
     <div class="col-xs-6" align="right"><%= link_to "Log In", "/users/sign_in", class: 'btn btn-lg btn-default' %></div>
   </div>
   <div id="mobile-feature-list"><hr>
+    <div align="center"><b>FREE MARKET</b></div><hr>
     <%= image_tag('1/no_fee.png') %> NO FEES<hr>
-    <%= image_tag('1/low_price.png') %> LOWEST PRICES<hr>
-    <%= image_tag('1/verified.png') %> VERIFIED USERS<hr>
-    <%= image_tag('1/free_lis.png') %> FREE LISTINGS<hr>
-    <%= image_tag('1/any_pay.png') %> ANY PAYMENT<hr>
+    <%= image_tag('1/no_fee.png') %> NO LIMITATIONS<hr>
     <%= image_tag('1/free_credit.png') %> <b>+ $10</b> <abbr title="After your first promotion">AD CREDIT</abbr><hr>
   </div>
 <% end %>

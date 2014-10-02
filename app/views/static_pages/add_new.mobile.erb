@@ -1,0 +1,28 @@
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_product.png'), new_offer_path(:sell => '1') %>
+  <b><%= link_to "LIST A PRODUCT", new_offer_path(:sell => '1') %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/request_product.png'), new_offer_path(:sell => '0') %>
+  <b><%= link_to "REQUEST A PRODUCT", new_offer_path(:sell => '0') %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_service.png'), new_service_path %>
+  <b><%= link_to "LIST A SERVICE", new_service_path %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_job.png'), new_work_path %>
+  <b><%= link_to "POST A JOB", new_work_path %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_rent.png'), new_rent_path(:sell => '1') %>
+  <b><%= link_to "RENT OUT", new_rent_path(:sell => '1') %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/request_rent.png'), new_rent_path(:sell => '0') %>
+  <b><%= link_to "REQUEST TO RENT", new_rent_path(:sell => '1') %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/note37.png'), new_alert_path %>
+  <b><%= link_to "WRITE SOMETHING", new_alert_path %></b>
+</div>

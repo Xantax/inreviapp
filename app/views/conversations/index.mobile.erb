@@ -1,10 +1,5 @@
 <% meta title: "Inbox" %>
-
-<div class="main-nf">
-  
-  <%= render 'shared/upper_newsfeed' %>
-      
- <div class="newsfeed">    
+   
     <% if @conversations.count == 0 %> 
       <div id="just-joined">Empty</div>
     <% else %>
@@ -22,19 +17,16 @@
               <td>
 
                     <div class="row">
-                      <div class="col-xs-2">
+                      <div class="col-xs-3">
                         <% conversation.messages.last(1).each do |message| %>
-                        <% if message.sender.image_url.blank? %>
+                          <% if message.sender.image_url.blank? %>
                             <%= image_tag("1/user_no_image.PNG", width: '50', class: 'img-thumbnail') %>
                           <% else %>
-                        <%= image_tag(message.sender.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
-                          <% end %><br>
-                          <small>
-                            <%= link_to truncate(message.sender.name, length: 12), user_path(message.sender) %>
-                          </small>
+                            <%= image_tag(message.sender.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
+                          <% end %>
                         <% end %>
                       </div>
-                      <div class="col-xs-8">
+                      <div class="col-xs-9">
                         <% if (conversation.request == true) && (conversation.confirm == false) %>
                           <%= image_tag('2/buy_request.png') %>
                         <% end %>
@@ -49,11 +41,8 @@
                           <i><%= truncate(message.body, length: 100) %></i>
                         <% end %>
                       </div>
-                      <div class="col-xs-2">
-                        <div class="time-last-message"><%= time_ago_in_words(conversation.content_changed_at) %></div>
-                      </div>
                     </div>
-
+                  <div class="time-last-message" align="right"><%= time_ago_in_words(conversation.content_changed_at) %></div>
               </td>
             </tr>
           <% end %>
@@ -65,7 +54,3 @@
       </div>
     
     <% end %>
-    
-  </div>
-  
-</div>

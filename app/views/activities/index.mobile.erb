@@ -1,0 +1,19 @@
+      <% if @activities.blank? %>
+        <% @pactivities.each do |activity| %>
+          <div class="activity">
+            <%= render_activity activity %>
+          </div>
+        <% end %>
+        <div class="digg_pagination">
+          <%= will_paginate @pactivities, :page_links => false %>
+        </div>
+      <% else %>
+        <% @activities.each do |activity| %>
+          <div class="activity">
+            <%= render_activity activity %>
+          </div>
+        <% end %>
+        <div class="digg_pagination">
+          <%= will_paginate @activities, :page_links => false %>
+        </div>        
+      <% end %>

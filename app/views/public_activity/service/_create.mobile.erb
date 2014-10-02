@@ -12,13 +12,8 @@
     <% end %>
   </div>
   <div class="col-xs-10">
-    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> 
-    <% if activity.trackable.sell %>
-      rented out
-    <% else %>
-      requested to rent
-    <% end %>
-    <span class="image-news-story"><%= image_tag('1/g_key.png') %></span>
+    <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> <small>listed a service</small>
+    <span class="image-news-story"><%= image_tag('1/blue_service.png') %></span>
     
     <div class="row product-short">
       <div class="col-xs-4">
@@ -34,14 +29,8 @@
     </div>
     <span class="story-created">
       <% if current_user == activity.owner %>
-      <b><%= link_to "Promote", promotion_rent_path(activity.trackable) %></b> / 
-      <b><%= link_to "Edit", edit_rent_path(activity.trackable) %></b> /  
-      <%= link_to "Images", imaging_rent_path(activity.trackable) %> / 
-          <% if activity.trackable.deleted %>
-            <%= link_to "Unsuspend", remove_rent_path(activity.trackable) %> / 
-          <% else %>
-            <%= link_to "Suspend", remove_rent_path(activity.trackable) %> / 
-          <% end %> 
+      <b><%= link_to "Promote", promotion_service_path(activity.trackable) %></b> / 
+      <b><%= link_to "Edit", edit_service_path(activity.trackable) %></b> /  
       <% end %>
       <%= time_ago_in_words(activity.trackable.created_at) %> ago
     </span>

@@ -12,11 +12,11 @@
         </div>
       <% end %>
 
-    <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise" %></div><br>
-    <div><%= f.email_field :email, placeholder: "email", class: "form-control devise" %></div><br>
-    <div><%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "form-control devise" %></div><br>
+    <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control" %></div><br>
+    <div><%= f.email_field :email, placeholder: "email", class: "form-control" %></div><br>
+    <div><%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "form-control" %></div><br>
         <%= image_tag('3/check_terms.png') %> I agree to <%= link_to "Terms & Privacy", terms_path %><br><br>
     <div><%= f.submit "Create my account", class: "btn btn-success" %></div>
 
-  <% end %>
+  <% end %>  
 </div>

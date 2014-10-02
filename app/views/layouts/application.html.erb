@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "mobile" if mobile_device? %>
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
@@ -22,6 +23,9 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <meta name="msapplication-TileColor" content="#4b4746">
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
 </head>
 <body>
   <%= render 'layouts/header' %>

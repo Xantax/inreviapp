@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+     <%= metamagic %>
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div id="allmobile">
+      <div class="mobile-activity-home">
+        <% unless flash.empty? %>
+          <div class="info">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %><br>
+          </div>
+        <% end %>
+          <%= yield %>
+      </div>
+    </div>
+
+  </body>
+</html>

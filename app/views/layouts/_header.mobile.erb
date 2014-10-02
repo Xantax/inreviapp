@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <div class="row mobile-header">
+     <div class="col-xs-3"><%= link_to image_tag('m/add_new.png'), root_url %></div>
+     <div class="col-xs-6 m-logo-signed"><%= link_to image_tag('m/m-logo.PNG'), root_url %></div>
+     <div class="col-xs-3"><%= link_to image_tag('m/m-log_out.png'), destroy_user_session_path, :method => :delete %></div>
+  </div>
+<% else %>
+  <div id="mobile-header-not-loggen">
+    <%= link_to image_tag('m/m-logo.PNG'), root_url %>
+  </div>
+<% end %>

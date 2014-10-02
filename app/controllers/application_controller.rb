@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :record_user_activity
   before_filter :banned?
   before_filter :set_current_user
+  before_filter :prepare_for_mobile
   
   include UsersHelper
   include AuthorizationsHelper
@@ -39,6 +40,16 @@ class ApplicationController < ActionController::Base
       
   def set_current_user
     User.current = current_user
-  end    
+  end  
+      
+    def mobile_device?
+      request.user_agent =~ /Mobile|webOS/
+    end
+      
+    helper_method :mobile_device?
+      
+    def prepare_for_mobile
+      request.format = :mobile if mobile_device?
+    end    
       
 end

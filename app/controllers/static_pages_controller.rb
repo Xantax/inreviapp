@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, except: [:terms, :howworks]
+  before_action :authenticate_user!, except: [:terms, :howworks, :home]
   
   def home
     if user_signed_in?

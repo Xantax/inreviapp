@@ -1,10 +1,5 @@
 <% meta title: "List it" %>
 
-<div class="row">
-  
-<div class="col-xs-1"></div>
-  
-<div class="col-xs-8">
   <%= simple_form_for(@rent) do |f| %>
     <% if @rent.errors.any? %>
       <div id="error_explanation">
@@ -20,36 +15,8 @@
       <%= f.radio_button :sell, true %> Rent Out
       <%= f.radio_button :sell, false %> Request to Rent
     </div><hr>
-  
-    <div class="field">
-      <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control green", :required => true %><br>
-    </div>
 
-    <div class="field">
-      <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control green", rows: 10 %>
-    </div><br>
-
-    <div class="field">
-      <b>tags</b> (max <b>10</b>) 
-      <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control green", placeholder: "e.g. female roomate, vacation rental" %>
-    </div><br>
-  
-    <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control green", placeholder: "Anywhere"}, :required => true %><br>      
-    </div>
-
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Creating..." } %>
-    </div> <hr>
-</div>
-  
-  <div class="col-xs-2"><hr>
-    <div class="field">
+     <div class="field">
         <% if @rent.image_url.blank? %>
           <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
         <% else %>
@@ -58,7 +25,28 @@
         <b>Cover photo</b><br>
         <small>(min 200x200)</small><br><br>
         <%= f.file_field :image %>
-      </div><hr>  
+      </div><hr> 
+  
+    <div class="field">
+      <b>Title</b><br>
+      <%= f.text_field :name, class: "form-control green", :required => true %><hr>
+    </div>
+
+    <div class="field">
+      <b>Description</b><br>
+      <%= f.text_area :description, class: "form-control green", rows: 3 %>
+    </div><hr>
+
+    <div class="field">
+      <b>tags</b> (max <b>10</b>) 
+      <small><mark>* separate by commas</mark></small><br><br>
+      <%= f.text_field :tag_list, class: "form-control green", placeholder: "e.g. female roomate, vacation rental" %>
+    </div><hr>
+  
+    <div class="field">
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control green", placeholder: "Anywhere"}, :required => true %>      
+    </div><hr>
+ 
       <div class="field">
         <b>Price:</b>
         <div class="input-group">
@@ -78,8 +66,11 @@
           </span>
         </div>
       </div><hr>
-  </div>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Submit", class: "btn btn-success", data: { disable_with: "Creating..." } %>
+    </div> <hr>
 
 <% end %>
-  
-</div>

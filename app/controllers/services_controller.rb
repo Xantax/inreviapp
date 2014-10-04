@@ -34,31 +34,20 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(service_params)
-
-    respond_to do |format|
-      if @service.save
-        
+      if @service.save       
         @service.create_activity :create, owner: current_user
-        
-        format.html { redirect_to @service }
-        format.json { render :show, status: :created, location: @service }
+        redirect_to @service
       else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service }
-        format.json { render :show, status: :ok, location: @service }
+        redirect_to @service
       else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
   
   def promotion

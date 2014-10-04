@@ -33,31 +33,20 @@ class RentsController < ApplicationController
 
   def create
     @rent = Rent.new(rent_params)
-
-    respond_to do |format|
-      if @rent.save
-        
+      if @rent.save        
         @rent.create_activity :create, owner: current_user
-        
-        format.html { redirect_to @rent, notice: 'Rent was successfully created.' }
-        format.json { render :show, status: :created, location: @rent }
+        redirect_to @rent
       else
-        format.html { render :new }
-        format.json { render json: @rent.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @rent.update(rent_params)
-        format.html { redirect_to @rent, notice: 'Rent was successfully updated.' }
-        format.json { render :show, status: :ok, location: @rent }
+        redirect_to @rent
       else
-        format.html { render :edit }
-        format.json { render json: @rent.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
   
   def promotion

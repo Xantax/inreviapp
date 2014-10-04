@@ -35,30 +35,21 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
 
-    respond_to do |format|
-      if @offer.save
-        
+      if @offer.save        
         @offer.create_activity :create, owner: current_user
-        
-        format.html { redirect_to @offer }
-        format.json { render :show, status: :created, location: @offer }
+        redirect_to @offer
       else
-        format.html { render :new }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
+
   end
 
   def update
-    respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to @offer }
-        format.json { render :show, status: :ok, location: @offer }
+        redirect_to @offer
       else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
   
   def promotion

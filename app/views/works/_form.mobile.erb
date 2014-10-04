@@ -1,10 +1,5 @@
 <% meta title: "Post a Job" %>
 
-<div class="row">
-  
-<div class="col-xs-1"></div>
-  
-<div class="col-xs-8">
   <%= simple_form_for(@work) do |f| %>
     <% if @work.errors.any? %>
       <div id="error_explanation">
@@ -18,42 +13,34 @@
 
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control orange", :required => true %><br>
+      <%= f.text_field :name, class: "form-control orange", :required => true %><hr>
     </div>
 
-    <div class="field">
-      <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control orange", rows: 10 %>
-    </div><br>
-
-    <div class="field">
-      <b>Skills</b> (max <b>10</b>) 
-      <small><mark>* separate by commas</mark></small><br><br>
-      <%= f.text_field :tag_list, class: "form-control orange", placeholder: "e.g. finance, italian language" %>
-    </div><br>
-  
-    <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control orange", placeholder: "Anywhere"}, :required => true %><br>      
-    </div>
-
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-warning", data: { disable_with: "Creating..." } %>
-    </div> <hr>
-</div>
-  
-  <div class="col-xs-2"><hr>
     <div class="field">
         <% if @work.image_url.blank? %>
           <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
         <% else %>
           <%= image_tag(@work.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
         <% end %>
-        <b>Cover photo</b><br>
-        <small>(min 200x200)</small><br><br>
+        <b><small>Cover photo (optional)</small></b><br>
         <%= f.file_field :image %>
-      </div><hr>  
+    </div><hr> 
+
+    <div class="field">
+      <b>Description</b><br>
+      <%= f.text_area :description, class: "form-control orange", rows: 3 %>
+    </div><hr>
+
+    <div class="field">
+      <b>Skills</b> (max <b>10</b>) 
+      <small><mark>* separate by commas</mark></small><br><br>
+      <%= f.text_field :tag_list, class: "form-control orange", placeholder: "e.g. finance, italian language" %>
+    </div><hr>
+  
+    <div class="field">
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control orange", placeholder: "Anywhere"}, :required => true %><br>      
+    </div><hr>
+ 
       <div class="field">
         <b>Pay:</b>
         <div class="input-group">
@@ -73,8 +60,11 @@
           </span>
         </div>
       </div>
-  </div>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Submit", class: "btn btn-warning", data: { disable_with: "Creating..." } %>
+    </div> <hr>
 
 <% end %>
-  
-</div>

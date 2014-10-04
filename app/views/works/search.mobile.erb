@@ -1,0 +1,55 @@
+<% meta title: "Search Results" %>
+
+<%= render 'main_bar' %>
+
+  <% @pworks.each do |pwork| %>
+    <div class="row promoted-product">
+      <div class="col-xs-4">
+      <% if pwork.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(pwork.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <strong><%= link_to pwork.name, promoted_work_path(pwork) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= pwork.work.reviews.positive.where("buyer_id != ?", pwork.work.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= pwork.work.reviews.negative.where("buyer_id != ?", pwork.work.user.id).count %></b> <br><br>
+        <% if pwork.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <small><%= pwork.location %></small>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+  <% @works.each do |work| %>
+    <div class="row product-results">
+      <div class="col-xs-4">
+      <% if work.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '150', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(work.image_url(:thumb).to_s, width: '150', class: 'img-thumbnail') %>
+      <% end %>
+      </div>
+     <div class="col-xs-8">
+       <strong><%= link_to work.name, work_path(work) %></strong><br><br>        
+        <%= image_tag('2/thumbsup_off.PNG') %>
+         <b><%= work.reviews.positive.where("buyer_id != ?", work.user.id).count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+        <b><%= work.reviews.negative.where("buyer_id != ?", work.user.id).count %></b> <br><br>
+        <% if work.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <small><%= work.location %></small>
+        <% end %> 
+     </div>
+    </div>
+  <% end %>
+
+      <div class="digg_pagination">
+        <%= will_paginate @works, :page_links => false %>
+      </div>

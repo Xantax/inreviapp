@@ -27,10 +27,16 @@
       <%= link_to image_tag('m/servicez.png'), services_path %><br>
       <b><%= link_to "Services", services_path %></b>
     </div>
-    <div class="col-xs-4"><%= image_tag('m/jobz.png') %><br><b>Jobs</b></div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/jobz.png'), works_path %><br>
+      <b><%= link_to "Jobs", works_path %></b>
+    </div>
   </div><hr>
   <div class="row">
-    <div class="col-xs-4"><%= image_tag('m/rentz.png') %><br><b>Rent</b></div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/rentz.png'), rents_path %><br>
+      <b><%= link_to "Rent", rents_path %></b>
+    </div>
     <div class="col-xs-4"><%= image_tag('m/viewing.png') %><br><b>Listings</b></div>
     <div class="col-xs-4">
       <%= image_tag('m/like3.png') %><br>

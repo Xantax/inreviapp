@@ -34,30 +34,20 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    respond_to do |format|
-      if @work.save
-        
+      if @work.save        
         @work.create_activity :create, owner: current_user
-        
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
-        format.json { render :show, status: :created, location: @work }
+        redirect_to @work
       else
-        format.html { render :new }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @work.update(work_params)
-        format.html { redirect_to @work, notice: 'Work was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work }
+        redirect_to @work
       else
-        format.html { render :edit }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
   
   def promotion

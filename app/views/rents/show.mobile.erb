@@ -1,0 +1,94 @@
+<%
+  meta title: "#{@rent.name}",
+description: "#{@rent.description}",
+keywords: %w(@rent.tag_list)
+%>
+
+    <% if @rent.deleted %>
+      <div class="alert alert-danger" role="alert">This has been removed and is not available anymore.</div>
+    <% end %>
+
+      <% if @rent.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+      <% else %>
+        <%= link_to image_tag(@rent.image_url(:thumb).to_s), @rent.image_url, target: :_blank %>
+      <% end %> <hr>
+
+        <% unless @rent.sell %> <small>[Request]</small> <% end %> <strong><%= @rent.name %></strong><br><br>        
+        <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
+          <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
+        <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
+        <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>
+        <% unless @rent.price.blank? %>
+          Price: 
+          <span class="label label-success">
+            <%= number_to_currency(@rent.price) %> <%= @rent.per_temporal.name if @rent.per_temporal.present? %>
+          </span> <br><br> 
+        <% end %>
+        <% unless @rent.quantity.blank? %>
+          <span class="label label-primary">
+            <%= @rent.quantity %> <%= @rent.temporal.name if @rent.temporal.present? %>
+          </span><br><br>
+        <% end %>
+        <% if @rent.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <%= @rent.location %>
+        <% end %> 
+    
+    <hr><%= raw(@rent.description) %><hr>
+    
+    <% if @rent.user.image_url.blank? %>
+      <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+    <% else %>
+      <%= image_tag(@rent.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+    <% end %><hr>
+    <strong><%= link_to @rent.user.name, user_path(@rent.user) %></strong><br><br>
+    
+    <% unless @rent.deleted %>
+      <% if user_signed_in? && user_is_verified? %>
+        <% unless current_user == @rent.user %> 
+          <%= form_for [@convoable, @conversation] do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :recipient_id, value: @rent.user.id %>
+            <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
+          <% end %>
+        <% end %>
+      <% end %>  
+    <% end %>
+
+    <div id="reviews-list">
+    <% @reviews.each do |review| %><hr>
+        <div class="row">
+          <div class="col-xs-2">
+            <% if review.buyer.image_url.blank? %>
+              <%= image_tag("1/user_no_image.PNG", width: '50', class: 'img-thumbnail') %>
+            <% else %>
+              <%= image_tag(review.buyer.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
+            <% end %><br>
+            <small><%= link_to truncate(review.buyer.name, length: 12), user_path(review.buyer) %></small>        
+          </div>
+          <div class="col-xs-9">
+            <%= image_tag('2/writerevicon.png') %> 
+            <%= review.body %><br><br>
+            <% if review.image_url.present? %>
+             <%= link_to image_tag(review.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail'), review.image_url, target: :_blank %>
+            <% end %><br>
+            <div class="time-last-message">
+              <%= time_ago_in_words(review.created_at) %>
+            </div>
+          </div>
+          <div class="col-xs-1">
+            <% if review.positive == true %>
+              <%= image_tag('2/thumbsup_off.PNG') %>
+            <% elsif review.positive == false %>
+              <%= image_tag('2/thumbsdown_off.PNG') %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    
+    <div class="digg_pagination">
+      <%= will_paginate @reviews, :page_links => false %>
+    </div>

@@ -1,0 +1,60 @@
+<% meta title: "Edit" %>
+  
+<%= simple_form_for(@offer) do |f| %>
+    <% if @offer.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <h4>Additional Photos:</h4><hr>
+    <div class="field">
+      <% if @offer.image_a_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@offer.image_a_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_a %>
+    </div><hr>
+    <div class="field">
+      <% if @offer.image_b_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@offer.image_b_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_b %>
+    </div><hr>
+    <div class="field">
+      <% if @offer.image_c_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@offer.image_c_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_c %>
+    </div><hr>
+    <div class="field">
+      <% if @offer.image_d_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+      <%= image_tag(@offer.image_d_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_d %>
+    </div><hr>  
+    <div class="field">
+      <% if @offer.image_e_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+      <% else %>
+      <%= image_tag(@offer.image_e_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+      <% end %><br>
+      <%= f.file_field :image_e %>
+    </div><hr>
+
+    <div class="actions">
+      <%= f.submit "Save", class: "btn btn-danger", data: { disable_with: "Saving..." } %>
+    </div> <hr>
+
+<% end %>

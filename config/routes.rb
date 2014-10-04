@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   match 'users_rents' => "static_pages#users_rents", via: [:get]
   match 'users_jobs' => "static_pages#users_jobs", via: [:get]
   match 'how' => "static_pages#howworks", via: [:get]
-  match 'first_message' => "static_pages#first_message", via: [:get]
   match 'offerz/search' => "offers#search", via: [:get]
   match 'servicez/search' => "services#search", via: [:get]
   match 'jobz/search' => "jobs#search", via: [:get]

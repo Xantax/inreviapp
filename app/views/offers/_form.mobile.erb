@@ -1,8 +1,3 @@
-<div class="row">
-  
-<div class="col-xs-1"></div>
-  
-<div class="col-xs-8">
   <%= simple_form_for(@offer) do |f| %>
     <% if @offer.errors.any? %>
       <div id="error_explanation">
@@ -18,6 +13,18 @@
       <%= f.radio_button :sell, true %> Sell
       <%= f.radio_button :sell, false %> Request
     </div><hr>
+  
+      <div class="field">
+        <% if @offer.image_url.blank? %>
+          <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+        <% else %>
+          <%= image_tag(@offer.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+        <% end %>
+        <b>Cover photo</b><br>
+        <small>(min 200x200)</small><br><br>
+        <%= f.file_field :image %>
+      </div><hr>
+  
     <div class="field">
       <b>Title</b><br>
       <%= f.text_field :name, class: "form-control red", :required => true %><br>
@@ -25,7 +32,7 @@
 
     <div class="field">
       <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control blue", rows: 10 %>
+      <%= f.text_area :description, class: "form-control red", rows: 3 %>
     </div>
 
     <div class="field">
@@ -43,44 +50,32 @@
       <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control red", placeholder: "Anywhere"}, :required => true %><br>      
     </div>
 
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-danger", data: { disable_with: "Creating..." } %>
-    </div> <hr>
-</div>
-  
-  <div class="col-xs-2"><hr>
-    <div class="field">
-        <% if @offer.image_url.blank? %>
-          <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
-        <% else %>
-          <%= image_tag(@offer.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
-        <% end %>
-        <b>Cover photo</b><br>
-        <small>(min 200x200)</small><br><br>
-        <%= f.file_field :image %>
-      </div><hr>  
       <div class="field">
         <b>Price:</b>
         <div class="input-group">
           <span class="input-group-addon">$</span>
           <%= f.number_field :price, class: "form-control short red" %>
         </div>
-      </div><hr>    
-      <div class="field">
+      </div><hr> 
+
+    <div class="field">
         <%= f.label :quantity %>
         <%= f.number_field :quantity, class: "form-control short red" %>
-    </div><hr>    
-      <div class="field">
+    </div><hr>   
+
+    <div class="field">
         <%= f.label :barcode %>
         <%= f.number_field :barcode, class: "form-control short red" %>
-    </div><hr>    
-      <div class="field">
+    </div><hr> 
+
+    <div class="field">
         <%= f.check_box :free_delivery %> Free delivery
     </div><hr>
-  </div>
+  
+   <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Submit", class: "btn btn-danger", data: { disable_with: "Creating..." } %>
+    </div> <hr>
 
 <% end %>
-  
-</div>

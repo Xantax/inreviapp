@@ -1,23 +1,39 @@
+<% meta title: "Inrevi - Free Market" %>
+
 <% if user_signed_in? %>
   <div class="row">
-    <div class="col-xs-4"><%= link_to image_tag('m/news26.png'), activities_path %><br>
-      <small><b><%= link_to "News feed", activities_path %></b></small></div>
-    <div class="col-xs-4"><%= link_to image_tag('m/chat51.png'), conversations_path %><br>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/news26.png'), activities_path %><br>
+      <small><b><%= link_to "News feed", activities_path %></b></small>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/chat51.png'), conversations_path %><br>
             <% if Conversation.count_unread_conversations > 0 %>
               <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
             <% end %>
-      <b><%= link_to "Inbox", conversations_path %></b></div>
-    <div class="col-xs-4"><%= image_tag('m/profile7.png') %><br><b>Profile</b></div>
+      <b><%= link_to "Inbox", conversations_path %></b>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/profile7.png'), user_path(current_user) %><br>
+      <b><%= link_to "Profile", user_path(current_user) %></b>
+    </div>
   </div><hr>
   <div class="row">
-    <div class="col-xs-4"><%= image_tag('m/productz.png') %><br><b>Products</b></div>
-    <div class="col-xs-4"><%= image_tag('m/servicez.png') %><br><b>Services</b></div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/productz.png'), offers_path %><br>
+      <b><%= link_to "Products", offers_path %></b>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/servicez.png'), services_path %><br>
+      <b><%= link_to "Services", services_path %></b>
+    </div>
     <div class="col-xs-4"><%= image_tag('m/jobz.png') %><br><b>Jobs</b></div>
   </div><hr>
   <div class="row">
     <div class="col-xs-4"><%= image_tag('m/rentz.png') %><br><b>Rent</b></div>
     <div class="col-xs-4"><%= image_tag('m/viewing.png') %><br><b>Listings</b></div>
-    <div class="col-xs-4"><%= image_tag('m/like3.png') %><br>
+    <div class="col-xs-4">
+      <%= image_tag('m/like3.png') %><br>
       <% if current_user.unread_endores > 0 %>
          <span class="label label-danger"><%= current_user.unread_endores %></span>
       <% end %><small><b>Endorses</b></small>

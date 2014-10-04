@@ -15,9 +15,6 @@ class StaticPagesController < ApplicationController
   def howworks
   end
   
-  def first_message
-  end
-  
   def adscenter
   end
   

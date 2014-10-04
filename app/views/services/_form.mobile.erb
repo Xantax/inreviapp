@@ -1,10 +1,5 @@
 <% meta title: "List your service" %>
 
-<div class="row">
-  
-<div class="col-xs-1"></div>
-  
-<div class="col-xs-8">
   <%= simple_form_for(@service) do |f| %>
     <% if @service.errors.any? %>
       <div id="error_explanation">
@@ -18,12 +13,23 @@
 
     <div class="field">
       <b>Title</b><br>
-      <%= f.text_field :name, class: "form-control blue", :required => true %><br>
+      <%= f.text_field :name, class: "form-control blue", :required => true %><hr>
     </div>
+
+      <div class="field">
+        <% if @service.image_url.blank? %>
+          <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
+        <% else %>
+          <%= image_tag(@service.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
+        <% end %>
+        <b>Cover photo</b><br>
+        <small>(min 200x200)</small><br><br>
+        <%= f.file_field :image %>
+      </div><hr> 
 
     <div class="field">
       <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control blue", rows: 10 %>
+      <%= f.text_area :description, class: "form-control blue", rows: 3 %>
     </div><br>
 
     <div class="field">
@@ -33,27 +39,9 @@
     </div><br>
   
     <div class="field">
-      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue", placeholder: "Anywhere"}, :required => true %><br>      
+      <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue", placeholder: "Anywhere"}, :required => true %><hr>      
     </div>
-
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <div class="actions" align="right">
-      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
-    </div> <hr>
-</div>
-  
-  <div class="col-xs-2"><hr>
-    <div class="field">
-        <% if @service.image_url.blank? %>
-          <%= image_tag("1/user_no_image.PNG", width: '60', height: '60', class: 'img-thumbnail') %>
-        <% else %>
-          <%= image_tag(@service.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail') %>
-        <% end %>
-        <b>Cover photo</b><br>
-        <small>(min 200x200)</small><br><br>
-        <%= f.file_field :image %>
-      </div><hr>  
+ 
       <div class="field">
         <b>Price:</b>
         <div class="input-group">
@@ -63,9 +51,12 @@
             <%= f.select :per_temporal_id, PerTemporal.all.collect {|c| [ c.name, c.id ] } %>
           </span>
         </div>
-      </div>
-  </div>
+      </div><hr>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions" align="right">
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Creating..." } %>
+    </div>
 
 <% end %>
-  
-</div>

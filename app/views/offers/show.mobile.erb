@@ -1,0 +1,93 @@
+<%
+meta title: "#{@offer.name}",
+description: "#{@offer.description}",
+keywords: %w(@offer.tag_list)
+%>
+
+    <% if @offer.deleted %>
+      <div class="alert alert-danger" role="alert">This product has been removed and is not available anymore.</div>
+    <% end %>
+
+      <% if @offer.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+      <% else %>
+        <%= link_to image_tag(@offer.image_url(:thumb).to_s), @offer.image_url, target: :_blank %>
+      <% end %> <hr>
+
+        <% unless @offer.sell %> [Request] <% end %> <strong><%= @offer.name %></strong><br><br>        
+        <%= link_to image_tag('2/thumbsup_off.PNG'), "#reviews-list" %>
+          <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
+        <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
+        <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>     
+        Price: <span class="label label-success"><%= number_to_currency(@offer.price) %></span> <br><br>
+        Quantity: <span class="label label-primary"><%= @offer.quantity %></span> <br> <br>
+        <% if @offer.new %>
+          <mark>New</mark>
+        <% else %>
+          <mark>Used</mark>
+        <% end %> <br><br>
+        <% if @offer.free_delivery %>
+         + <u>Free delivery</u><br><br>
+        <% end %>
+        <% if @offer.location.blank? %>
+          <%= image_tag('3/map6.png') %> Anywhere
+        <% else %>
+          <%= image_tag('3/map6.png') %> <small><%= @offer.location %></small>
+        <% end %> 
+    
+    <hr><%= raw(@offer.description) %><hr>
+  
+    <% if @offer.user.image_url.blank? %>
+      <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+    <% else %>
+      <%= image_tag(@offer.user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+    <% end %><hr>
+    <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
+    
+    <% unless @offer.deleted %>
+      <% if user_signed_in? && !user_is_verified? %>
+        <% unless current_user == @offer.user %> 
+          <%= form_for [@convoable, @conversation] do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :recipient_id, value: @offer.user.id %>
+            <div class="actions"><%= f.submit "Contact", class: 'btn btn-warning' %></div>
+          <% end %>
+        <% end %>
+      <% end %>  
+    <% end %><hr>
+
+    <div id="reviews-list">
+    <% @reviews.each do |review| %><hr>
+        <div class="row">
+          <div class="col-xs-2">
+            <% if review.buyer.image_url.blank? %>
+              <%= image_tag("1/user_no_image.PNG", width: '50', class: 'img-thumbnail') %>
+            <% else %>
+              <%= image_tag(review.buyer.image_url(:thumb).to_s, width: '50', class: 'img-thumbnail') %>
+            <% end %><br>
+            <small><%= link_to truncate(review.buyer.name, length: 12), user_path(review.buyer) %></small>        
+          </div>
+          <div class="col-xs-9">
+            <%= image_tag('2/writerevicon.png') %> 
+            <%= review.body %><br><br>
+            <% if review.image_url.present? %>
+             <%= link_to image_tag(review.image_url(:thumb).to_s, width: '60', height: '60', class: 'img-thumbnail'), review.image_url, target: :_blank %>
+            <% end %><br>
+            <div class="time-last-message">
+              <%= time_ago_in_words(review.created_at) %>
+            </div>
+          </div>
+          <div class="col-xs-1">
+            <% if review.positive == true %>
+              <%= image_tag('2/thumbsup_off.PNG') %>
+            <% elsif review.positive == false %>
+              <%= image_tag('2/thumbsdown_off.PNG') %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    
+    <div class="digg_pagination">
+      <%= will_paginate @reviews, :page_links => false %>
+    </div>

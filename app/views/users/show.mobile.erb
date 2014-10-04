@@ -1,0 +1,60 @@
+<% meta title: "Profile" %>
+
+    <div class="row"> 
+      <div class="col-xs-6">
+        <%= render 'follow_form' if user_signed_in? %>
+      </div>
+      <div class="col-xs-6">
+        <% unless current_user?(@user) %>
+          <%= link_to "Endorse", new_user_endorsement_path(@user), class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+    
+      <% if @user.image_url.blank? %>
+        <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>
+      <% else %>
+        <%= image_tag(@user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
+      <% end %><br><br>
+
+    <% if user_signed_in? && user_is_verified? %>
+        <%= image_tag('3/p_verified.png') %>
+    <% end %>
+    
+      <span class="user-profile-name"><%= @user.name %></span><br><hr>
+
+        <%= image_tag('2/thumbsup_off.PNG') %>
+          <b><%= @positive_reviews.count %></b> | 
+        <%= image_tag('2/thumbsdown_off.PNG') %>
+          <b><%= @negative_reviews.count %></b> <hr>
+
+      <%= image_tag('2/green_dot.gif') %> 
+      <span class="time-last-message"><b><%= time_ago_in_words(@user.last_seen_at) %></b> ago</span><br><br>
+      <div id="user-settings-info">
+        <%= image_tag('1/clock40.png') %>Joined: <b><%= time_ago_in_words(@user.created_at) %></b> ago<br>
+        <% if @user.public_location.present? %>
+          <%= image_tag('1/user_location.png') %><%= @user.public_location %><br>
+        <% end %>
+        <% if @user.bio.present? %>
+          <%= image_tag('2/user_bio.png') %>
+          <%= @user.bio %>
+        <% end %>
+      </div><hr> 
+    
+    <%= render 'shared/follow_stats' %><hr>
+    
+    <% if current_user?(@user) %>
+      <%= image_tag('2/user_settings.png') %><%= link_to "Settings", edit_user_path(@user) %><hr>
+    <% end %>
+
+      <% unless @activities.blank? %>
+        <% @activities.each do |activity| %>
+          <div class="activity">
+            <%= render_activity activity %>
+          </div>
+        <% end %>
+      <% end %>
+
+        <div class="digg_pagination">
+           <%= will_paginate @activities, :page_links => false %>
+        </div>

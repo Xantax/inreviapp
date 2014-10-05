@@ -1,5 +1,5 @@
 class EndorsementsController < ApplicationController
-  before_action :set_endorsement, only: [:show, :edit, :update, :destroy, :approving]
+  before_action :set_endorsement, only: [:edit, :update, :destroy, :approving]
   #before_action :must_be_completely_verified, except: [:index]
   before_action :require_permission, only: [:destroy, :edit, :update]
   before_filter :record_last_endorsements_visit, only: [:index]
@@ -7,9 +7,6 @@ class EndorsementsController < ApplicationController
 
   def index
     @endorsements = Endorsement.order('created_at DESC').where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 15)
-  end
-
-  def show
   end
 
   def new
@@ -25,41 +22,27 @@ class EndorsementsController < ApplicationController
     @user = User.find(params[:user_id])
     @endorsement = @user.endorsements.create(endorsement_params)
 
-    respond_to do |format|
-      if @endorsement.save
-        
-        @endorsement.create_activity :create, owner: current_user
-                
+      if @endorsement.save        
+        @endorsement.create_activity :create, owner: current_user                
         User.increment_counter(:credit, current_user)
-        User.increment_counter(:credit, @user.id)
-        
-        format.html { redirect_to root_url }
-        format.json { render :show, status: :created, location: @endorsement }
+        User.increment_counter(:credit, @user.id)        
+        redirect_to root_url
       else
-        format.html { render :new }
-        format.json { render json: @endorsement.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @endorsement.update(endorsement_params)
-        format.html { redirect_to @endorsement }
-        format.json { render :show, status: :ok, location: @endorsement }
+        redirect_to @endorsement
       else
-        format.html { render :edit }
-        format.json { render json: @endorsement.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
     @endorsement.destroy
-    respond_to do |format|
-      format.html { redirect_to endorsements_url, notice: 'Endorsement was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to endorsements_url
   end
   
   def approving

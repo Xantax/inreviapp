@@ -42,7 +42,7 @@
       <b><%= link_to "Listings", adscenter_path %></b>
     </div>
     <div class="col-xs-4">
-      <%= image_tag('m/like3.png') %><br>
+      <%= link_to image_tag('m/like3.png'), user_endorsements_path(current_user) %><br>
       <% if current_user.unread_endores > 0 %>
          <span class="label label-danger"><%= current_user.unread_endores %></span>
       <% end %><small><b>Endorses</b></small>

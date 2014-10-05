@@ -1,0 +1,8 @@
+<%= simple_form_for(@alert) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.text_area :body, placeholder: "Write something...", class: "form-control", rows: 3 %>
+    <%= f.hidden_field :user_id, value: current_user.id %><br>
+    <%= f.submit "Send", class: "btn btn-primary", data: { disable_with: "Sending..." } %>
+
+<% end %>

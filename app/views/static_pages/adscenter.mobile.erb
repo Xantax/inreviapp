@@ -1,0 +1,22 @@
+Credit: 
+        <span class="label label-success">
+            <%= number_to_currency(current_user.credit) %>
+        </span>
+      <hr>
+
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_product.png'), users_products_path %>
+  <b><%= link_to "MY PRODUCTS", users_products_path %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_service.png'), users_services_path %>
+  <b><%= link_to "MY SERVICES", users_services_path %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_job.png'), users_jobs_path %>
+  <b><%= link_to "MY JOBS", users_jobs_path %></b>
+</div>
+<div class="add-mobile">
+  <%= link_to image_tag('m/add_rent.png'), users_rents_path %>
+  <b><%= link_to "MY RENTALS", users_rents_path %></b>
+</div>

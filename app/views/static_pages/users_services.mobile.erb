@@ -1,0 +1,20 @@
+<% meta title: "My Services" %>
+
+        <% @user_services.each do |product| %>
+          <div class="row">
+            <div class="col-xs-3">
+              <% if product.image_url.blank? %>
+              <%= link_to image_tag("1/user_no_image.PNG", width: '80'), service_path(product) %>
+                <% else %>
+              <%= link_to image_tag(product.image_url(:thumb).to_s, width: '80'), service_path(product) %>
+              <% end %>
+            </div>
+            <div class="col-xs-6">
+              <%= link_to product.name, service_path(product) %><hr>
+              <%= link_to "Promote", promotion_service_path(product), class: "btn btn-sm btn-success" %>
+            </div>
+          </div><hr>
+        <% end %><br>      
+          <div class="digg_pagination">
+            <%= will_paginate @user_services, :page_links => false %>
+          </div>       

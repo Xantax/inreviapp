@@ -1,0 +1,20 @@
+<% meta title: "My Jobs" %>
+
+        <% @user_jobs.each do |product| %>
+          <div class="row">
+            <div class="col-xs-4">
+              <% if product.image_url.blank? %>
+                  <%= link_to image_tag("1/user_no_image.PNG", width: '80'), work_path(product) %>
+                <% else %>
+                  <%= link_to image_tag(product.image_url(:thumb).to_s, width: '80'), work_path(product) %>
+              <% end %>
+            </div>
+            <div class="col-xs-8">
+              <%= link_to product.name, work_path(product) %><hr>
+              <%= link_to "Promote", promotion_work_path(product), class: "btn btn-sm btn-success" %>
+            </div>
+          </div><hr>
+        <% end %><br>      
+          <div class="digg_pagination">
+            <%= will_paginate @user_jobs, :page_links => false %>
+          </div>    

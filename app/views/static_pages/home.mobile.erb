@@ -37,7 +37,10 @@
       <%= link_to image_tag('m/rentz.png'), rents_path %><br>
       <b><%= link_to "Rent", rents_path %></b>
     </div>
-    <div class="col-xs-4"><%= image_tag('m/viewing.png') %><br><b>Listings</b></div>
+    <div class="col-xs-4">
+      <%= link_to image_tag('m/viewing.png'), adscenter_path %><br>
+      <b><%= link_to "Listings", adscenter_path %></b>
+    </div>
     <div class="col-xs-4">
       <%= image_tag('m/like3.png') %><br>
       <% if current_user.unread_endores > 0 %>

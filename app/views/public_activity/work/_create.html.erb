@@ -13,7 +13,7 @@
   </div>
   <div class="col-xs-10">
     <b><%= link_to activity.owner.name, user_path(activity.owner) %></b> posted a job
-    <span class="image-news-story"><%= image_tag('1/b_case.png') %></span>
+    <span class="image-news-story"><%= image_tag('m/add_job.png') %></span>
     
     <div class="row product-short">
       <div class="col-xs-4">
@@ -31,6 +31,11 @@
       <% if current_user == activity.owner %>
       <b><%= link_to "Promote", promotion_rent_path(activity.trackable) %></b> / 
       <b><%= link_to "Edit", edit_work_path(activity.trackable) %></b> /  
+          <% if activity.trackable.deleted %>
+            <%= link_to "Unsuspend", remove_work_path(activity.trackable) %> / 
+          <% else %>
+            <%= link_to "Suspend", remove_work_path(activity.trackable) %> / 
+          <% end %>   
       <% end %>
       <%= time_ago_in_words(activity.trackable.created_at) %> ago
     </span>

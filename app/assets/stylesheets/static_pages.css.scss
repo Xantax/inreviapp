@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.col-xs-2.main-catz{
+  a{color:#FFFFFF;}
+  border: 1px solid #B0B0B0;
+  background-color:#3D3D3D;
+  height:40px;
+  padding:5px;
+  text-align:center;
+}
+
 .col-sm-6.left-home{
   font-size:120%;
 }
@@ -28,7 +37,7 @@
 }
 
 .newsfeed{
-  padding-top: 60px;
+  padding-top: 30px;
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;

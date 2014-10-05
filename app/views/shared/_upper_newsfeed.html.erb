@@ -1,47 +1,24 @@
-        <div align="center"><p id="notice"><%= notice %></p></div>
+<div align="center"><p id="notice"><%= notice %></p></div>
   
-        <% if current_user.confirmed_at.blank? %>
+    <% if current_user.confirmed_at.blank? %>
         <div class="alert alert-warning nf" role="alert">
            Please check and confirm your <b>email</b>.
           <span><i>Didn't receive it yet?</i> <%= link_to "Resend email", '/users/confirmation' %></span>
         </div>
-        <% elsif current_user.confirmed_at.present? && current_user.phone_verifications.count == 0 %>
+    <% elsif current_user.confirmed_at.present? && current_user.phone_verifications.count == 0 %>
         <div class="alert alert-warning nf" role="alert">
           One more step - Confirm your <b>phone number</b>. <%= link_to "Click here", 'phone_verifications/new' %>
         </div>
-        <% elsif current_user.phone_verifications.count > 0 && current_user.confirm_code.blank? %>
+    <% elsif current_user.phone_verifications.count > 0 && current_user.confirm_code.blank? %>
         <div class="alert alert-warning nf" role="alert">
           You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>
-        <% elsif current_user.confirm_code.present? && !user_is_verified? %>
+    <% elsif current_user.confirm_code.present? && !user_is_verified? %>
         <div class="alert alert-warning nf" role="alert">
           You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>
-        <% end %>
-
-        <div class="col-xs-2 right-cats-home">
-          <%= link_to image_tag('3/chat51.png'), '/conversations' %>
-          <b><%= link_to "Inbox", '/conversations' %></b>
-          <% if Conversation.count_unread_conversations > 0 %>
-            <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
-          <% end %>
+    <% else %>
+        <div class="alert alert-info nf" role="alert">
+          Get endorsements and free ad credit. <%= link_to "Click here", "" %>
         </div>
-        <div class="col-xs-2 right-cats-home short">
-          <%= link_to image_tag('3/profile7.png'), user_path(current_user) %>
-          <b><%= link_to "Profile", user_path(current_user) %></b>
-        </div>
-        <div class="col-xs-2 right-cats-home short">
-          <%= link_to image_tag('3/note36.png'), new_alert_path %>
-          <b><%= link_to "Update", new_alert_path() %></b>
-        </div>
-        <div class="col-xs-2 right-cats-home medium">
-          <%= link_to image_tag('1/viewing.png'), adscenter_path %>
-          <b><%= link_to "Listings", adscenter_path %></b>
-        </div>
-        <div class="col-xs-2 right-cats-home long">
-          <%= link_to image_tag('2/like3.png'), user_endorsements_path(current_user) %>
-          <b><%= link_to "Endorsements", user_endorsements_path(current_user) %></b>
-          <% if current_user.unread_endores > 0 %>
-            <span class="label label-danger right"><%= current_user.unread_endores %></span>
-          <% end %>
-        </div>
+    <% end %>

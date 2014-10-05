@@ -34,3 +34,45 @@
     </div>
   </div>
 </div>
+
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col-xs-2 main-catz">
+      <% if Conversation.count_unread_conversations > 0 %>
+        <%= link_to image_tag('3/unread_messages.png'), conversations_path %>
+      <% else %>
+        <%= link_to image_tag('3/messages_icon.png'), conversations_path %>
+      <% end %>
+      <b><%= link_to "Inbox", conversations_path %></b>
+          <% if Conversation.count_unread_conversations > 0 %>
+            <span class="label label-danger right"><%= Conversation.count_unread_conversations %></span>
+          <% end %>
+    </div>
+    <div class="col-xs-2 main-catz">
+      <%= link_to image_tag('3/profile_icon.png'), user_path(current_user) %>
+          <b><%= link_to "Profile", user_path(current_user) %></b>
+    </div>   
+    <div class="col-xs-2 main-catz">
+      <%= link_to image_tag('1/alert_icon.png'), new_alert_path %>
+          <b><%= link_to "Update", new_alert_path() %></b>
+    </div> 
+    <div class="col-xs-2 main-catz">
+      <%= link_to image_tag('3/listings_icon.png'), adscenter_path %>
+          <b><%= link_to "Listings", adscenter_path %></b>
+    </div>
+    <div class="col-xs-2 main-catz">
+      <% if current_user.unread_endores > 0 %>
+        <%= link_to image_tag('3/unread_endorses.png'), user_endorsements_path(current_user) %>
+      <% else %>
+        <%= link_to image_tag('3/endorses_icon.png'), user_endorsements_path(current_user) %>
+      <% end %>
+      <b><%= link_to "Endorsements", user_endorsements_path(current_user) %></b>
+          <% if current_user.unread_endores > 0 %>
+            <span class="label label-danger right"><%= current_user.unread_endores %></span>
+          <% end %>
+    </div>   
+    <div class="col-xs-2 main-catz">
+      <%= link_to image_tag('m/m-log_out.png'), destroy_user_session_path, :method => :delete %>
+    </div>
+  </div>
+<% end %><br>

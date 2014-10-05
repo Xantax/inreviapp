@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   resources :services do
     member do
       get 'promotion'
+      get 'remove'
     end
     resources :promoted_services
     resources :conversations
@@ -80,6 +81,7 @@ Rails.application.routes.draw do
   resources :works do
     member do
       get 'promotion'
+      get 'remove'
     end
     resources :conversations
     resources :promoted_works

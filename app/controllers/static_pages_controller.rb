@@ -36,4 +36,7 @@ class StaticPagesController < ApplicationController
   def users_jobs
     @user_jobs = Work.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order("created_at desc")
   end 
+  
+  def invite_endorse
+  end
 end

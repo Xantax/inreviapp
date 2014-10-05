@@ -21,30 +21,21 @@ class ReviewsController < ApplicationController
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @review = @conversation.reviews.create(review_params)
-        
-    respond_to do |format|
       if @review.save
-        format.html { redirect_to @conversation }
-        format.json { render :show, status: :created, location: @conversation }
+        @review.create_activity :create, owner: current_user 
+        redirect_to @conversation
       else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   def update   
     @conversation = @review.conversation
-    
-    respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review }
-        format.json { render :show, status: :ok, location: @review }
+        redirect_to @review
       else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   private

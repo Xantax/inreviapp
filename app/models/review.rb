@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+  include PublicActivity::Common
   
   scope :positive, -> { where(positive: true) }
   scope :negative, -> { where(positive: false) }

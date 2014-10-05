@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match 'terms' => "static_pages#terms", via: [:get]
   match 'buycredit' => "static_pages#buycredit", via: [:get]
   match 'adscenter' => "static_pages#adscenter", via: [:get]
+  match 'invite' => "static_pages#invite_endorse", via: [:get]
   match 'add_new' => "static_pages#add_new", via: [:get]
   match 'users_products' => "static_pages#users_products", via: [:get]
   match 'users_services' => "static_pages#users_services", via: [:get]

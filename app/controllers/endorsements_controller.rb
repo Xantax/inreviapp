@@ -1,6 +1,6 @@
 class EndorsementsController < ApplicationController
   before_action :set_endorsement, only: [:edit, :update, :destroy, :approving]
-  #before_action :must_be_completely_verified, except: [:index]
+  before_action :must_be_completely_verified, except: [:index]
   before_action :require_permission, only: [:destroy, :edit, :update]
   before_filter :record_last_endorsements_visit, only: [:index]
   before_filter :not_himself, only: [:new, :create]

@@ -11,9 +11,8 @@
   border-bottom: 2px solid #E8E8E8;
 }
 
-.row.mobile-header{
-  border-bottom: 2px solid #E8E8E8;
-  padding:2%;
+.mobile-header-signed{
+  padding:8px;
 }
 
 .col-xs-6.m-logo-signed{
@@ -31,4 +30,17 @@
   font-size:200%;
   text-align:center;
   color:#D0D0D0;
+}
+
+.add-logout{
+  float:right;
+}
+
+.m-cat-users{
+  border: 1px solid #B0B0B0;
+  background-color:#3D3D3D;
+  width:20%;
+  height:40px;
+  padding:5px;
+  text-align:center;
 }

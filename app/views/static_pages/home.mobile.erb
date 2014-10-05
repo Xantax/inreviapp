@@ -1,51 +1,25 @@
 <% meta title: "Inrevi - Free Market" %>
 
 <% if user_signed_in? %>
+<br>
   <div class="row">
-    <div class="col-xs-4">
-      <%= link_to image_tag('m/news26.png'), activities_path %><br>
-      <small><b><%= link_to "News feed", activities_path %></b></small>
-    </div>
-    <div class="col-xs-4">
-      <%= link_to image_tag('m/chat51.png'), conversations_path %><br>
-            <% if Conversation.count_unread_conversations > 0 %>
-              <span class="label label-danger"><%= Conversation.count_unread_conversations %></span>
-            <% end %>
-      <b><%= link_to "Inbox", conversations_path %></b>
-    </div>
-    <div class="col-xs-4">
-      <%= link_to image_tag('m/profile7.png'), user_path(current_user) %><br>
-      <b><%= link_to "Profile", user_path(current_user) %></b>
-    </div>
-  </div><hr>
-  <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-6" align="center">
       <%= link_to image_tag('m/productz.png'), offers_path %><br>
       <b><%= link_to "Products", offers_path %></b>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-6" align="center">
       <%= link_to image_tag('m/servicez.png'), services_path %><br>
       <b><%= link_to "Services", services_path %></b>
     </div>
-    <div class="col-xs-4">
+  </div><hr>
+  <div class="row">
+    <div class="col-xs-6" align="center">
       <%= link_to image_tag('m/jobz.png'), works_path %><br>
       <b><%= link_to "Jobs", works_path %></b>
     </div>
-  </div><hr>
-  <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-6" align="center">
       <%= link_to image_tag('m/rentz.png'), rents_path %><br>
       <b><%= link_to "Rent", rents_path %></b>
-    </div>
-    <div class="col-xs-4">
-      <%= link_to image_tag('m/viewing.png'), adscenter_path %><br>
-      <b><%= link_to "Listings", adscenter_path %></b>
-    </div>
-    <div class="col-xs-4">
-      <%= link_to image_tag('m/like3.png'), user_endorsements_path(current_user) %><br>
-      <% if current_user.unread_endores > 0 %>
-         <span class="label label-danger"><%= current_user.unread_endores %></span>
-      <% end %><small><b>Endorses</b></small>
     </div>
   </div><hr>
 <% else %>

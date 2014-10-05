@@ -1,11 +1,38 @@
 <% if user_signed_in? %>
-  <div class="row mobile-header">
-     <div class="col-xs-3"><%= link_to image_tag('m/add_new.png'), add_new_path %></div>
-     <div class="col-xs-6 m-logo-signed"><%= link_to image_tag('m/m-logo.PNG'), root_url %></div>
-     <div class="col-xs-3"><%= link_to image_tag('m/m-log_out.png'), destroy_user_session_path, :method => :delete %></div>
+  <div class="mobile-header-signed">
+    <%= link_to image_tag('m/m-logoy.PNG'), root_url %>
+    <span class="add-logout">
+      <%= link_to image_tag('m/add_new.png'), add_new_path %> | 
+      <%= link_to image_tag('m/m-log_out.png'), destroy_user_session_path, :method => :delete %>
+    </span>
   </div>
+<div class="row">
+  <div class="col-xs-2 m-cat-users">
+    <%= link_to image_tag('3/nf_icon.png'), activities_path %>
+  </div>
+  <div class="col-xs-2 m-cat-users">
+    <% if Conversation.count_unread_conversations > 0 %>
+      <%= link_to image_tag('3/unread_messages.png'), conversations_path %>
+    <% else %>
+      <%= link_to image_tag('3/messages_icon.png'), conversations_path %>
+    <% end %>
+  </div>
+  <div class="col-xs-2 m-cat-users">
+    <%= link_to image_tag('3/profile_icon.png'), user_path(current_user) %>
+  </div>
+  <div class="col-xs-2 m-cat-users">
+    <%= link_to image_tag('3/listings_icon.png'), adscenter_path %>
+  </div>
+  <div class="col-xs-2 m-cat-users">
+    <% if current_user.unread_endores > 0 %>
+      <%= link_to image_tag('3/unread_endorses.png'), user_endorsements_path(current_user) %>
+    <% else %>
+      <%= link_to image_tag('3/endorses_icon.png'), user_endorsements_path(current_user) %>
+    <% end %>
+  </div>
+</div>
 <% else %>
   <div id="mobile-header-not-loggen">
-    <%= link_to image_tag('m/m-logo.PNG'), root_url %>
+    <%= link_to image_tag('m/m-logoy.PNG'), root_url %>
   </div>
 <% end %>

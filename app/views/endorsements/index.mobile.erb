@@ -1,7 +1,10 @@
 <% meta title: "Endorsements" %>
 
     <% if @endorsements.blank? %>
-      <div id="just-joined-mobile">Empty</div>
+      <div id="just-joined-mobile">
+        Empty<hr><br>
+        <%= link_to "What is this?", invite_path %>
+      </div>
     <% else %>
       
       <% @endorsements.each do |endorsement| %>

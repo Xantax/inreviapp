@@ -31,7 +31,6 @@
       <b><%= link_to "Promote", promotion_service_path(activity.trackable) %></b> / 
       <b><%= link_to "Edit", edit_service_path(activity.trackable) %></b> /  
       <% end %>
-      <%= time_ago_in_words(activity.trackable.created_at) %> ago
     </span>
   </div>
 </div><hr>

@@ -2,7 +2,7 @@ class RentsController < ApplicationController
   before_action :set_rent, only: [:show, :edit, :update, :promotion, :imaging, :remove]
   before_action :authenticate_user!, except: [:show, :index, :promotion, :imaging, :remove]
   before_action :require_permission, only: [:edit, :update, :imaging, :remove]
-  before_action :must_be_completely_verified, except: [:show, :index, :search]
+  #before_action :must_be_completely_verified, except: [:show, :index, :search]
 
   def index
     @rents = Rent.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)

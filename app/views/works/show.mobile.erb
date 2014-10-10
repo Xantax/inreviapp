@@ -37,7 +37,7 @@ keywords: %w(@work.tag_list)
           <%= image_tag('3/map6.png') %> <small><%= @work.location %><small>
         <% end %> 
     
-    <hr><%= raw(@work.description) %><hr>
+    <hr><%= simple_format(@work.description) %><hr>
     
     <% if @work.user.image_url.blank? %>
       <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>

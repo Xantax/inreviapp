@@ -36,7 +36,7 @@ keywords: %w(@rent.tag_list)
           <%= image_tag('3/map6.png') %> <%= @rent.location %>
         <% end %> 
     
-    <hr><%= raw(@rent.description) %><hr>
+    <hr><%= simple_format(@rent.description) %><hr>
     
     <% if @rent.user.image_url.blank? %>
       <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>

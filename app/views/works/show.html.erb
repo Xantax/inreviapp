@@ -56,7 +56,7 @@ keywords: %w(@work.tag_list)
       </div>
     </div>
     
-    <hr><%= raw(@work.description) %>
+    <hr><%= simple_format(@work.description) %>
     
     <div id="reviews-list">
     <% @reviews.each do |review| %><hr>

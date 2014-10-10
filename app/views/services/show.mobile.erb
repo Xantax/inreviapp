@@ -29,7 +29,7 @@ keywords: %w(@service.tag_list)
           <%= image_tag('3/map6.png') %> <%= @service.location %>
         <% end %> 
     
-    <hr><%= raw(@service.description) %><hr>
+    <hr><%= simple_format(@service.description) %><hr>
     
     <% if @service.user.image_url.blank? %>
       <%= image_tag("1/user_no_image.PNG", class: 'img-thumbnail') %>

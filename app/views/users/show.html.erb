@@ -22,7 +22,7 @@
         <%= image_tag(@user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
       <% end %><br><br>
 
-    <% if user_signed_in? && user_is_verified? %>
+    <% if user_is_verified?(@user) %>
         <%= image_tag('3/p_verified.png') %>
     <% end %>
     

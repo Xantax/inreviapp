@@ -10,6 +10,12 @@ keywords: %w(@work.tag_list)
   
   <div class="col-xs-1">
     <% if user_signed_in? %>
+
+      <% if current_user == @work.user %>
+        <%= link_to "Promote", promotion_work_path, class: 'btn btn-warning' %><br><br>
+        <%= link_to "Edit", edit_work_path(@work), class: 'btn btn-sm btn-success' %>
+      <% end %>
+    
       <% if current_user.admin %>
         <%= link_to "Promote", new_work_promoted_work_path(@work), class: 'btn btn-danger' %>
       <% end %>

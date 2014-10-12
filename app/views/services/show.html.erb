@@ -10,6 +10,12 @@ keywords: %w(@service.tag_list)
   
   <div class="col-xs-1">
     <% if user_signed_in? %>
+
+      <% if current_user == @service.user %>
+        <%= link_to "Promote", promotion_service_path, class: 'btn btn-warning' %><br><br>
+        <%= link_to "Edit", edit_service_path(@service), class: 'btn btn-sm btn-success' %>
+      <% end %>
+    
       <% if current_user.admin %>
         <%= link_to "Promote", new_service_promoted_service_path(@service), class: 'btn btn-danger' %>
       <% end %>

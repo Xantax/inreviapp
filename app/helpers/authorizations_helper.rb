@@ -36,8 +36,8 @@ module AuthorizationsHelper
     end
   
   # User is verified for views  
-  def user_is_verified?
-    current_user.sms_code.to_i == current_user.confirm_code.to_i
+  def user_is_verified?(user)
+    user.sms_code.to_i == user.confirm_code.to_i
   end
   
 end

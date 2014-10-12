@@ -6,6 +6,9 @@ class Rent < ActiveRecord::Base
     pg_search_scope :search_by_name, :against => [:name, :location, :tag_list], :using => {
     :tsearch => {:prefix => true, :any_word => true}
       }
+
+  validates :price, numericality: { :greater_than => 0, :less_than_or_equal_to => 100000000 }
+  validates :quantity, numericality: { only_integer: true, :greater_than => 0, :less_than_or_equal_to => 100000000 }
   
   def self.search(search)
     Rent.search_by_name(search)

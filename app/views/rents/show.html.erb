@@ -10,8 +10,14 @@ keywords: %w(@rent.tag_list)
   
   <div class="col-xs-1">
     <% if user_signed_in? %>
-    <% if current_user.admin %>
-    <%= link_to "Promote", new_rent_promoted_rent_path(@rent), class: 'btn btn-danger' %>
+
+      <% if current_user == @rent.user %>
+        <%= link_to "Promote", promotion_rent_path, class: 'btn btn-warning' %><br><br>
+        <%= link_to "Edit", edit_rent_path(@rent), class: 'btn btn-sm btn-success' %>
+      <% end %>
+    
+      <% if current_user.admin %>
+        <%= link_to "Promote", new_rent_promoted_rent_path(@rent), class: 'btn btn-danger' %>
       <% end %>
     <% end %>
   </div>

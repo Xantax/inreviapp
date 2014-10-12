@@ -11,9 +11,9 @@
         </div>
     <% elsif current_user.phone_verifications.count > 0 && current_user.confirm_code.blank? %>
         <div class="alert alert-warning nf" role="alert">
-          You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
+          You need to type in code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>
-    <% elsif current_user.confirm_code.present? && !user_is_verified? %>
+    <% elsif current_user.confirm_code.present? && (current_user.sms_code.to_i != current_user.confirm_code.to_i) %>
         <div class="alert alert-warning nf" role="alert">
           You need to type in a correct code. <%= link_to "Click here", real_code_user_path(current_user) %>
         </div>

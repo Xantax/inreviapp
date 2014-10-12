@@ -32,7 +32,7 @@ class Work < ActiveRecord::Base
   validate :user_quota, :on => :create
   
   def user_quota
-    if user.works.today.count >= 4
+    if user.works.today.count >= 10
       errors.add(:base, "You cannot create more offers for now (SPAM prevention)")
     end
   end

@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :promotion, :remove]
   before_action :authenticate_user!, except: [:show, :index, :promotion, :remove]
   before_action :require_permission, only: [:edit, :update, :remove]
-  #before_action :must_be_completely_verified, except: [:show, :index, :search, :remove]
+  before_action :must_be_completely_verified, except: [:show, :index, :search, :remove]
 
   def index
     @services = Service.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)

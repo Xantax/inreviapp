@@ -13,7 +13,7 @@ class Endorsement < ActiveRecord::Base
   validate :endorsement_quota, :on => :create  
   
   def endorsement_quota
-    if writer.endorsements.today.count >= 3
+    if writer.endorsements.today.count >= 10
       redirect_to root_path
     end
   end

@@ -37,7 +37,7 @@ class Rent < ActiveRecord::Base
   validate :user_quota, :on => :create
   
   def user_quota
-    if user.rents.today.count >= 4
+    if user.rents.today.count >= 10
       errors.add(:base, "You cannot create more offers for now (SPAM prevention)")
     end
   end

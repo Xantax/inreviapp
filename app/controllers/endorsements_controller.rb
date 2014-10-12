@@ -23,9 +23,9 @@ class EndorsementsController < ApplicationController
     @endorsement = @user.endorsements.create(endorsement_params)
 
       if @endorsement.save        
-        @endorsement.create_activity :create, owner: current_user                
-        User.increment_counter(:credit, current_user)
-        User.increment_counter(:credit, @user.id)        
+        @endorsement.create_activity :create, owner: current_user 
+        User.update_counters current_user.id, credit: 5
+        User.update_counters @user.id, credit: 5
         redirect_to root_url
       else
         render :new

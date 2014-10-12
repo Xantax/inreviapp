@@ -22,7 +22,7 @@
         <%= image_tag(@user.image_url(:thumb).to_s, class: 'img-thumbnail') %>
       <% end %><br><br>
 
-    <% if user_is_verified?(@user) %>
+    <% if @user.sms_code.to_i == @user.confirm_code.to_i %>
         <%= image_tag('3/p_verified.png') %>
     <% end %>
     

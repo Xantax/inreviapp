@@ -21,14 +21,10 @@ keywords: %w(@rent.tag_list)
         <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>
         <% unless @rent.price.blank? %>
           Price: 
-          <span class="label label-success">
-            <%= number_to_currency(@rent.price) %> <%= @rent.per_temporal.name if @rent.per_temporal.present? %>
-          </span> <br><br> 
+          <u><%= number_to_currency(@rent.price) %> <%= @rent.per_temporal.name if @rent.per_temporal.present? %></u><br><br> 
         <% end %>
         <% unless @rent.quantity.blank? %>
-          <span class="label label-primary">
-            <%= @rent.quantity %> <%= @rent.temporal.name if @rent.temporal.present? %>
-          </span><br><br>
+          <u><%= @rent.quantity %> <%= @rent.temporal.name if @rent.temporal.present? %></u><br><br>
         <% end %>
         <% if @rent.location.blank? %>
           <%= image_tag('3/map6.png') %> Anywhere
@@ -46,7 +42,7 @@ keywords: %w(@rent.tag_list)
     <strong><%= link_to @rent.user.name, user_path(@rent.user) %></strong><br><br>
     
     <% unless @rent.deleted %>
-      <% if user_signed_in? && user_is_verified? %>
+      <% if user_signed_in? %>
         <% unless current_user == @rent.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

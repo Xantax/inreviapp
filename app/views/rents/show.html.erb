@@ -110,7 +110,7 @@ keywords: %w(@rent.tag_list)
     <strong><%= link_to @rent.user.name, user_path(@rent.user) %></strong><br><br>
     
     <% unless @rent.deleted %>
-      <% if user_signed_in? && user_is_verified? %>
+      <% if user_signed_in? %>
         <% unless current_user == @rent.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,8 +1,4 @@
-Credit: 
-        <span class="label label-success">
-            <%= number_to_currency(current_user.credit) %>
-        </span>
-      <hr>
+Credit: <u><%= number_to_currency(current_user.credit) %></u><hr>
 
 <div class="add-mobile">
   <%= link_to image_tag('m/add_product.png'), users_products_path %>

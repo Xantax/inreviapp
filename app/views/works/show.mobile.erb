@@ -20,16 +20,10 @@ keywords: %w(@work.tag_list)
         <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
         <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>
         <% unless @work.price.blank? %>
-          Pay: 
-          <span class="label label-success">
-            <%= number_to_currency(@work.price) %> <%= @work.per_temporal.name if @work.per_temporal.present? %>
-          </span> 
+          Pay: <u><%= number_to_currency(@work.price) %> <%= @work.per_temporal.name if @work.per_temporal.present? %></u> 
         <% end %><br><br>
         <% unless @work.quantity.blank? %>
-          Period: 
-          <span class="label label-primary">
-            <%= @work.quantity %> <%= @work.temporal.name if @work.temporal.present? %>
-          </span><br><br>
+          Period: <u><%= @work.quantity %> <%= @work.temporal.name if @work.temporal.present? %></u><br><br>
         <% end %>
         <% if @work.location.blank? %>
           <%= image_tag('3/map6.png') %> Anywhere
@@ -47,7 +41,7 @@ keywords: %w(@work.tag_list)
     <strong><%= link_to @work.user.name, user_path(@work.user) %></strong><br><br>
     
     <% unless @work.deleted %>
-      <% if user_signed_in? && user_is_verified? %>
+      <% if user_signed_in? %>
         <% unless current_user == @work.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

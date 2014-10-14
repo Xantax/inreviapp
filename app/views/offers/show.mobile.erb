@@ -19,8 +19,8 @@ keywords: %w(@offer.tag_list)
           <b><%= link_to @positive_reviews.count, "#reviews-list" %></b> | 
         <%= link_to image_tag('2/thumbsdown_off.PNG'), "#reviews-list" %>
         <b><%= link_to @negative_reviews.count, "#reviews-list" %></b> <br><br>     
-        Price: <span class="label label-success"><%= number_to_currency(@offer.price) %></span> <br><br>
-        Quantity: <span class="label label-primary"><%= @offer.quantity %></span> <br> <br>
+        Price: <u><%= number_to_currency(@offer.price) %></u> <br><br>
+        Quantity: <u><%= @offer.quantity %></u> <br> <br>
         <% if @offer.new %>
           <mark>New</mark>
         <% else %>
@@ -45,7 +45,7 @@ keywords: %w(@offer.tag_list)
     <strong><%= link_to @offer.user.name, user_path(@offer.user) %></strong><br><br>
     
     <% unless @offer.deleted %>
-      <% if user_signed_in? && !user_is_verified? %>
+      <% if user_signed_in? %>
         <% unless current_user == @offer.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

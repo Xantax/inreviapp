@@ -31,9 +31,7 @@
       </ul>
     </div>
     <% end %>
-      <div>
-        <%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %>
-      </div><br>
+      <div><%= f.text_field :name, autofocus: true, placeholder: "name", class: "form-control devise", :required => true %></div><br>
       <div><%= f.email_field :email, placeholder: "email", class: "form-control devise", :required => true %></div><br>
       <div><%= f.password_field :password, placeholder: "password", class: "form-control devise", :required => true %></div><br>
       <%= image_tag('3/check_terms.png') %> I agree to <%= link_to "Terms & Privacy", terms_path %><br><br>
@@ -47,7 +45,7 @@
 
   <div class="row cats-not-signed" align="center">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, placeholder: "email", class: "input-login" %>
+      <%= f.email_field :email, placeholder: "email", class: "input-login" %>
       <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "input-login" %>
     <%= f.submit "Login", class: "btn btn-sm btn-default" %>
     <% end %>

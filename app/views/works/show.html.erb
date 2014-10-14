@@ -111,7 +111,7 @@ keywords: %w(@work.tag_list)
     <strong><%= link_to @work.user.name, user_path(@work.user) %></strong><br><br>
     
     <% unless @work.deleted %>
-      <% if user_signed_in? && user_is_verified? %>
+      <% if user_signed_in? %>
         <% unless current_user == @work.user %> 
           <%= form_for [@convoable, @conversation] do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>

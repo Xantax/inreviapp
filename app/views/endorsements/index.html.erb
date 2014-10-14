@@ -5,7 +5,10 @@
     <div class="newsfeed">
       
     <% if @endorsements.blank? %>
-      <div id="just-joined">Empty</div>
+      <div id="just-joined">
+        Empty<hr><br>
+        <%= link_to "What is this?", invite_path %>
+      </div>
     <% else %>
       
       <% @endorsements.each do |endorsement| %>

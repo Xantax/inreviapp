@@ -3,8 +3,8 @@
 <div class="main-nf">
   <%= render 'shared/upper_newsfeed' %>    
       <div class="newsfeed">
-        <h2><%= t "devise.invitations.new.header" %></h2>
-
+        <h3><%= t "devise.invitations.new.header" %></h3> 
+        
         <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
           <%= devise_error_messages! %>
         
@@ -14,5 +14,6 @@
 
         <%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-success" %>
         <% end %>
+        <hr>... or just tell them to join and endorse you
       </div>
 </div>

@@ -35,4 +35,5 @@ class Service < ActiveRecord::Base
     end
   end
   
+  
 end

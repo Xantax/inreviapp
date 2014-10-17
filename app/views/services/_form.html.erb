@@ -1,3 +1,6 @@
+<%= tinymce_assets %>
+<%= tinymce :plugins => ["colorpicker", "image", "table", "textcolor", "media", "link", "importcss", "autosave"] %>
+
 <% meta title: "List your service" %>
 
   <%= simple_form_for(@service) do |f| %>
@@ -29,7 +32,7 @@
 
     <div class="field">
       <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control blue", rows: 10 %>
+      <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
     </div><br>
 
     <div class="field">
@@ -42,6 +45,7 @@
       <%= f.input :location, :input_html =>{:id => 'gmaps-input-address', class: "form-control blue", placeholder: "Anywhere"}, :required => true %><hr>      
     </div>
  
+    <div class="row">
       <div class="col-xs-2">
         <b>Price:</b>
         <div class="input-group">
@@ -52,6 +56,7 @@
           </span>
         </div>
       </div>
+    </div><hr>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
 

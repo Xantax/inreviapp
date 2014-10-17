@@ -38,6 +38,7 @@ gem 'simple_form', '~> 3.0.2'
 gem 'public_activity', '~> 1.4.2'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'geoip', '~> 1.4.0'
+gem 'tinymce-rails', '~> 4.1.5'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

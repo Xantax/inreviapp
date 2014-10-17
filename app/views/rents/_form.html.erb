@@ -1,3 +1,6 @@
+<%= tinymce_assets %>
+<%= tinymce :plugins => ["colorpicker", "image", "table", "textcolor", "media", "link", "importcss", "autosave"] %>
+
 <% meta title: "List it" %>
 
   <%= simple_form_for(@rent) do |f| %>
@@ -34,7 +37,7 @@
 
     <div class="field">
       <b>Description</b><br>
-      <%= f.text_area :description, class: "form-control green", rows: 10 %>
+      <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
     </div><hr>
 
     <div class="field">

@@ -17,3 +17,4 @@
 //= require turbolinks
 //= require gmaps-auto-complete
 //= require_tree .
+//= require tinymce
